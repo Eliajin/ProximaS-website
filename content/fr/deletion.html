@@ -50,9 +50,10 @@
   <h2>3. Ce qui est effacé</h2>
   <ul>
     <li>le compte, l'adresse e-mail et le mot de passe ;</li>
-    <li>le profil, les photos, les réponses aux questions et l'envie du moment ;</li>
+    <li>le profil, les photos, les réponses aux questions et les envies du moment ;</li>
     <li>la position, les filtres et les consentements ;</li>
     <li>les signaux envoyés et reçus ;</li>
+    <li>les <strong>visites de profil</strong>, celles que tu as faites comme celles que tu as reçues ;</li>
     <li>les <strong>conversations entières</strong>, messages des deux personnes compris, et les propositions de moment ;</li>
     <li>les blocages, les sessions et les appareils enregistrés pour les notifications.</li>
   </ul>
@@ -74,7 +75,7 @@
 <section id="export">
   <h2>5. Récupérer tes données avant de partir</h2>
   {{- if on "export_dans_app"}}
-  <p>Dans l'application, ouvre <strong>Mon profil</strong>, puis <strong>Télécharger mes données</strong>. Tu obtiens une archive avec tes données et tes photos ; les messages et les textes écrits par d'autres personnes n'y sont pas. Fais-le avant de supprimer ton compte.</p>
+  <p>Dans l'application, ouvre <strong>Mon profil</strong>, puis <strong>Télécharger mes données</strong>. Tu obtiens une archive avec tes données, dont les visites de profil (tes visiteurs tels que l'application te les montre), et tes photos ; les messages et les textes écrits par d'autres personnes n'y sont pas. Fais-le avant de supprimer ton compte.</p>
   {{- else}}
   <p>Demande une copie de tes données à {{mail}} <strong>avant</strong> de demander la suppression : le téléchargement dans l'application n'est pas encore disponible.</p>
   {{- end}}
@@ -82,5 +83,5 @@
 
 <section id="autres">
   <h2>6. Effacer seulement une partie</h2>
-  <p>Tu peux aussi, sans supprimer le compte, retirer des photos, effacer des réponses de profil ou ton envie, couper les notifications ou retirer un consentement (la position est alors effacée). Pour une autre demande, écris-nous. Voir <a href="{{page "privacy"}}#droits">tes droits</a>.</p>
+  <p>Tu peux aussi, sans supprimer le compte, retirer des photos, effacer des réponses de profil ou tes envies, couper les notifications ou retirer un consentement (retirer celui de la position efface ta position). « Visiter discrètement » arrête l'enregistrement de nouvelles visites ; les anciennes sont effacées 30 jours après la dernière visite. Pour une autre demande, écris-nous. Voir <a href="{{page "privacy"}}#droits">tes droits</a>.</p>
 </section>

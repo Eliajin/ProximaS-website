@@ -39,16 +39,17 @@
   <p>The data comes from you, from your use of the app and, for reports, from other people using the service.</p>
   <dl class="faits">
     <div><dt>Account</dt><dd>Email address, password (kept only as a hash, never in clear text), date of birth, result and method of the age check, account status, creation date and date of last activity.</dd></div>
-    <div><dt>Profile</dt><dd>First name, gender, genders you wish to meet, sexual orientation (only if you choose to show it), photos (0 to 6), answers to 3 profile questions at most, current mood, filters, “invisible mode” and “hide my distance” options, recent history of changes to your gender or search.</dd></div>
+    <div><dt>Profile</dt><dd>First name (which you can change in the app), gender, genders you wish to meet, sexual orientation (only if you choose to show it), photos (0 to 6), answers to 3 profile questions at most, current moods (up to 3 for the same time), filters, “invisible mode”, “hide my distance” and “visit discreetly” options, recent history of changes to your gender or search.</dd></div>
     <div><dt>Location</dt><dd>One square of about 500 m and the time it was updated; a few counters of impossible movements, to prevent cheating.</dd></div>
-    <div><dt>Exchanges</dt><dd>Signals sent and received, conversations, messages, meeting suggestions, read status.</dd></div>
+    <div><dt>Exchanges</dt><dd>Signals sent and received and what became of them (including the date a signal was passed), conversations, messages, meeting suggestions, read status.</dd></div>
+    <div><dt>Profile visits</dt><dd>Who opened whose profile, and the date of the latest visit, to the nearest hour (see <a href="#visites">profile visits</a>).</dd></div>
     <div><dt>Safety and moderation</dt><dd>Blocks; reports made or received (reason, details, first name and profile answers visible at the time, conversation excerpts attached with consent); decisions, sanctions, appeals; log of moderation actions{{if on "lot5_serveur_deploye"}}; after certain accounts are erased, a fingerprint of the email address (see <a href="#durees">retention periods</a>){{end}}.</dd></div>
     <div><dt>Consents</dt><dd>What you accepted or withdrew, the version of the text and the date.</dd></div>
     <div><dt>Device and technical data</dt><dd>Sign-in sessions (tokens kept as hashes); if you turn notifications on, a device identifier and a notification token; technical logs limited to the route called, the response code, the duration and a request number, with no IP address and no content. Your IP address is used in memory to limit abuse, without being written to these logs.</dd></div>
     <div><dt>Contact</dt><dd>Messages you send us by email and our replies.</dd></div>
     <div><dt>Rectification</dt><dd>The correction you ask for and, for a change of address, the new address awaiting confirmation. An identity document may be looked at to check your request, without being kept (see <a href="#rectification">rectification</a>).</dd></div>
   </dl>
-  <p>Account details, gender and genders sought, location and the three required consents are necessary for the service: without them, the account cannot be created or the profile is disabled. Photos, answers to questions, mood, showing your orientation and notifications are optional.</p>
+  <p>Account details, gender and genders sought, location and the three required consents are necessary for the service: without them, the account cannot be created or the profile is disabled. Photos, answers to questions, moods, showing your orientation and notifications are optional. Profile visits are recorded automatically, except with “Visit discreetly” or invisible mode.</p>
 </section>
 
 <section id="sensibles">
@@ -69,7 +70,7 @@
     <li>The server rounds the coordinates it receives to a grid of about 500 m <strong>before</strong> saving them; the original coordinates are neither kept nor logged. Only the latest square is kept.</li>
     <li>Other people never receive your coordinates, only a band: “less than 1 km” or “about N km”. In a conversation, this band is recalculated at most once a day.</li>
     <li>With the “Hide my distance” option, no band is shown about you, either in the sky or on your profile, and no distance appears in your conversations, for either person. In the sky, your profile is not ranked by distance: it is offered, in a randomly chosen spot, to compatible people less than 25 km away, whatever their distance filter. So at most they know you are within that radius. You still see the approximate distance of others in the sky and on profiles.</li>
-    <li>Invisible mode removes your profile from other people's sky and makes your profile page unavailable; your conversations remain.</li>
+    <li>Invisible mode removes your profile from other people's sky and makes your profile page unavailable; your conversations remain. It also stops <a href="#visites">profile visits</a> from being recorded.</li>
     <li>Even an approximate distance can help a determined person guess your area. If that is a risk for you, hide your distance or use invisible mode.</li>
     <li>If you withdraw the “location” consent, the stored location is erased immediately and your profile is disabled.</li>
   </ul>
@@ -79,6 +80,7 @@
   <h2>5. Why we use this data, and on what basis</h2>
   <dl class="faits">
     <div><dt>Create and manage your account, show compatible profiles, deliver signals and messages</dt><dd>Performance of the contract (Article 6, paragraph 1, point b, GDPR).</dd></div>
+    <div><dt>Show a person who opened their profile (“Viewed your profile”)</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis under consideration: performance of the contract (Article 6, paragraph 1, point b) or legitimate interest (Article 6, paragraph 1, point f). Whether these visits are sensitive data (Article 9) also remains to be validated. You can object at any time to new visits being recorded by using “Visit discreetly” (see <a href="#visites">profile visits</a>).</dd></div>
     <div><dt>Use your gender, search and orientation</dt><dd>Your explicit consent (Article 9, paragraph 2, point a, and Article 6, paragraph 1, point a), which you can withdraw at any time.</dd></div>
     <div><dt>Use your approximate location</dt><dd>Your consent (Article 6, paragraph 1, point a), together with your phone's permission, both of which you can withdraw at any time.</dd></div>
     <div><dt>Send notifications</dt><dd>Your consent (Article 6, paragraph 1, point a): they stay off until you turn them on.</dd></div>
@@ -95,10 +97,19 @@
 <section id="visibilite">
   <h2>6. What others see</h2>
   <ul>
-    <li>Compatible people see your first name, your age, your approved photos, your answers to questions, your current mood and, unless you hide it, an approximate distance.</li>
+    <li>Compatible people see your first name, your age, your approved photos, your answers to questions, your current moods and, unless you hide it, an approximate distance. The grid view of the sky shows your photo, first name and age.</li>
     <li>They see neither your email address, nor your date of birth, nor your location.</li>
     <li>A person you write to receives your signals, messages and meeting suggestions. They can copy or screenshot them: do not send anything you would not want to see shared.</li>
     <li>A blocked person no longer sees you and can no longer write to you. They are not told.</li>
+  </ul>
+  <h3 id="visites">Profile visits: “Viewed your profile” and “Visit discreetly”</h3>
+  <ul>
+    <li><strong>What counts as a visit</strong>: opening a person's profile, for example from the sky, the grid, a conversation or the list of your visitors. The two accounts and the date of the latest visit, to the nearest hour, are recorded; a new visit replaces the previous one.</li>
+    <li><strong>What the visited person sees</strong>, in My profile, “Viewed your profile” (“A vu ton profil”): your first name, age, photo and the day of your visit, with no distance; they can open your profile. They receive no notification. The list shows 100 people at most, and only those who are still active, compatible, visible, with a recent location, and with no block between you.</li>
+    <li><strong>“Visit discreetly”</strong> (“Visiter discrètement”, in My profile, off by default): your visits are not recorded, neither are the visits others pay you during that time, and you do not see who viewed your profile. Invisible mode has the same effect.</li>
+    <li><strong>Visits already recorded are not erased</strong> by these settings. With discreet visiting, the visits you made earlier remain visible to the people concerned; invisible mode hides them while it is on. The visits you had received reappear when you leave these modes, if their retention period has not passed.</li>
+    <li><strong>Retention</strong>: 30 days after the latest visit, or until one of the two accounts is erased. A block or a disabled profile does not erase them: they are no longer shown.</li>
+    <li>The list and the setting are in the up-to-date version of the app. With an older version, your visits are recorded in the same way; invisible mode prevents it.</li>
   </ul>
 </section>
 
@@ -115,7 +126,7 @@
     <li>If at least 2 different accounts, registered for more than 7 days, report that someone appears to be a minor, that account is automatically suspended pending an age check. The person is informed and can appeal; the appeal is reviewed by a person.</li>
     <li>A suspension for suspected underage use, whether automatic or decided by moderation, has no end date: it is lifted if the account is reinstated (age verified or appeal upheld) and may be replaced by a ban.{{if on "lot5_serveur_deploye"}} If the account is deleted while the check is pending, a fingerprint of its email address is kept (see <a href="#durees">retention periods</a>).{{end}}</li>
     <li>Reports from an account that has had several recent reports dismissed are handled with a lower priority, unless they concern a possible minor.</li>
-    <li>Automatic rules limit the number of requests, signals and location updates, and ignore impossible movements.</li>
+    <li>Automatic rules limit the number of requests, signals, first name changes and location updates, and ignore impossible movements.</li>
     <li>Your sky is put together automatically: the criteria are explained in the <a href="{{page "terms"}}#ciel">terms of use</a>.</li>
   </ul>
   <p>You can ask for any automatic measure concerning you to be reviewed by a person, and give your point of view.</p>
@@ -147,7 +158,8 @@
   <p>These periods are proposals and still need to be validated by a lawyer.</p>
   <dl class="faits">
     <div><dt>Account, profile, photos, filters, signals, conversations, consents</dt><dd>As long as the account exists: an inactive account is not erased automatically. See <a href="{{page "deletion"}}">account deletion</a>.</dd></div>
-    <div><dt>Current mood</dt><dd>Until the end of the chosen time.</dd></div>
+    <div><dt>Current moods</dt><dd>Until the end of the chosen time.</dd></div>
+    <div><dt>Profile visits</dt><dd>30 days after the latest visit; sooner if one of the two accounts is erased.</dd></div>
     <div><dt>Signal with no reply</dt><dd>No longer active after 14 days; it remains stored as long as the accounts concerned exist.</dd></div>
     {{- if on "lot5_serveur_deploye"}}
     <div><dt>Location</dt><dd>The latest only; erased after 7 days without an update, or when consent is withdrawn.</dd></div>
@@ -191,8 +203,8 @@
 <section id="droits">
   <h2>12. Your rights</h2>
   <ul>
-    <li><strong>Access</strong> to and a copy of your data, and <strong>portability</strong>: {{if on "export_dans_app"}}from the app (My profile, “Download my data”, with your password; link valid for 1 hour; texts written by others are not included), or by email{{else}}on request by email{{end}}.</li>
-    <li><strong>Rectification</strong>: in your profile for what the app lets you change; on written request for <a href="#rectification">your first name, email address and date of birth</a>.</li>
+    <li><strong>Access</strong> to and a copy of your data, and <strong>portability</strong>: {{if on "export_dans_app"}}from the app (My profile, “Download my data”, with your password; link valid for 1 hour; texts written by others are not included; people who opened your profile appear as the app shows them to you, so none with discreet visiting or invisible mode), or by email{{else}}on request by email{{end}}. <a href="#visites">Profile visits</a> still on record are part of your data.</li>
+    <li><strong>Rectification</strong>: in the app for what it lets you change, including your first name; on written request for <a href="#rectification">your email address and date of birth</a>.</li>
     <li><strong>Erasure</strong>: see <a href="{{page "deletion"}}">account deletion</a>.</li>
     <li><strong>Restriction</strong> and <strong>objection</strong>, in particular to processing based on our legitimate interest.</li>
     <li><strong>Withdrawal of consent</strong> at any time, in My profile, “My consents”; this does not affect what was done before. Withdrawing a required consent disables your profile.</li>
@@ -201,7 +213,8 @@
   </ul>
   <p>Write to {{mail}}, preferably from your account's address. We may ask for enough information to check that the request really comes from you, without asking for more than necessary. We reply within one month, which may be extended by two months for complex requests; you are then informed. Exercising your rights is free, unless a request is manifestly abusive.</p>
   <h3 id="rectification">Correcting your first name, email address or date of birth</h3>
-  <p>These three details cannot be changed in the app. To have them corrected, write to {{mail}} from your account's address; if you no longer have access to it, say so.</p>
+  <p>You can change your first name in the app at any time (My profile, “Edit my profile”, “Modifier mon profil”), under the same rules as at sign-up and with 20 changes per 24 hours at most. A report keeps the first name seen when it was made.</p>
+  <p>Your email address and date of birth cannot be changed in the app. To have them corrected, write to {{mail}} from your account's address; if you no longer have access to it, say so. You can do the same for your first name if you cannot change it yourself (suspended or banned account, app unavailable or too old).</p>
   <ul>
     <li><strong>Checking your identity</strong>: we write to the address registered on your account and wait for your reply. If you no longer have access to it, the check relies on an identity document and on information that the account holder knows. If a doubt remains, the correction is not made.</li>
     <li><strong>Identity document</strong>: we may ask to see one, in particular if you no longer have access to the account's address, in case of doubt, or for a date of birth (unless it is an obvious typing error with no effect on being an adult). It is only looked at, to compare the first name and date of birth; everything else may be hidden. It is neither copied nor kept, and a file received anyway is erased. Do not send one by email. (Procedure to be validated by a lawyer.)</li>

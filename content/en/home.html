@@ -2,7 +2,7 @@
   <p class="etat">{{if or (val "lien_groupe_google") (val "lien_testflight")}}Beta in progress{{else}}Closed beta{{end}}</p>
   <h1>Proxima<span class="s">S</span></h1>
   <p class="slogan">Find your closest star.</p>
-  <p class="chapo">A local dating app, for adults only. No profile grid and no swiping: you explore your sky, then reach out to someone through whatever speaks to you.</p>
+  <p class="chapo">A local dating app, for adults only. No swiping: you explore your sky, as stars or as a grid, then reach out to someone through whatever speaks to you.</p>
   <figure class="visuel">
     <img src="{{asset "img/visuel-1600.jpg"}}" srcset="{{asset "img/visuel-800.jpg"}} 800w, {{asset "img/visuel-1600.jpg"}} 1600w" sizes="(min-width: 66rem) 64rem, 100vw" width="1600" height="900" alt="Two silhouettes seen from behind, sitting on a rock, looking at the Earth and a starry sky.">
     <figcaption>AI-generated illustration.</figcaption>
@@ -37,8 +37,8 @@
       <p>You only see people whose gender matches what you are looking for, and who are also looking for people of your gender. The age ranges each person chooses apply both ways.</p>
     </div>
     <div class="carte">
-      <h3>Your filters, and a list</h3>
-      <p>Age, distance, with a photo, same mood, recently active. Prefer a list? It shows the same information.</p>
+      <h3>Your filters, and a grid</h3>
+      <p>Age, distance, with a photo, same mood, recently active. Prefer a grid? It shows the same people, constellation by constellation, with their photo if they have one, their first name and their age. Distance and moods are shown on their profile.</p>
     </div>
   </div>
 </section>
@@ -47,12 +47,12 @@
   <h2>What you feel like doing</h2>
   <div class="duo">
     <div>
-      <p>A walk, a drink, a concert, a film, a meal, sport, a game or just a chat: say what you would like to do tonight, tomorrow or this weekend.</p>
-      <p>When someone shares the same wish for a time that overlaps yours, their star gets a blue ring. Your wish disappears by itself once the time has passed. It is optional.</p>
+      <p>A walk, a drink, a concert, a film, a meal, sport, a game or just a chat: say what you would like to do tonight, tomorrow or this weekend. You can pick up to 3 for the same time.</p>
+      <p>When someone shares at least one of your wishes for a time that overlaps yours, their star gets a blue ring. Your wishes disappear by themselves once the time has passed. They are optional.</p>
     </div>
     <figure class="maquette">
       <img src="{{asset "img/maquette-envie.png"}}" width="600" height="1298" loading="lazy" alt="Mood screen mock-up, in French: choosing an activity and a time, then a button to light up your star.">
-      <figcaption>Design mock-up of the mood screen (in French).</figcaption>
+      <figcaption>Design mock-up of the mood screen (in French), made before several choices were possible.</figcaption>
     </figure>
   </div>
 </section>
@@ -66,7 +66,7 @@
     </div>
     <div class="carte">
       <h3>Reply or pass</h3>
-      <p>A conversation only opens if the other person replies. Passing stays discreet: nobody is told. A signal with no reply expires after 14 days.</p>
+      <p>A conversation only opens if the other person replies. Passing does not notify anyone. A signal with no reply expires after 14 days and you must wait 30 days after sending it before sending another one to the same person. After a passed signal, this is possible after 24 hours: the sender can then guess that the earlier one had been passed.</p>
     </div>
     <div class="carte">
       <h3>Chat, then meet</h3>
@@ -96,6 +96,7 @@
     <li>You can switch to invisible mode: your profile disappears from other people's sky, and your conversations remain.</li>
     <li>Your sexual orientation is displayed, and stored, only if you choose to show it.</li>
     <li>Location data embedded in your photos (EXIF) is removed.</li>
+    <li>When you open someone's profile, they can see it under “Viewed your profile” (“A vu ton profil”): only the latest visit is kept, for 30 days, with no notification. With “Visit discreetly” (“Visiter discrètement”) or invisible mode, your visits are not recorded, and you do not see who viewed your profile.</li>
     <li>The app shows no advertising today and contains no advertising or analytics tool. If advertising were added later, the privacy policy would be updated first.</li>
     <li>{{if on "export_dans_app"}}You can download your data from the app.{{else}}You can ask for a copy of your data by email.{{end}} {{if on "suppression_dans_app"}}You can delete your account from the app.{{else}}You can ask for your account to be deleted at any time.{{end}}</li>
   </ul>

@@ -2,7 +2,7 @@
   <p class="etat">{{if or (val "lien_groupe_google") (val "lien_testflight")}}Bêta en cours{{else}}Bêta fermée{{end}}</p>
   <h1>Proxima<span class="s">S</span></h1>
   <p class="slogan" lang="en">Find your closest star.</p>
-  <p class="chapo">Une application de rencontres de proximité, réservée aux adultes. Pas de grille de profils ni de swipe : tu explores ton ciel, puis tu abordes quelqu'un à partir de ce qui te parle.</p>
+  <p class="chapo">Une application de rencontres de proximité, réservée aux adultes. Pas de swipe : tu explores ton ciel, en étoiles ou en grille, puis tu abordes quelqu'un à partir de ce qui te parle.</p>
   <figure class="visuel">
     <img src="{{asset "img/visuel-1600.jpg"}}" srcset="{{asset "img/visuel-800.jpg"}} 800w, {{asset "img/visuel-1600.jpg"}} 1600w" sizes="(min-width: 66rem) 64rem, 100vw" width="1600" height="900" alt="Deux silhouettes de dos, assises sur un rocher, regardent la Terre et un ciel étoilé.">
     <figcaption>Image d'illustration générée par IA.</figcaption>
@@ -37,8 +37,8 @@
       <p>Tu ne vois que des personnes dont le genre correspond à ce que tu cherches, et qui cherchent aussi des personnes de ton genre. Les âges choisis par chacun comptent dans les deux sens.</p>
     </div>
     <div class="carte">
-      <h3>Tes filtres, et une liste</h3>
-      <p>Âge, distance, avec photo, même envie, actifs récemment. Tu préfères une liste ? Les mêmes informations s'y affichent.</p>
+      <h3>Tes filtres, et une grille</h3>
+      <p>Âge, distance, avec photo, même envie, actifs récemment. Tu préfères une grille ? Les mêmes personnes s'y affichent, constellation par constellation, avec leur photo si elles en ont une, leur prénom et leur âge. La distance et les envies se lisent sur leur fiche.</p>
     </div>
   </div>
 </section>
@@ -47,12 +47,12 @@
   <h2>L'envie du moment</h2>
   <div class="duo">
     <div>
-      <p>Balade, verre, concert, ciné, resto, sport, jeu ou simple discussion : dis ce qui te ferait envie ce soir, demain ou ce week-end.</p>
-      <p>Quand une personne partage la même envie sur un moment qui recoupe le tien, son étoile est entourée d'un cercle bleu. Ton envie s'efface toute seule une fois le moment passé. Elle est facultative.</p>
+      <p>Balade, verre, concert, ciné, resto, sport, jeu ou simple discussion : dis ce qui te ferait envie ce soir, demain ou ce week-end. Tu peux choisir jusqu'à 3 envies pour un même moment.</p>
+      <p>Quand une personne partage au moins une de tes envies sur un moment qui recoupe le tien, son étoile est entourée d'un cercle bleu. Tes envies s'effacent toutes seules une fois le moment passé. Elles sont facultatives.</p>
     </div>
     <figure class="maquette">
       <img src="{{asset "img/maquette-envie.png"}}" width="600" height="1298" loading="lazy" alt="Écran « Mon envie » : choix d'une activité et d'un moment, puis bouton « Allumer mon étoile ».">
-      <figcaption>Maquette de l'écran « Mon envie ».</figcaption>
+      <figcaption>Maquette de l'écran « Mon envie », antérieure au choix de plusieurs envies.</figcaption>
     </figure>
   </div>
 </section>
@@ -66,7 +66,7 @@
     </div>
     <div class="carte">
       <h3>Répondre ou passer</h3>
-      <p>La conversation ne s'ouvre que si l'autre personne répond. Passer reste discret : personne n'est prévenu. Un signal sans réponse expire après 14 jours.</p>
+      <p>La conversation ne s'ouvre que si l'autre personne répond. Passer ne prévient personne. Un signal sans réponse expire après 14 jours et il faut attendre 30 jours après son envoi pour en adresser un autre à la même personne. Après un signal passé, c'est possible au bout de 24 heures : la personne qui l'envoie peut alors deviner que le précédent avait été passé.</p>
     </div>
     <div class="carte">
       <h3>Discuter, puis se voir</h3>
@@ -96,6 +96,7 @@
     <li>Tu peux passer en mode invisible : ton profil disparaît du ciel des autres, tes conversations restent.</li>
     <li>Ton orientation n'est affichée, et enregistrée, que si tu choisis de la montrer.</li>
     <li>Les données de localisation intégrées à tes photos (EXIF) sont supprimées.</li>
+    <li>Quand tu ouvres la fiche de quelqu'un, cette personne peut le voir dans « A vu ton profil » : seule la dernière visite est gardée, 30 jours, sans notification. Avec « Visiter discrètement » ou le mode invisible, tes visites ne sont pas enregistrées, et tu ne vois pas qui a vu ton profil.</li>
     <li>L'application n'affiche pas de publicité aujourd'hui et ne contient aucun outil publicitaire ni de mesure d'audience. Si de la publicité était ajoutée plus tard, la politique de confidentialité serait mise à jour avant.</li>
     <li>{{if on "export_dans_app"}}Tu peux télécharger tes données depuis l'application.{{else}}Tu peux demander une copie de tes données par e-mail.{{end}} {{if on "suppression_dans_app"}}Tu peux supprimer ton compte depuis l'application.{{else}}Tu peux demander la suppression de ton compte à tout moment.{{end}}</li>
   </ul>

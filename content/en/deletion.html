@@ -50,9 +50,10 @@
   <h2>3. What is erased</h2>
   <ul>
     <li>the account, email address and password;</li>
-    <li>the profile, photos, answers to questions and current mood;</li>
+    <li>the profile, photos, answers to questions and current moods;</li>
     <li>location, filters and consents;</li>
     <li>signals sent and received;</li>
+    <li><strong>profile visits</strong>, both those you made and those you received;</li>
     <li><strong>entire conversations</strong>, including both people's messages, and meeting suggestions;</li>
     <li>blocks, sessions and devices registered for notifications.</li>
   </ul>
@@ -74,7 +75,7 @@
 <section id="export">
   <h2>5. Get your data before you leave</h2>
   {{- if on "export_dans_app"}}
-  <p>In the app, open <strong>My profile</strong> (“Mon profil”), then <strong>Download my data</strong> (“Télécharger mes données”). You get an archive with your data and photos; messages and texts written by other people are not included. Do this before deleting your account.</p>
+  <p>In the app, open <strong>My profile</strong> (“Mon profil”), then <strong>Download my data</strong> (“Télécharger mes données”). You get an archive with your data, including profile visits (your visitors as the app shows them to you), and your photos; messages and texts written by other people are not included. Do this before deleting your account.</p>
   {{- else}}
   <p>Ask for a copy of your data at {{mail}} <strong>before</strong> requesting deletion: downloading it from the app is not available yet.</p>
   {{- end}}
@@ -82,5 +83,5 @@
 
 <section id="autres">
   <h2>6. Erasing only part of it</h2>
-  <p>Without deleting your account, you can also remove photos, erase profile answers or your mood, turn notifications off or withdraw a consent (your location is then erased). For anything else, write to us. See <a href="{{page "privacy"}}#droits">your rights</a>.</p>
+  <p>Without deleting your account, you can also remove photos, erase profile answers or your moods, turn notifications off or withdraw a consent (withdrawing the location one erases your location). “Visit discreetly” stops new visits from being recorded; earlier ones are erased 30 days after the latest visit. For anything else, write to us. See <a href="{{page "privacy"}}#droits">your rights</a>.</p>
 </section>

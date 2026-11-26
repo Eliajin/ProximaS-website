@@ -39,16 +39,17 @@
   <p>Les données viennent de toi, de ton utilisation de l'application et, pour les signalements, d'autres personnes qui utilisent le service.</p>
   <dl class="faits">
     <div><dt>Compte</dt><dd>Adresse e-mail, mot de passe (conservé uniquement sous forme d'empreinte, jamais en clair), date de naissance, résultat et méthode de la vérification de l'âge, état du compte, date de création et date de dernière activité.</dd></div>
-    <div><dt>Profil</dt><dd>Prénom, genre, genres que tu souhaites rencontrer, orientation (seulement si tu choisis de l'afficher), photos (0 à 6), réponses à 3 questions de profil au maximum, envie du moment, filtres, options « mode invisible » et « masquer ma distance », historique récent des changements de genre ou de recherche.</dd></div>
+    <div><dt>Profil</dt><dd>Prénom (que tu peux changer dans l'application), genre, genres que tu souhaites rencontrer, orientation (seulement si tu choisis de l'afficher), photos (0 à 6), réponses à 3 questions de profil au maximum, envies du moment (jusqu'à 3 pour un même moment), filtres, options « mode invisible », « masquer ma distance » et « visiter discrètement », historique récent des changements de genre ou de recherche.</dd></div>
     <div><dt>Position</dt><dd>Une case d'environ 500 m de côté et l'heure de sa mise à jour ; quelques compteurs de déplacements impossibles, contre la triche.</dd></div>
-    <div><dt>Échanges</dt><dd>Signaux envoyés et reçus, conversations, messages, propositions de moment, état de lecture.</dd></div>
+    <div><dt>Échanges</dt><dd>Signaux envoyés et reçus et leur suite (dont la date à laquelle un signal a été passé), conversations, messages, propositions de moment, état de lecture.</dd></div>
+    <div><dt>Visites de profil</dt><dd>Qui a ouvert la fiche de qui, et la date de la dernière visite, à l'heure près (voir <a href="#visites">les visites de profil</a>).</dd></div>
     <div><dt>Sécurité et modération</dt><dd>Blocages ; signalements faits ou reçus (motif, précisions, prénom et réponses de profil visibles à ce moment, extraits de conversation joints avec accord) ; décisions, sanctions, contestations ; journal des actions de modération{{if on "lot5_serveur_deploye"}} ; après l'effacement de certains comptes, une empreinte de l'adresse e-mail (voir <a href="#durees">les durées</a>){{end}}.</dd></div>
     <div><dt>Consentements</dt><dd>Ce que tu as accepté ou retiré, la version du texte et la date.</dd></div>
     <div><dt>Appareil et technique</dt><dd>Sessions de connexion (jetons conservés sous forme d'empreinte) ; si tu actives les notifications, un identifiant de ton appareil et un jeton de notification ; journaux techniques limités à la route appelée, au code de réponse, à la durée et à un numéro de requête, sans adresse IP ni contenu. Ton adresse IP est utilisée en mémoire pour limiter les abus, sans être écrite dans ces journaux.</dd></div>
     <div><dt>Contact</dt><dd>Les messages que tu nous envoies par e-mail et nos réponses.</dd></div>
     <div><dt>Rectification</dt><dd>La correction que tu demandes et, pour un changement d'adresse, la nouvelle adresse en attente de confirmation. Un justificatif d'identité peut être regardé pour vérifier ta demande, sans être conservé (voir <a href="#rectification">la rectification</a>).</dd></div>
   </dl>
-  <p>Les informations de compte, le genre et les genres recherchés, la position et les trois consentements requis sont nécessaires au service : sans eux, le compte ne peut pas être créé ou le profil est désactivé. Les photos, les réponses aux questions, l'envie, l'affichage de l'orientation et les notifications sont facultatifs.</p>
+  <p>Les informations de compte, le genre et les genres recherchés, la position et les trois consentements requis sont nécessaires au service : sans eux, le compte ne peut pas être créé ou le profil est désactivé. Les photos, les réponses aux questions, les envies, l'affichage de l'orientation et les notifications sont facultatifs. Les visites de profil sont enregistrées automatiquement, sauf avec « Visiter discrètement » ou le mode invisible.</p>
 </section>
 
 <section id="sensibles">
@@ -69,7 +70,7 @@
     <li>Le serveur arrondit les coordonnées reçues sur une grille d'environ 500 m <strong>avant</strong> de les enregistrer ; les coordonnées d'origine ne sont ni conservées ni journalisées. Seule la dernière case est gardée.</li>
     <li>Les autres personnes ne reçoivent jamais tes coordonnées, seulement un palier : « à moins de 1 km » ou « à environ N km ». Dans une conversation, ce palier est recalculé au plus une fois par jour.</li>
     <li>Avec l'option « Masquer ma distance », aucun palier n'est montré à ton sujet, dans le ciel comme sur ta fiche, et aucune distance n'apparaît dans vos conversations, pour l'une comme pour l'autre personne. Dans le ciel, ton profil n'est pas classé selon la distance : il est proposé, à une place tirée au hasard, aux personnes compatibles situées à moins de 25 km, quel que soit leur filtre de distance. Elles savent donc au plus que tu es dans ce rayon. Toi, tu continues à voir la distance approximative des autres dans le ciel et sur les fiches.</li>
-    <li>Le mode invisible retire ton profil du ciel des autres et rend ta fiche inaccessible ; tes conversations restent.</li>
+    <li>Le mode invisible retire ton profil du ciel des autres et rend ta fiche inaccessible ; tes conversations restent. Il arrête aussi l'enregistrement des <a href="#visites">visites de profil</a>.</li>
     <li>Une distance, même approximative, peut aider une personne déterminée à deviner ton secteur. Si c'est un risque pour toi, masque ta distance ou utilise le mode invisible.</li>
     <li>Si tu retires le consentement « position », la position enregistrée est effacée immédiatement et ton profil est désactivé.</li>
   </ul>
@@ -79,6 +80,7 @@
   <h2>5. Pourquoi ces données, sur quelle base</h2>
   <dl class="faits">
     <div><dt>Créer et gérer ton compte, montrer des profils compatibles, transmettre signaux et messages</dt><dd>Exécution du contrat (article 6, paragraphe 1, point b, du RGPD).</dd></div>
+    <div><dt>Montrer à une personne qui a ouvert sa fiche (« A vu ton profil »)</dt><dd><strong>Base légale à valider par un juriste.</strong> Base envisagée : exécution du contrat (article 6, paragraphe 1, point b) ou intérêt légitime (article 6, paragraphe 1, point f). Il reste aussi à valider si ces visites sont des données sensibles (article 9). Tu peux t'opposer à tout moment à l'enregistrement de nouvelles visites avec « Visiter discrètement » (voir <a href="#visites">les visites de profil</a>).</dd></div>
     <div><dt>Utiliser ton genre, ta recherche et ton orientation</dt><dd>Ton consentement explicite (article 9, paragraphe 2, point a, et article 6, paragraphe 1, point a), retirable à tout moment.</dd></div>
     <div><dt>Utiliser ta position approximative</dt><dd>Ton consentement (article 6, paragraphe 1, point a), complété par l'autorisation de ton téléphone, retirables à tout moment.</dd></div>
     <div><dt>Envoyer des notifications</dt><dd>Ton consentement (article 6, paragraphe 1, point a) : elles sont coupées tant que tu ne les actives pas.</dd></div>
@@ -95,10 +97,19 @@
 <section id="visibilite">
   <h2>6. Ce que voient les autres</h2>
   <ul>
-    <li>Les personnes compatibles voient ton prénom, ton âge, tes photos validées, tes réponses aux questions, ton envie du moment et, sauf si tu la masques, une distance approximative.</li>
+    <li>Les personnes compatibles voient ton prénom, ton âge, tes photos validées, tes réponses aux questions, tes envies du moment et, sauf si tu la masques, une distance approximative. La grille de Mon ciel montre ta photo, ton prénom et ton âge.</li>
     <li>Elles ne voient ni ton adresse e-mail, ni ta date de naissance, ni ta position.</li>
     <li>Une personne à qui tu écris reçoit tes signaux, tes messages et tes propositions de moment. Elle peut les copier ou les capturer : n'envoie rien que tu ne voudrais pas voir diffusé.</li>
     <li>Une personne bloquée ne te voit plus et ne peut plus t'écrire. Elle n'est pas prévenue.</li>
+  </ul>
+  <h3 id="visites">Visites de profil : « A vu ton profil » et « Visiter discrètement »</h3>
+  <ul>
+    <li><strong>Ce qui compte comme une visite</strong> : ouvrir la fiche d'une personne, par exemple depuis le ciel, la grille, une conversation ou la liste de tes visiteurs. Sont enregistrés les deux comptes et la date de la dernière visite, à l'heure près ; une nouvelle visite remplace la précédente.</li>
+    <li><strong>Ce que voit la personne visitée</strong>, dans Mon profil, « A vu ton profil » : ton prénom, ton âge, ta photo et le jour de ta visite, sans distance ; elle peut ouvrir ta fiche. Elle ne reçoit aucune notification. La liste montre 100 personnes au maximum, et seulement celles qui sont encore actives, compatibles, visibles, avec une position récente, et sans blocage entre vous.</li>
+    <li><strong>« Visiter discrètement »</strong> (dans Mon profil, désactivé par défaut) : tes visites ne sont pas enregistrées, celles que d'autres te rendent pendant ce temps ne le sont pas non plus, et tu ne vois pas qui a vu ton profil. Le mode invisible a le même effet.</li>
+    <li><strong>Les visites déjà enregistrées ne sont pas effacées</strong> par ces réglages. Avec la visite discrète, celles que tu as faites auparavant restent visibles des personnes concernées ; le mode invisible les masque tant qu'il est activé. Celles que tu avais reçues réapparaissent quand tu quittes ces modes, si leur durée de conservation n'est pas dépassée.</li>
+    <li><strong>Durée</strong> : 30 jours après la dernière visite, ou jusqu'à l'effacement de l'un des deux comptes. Un blocage ou un profil désactivé ne les efface pas : elles ne sont plus montrées.</li>
+    <li>La liste et le réglage figurent dans la version à jour de l'application. Avec une version plus ancienne, tes visites sont enregistrées de la même façon ; le mode invisible l'empêche.</li>
   </ul>
 </section>
 
@@ -115,7 +126,7 @@
     <li>Si au moins 2 comptes distincts, inscrits depuis plus de 7 jours, signalent qu'une personne semble mineure, son compte est suspendu automatiquement dans l'attente d'une vérification de l'âge. La personne en est informée et peut contester ; la contestation est examinée par une personne.</li>
     <li>Une suspension pour soupçon de minorité, automatique ou décidée par la modération, n'a pas d'échéance : elle est levée si le compte est rétabli (âge vérifié ou contestation acceptée) et peut être remplacée par un bannissement.{{if on "lot5_serveur_deploye"}} Si le compte est supprimé pendant cette attente, une empreinte de son adresse e-mail est gardée (voir <a href="#durees">les durées</a>).{{end}}</li>
     <li>Les signalements d'un compte dont plusieurs signalements récents ont été classés sont traités avec une priorité moindre, sauf s'ils concernent un possible mineur.</li>
-    <li>Des règles automatiques limitent le nombre de requêtes, de signaux et de mises à jour de position, et ignorent les déplacements impossibles.</li>
+    <li>Des règles automatiques limitent le nombre de requêtes, de signaux, de changements de prénom et de mises à jour de position, et ignorent les déplacements impossibles.</li>
     <li>La composition de ton ciel est automatique : les critères sont expliqués dans les <a href="{{page "terms"}}#ciel">conditions d'utilisation</a>.</li>
   </ul>
   <p>Tu peux demander qu'une personne réexamine toute mesure automatique qui te concerne, et donner ton point de vue.</p>
@@ -147,7 +158,8 @@
   <p>Ces durées sont proposées et restent à valider par un juriste.</p>
   <dl class="faits">
     <div><dt>Compte, profil, photos, filtres, signaux, conversations, consentements</dt><dd>Tant que le compte existe : un compte inactif n'est pas effacé automatiquement. Voir <a href="{{page "deletion"}}">la suppression du compte</a>.</dd></div>
-    <div><dt>Envie du moment</dt><dd>Jusqu'à la fin du moment choisi.</dd></div>
+    <div><dt>Envies du moment</dt><dd>Jusqu'à la fin du moment choisi.</dd></div>
+    <div><dt>Visites de profil</dt><dd>30 jours après la dernière visite ; plus tôt si l'un des deux comptes est effacé.</dd></div>
     <div><dt>Signal sans réponse</dt><dd>N'est plus actif après 14 jours ; il reste enregistré tant que les comptes concernés existent.</dd></div>
     {{- if on "lot5_serveur_deploye"}}
     <div><dt>Position</dt><dd>La dernière seulement ; effacée après 7 jours sans mise à jour, ou au retrait du consentement.</dd></div>
@@ -191,8 +203,8 @@
 <section id="droits">
   <h2>12. Tes droits</h2>
   <ul>
-    <li><strong>Accès</strong> et copie de tes données, et <strong>portabilité</strong> : {{if on "export_dans_app"}}depuis l'application (Mon profil, « Télécharger mes données », avec ton mot de passe ; lien valable 1 heure ; les textes écrits par d'autres n'y sont pas), ou par e-mail{{else}}sur demande par e-mail{{end}}.</li>
-    <li><strong>Rectification</strong> : dans ton profil pour ce que l'application permet de modifier ; sur demande écrite pour <a href="#rectification">ton prénom, ton adresse e-mail et ta date de naissance</a>.</li>
+    <li><strong>Accès</strong> et copie de tes données, et <strong>portabilité</strong> : {{if on "export_dans_app"}}depuis l'application (Mon profil, « Télécharger mes données », avec ton mot de passe ; lien valable 1 heure ; les textes écrits par d'autres n'y sont pas ; les personnes qui ont ouvert ta fiche y figurent comme l'application te les montre, donc aucune en visite discrète ou en mode invisible), ou par e-mail{{else}}sur demande par e-mail{{end}}. Les <a href="#visites">visites de profil</a> encore conservées font partie de tes données.</li>
+    <li><strong>Rectification</strong> : dans l'application pour ce qu'elle permet de modifier, prénom compris ; sur demande écrite pour <a href="#rectification">ton adresse e-mail et ta date de naissance</a>.</li>
     <li><strong>Effacement</strong> : voir <a href="{{page "deletion"}}">la suppression du compte</a>.</li>
     <li><strong>Limitation</strong> et <strong>opposition</strong>, notamment aux traitements fondés sur notre intérêt légitime.</li>
     <li><strong>Retrait du consentement</strong> à tout moment, dans Mon profil, « Mes consentements » ; cela ne remet pas en cause ce qui a été fait avant. Retirer un consentement requis désactive ton profil.</li>
@@ -201,7 +213,8 @@
   </ul>
   <p>Écris à {{mail}}, de préférence depuis l'adresse de ton compte. Nous pouvons demander de quoi vérifier que la demande vient bien de toi, sans réclamer plus que nécessaire. Nous répondons dans un délai d'un mois, qui peut être prolongé de deux mois pour les demandes complexes ; tu en es alors informé. L'exercice de tes droits est gratuit, sauf demande manifestement abusive.</p>
   <h3 id="rectification">Corriger ton prénom, ton adresse e-mail ou ta date de naissance</h3>
-  <p>Ces trois informations ne se modifient pas dans l'application. Pour les faire corriger, écris à {{mail}} depuis l'adresse de ton compte ; si tu n'y as plus accès, précise-le.</p>
+  <p>Ton prénom se change dans l'application, à tout moment (Mon profil, « Modifier mon profil »), avec les mêmes règles qu'à l'inscription et au maximum 20 changements par 24 heures. Un signalement garde le prénom vu au moment où il a été fait.</p>
+  <p>L'adresse e-mail et la date de naissance ne se modifient pas dans l'application. Pour les faire corriger, écris à {{mail}} depuis l'adresse de ton compte ; si tu n'y as plus accès, précise-le. Tu peux faire de même pour ton prénom si tu ne peux pas le changer toi-même (compte suspendu ou banni, application indisponible ou trop ancienne).</p>
   <ul>
     <li><strong>Vérification de ton identité</strong> : nous écrivons à l'adresse enregistrée sur ton compte et attendons ta réponse. Si tu n'y as plus accès, la vérification repose sur un justificatif et sur des informations que le titulaire du compte connaît. Si un doute reste, la correction n'est pas faite.</li>
     <li><strong>Justificatif d'identité</strong> : nous pouvons demander à en voir un, notamment si tu n'as plus accès à l'adresse du compte, en cas de doute, ou pour une date de naissance (sauf erreur de saisie évidente et sans effet sur la majorité). Il est seulement regardé, pour comparer le prénom et la date de naissance ; le reste peut être masqué. Il n'est ni copié ni conservé, et un fichier reçu malgré tout est effacé. N'en envoie pas par e-mail. (Modalité à valider par un juriste.)</li>

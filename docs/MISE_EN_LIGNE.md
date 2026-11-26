@@ -178,10 +178,13 @@ Puis renseigner les adresses dans les consoles des magasins : confidentialité `
 
 ## Ordre de déploiement : l'API d'abord
 
-La version du site qui décrit la rectification (prénom, adresse e-mail, date de naissance) et l'empreinte de l'adresse d'un compte supprimé pendant une vérification d'âge annonce des fonctions de l'API **pas encore déployées** au moment de sa rédaction (26/11/2026). Aucun interrupteur ne les masque : déployer l'API, puis le site, une seule fois.
+La version du site qui décrit le lot 6 (« A vu ton profil » et « Visiter discrètement », prénom modifiable dans l'application, 3 envies, signal « passé » renvoyable après 24 h, grille) annonce des fonctions de l'API **pas encore déployées** au moment de sa rédaction (26/11/2026). Aucun interrupteur ne les masque : déployer l'API, puis le site.
+
+La liste des visiteurs, le réglage « Visiter discrètement », le prénom modifiable et la grille demandent aussi la nouvelle version de l'application. Avant le déploiement du site, faire valider (juriste) la base légale des visites de profil : `ProximaS/docs/CONFORMITE.md`, section 4, demande de la valider avant d'annoncer la fonction.
 
 À vérifier avant de lancer `deploy/build-prod.sh` du site :
 
+- `curl -s -o /dev/null -w '%{http_code}\n' https://api.proximas.be/api/v1/me/visitors` répond `401` (la route existe et demande une connexion) ; `404` : l'API du lot 6 n'est pas déployée ;
 - `curl -s -o /dev/null -w '%{http_code}\n' https://api.proximas.be/confirmation-adresse` répond `400` (lien non valide : la page de confirmation d'une nouvelle adresse existe) ; `404` : l'API n'est pas à jour ;
 - la rectification demande un compte de modération de rôle **admin** ;
 - tant que le juriste n'a pas validé la consultation d'un justificatif d'identité, elle ne doit pas être utilisée (`ProximaS/docs/BACKOFFICE.md`, 3 bis).
