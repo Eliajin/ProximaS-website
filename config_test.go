@@ -44,6 +44,12 @@ func TestSiteConfIsValidAndComplete(t *testing.T) {
 
 func TestParseConfigRejects(t *testing.T) {
 	base := confText(t)
+	// Base « lot 5 non déployé », quel que soit l'état réel écrit dans site.conf.
+	noLot := setLine(t, setLine(t, base, "lot5_serveur_deploye", "non"), "suppression_web_url", "")
+	noLot = setLine(t, setLine(t, noLot, "suppression_dans_app", "non"), "export_dans_app", "non")
+	if _, err := ParseConfig(strings.NewReader(noLot)); err != nil {
+		t.Fatalf("base sans lot refusée : %v", err)
+	}
 	cases := map[string]string{
 		"clé inconnue":             base + "\ninconnue = 1\n",
 		"clé en double":            base + "\ndpo = aucun\n",
@@ -57,9 +63,9 @@ func TestParseConfigRejects(t *testing.T) {
 		"e-mail invalide":          setLine(t, base, "contact_email", "contact"),
 		"e-mail avec paramètres":   setLine(t, base, "contact_email", "a?cc=b@example.invalid"),
 		"lien non https":           setLine(t, base, "lien_groupe_google", "javascript:alert(1)"),
-		"suppression web sans lot": setLine(t, base, "suppression_web_url", "https://api.proximas.be/suppression-compte"),
-		"app sans lot":             setLine(t, base, "suppression_dans_app", "oui"),
-		"export sans lot":          setLine(t, base, "export_dans_app", "oui"),
+		"suppression web sans lot": setLine(t, noLot, "suppression_web_url", "https://api.proximas.be/suppression-compte"),
+		"app sans lot":             setLine(t, noLot, "suppression_dans_app", "oui"),
+		"export sans lot":          setLine(t, noLot, "export_dans_app", "oui"),
 	}
 	for name, text := range cases {
 		if _, err := ParseConfig(strings.NewReader(text)); err == nil {
