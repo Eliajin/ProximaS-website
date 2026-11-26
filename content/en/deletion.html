@@ -65,7 +65,7 @@
   <dl class="faits">
     <div><dt>Reports made or received, with their content, and decisions</dt><dd>Your account identifiers are erased; the file is kept for 365 days after the decision. A report not yet decided is kept until it is.</dd></div>
     <div><dt>Log of moderation actions</dt><dd>730 days, with an internal account identifier.</dd></div>
-    <div><dt>Banned account</dt><dd>{{if on "lot5_serveur_deploye"}}A fingerprint of the address, not the address itself, for 365 days, to refuse a new sign-up.{{else}}Deletion is assessed in light of other people's safety; we explain to you what must be kept and for how long.{{end}}</dd></div>
+    <div><dt>{{if on "lot5_serveur_deploye"}}Account that is banned, or suspended pending an age check{{else}}Banned account{{end}}</dt><dd>{{if on "lot5_serveur_deploye"}}In these two cases only, a fingerprint of the address, not the address itself, is kept for 365 days after erasure, to refuse a new sign-up with it. Nothing is kept for this purpose if the account had been reinstated. To contest this refusal, write to {{mail}}.{{else}}Deletion is assessed in light of other people's safety; we explain to you what must be kept and for how long.{{end}}</dd></div>
     <div><dt>Technical logs</dt><dd>No IP address and no profile data; erased according to their size.</dd></div>
     <div><dt>Your request and our reply by email</dt><dd>12 months, to show that it was handled.</dd></div>
   </dl>

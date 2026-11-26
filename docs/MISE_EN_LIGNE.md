@@ -176,6 +176,16 @@ Dans un navigateur (ordinateur et téléphone) : ouvrir chaque page dans les deu
 
 Puis renseigner les adresses dans les consoles des magasins : confidentialité `https://proximas.be/confidentialite`, suppression `https://proximas.be/suppression-compte`, assistance `https://proximas.be/contact`.
 
+## Ordre de déploiement : l'API d'abord
+
+La version du site qui décrit la rectification (prénom, adresse e-mail, date de naissance) et l'empreinte de l'adresse d'un compte supprimé pendant une vérification d'âge annonce des fonctions de l'API **pas encore déployées** au moment de sa rédaction (26/11/2026). Aucun interrupteur ne les masque : déployer l'API, puis le site, une seule fois.
+
+À vérifier avant de lancer `deploy/build-prod.sh` du site :
+
+- `curl -s -o /dev/null -w '%{http_code}\n' https://api.proximas.be/confirmation-adresse` répond `400` (lien non valide : la page de confirmation d'une nouvelle adresse existe) ; `404` : l'API n'est pas à jour ;
+- la rectification demande un compte de modération de rôle **admin** ;
+- tant que le juriste n'a pas validé la consultation d'un justificatif d'identité, elle ne doit pas être utilisée (`ProximaS/docs/BACKOFFICE.md`, 3 bis).
+
 ## Quand le lot 5 est déployé (ProximaS)
 
 Les textes suivent `site.conf`. Ne passer à `oui` que ce qui est réellement en service.
@@ -188,4 +198,4 @@ Les textes suivent `site.conf`. Ne passer à `oui` que ce qui est réellement en
 
 Puis mettre à jour `date_textes`, `make test`, commit, push, et `deploy/build-prod.sh` sur le serveur. Relire `/suppression-compte` en ligne.
 
-**D'ici là**, une demande de suppression ou d'export reçue par e-mail doit être traitée à la main dans le mois : la version de l'API en ligne n'a pas de commande pour cela. Déployer le lot 5 rapidement règle ce point.
+**Tant que l'export dans l'application n'est pas distribué**, une demande de copie des données reçue par e-mail doit être traitée à la main dans le mois : l'API n'a pas de commande pour cela. Une demande de suppression par e-mail peut être renvoyée vers le formulaire web.

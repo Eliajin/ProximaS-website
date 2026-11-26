@@ -65,7 +65,7 @@
   <dl class="faits">
     <div><dt>Signalements faits ou reçus, avec leur contenu, et décisions</dt><dd>Les identifiants de ton compte sont effacés ; le dossier est gardé 365 jours après la décision. Un signalement pas encore décidé est gardé jusqu'à la décision.</dd></div>
     <div><dt>Journal des actions de modération</dt><dd>730 jours, avec un identifiant interne du compte.</dd></div>
-    <div><dt>Compte banni</dt><dd>{{if on "lot5_serveur_deploye"}}Une empreinte de l'adresse, et non l'adresse, pendant 365 jours, pour refuser une réinscription.{{else}}La suppression est examinée au regard de la sécurité des autres personnes ; nous t'expliquons ce qui doit être conservé et pour combien de temps.{{end}}</dd></div>
+    <div><dt>{{if on "lot5_serveur_deploye"}}Compte banni, ou suspendu dans l'attente d'une vérification de l'âge{{else}}Compte banni{{end}}</dt><dd>{{if on "lot5_serveur_deploye"}}Dans ces deux cas seulement, une empreinte de l'adresse, et non l'adresse, est gardée 365 jours après l'effacement, pour refuser une réinscription avec elle. Rien n'est gardé à ce titre si le compte avait été rétabli. Pour contester ce refus, écris à {{mail}}.{{else}}La suppression est examinée au regard de la sécurité des autres personnes ; nous t'expliquons ce qui doit être conservé et pour combien de temps.{{end}}</dd></div>
     <div><dt>Journaux techniques</dt><dd>Sans adresse IP ni donnée de profil ; effacés selon leur taille.</dd></div>
     <div><dt>Ta demande et notre réponse par e-mail</dt><dd>12 mois, pour prouver qu'elle a été traitée.</dd></div>
   </dl>

@@ -42,10 +42,11 @@
     <div><dt>Profile</dt><dd>First name, gender, genders you wish to meet, sexual orientation (only if you choose to show it), photos (0 to 6), answers to 3 profile questions at most, current mood, filters, “invisible mode” and “hide my distance” options, recent history of changes to your gender or search.</dd></div>
     <div><dt>Location</dt><dd>One square of about 500 m and the time it was updated; a few counters of impossible movements, to prevent cheating.</dd></div>
     <div><dt>Exchanges</dt><dd>Signals sent and received, conversations, messages, meeting suggestions, read status.</dd></div>
-    <div><dt>Safety and moderation</dt><dd>Blocks; reports made or received (reason, details, first name and profile answers visible at the time, conversation excerpts attached with consent); decisions, sanctions, appeals; log of moderation actions.</dd></div>
+    <div><dt>Safety and moderation</dt><dd>Blocks; reports made or received (reason, details, first name and profile answers visible at the time, conversation excerpts attached with consent); decisions, sanctions, appeals; log of moderation actions{{if on "lot5_serveur_deploye"}}; after certain accounts are erased, a fingerprint of the email address (see <a href="#durees">retention periods</a>){{end}}.</dd></div>
     <div><dt>Consents</dt><dd>What you accepted or withdrew, the version of the text and the date.</dd></div>
     <div><dt>Device and technical data</dt><dd>Sign-in sessions (tokens kept as hashes); if you turn notifications on, a device identifier and a notification token; technical logs limited to the route called, the response code, the duration and a request number, with no IP address and no content. Your IP address is used in memory to limit abuse, without being written to these logs.</dd></div>
     <div><dt>Contact</dt><dd>Messages you send us by email and our replies.</dd></div>
+    <div><dt>Rectification</dt><dd>The correction you ask for and, for a change of address, the new address awaiting confirmation. An identity document may be looked at to check your request, without being kept (see <a href="#rectification">rectification</a>).</dd></div>
   </dl>
   <p>Account details, gender and genders sought, location and the three required consents are necessary for the service: without them, the account cannot be created or the profile is disabled. Photos, answers to questions, mood, showing your orientation and notifications are optional.</p>
 </section>
@@ -84,8 +85,8 @@
     <div><dt>Send account emails (verification code, forgotten password, security alerts, decisions)</dt><dd>Performance of the contract and legal obligations (Article 6, paragraph 1, points b and c).</dd></div>
     <div><dt>Keep the service for adults only</dt><dd>Legal obligations and legitimate interest in protecting minors (Article 6, paragraph 1, points c and f).</dd></div>
     <div><dt>Protect people: blocking, reporting, moderation, prevention of abuse and fraud, request limits</dt><dd>Legal obligations, in particular the EU Digital Services Act (DSA), and legitimate interest in the safety of the service (Article 6, paragraph 1, points c and f).</dd></div>
-    <div><dt>Keep some moderation records after an account is deleted, and stop a banned account from coming back</dt><dd>Legitimate interest and the establishment, exercise or defence of legal claims (Article 6, paragraph 1, point f, and, for any sensitive data they contain, Article 9, paragraph 2, point f).</dd></div>
-    <div><dt>Answer your messages and data requests</dt><dd>Legal obligations and legitimate interest (Article 6, paragraph 1, points c and f).</dd></div>
+    <div><dt>Keep some moderation records after an account is deleted, and stop a banned account{{if on "lot5_serveur_deploye"}}, or one deleted while awaiting an age check,{{end}} from coming back</dt><dd>Legitimate interest and the establishment, exercise or defence of legal claims (Article 6, paragraph 1, point f, and, for any sensitive data they contain, Article 9, paragraph 2, point f).</dd></div>
+    <div><dt>Answer your messages and data requests, and correct your data after checking that the request really comes from you</dt><dd>Legal obligations and legitimate interest (Article 6, paragraph 1, points c and f).</dd></div>
     <div><dt>App analytics</dt><dd>An optional consent, refused by default, is offered at sign-up. No analytics tool is in place today: nothing is collected for this purpose.</dd></div>
   </dl>
   <p>Today, ProximaS shows no advertising and includes no advertising tool. If advertising were added later, this policy would be updated first, and your consent would be asked where the law requires it. Your data is not sold.</p>
@@ -111,7 +112,8 @@
   <ul>
     <li>Photos are checked by a person before they become visible.</li>
     <li>A local word list, with no external service, may flag the first name and profile answers so that a person can read them again. Nothing is blocked automatically.</li>
-    <li>If at least 2 different accounts, registered for more than 7 days, report that someone appears to be a minor, that account is automatically suspended pending a check. The person is informed and can appeal; the appeal is reviewed by a person.</li>
+    <li>If at least 2 different accounts, registered for more than 7 days, report that someone appears to be a minor, that account is automatically suspended pending an age check. The person is informed and can appeal; the appeal is reviewed by a person.</li>
+    <li>A suspension for suspected underage use, whether automatic or decided by moderation, has no end date: it is lifted if the account is reinstated (age verified or appeal upheld) and may be replaced by a ban.{{if on "lot5_serveur_deploye"}} If the account is deleted while the check is pending, a fingerprint of its email address is kept (see <a href="#durees">retention periods</a>).{{end}}</li>
     <li>Reports from an account that has had several recent reports dismissed are handled with a lower priority, unless they concern a possible minor.</li>
     <li>Automatic rules limit the number of requests, signals and location updates, and ignore impossible movements.</li>
     <li>Your sky is put together automatically: the criteria are explained in the <a href="{{page "terms"}}#ciel">terms of use</a>.</li>
@@ -152,7 +154,7 @@
     <div><dt>Account whose address was never confirmed</dt><dd>7 days.</dd></div>
     <div><dt>Sessions and codes sent by email</dt><dd>7 days after they expire (a session expires after 30 days without use).</dd></div>
     <div><dt>Deleted account</dt><dd>14 days to change your mind, then erasure.</dd></div>
-    <div><dt>Address of a banned account that was then erased</dt><dd>A fingerprint of the address, not the address itself, for 365 days.</dd></div>
+    <div><dt>Address of an account erased while it was banned, or suspended pending an age check</dt><dd>A fingerprint of the address, computed with a secret key, not the address itself, for 365 days, to refuse a new sign-up with it. Nothing is kept for this purpose if the account had been reinstated. To contest this refusal, write to {{mail}}.</dd></div>
     <div><dt>History of changes to your gender or search</dt><dd>30 days.</dd></div>
     <div><dt>Deletion and download links</dt><dd>Valid for 1 hour; their record is erased within 2 days at most.</dd></div>
     {{- else}}
@@ -161,12 +163,13 @@
     <div><dt>Account deleted on request</dt><dd>Erased once the request is verified, within one month at the latest.</dd></div>
     <div><dt>Banned account</dt><dd>Remains stored, to prevent signing up again with the same address. An erasure request is assessed in light of other people's safety.</dd></div>
     {{- end}}
-    <div><dt>Notification identifier and token</dt><dd>Erased when you turn notifications off, sign out or are suspended, or when the provider rejects them.</dd></div>
+    <div><dt>Notification identifier and token</dt><dd>Erased when you turn notifications off, sign out or are suspended, when a change of your email address is recorded, or when the provider rejects them.</dd></div>
     <div><dt>Refused or removed photo</dt><dd>File erased after 30 days.</dd></div>
     <div><dt>Texts flagged by the word list</dt><dd>90 days.</dd></div>
     <div><dt>Time limit to appeal a decision</dt><dd>180 days.</dd></div>
     <div><dt>Reports, attached excerpts, decisions, appeals and sanctions</dt><dd>365 days after the decision (for a sanction, after it is lifted); a report not yet decided is kept until it is. A file is not erased while a related appeal or sanction is ongoing.</dd></div>
-    <div><dt>Log of moderation actions</dt><dd>730 days.</dd></div>
+    <div><dt>Log of moderation actions, including corrections made at your request (without the old or new values)</dt><dd>730 days.</dd></div>
+    <div><dt>New email address awaiting confirmation</dt><dd>48 hours at most.</dd></div>
     <div><dt>Database backups</dt><dd>35 days{{if not (on "lot5_serveur_deploye")}}, then erased at the next backup{{else}} at most{{end}}. Erased data may still appear in them until then.</dd></div>
     <div><dt>Technical logs</dt><dd>Erased according to their size (3 files of 10 MB at most), not after a fixed period.</dd></div>
     <div><dt>Messages sent to the contact address</dt><dd>12 months after the last exchange, unless they must be kept longer.</dd></div>
@@ -189,7 +192,7 @@
   <h2>12. Your rights</h2>
   <ul>
     <li><strong>Access</strong> to and a copy of your data, and <strong>portability</strong>: {{if on "export_dans_app"}}from the app (My profile, “Download my data”, with your password; link valid for 1 hour; texts written by others are not included), or by email{{else}}on request by email{{end}}.</li>
-    <li><strong>Rectification</strong>: in your profile, or by email for anything you cannot change.</li>
+    <li><strong>Rectification</strong>: in your profile for what the app lets you change; on written request for <a href="#rectification">your first name, email address and date of birth</a>.</li>
     <li><strong>Erasure</strong>: see <a href="{{page "deletion"}}">account deletion</a>.</li>
     <li><strong>Restriction</strong> and <strong>objection</strong>, in particular to processing based on our legitimate interest.</li>
     <li><strong>Withdrawal of consent</strong> at any time, in My profile, “My consents”; this does not affect what was done before. Withdrawing a required consent disables your profile.</li>
@@ -197,11 +200,21 @@
     <li>The right to decide what happens to your data after your death, where the law of your country provides for it.</li>
   </ul>
   <p>Write to {{mail}}, preferably from your account's address. We may ask for enough information to check that the request really comes from you, without asking for more than necessary. We reply within one month, which may be extended by two months for complex requests; you are then informed. Exercising your rights is free, unless a request is manifestly abusive.</p>
+  <h3 id="rectification">Correcting your first name, email address or date of birth</h3>
+  <p>These three details cannot be changed in the app. To have them corrected, write to {{mail}} from your account's address; if you no longer have access to it, say so.</p>
+  <ul>
+    <li><strong>Checking your identity</strong>: we write to the address registered on your account and wait for your reply. If you no longer have access to it, the check relies on an identity document and on information that the account holder knows. If a doubt remains, the correction is not made.</li>
+    <li><strong>Identity document</strong>: we may ask to see one, in particular if you no longer have access to the account's address, in case of doubt, or for a date of birth (unless it is an obvious typing error with no effect on being an adult). It is only looked at, to compare the first name and date of birth; everything else may be hidden. It is neither copied nor kept, and a file received anyway is erased. Do not send one by email. (Procedure to be validated by a lawyer.)</li>
+    <li><strong>First name and date of birth</strong>: once the correction is made, an email with no details lets you know.</li>
+    <li><strong>A date of birth that would make you a minor</strong>: it is not recorded and the account is suspended pending an age check. You can appeal this decision.</li>
+    <li><strong>New email address</strong>: as soon as the request is recorded, all your sessions are closed, pending codes and links stop working, and a confirmation link, valid for 48 hours, is sent to the new address. Your address only changes after this confirmation; until then, you sign in with the old one. Both addresses are informed. Changing or resetting your password, or asking for the account to be deleted, cancels the change.</li>
+    <li><strong>Refused cases</strong>: no correction on an account whose address was never confirmed or that is awaiting deletion (signing back in cancels the deletion); no change of address for an account that is banned or suspended pending an age check, nor to an address already in use, refused at sign-up or, if sign-up is by invitation, not invited.</li>
+  </ul>
 </section>
 
 <section id="mineurs">
   <h2>13. Minors</h2>
-  <p>ProximaS is forbidden to anyone under 18. The server calculates age from the date of birth; during the beta, this date is declared with no external check. An account suspected of belonging to a minor may be suspended. If you think a minor is using the service, report it from the app or write to {{mail}}.</p>
+  <p>ProximaS is forbidden to anyone under 18. The server calculates age from the date of birth; during the beta, this date is declared with no external check. An account suspected of belonging to a minor may be suspended, with no end date, pending an age check.{{if on "lot5_serveur_deploye"}} If it is deleted while the check is pending, a fingerprint of its email address prevents signing up with it again for 365 days.{{end}} If you think a minor is using the service, report it from the app or write to {{mail}}.</p>
 </section>
 
 <section id="reclamation">

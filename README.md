@@ -52,7 +52,7 @@ Fonctions utiles dans les pages : `{{champ "editeur_bce"}}` (valeur ou « [À RE
 
 ## Ce que disent les textes, et d'où cela vient
 
-Les faits viennent du code et des documents de `../ProximaS` (lecture seule), état du 26/11/2026 : commit `8891231` (déployé) et lot 5 (suppression, export, page web de suppression : stagé, non déployé ; voir aussi `docs/CONFORMITE.md` et `docs/REGISTRE_TRAME.md`). Quand l'application change (durées, prestataires, modération, publicité, vérification d'âge, langue), relire `content/*/privacy.html`, `terms.html`, `deletion.html`, `safety.html` et `home.html`. Réglages de l'API dont les textes dépendent : `TEXT_FILTER_PRIVATE=off`, durées de conservation par défaut (180, 365, 730, 90, 30 et 365 jours), `SIGNALS_PER_DAY=5`.
+Les faits viennent du code et des documents de `../ProximaS` (lecture seule), état du 26/11/2026 : commit `c666058` (lot 5 : suppression, export, page web de suppression ; déployé) et changements suivants de l'API, stagés et **non déployés** au moment de la rédaction (empreinte de l'adresse après soupçon de minorité, rectification du prénom, de l'e-mail et de la date de naissance, iPhone seul) : **déployer l'API avant le site** (`docs/MISE_EN_LIGNE.md`). Voir aussi `docs/CONFORMITE.md`, `docs/BACKOFFICE.md` (3 bis) et `docs/REGISTRE_TRAME.md`. Quand l'application change (durées, prestataires, modération, publicité, vérification d'âge, langue), relire `content/*/privacy.html`, `terms.html`, `deletion.html`, `safety.html` et `home.html`. Réglages de l'API dont les textes dépendent : `TEXT_FILTER_PRIVATE=off`, durées de conservation par défaut (180, 365, 730, 90, 30 et 365 jours), `SIGNALS_PER_DAY=5`.
 
 ## Visuels et police
 

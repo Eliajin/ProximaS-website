@@ -42,10 +42,11 @@
     <div><dt>Profil</dt><dd>Prénom, genre, genres que tu souhaites rencontrer, orientation (seulement si tu choisis de l'afficher), photos (0 à 6), réponses à 3 questions de profil au maximum, envie du moment, filtres, options « mode invisible » et « masquer ma distance », historique récent des changements de genre ou de recherche.</dd></div>
     <div><dt>Position</dt><dd>Une case d'environ 500 m de côté et l'heure de sa mise à jour ; quelques compteurs de déplacements impossibles, contre la triche.</dd></div>
     <div><dt>Échanges</dt><dd>Signaux envoyés et reçus, conversations, messages, propositions de moment, état de lecture.</dd></div>
-    <div><dt>Sécurité et modération</dt><dd>Blocages ; signalements faits ou reçus (motif, précisions, prénom et réponses de profil visibles à ce moment, extraits de conversation joints avec accord) ; décisions, sanctions, contestations ; journal des actions de modération.</dd></div>
+    <div><dt>Sécurité et modération</dt><dd>Blocages ; signalements faits ou reçus (motif, précisions, prénom et réponses de profil visibles à ce moment, extraits de conversation joints avec accord) ; décisions, sanctions, contestations ; journal des actions de modération{{if on "lot5_serveur_deploye"}} ; après l'effacement de certains comptes, une empreinte de l'adresse e-mail (voir <a href="#durees">les durées</a>){{end}}.</dd></div>
     <div><dt>Consentements</dt><dd>Ce que tu as accepté ou retiré, la version du texte et la date.</dd></div>
     <div><dt>Appareil et technique</dt><dd>Sessions de connexion (jetons conservés sous forme d'empreinte) ; si tu actives les notifications, un identifiant de ton appareil et un jeton de notification ; journaux techniques limités à la route appelée, au code de réponse, à la durée et à un numéro de requête, sans adresse IP ni contenu. Ton adresse IP est utilisée en mémoire pour limiter les abus, sans être écrite dans ces journaux.</dd></div>
     <div><dt>Contact</dt><dd>Les messages que tu nous envoies par e-mail et nos réponses.</dd></div>
+    <div><dt>Rectification</dt><dd>La correction que tu demandes et, pour un changement d'adresse, la nouvelle adresse en attente de confirmation. Un justificatif d'identité peut être regardé pour vérifier ta demande, sans être conservé (voir <a href="#rectification">la rectification</a>).</dd></div>
   </dl>
   <p>Les informations de compte, le genre et les genres recherchés, la position et les trois consentements requis sont nécessaires au service : sans eux, le compte ne peut pas être créé ou le profil est désactivé. Les photos, les réponses aux questions, l'envie, l'affichage de l'orientation et les notifications sont facultatifs.</p>
 </section>
@@ -84,8 +85,8 @@
     <div><dt>Envoyer les e-mails du compte (code de vérification, mot de passe oublié, alertes de sécurité, décisions)</dt><dd>Exécution du contrat et obligations légales (article 6, paragraphe 1, points b et c).</dd></div>
     <div><dt>Réserver le service aux adultes</dt><dd>Obligations légales et intérêt légitime à protéger les mineurs (article 6, paragraphe 1, points c et f).</dd></div>
     <div><dt>Protéger les personnes : blocage, signalement, modération, prévention des abus et de la fraude, limitation du nombre de requêtes</dt><dd>Obligations légales, notamment le règlement européen sur les services numériques (DSA), et intérêt légitime à la sécurité du service (article 6, paragraphe 1, points c et f).</dd></div>
-    <div><dt>Conserver certaines traces de modération après la suppression d'un compte, et empêcher le retour d'un compte banni</dt><dd>Intérêt légitime et constatation, exercice ou défense de droits en justice (article 6, paragraphe 1, point f, et, pour les données sensibles éventuellement contenues, article 9, paragraphe 2, point f).</dd></div>
-    <div><dt>Répondre à tes messages et à tes demandes sur tes données</dt><dd>Obligations légales et intérêt légitime (article 6, paragraphe 1, points c et f).</dd></div>
+    <div><dt>Conserver certaines traces de modération après la suppression d'un compte, et empêcher le retour d'un compte banni{{if on "lot5_serveur_deploye"}}, ou supprimé alors qu'il attendait une vérification de l'âge{{end}}</dt><dd>Intérêt légitime et constatation, exercice ou défense de droits en justice (article 6, paragraphe 1, point f, et, pour les données sensibles éventuellement contenues, article 9, paragraphe 2, point f).</dd></div>
+    <div><dt>Répondre à tes messages et à tes demandes sur tes données, et corriger celles-ci après avoir vérifié que la demande vient bien de toi</dt><dd>Obligations légales et intérêt légitime (article 6, paragraphe 1, points c et f).</dd></div>
     <div><dt>Mesure d'audience de l'application</dt><dd>Un consentement facultatif, refusé par défaut, est proposé à l'inscription. Aucun outil de mesure d'audience n'est en place aujourd'hui : rien n'est collecté à ce titre.</dd></div>
   </dl>
   <p>Aujourd'hui, ProximaS n'affiche pas de publicité et n'intègre aucun outil publicitaire. Si de la publicité était ajoutée plus tard, cette politique serait mise à jour avant, et un consentement te serait demandé quand la loi l'exige. Tes données ne sont pas vendues.</p>
@@ -111,7 +112,8 @@
   <ul>
     <li>Les photos sont contrôlées par une personne avant d'être visibles.</li>
     <li>Une liste de mots locale, sans service extérieur, peut repérer le prénom et les réponses de profil pour qu'une personne les relise. Rien n'est bloqué automatiquement.</li>
-    <li>Si au moins 2 comptes distincts, inscrits depuis plus de 7 jours, signalent qu'une personne semble mineure, son compte est suspendu automatiquement dans l'attente d'une vérification. La personne en est informée et peut contester ; la contestation est examinée par une personne.</li>
+    <li>Si au moins 2 comptes distincts, inscrits depuis plus de 7 jours, signalent qu'une personne semble mineure, son compte est suspendu automatiquement dans l'attente d'une vérification de l'âge. La personne en est informée et peut contester ; la contestation est examinée par une personne.</li>
+    <li>Une suspension pour soupçon de minorité, automatique ou décidée par la modération, n'a pas d'échéance : elle est levée si le compte est rétabli (âge vérifié ou contestation acceptée) et peut être remplacée par un bannissement.{{if on "lot5_serveur_deploye"}} Si le compte est supprimé pendant cette attente, une empreinte de son adresse e-mail est gardée (voir <a href="#durees">les durées</a>).{{end}}</li>
     <li>Les signalements d'un compte dont plusieurs signalements récents ont été classés sont traités avec une priorité moindre, sauf s'ils concernent un possible mineur.</li>
     <li>Des règles automatiques limitent le nombre de requêtes, de signaux et de mises à jour de position, et ignorent les déplacements impossibles.</li>
     <li>La composition de ton ciel est automatique : les critères sont expliqués dans les <a href="{{page "terms"}}#ciel">conditions d'utilisation</a>.</li>
@@ -152,7 +154,7 @@
     <div><dt>Compte dont l'adresse n'a jamais été confirmée</dt><dd>7 jours.</dd></div>
     <div><dt>Sessions et codes envoyés par e-mail</dt><dd>7 jours après leur expiration (une session expire après 30 jours sans utilisation).</dd></div>
     <div><dt>Compte supprimé</dt><dd>14 jours pour changer d'avis, puis effacement.</dd></div>
-    <div><dt>Adresse d'un compte banni puis effacé</dt><dd>Une empreinte de l'adresse, et non l'adresse, pendant 365 jours.</dd></div>
+    <div><dt>Adresse d'un compte effacé alors qu'il était banni, ou suspendu dans l'attente d'une vérification de l'âge</dt><dd>Une empreinte de l'adresse, calculée avec une clé secrète, et non l'adresse, pendant 365 jours, pour refuser une réinscription avec elle. Rien n'est gardé à ce titre si le compte avait été rétabli. Pour contester ce refus, écris à {{mail}}.</dd></div>
     <div><dt>Historique des changements de genre ou de recherche</dt><dd>30 jours.</dd></div>
     <div><dt>Liens de suppression et de téléchargement</dt><dd>Valables 1 heure ; leur trace est effacée en 2 jours au plus.</dd></div>
     {{- else}}
@@ -161,12 +163,13 @@
     <div><dt>Compte supprimé sur demande</dt><dd>Effacement après vérification de la demande, au plus tard dans le délai d'un mois.</dd></div>
     <div><dt>Compte banni</dt><dd>Reste enregistré, pour empêcher une réinscription avec la même adresse. Une demande d'effacement est examinée au regard de la sécurité des autres personnes.</dd></div>
     {{- end}}
-    <div><dt>Identifiant et jeton de notification</dt><dd>Effacés quand tu coupes les notifications, te déconnectes ou es suspendu, ou quand le fournisseur les rejette.</dd></div>
+    <div><dt>Identifiant et jeton de notification</dt><dd>Effacés quand tu coupes les notifications, te déconnectes ou es suspendu, quand un changement de ton adresse e-mail est enregistré, ou quand le fournisseur les rejette.</dd></div>
     <div><dt>Photo refusée ou retirée</dt><dd>Fichier effacé après 30 jours.</dd></div>
     <div><dt>Textes repérés par la liste de mots</dt><dd>90 jours.</dd></div>
     <div><dt>Délai pour contester une décision</dt><dd>180 jours.</dd></div>
     <div><dt>Signalements, extraits joints, décisions, contestations et sanctions</dt><dd>365 jours après la décision (pour une sanction, après sa levée) ; un signalement pas encore décidé est gardé jusqu'à la décision. Un dossier n'est pas effacé tant qu'une contestation ou une sanction liée est en cours.</dd></div>
-    <div><dt>Journal des actions de modération</dt><dd>730 jours.</dd></div>
+    <div><dt>Journal des actions de modération, corrections faites à ta demande comprises (sans les anciennes ni les nouvelles valeurs)</dt><dd>730 jours.</dd></div>
+    <div><dt>Nouvelle adresse e-mail en attente de confirmation</dt><dd>48 heures au plus.</dd></div>
     <div><dt>Copies de sauvegarde de la base de données</dt><dd>35 jours{{if not (on "lot5_serveur_deploye")}}, puis effacement lors de la sauvegarde suivante{{else}} au plus{{end}}. Une donnée effacée peut y figurer jusque-là.</dd></div>
     <div><dt>Journaux techniques</dt><dd>Effacés selon leur taille (3 fichiers de 10 Mo au maximum), et non selon une durée fixe.</dd></div>
     <div><dt>Messages envoyés à l'adresse de contact</dt><dd>12 mois après le dernier échange, sauf obligation de les garder plus longtemps.</dd></div>
@@ -189,7 +192,7 @@
   <h2>12. Tes droits</h2>
   <ul>
     <li><strong>Accès</strong> et copie de tes données, et <strong>portabilité</strong> : {{if on "export_dans_app"}}depuis l'application (Mon profil, « Télécharger mes données », avec ton mot de passe ; lien valable 1 heure ; les textes écrits par d'autres n'y sont pas), ou par e-mail{{else}}sur demande par e-mail{{end}}.</li>
-    <li><strong>Rectification</strong> : dans ton profil, ou par e-mail pour ce que tu ne peux pas modifier.</li>
+    <li><strong>Rectification</strong> : dans ton profil pour ce que l'application permet de modifier ; sur demande écrite pour <a href="#rectification">ton prénom, ton adresse e-mail et ta date de naissance</a>.</li>
     <li><strong>Effacement</strong> : voir <a href="{{page "deletion"}}">la suppression du compte</a>.</li>
     <li><strong>Limitation</strong> et <strong>opposition</strong>, notamment aux traitements fondés sur notre intérêt légitime.</li>
     <li><strong>Retrait du consentement</strong> à tout moment, dans Mon profil, « Mes consentements » ; cela ne remet pas en cause ce qui a été fait avant. Retirer un consentement requis désactive ton profil.</li>
@@ -197,11 +200,21 @@
     <li>Le droit de définir ce qu'il advient de tes données après ton décès, quand la loi de ton pays le prévoit.</li>
   </ul>
   <p>Écris à {{mail}}, de préférence depuis l'adresse de ton compte. Nous pouvons demander de quoi vérifier que la demande vient bien de toi, sans réclamer plus que nécessaire. Nous répondons dans un délai d'un mois, qui peut être prolongé de deux mois pour les demandes complexes ; tu en es alors informé. L'exercice de tes droits est gratuit, sauf demande manifestement abusive.</p>
+  <h3 id="rectification">Corriger ton prénom, ton adresse e-mail ou ta date de naissance</h3>
+  <p>Ces trois informations ne se modifient pas dans l'application. Pour les faire corriger, écris à {{mail}} depuis l'adresse de ton compte ; si tu n'y as plus accès, précise-le.</p>
+  <ul>
+    <li><strong>Vérification de ton identité</strong> : nous écrivons à l'adresse enregistrée sur ton compte et attendons ta réponse. Si tu n'y as plus accès, la vérification repose sur un justificatif et sur des informations que le titulaire du compte connaît. Si un doute reste, la correction n'est pas faite.</li>
+    <li><strong>Justificatif d'identité</strong> : nous pouvons demander à en voir un, notamment si tu n'as plus accès à l'adresse du compte, en cas de doute, ou pour une date de naissance (sauf erreur de saisie évidente et sans effet sur la majorité). Il est seulement regardé, pour comparer le prénom et la date de naissance ; le reste peut être masqué. Il n'est ni copié ni conservé, et un fichier reçu malgré tout est effacé. N'en envoie pas par e-mail. (Modalité à valider par un juriste.)</li>
+    <li><strong>Prénom et date de naissance</strong> : une fois la correction faite, un e-mail sans détail te prévient.</li>
+    <li><strong>Date de naissance qui te rendrait mineur</strong> : elle n'est pas enregistrée et le compte est suspendu dans l'attente d'une vérification de l'âge. Tu peux contester cette décision.</li>
+    <li><strong>Nouvelle adresse e-mail</strong> : dès que la demande est enregistrée, toutes tes sessions sont fermées, les codes et les liens en cours ne fonctionnent plus, et un lien de confirmation, valable 48 heures, est envoyé à la nouvelle adresse. Ton adresse ne change qu'après cette confirmation ; en attendant, tu te connectes avec l'ancienne. Les deux adresses sont prévenues. Changer ou réinitialiser ton mot de passe, ou demander la suppression du compte, annule le changement.</li>
+    <li><strong>Cas refusés</strong> : aucune correction sur un compte dont l'adresse n'a jamais été confirmée ou qui attend sa suppression (te reconnecter annule la suppression) ; pas de changement d'adresse pour un compte banni ou suspendu dans l'attente d'une vérification de l'âge, ni vers une adresse déjà utilisée, refusée à l'inscription ou, si l'inscription est sur invitation, non invitée.</li>
+  </ul>
 </section>
 
 <section id="mineurs">
   <h2>13. Mineurs</h2>
-  <p>ProximaS est interdit aux moins de 18 ans. L'âge est calculé par le serveur à partir de la date de naissance ; pendant la bêta, cette date est déclarée sans vérification externe. Un compte soupçonné d'appartenir à une personne mineure peut être suspendu. Si tu penses qu'un mineur utilise le service, signale-le depuis l'application ou écris à {{mail}}.</p>
+  <p>ProximaS est interdit aux moins de 18 ans. L'âge est calculé par le serveur à partir de la date de naissance ; pendant la bêta, cette date est déclarée sans vérification externe. Un compte soupçonné d'appartenir à une personne mineure peut être suspendu, sans échéance, dans l'attente d'une vérification de l'âge.{{if on "lot5_serveur_deploye"}} S'il est supprimé pendant cette attente, une empreinte de son adresse e-mail empêche de se réinscrire avec elle pendant 365 jours.{{end}} Si tu penses qu'un mineur utilise le service, signale-le depuis l'application ou écris à {{mail}}.</p>
 </section>
 
 <section id="reclamation">

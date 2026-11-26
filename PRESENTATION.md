@@ -6,7 +6,8 @@ Page de présentation honnête de l'application (concept, Mon ciel, envie du mom
 
 - Première version prête en local, **pas encore en ligne** (`docs/MISE_EN_LIGNE.md`).
 - Textes légaux : brouillons, non relus par un juriste.
-- Réglages actuels (`site.conf`) : lot 5 de l'application considéré comme non déployé (suppression et export demandés par e-mail), aucun lien de bêta, application en français seulement.
+- Réglages actuels (`site.conf`) : API du lot 5 déployée (suppression demandable par le web), suppression et export dans l'application pas encore annoncés, aucun lien de bêta, application en français seulement.
+- Les textes sur la rectification et sur l'empreinte après soupçon de minorité supposent le prochain déploiement de l'API : déployer le site après elle.
 - Champs à remplir : `make champs`.
 
 ## Pile
