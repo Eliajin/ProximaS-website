@@ -22,15 +22,15 @@
     <a class="btn secondaire" href="{{val "lien_testflight"}}" rel="noopener">Test on iPhone (TestFlight)</a>
     {{- end}}
   </div>
-  <p class="note">{{if val "lien_testflight"}}The app is being tested on Android and iPhone.{{else}}The app is being tested on Android; the iPhone version is not available yet.{{end}}{{if not (on "app_en_anglais")}} For now the app itself is in French only.{{end}} It is for people aged 18 and over.</p>
+  <p class="note">The app is being tested (beta) on Android and iPhone.{{if not (on "app_en_anglais")}} For now the app itself is in French only.{{else}} It is available in French and English.{{end}} It is for people aged 18 and over.</p>
 </section>
 
 <section id="ciel">
   <h2>My sky: explore instead of scrolling</h2>
   <div class="grille">
     <div class="carte">
-      <h3>Stars around you</h3>
-      <p>Compatible people near you appear as stars: 50 at most, grouped in constellations of 10, from the nearest to the farthest. Where a star sits on screen is decorative: it shows neither a direction nor an exact distance.</p>
+      <h3>Your sky of stars</h3>
+      <p>Compatible people appear as stars: 50 at most, grouped in constellations of 10, from the nearest to the farthest. Where a star sits on screen is decorative: it shows neither a direction nor an exact distance.</p>
     </div>
     <div class="carte">
       <h3>Compatible both ways</h3>
@@ -38,7 +38,7 @@
     </div>
     <div class="carte">
       <h3>Your filters, and a grid</h3>
-      <p>Age, distance, with a photo, same mood, recently active. Prefer a grid? It shows the same people, constellation by constellation, with their photo if they have one, their first name and their age. Distance and moods are shown on their profile.</p>
+      <p>Age, with a photo, same mood, recently active, and “Limit the distance” (optional, from 1 to 100 km), which only affects what you see. Prefer a grid? It shows the same people, constellation by constellation, with their photo if they have one, their first name and their age. Distance and moods are shown on their profile.</p>
     </div>
   </div>
 </section>
@@ -48,7 +48,7 @@
   <div class="duo">
     <div>
       <p>A walk, a drink, a concert, a film, a meal, sport, a game or just a chat: say what you would like to do tonight, tomorrow or this weekend. You can pick up to 3 for the same time.</p>
-      <p>When someone shares at least one of your wishes for a time that overlaps yours, their star gets a blue ring. Your wishes disappear by themselves once the time has passed. They are optional.</p>
+      <p>When someone shares at least one of your wishes for a time that overlaps yours, their star gets a blue ring. Times follow your local time, and your wishes disappear by themselves once the time has passed. They are optional.</p>
     </div>
     <figure class="maquette">
       <img src="{{asset "img/maquette-envie.png"}}" width="600" height="1298" loading="lazy" alt="Mood screen mock-up, in French: choosing an activity and a time, then a button to light up your star.">
@@ -62,7 +62,7 @@
   <div class="grille">
     <div class="carte">
       <h3>Start from a detail</h3>
-      <p>A signal replies to one precise item on a profile: a question, a photo or a mood. 240 characters at most, 5 signals a day (reset at midnight, Brussels time).</p>
+      <p>A signal replies to one precise item on a profile: a question, a photo or a mood. 240 characters at most, 5 signals a day (reset at midnight, your local time).</p>
     </div>
     <div class="carte">
       <h3>Reply or pass</h3>
@@ -70,7 +70,7 @@
     </div>
     <div class="carte">
       <h3>Chat, then meet</h3>
-      <p>Text messaging{{if on "photos_privees"}}, private photos and albums (not checked beforehand; screenshots blocked on Android only){{end}} and a way to suggest a time to meet (activity, date, hour), without sharing a location. Notifications are optional and only say that there is something new.</p>
+      <p>Text messaging{{if on "photos_privees"}}, private photos and albums (not checked beforehand; screenshots blocked on Android only){{end}} and a way to suggest a time to meet (activity, date, hour), without sharing a location. Notifications are optional and only say “You have something new”.</p>
     </div>
   </div>
 </section>
@@ -85,6 +85,7 @@
     {{- else}}
     <li>Photos are checked before they become visible, and reports are reviewed by a person. Our target is to handle them within 24 hours.</li>
     {{- end}}
+    <li>Photos in swimwear or bare-chested are allowed, including on profiles, provided that female breasts are covered: bare female breasts are nudity. Nudity and sexually explicit content are <a href="{{page "terms"}}#sexuel">forbidden everywhere</a>: profiles, {{if on "photos_privees"}}public and private photos, albums{{else}}photos{{end}}, messages and signals, even between adults and even on request.{{if on "photos_privees"}} As private photos are not checked before they are sent, the rule is enforced there following a report.{{end}}</li>
     <li>Moderation decisions come with reasons and can be challenged.</li>
     <li>The service is forbidden to anyone under 18. During the beta, age is calculated from the date of birth you declare: no external check is in place yet.</li>
   </ul>
@@ -94,13 +95,14 @@
 <section id="vie-privee">
   <h2>Your privacy</h2>
   <ul>
-    <li>Your location is rounded to a grid of about 500 m before it is saved, and only the latest one is kept. The app asks for it while you use it, not in the background.</li>
-    <li>Others never receive your location: only an approximate distance.</li>
-    <li>You can hide your distance: it then appears neither in the sky, nor on your profile, nor in your conversations. Compatible people less than 25 km away can still see you, in a randomly chosen spot.</li>
+    <li>Your location is rounded to a grid of about 500 m (up to about 1 km from east to west in northern Europe) before it is saved, and only the latest one is kept. The app asks for it while you use it, not in the background.</li>
+    <li>Others never receive your location: only an approximate distance band, never an exact distance.</li>
+    <li>While the publisher keeps the “no limit” option open, compatible people who do not limit the distance can see your profile even if they are far away, whatever your own limit. The publisher may restore a maximum limit of 100 km later.</li>
+    <li>You can hide your distance: it then appears neither in the sky, nor on your profile, nor in your conversations. You can still appear, in a randomly chosen spot, to compatible people: if they limit the distance, only when you are less than 25 km from them; otherwise, whatever the distance.</li>
     <li>You can switch to invisible mode: your profile disappears from other people's sky and grid, and your conversations remain, with no distance. People you have a conversation with, or you sent a signal that is still pending and has not expired, can still open your profile and see your profile photos.</li>
-    <li>Your sexual orientation is displayed, and stored, only if you choose to show it.</li>
+    <li>Your sexual orientation appears on your profile page only if you turn on “Show my orientation”; otherwise it is hidden and is not stored.</li>
     <li>Location data embedded in your photos (EXIF) is removed.</li>
-    <li>When you open someone's profile, they can see it under “Viewed your profile” (“A vu ton profil”): only the latest visit is kept, for 30 days, with no notification. With “Visit discreetly” (“Visiter discrètement”) or invisible mode, your visits are not recorded, and you do not see who viewed your profile.</li>
+    <li>When you open someone's profile, they can see it under “Viewed your profile”: only the latest visit is kept, for 30 days, with no notification. With “Visit discreetly” or invisible mode, your visits are not recorded, and you do not see who viewed your profile.</li>
     <li>The app shows no advertising today and contains no advertising or analytics tool. If advertising were added later, the privacy policy would be updated first.</li>
     <li>{{if on "export_dans_app"}}You can download your data from the app.{{else}}You can ask for a copy of your data by email.{{end}} {{if on "suppression_dans_app"}}You can delete your account from the app.{{else}}You can ask for your account to be deleted at any time.{{end}}</li>
   </ul>

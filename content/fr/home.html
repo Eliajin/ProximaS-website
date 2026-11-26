@@ -22,15 +22,15 @@
     <a class="btn secondaire" href="{{val "lien_testflight"}}" rel="noopener">Tester sur iPhone (TestFlight)</a>
     {{- end}}
   </div>
-  <p class="note">{{if val "lien_testflight"}}L'application est testée sur Android et sur iPhone.{{else}}L'application est testée sur Android ; la version iPhone n'est pas encore disponible.{{end}}{{if not (on "app_en_anglais")}} Elle est pour l'instant en français.{{end}} Elle est réservée aux personnes de 18 ans et plus.</p>
+  <p class="note">L'application est en test (bêta) sur Android et sur iPhone.{{if not (on "app_en_anglais")}} Elle est pour l'instant en français.{{else}} Elle existe en français et en anglais.{{end}} Elle est réservée aux personnes de 18 ans et plus.</p>
 </section>
 
 <section id="ciel">
   <h2>Mon ciel : explorer plutôt que faire défiler</h2>
   <div class="grille">
     <div class="carte">
-      <h3>Des étoiles autour de toi</h3>
-      <p>Les personnes compatibles proches de toi apparaissent comme des étoiles : 50 au maximum, réparties en constellations de 10, des plus proches aux plus éloignées. La place d'une étoile à l'écran est décorative : elle n'indique ni une direction ni une distance exacte.</p>
+      <h3>Ton ciel d'étoiles</h3>
+      <p>Les personnes compatibles apparaissent comme des étoiles : 50 au maximum, réparties en constellations de 10, des plus proches aux plus éloignées. La place d'une étoile à l'écran est décorative : elle n'indique ni une direction ni une distance exacte.</p>
     </div>
     <div class="carte">
       <h3>Compatibles des deux côtés</h3>
@@ -38,7 +38,7 @@
     </div>
     <div class="carte">
       <h3>Tes filtres, et une grille</h3>
-      <p>Âge, distance, avec photo, même envie, actifs récemment. Tu préfères une grille ? Les mêmes personnes s'y affichent, constellation par constellation, avec leur photo si elles en ont une, leur prénom et leur âge. La distance et les envies se lisent sur leur fiche.</p>
+      <p>Âge, avec photo, même envie, actifs récemment, et « Limiter la distance » (facultatif, de 1 à 100 km), qui ne porte que sur ce que toi tu vois. Tu préfères une grille ? Les mêmes personnes s'y affichent, constellation par constellation, avec leur photo si elles en ont une, leur prénom et leur âge. La distance et les envies se lisent sur leur fiche.</p>
     </div>
   </div>
 </section>
@@ -48,7 +48,7 @@
   <div class="duo">
     <div>
       <p>Balade, verre, concert, ciné, resto, sport, jeu ou simple discussion : dis ce qui te ferait envie ce soir, demain ou ce week-end. Tu peux choisir jusqu'à 3 envies pour un même moment.</p>
-      <p>Quand une personne partage au moins une de tes envies sur un moment qui recoupe le tien, son étoile est entourée d'un cercle bleu. Tes envies s'effacent toutes seules une fois le moment passé. Elles sont facultatives.</p>
+      <p>Quand une personne partage au moins une de tes envies sur un moment qui recoupe le tien, son étoile est entourée d'un cercle bleu. Les moments se comptent à ton heure, et tes envies s'effacent toutes seules une fois le moment passé. Elles sont facultatives.</p>
     </div>
     <figure class="maquette">
       <img src="{{asset "img/maquette-envie.png"}}" width="600" height="1298" loading="lazy" alt="Écran « Mon envie » : choix d'une activité et d'un moment, puis bouton « Allumer mon étoile ».">
@@ -62,7 +62,7 @@
   <div class="grille">
     <div class="carte">
       <h3>Aborder à partir d'un détail</h3>
-      <p>Un signal répond à un élément précis d'un profil : une question, une photo ou une envie. 240 caractères au maximum, 5 signaux par jour (remise à zéro à minuit, heure de Bruxelles).</p>
+      <p>Un signal répond à un élément précis d'un profil : une question, une photo ou une envie. 240 caractères au maximum, 5 signaux par jour (remise à zéro à minuit, à ton heure).</p>
     </div>
     <div class="carte">
       <h3>Répondre ou passer</h3>
@@ -85,6 +85,7 @@
     {{- else}}
     <li>Les photos sont contrôlées avant d'être visibles, et les signalements sont examinés par une personne. Notre objectif est de les traiter sous 24 heures.</li>
     {{- end}}
+    <li>Les photos en maillot de bain ou torse nu sont admises, y compris sur le profil, à condition que la poitrine féminine soit couverte : une poitrine féminine nue est de la nudité. La nudité et le contenu sexuellement explicite sont <a href="{{page "terms"}}#sexuel">interdits partout</a> : profil, photos{{if on "photos_privees"}} publiques et privées, albums{{end}}, messages et signaux, même entre adultes et même sur demande.{{if on "photos_privees"}} Les photos privées n'étant pas contrôlées avant l'envoi, la règle y est appliquée à la suite d'un signalement.{{end}}</li>
     <li>Les décisions de modération sont motivées et peuvent être contestées.</li>
     <li>Le service est interdit aux moins de 18 ans. Pendant la bêta, l'âge est calculé à partir de la date de naissance déclarée : aucune vérification externe n'est encore en place.</li>
   </ul>
@@ -94,11 +95,12 @@
 <section id="vie-privee">
   <h2>Ta vie privée</h2>
   <ul>
-    <li>Ta position est arrondie sur une grille d'environ 500 m avant d'être enregistrée, et seule la dernière est gardée. L'application la demande quand tu l'utilises, pas en arrière-plan.</li>
-    <li>Les autres ne reçoivent jamais ta position : seulement une distance approximative.</li>
-    <li>Tu peux masquer ta distance : elle n'apparaît alors ni dans le ciel, ni sur ta fiche, ni dans vos conversations. Les personnes compatibles situées à moins de 25 km peuvent encore te voir, à une place tirée au hasard.</li>
+    <li>Ta position est arrondie sur une grille d'environ 500 m (jusqu'à environ 1 km d'est en ouest dans le nord de l'Europe) avant d'être enregistrée, et seule la dernière est gardée. L'application la demande quand tu l'utilises, pas en arrière-plan.</li>
+    <li>Les autres ne reçoivent jamais ta position : seulement un palier de distance approximatif, jamais une distance exacte.</li>
+    <li>Tant que l'éditeur laisse l'option « sans limite » ouverte, les personnes compatibles qui ne limitent pas la distance peuvent voir ton profil même si elles sont loin, quelle que soit ta propre limite. L'éditeur peut rétablir plus tard une limite maximale de 100 km.</li>
+    <li>Tu peux masquer ta distance : elle n'apparaît alors ni dans le ciel, ni sur ta fiche, ni dans vos conversations. Tu peux encore apparaître, à une place tirée au hasard, aux personnes compatibles : si elles limitent la distance, seulement à moins de 25 km d'elles ; sinon, quelle que soit la distance.</li>
     <li>Tu peux passer en mode invisible : ton profil disparaît du ciel et de la grille des autres, et tes conversations restent, sans distance. Les personnes avec qui tu as une conversation, ou à qui tu as envoyé un signal encore en attente et non expiré, peuvent toujours ouvrir ta fiche et voir tes photos de profil.</li>
-    <li>Ton orientation n'est affichée, et enregistrée, que si tu choisis de la montrer.</li>
+    <li>Ton orientation apparaît sur ta fiche seulement si tu actives « Afficher mon orientation » ; sinon elle est masquée et n'est pas enregistrée.</li>
     <li>Les données de localisation intégrées à tes photos (EXIF) sont supprimées.</li>
     <li>Quand tu ouvres la fiche de quelqu'un, cette personne peut le voir dans « A vu ton profil » : seule la dernière visite est gardée, 30 jours, sans notification. Avec « Visiter discrètement » ou le mode invisible, tes visites ne sont pas enregistrées, et tu ne vois pas qui a vu ton profil.</li>
     <li>L'application n'affiche pas de publicité aujourd'hui et ne contient aucun outil publicitaire ni de mesure d'audience. Si de la publicité était ajoutée plus tard, la politique de confidentialité serait mise à jour avant.</li>

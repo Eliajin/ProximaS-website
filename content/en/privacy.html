@@ -39,15 +39,16 @@
   <p>The data comes from you, from your use of the app and, for reports, from other people using the service.</p>
   <dl class="faits">
     <div><dt>Account</dt><dd>Email address, password (kept only as a hash, never in clear text), date of birth, result and method of the age check, account status, creation date and date of last activity.</dd></div>
+    <div><dt>Language and time zone</dt><dd>The language of the app (French or English) and your phone's time zone (for example “Europe/Helsinki”), which roughly indicates the country you are in. The app sends them with each exchange with the server; the latest values are kept on your account, for emails, the notification, the language of your data archive and the way days are counted (moods, signals, message limit). They are not shown to others or written to technical logs. An older version of the app sends nothing: French and Brussels time then apply.</dd></div>
     <div><dt>Profile</dt><dd>First name (which you can change in the app), gender, genders you wish to meet, sexual orientation (only if you choose to show it), photos (0 to 6), answers to 3 profile questions at most, current moods (up to 3 for the same time), filters, “invisible mode”, “hide my distance” and “visit discreetly” options, recent history of changes to your gender or search.</dd></div>
-    <div><dt>Location</dt><dd>One square of about 500 m and the time it was updated; a few counters of impossible movements, to prevent cheating.</dd></div>
+    <div><dt>Location</dt><dd>One square of about 500 m (up to about 1 km from east to west in the north) and the time it was updated; a few counters of impossible movements, to prevent cheating.</dd></div>
     <div><dt>Exchanges</dt><dd>Signals sent and received and what became of them (including the date a signal was passed), conversations, messages, meeting suggestions, read status.</dd></div>
     <div><dt>Profile visits</dt><dd>Who opened whose profile, and the date of the latest visit, to the nearest hour (see <a href="#visites">profile visits</a>).</dd></div>
     {{- if on "photos_privees"}}
     <div><dt>Private photos and albums</dt><dd>If you use them: the photos in your private gallery (30 at most) and those you send, your albums (5 at most, whose name is shown only to you), what is sent and shared (who, to whom, when, mode, opening, disappearance) and the “Refuse photos” setting (see <a href="#photos-privees">private photos</a>).</dd></div>
     {{- end}}
     <div><dt>Safety and moderation</dt><dd>Blocks; reports made or received (reason, details, first name and profile answers visible at the time, conversation excerpts attached with consent); decisions, sanctions, appeals; log of moderation actions{{if on "lot5_serveur_deploye"}}; after certain accounts are erased, a fingerprint of the email address (see <a href="#durees">retention periods</a>){{end}}.</dd></div>
-    <div><dt>Consents</dt><dd>What you accepted or withdrew, the version of the text and the date.</dd></div>
+    <div><dt>Consents</dt><dd>What you accepted or withdrew, the version of the text, the language in which you accepted it and the date. The French text is the reference version.</dd></div>
     <div><dt>Device and technical data</dt><dd>Sign-in sessions (tokens kept as hashes); if you turn notifications on, a device identifier and a notification token; technical logs limited to the route called, the response code, the duration and a request number, with no IP address and no content. Your IP address is used in memory to limit abuse, without being written to these logs.</dd></div>
     <div><dt>Contact</dt><dd>Messages you send us by email and our replies.</dd></div>
     <div><dt>Rectification</dt><dd>The correction you ask for and, for a change of address, the new address awaiting confirmation. An identity document may be looked at to check your request, without being kept (see <a href="#rectification">rectification</a>).</dd></div>
@@ -63,7 +64,7 @@
     {{- if on "photos_privees"}}
     <li><a href="#photos-privees">Private photos</a> may reveal your sex life or your orientation. Sending them is optional. No separate consent box is requested for them today: the legal basis remains <strong>to be validated by a lawyer</strong> (Article 9).</li>
     {{- end}}
-    <li>Orientation is used to pre-fill your choices; it is stored only if you decide to show it.</li>
+    <li>Orientation is used to pre-fill your choices. It is stored only if you turn on “Show my orientation” (off by default): it then appears on your profile page (up-to-date version of the app). Otherwise it is hidden and is not kept. It never appears in the sky, the grid, lists or notifications. Before this update, the setting showed nothing to others: to be safe, it is set back to “hidden” and the saved orientation is erased; to show it, turn it on again in My profile, “Edit my profile”. The legal basis for this display is <strong>to be validated by a lawyer</strong> (Article 9).</li>
     <li>If you withdraw this consent, your orientation and the genders you seek are erased and your profile is disabled.</li>
     <li>No data about gender, orientation, location or messages is written to technical logs or notifications.</li>
   </ul>
@@ -73,12 +74,13 @@
   <h2>4. Location and distance</h2>
   <ul>
     <li>The app asks for an approximate location, only while you are using it. It does not follow your movements in the background.</li>
-    <li>The server rounds the coordinates it receives to a grid of about 500 m <strong>before</strong> saving them; the original coordinates are neither kept nor logged. Only the latest square is kept.</li>
-    <li>Other people never receive your coordinates, only a band: “less than 1 km” or “about N km”. In a conversation, this band is recalculated at most once a day.</li>
-    <li>With the “Hide my distance” option, no band is shown about you, either in the sky or on your profile, and no distance appears in your conversations, for either person. In the sky, your profile is not ranked by distance: it is offered, in a randomly chosen spot, to compatible people less than 25 km away, whatever their distance filter. So seeing you in their sky tells them you are within that radius. You still see the approximate distance of others in the sky and on profiles.</li>
+    <li>The server rounds the coordinates it receives to a grid of about 500 m <strong>before</strong> saving them; the original coordinates are neither kept nor logged. Only the latest square is kept. A square measures about 500 m from north to south; from east to west, its width depends on latitude: at least about 480 m, and up to about 1 km north of 52° latitude.</li>
+    <li>Other people never receive your coordinates, only a band: “less than 1 km” or “about N km”. In a conversation, this band is recalculated at most once a day (the day is counted in Brussels time, whatever your time zone). Beyond 100 km, the band is coarser: rounded to the nearest 10 km up to 1000 km, then to the nearest 100 km. The exact distance is never shown.</li>
+    <li id="limite-distance"><strong>Limit the distance</strong> is optional (from 1 to 100 km, in the filters). This limit only affects what you see: it does not restrict who can see you. While the publisher keeps the “no limit” option open, an account that has never saved filters has no limit (filters already saved keep theirs), and compatible people who do not limit the distance can see your profile even if they are far away. The publisher may restore a maximum limit for everyone later: “no limit” then means 100 km, and distances beyond that are no longer shown.</li>
+    <li>With the “Hide my distance” option, no band is shown about you, either in the sky or on your profile, and no distance appears in your conversations, for either person. In the sky and the grid, your profile is not ranked by distance: it takes a randomly chosen spot (10 profiles with a hidden distance at most per sky, drawn again every day). Who can see you depends on the other person's filter. If they limit the distance, only when you are less than 25 km from them, whatever limit they chose: seeing you then tells them you are within that radius. If they do not limit it, you are drawn at random from all compatible profiles, with no radius: seeing you then tells them nothing about your distance. You still see the approximate distance of others in the sky and on profiles.</li>
     <li>Invisible mode removes your profile from other people's sky and grid. Your conversations remain, and no distance appears in them, for either person. It also stops <a href="#visites">profile visits</a> from being recorded.</li>
     <li id="fiche"><strong>Who can still open your profile.</strong> In invisible mode, or when your location has not been updated for more than 7 days, you appear neither in the sky nor in the grid. Your profile page and profile photos can then be viewed only by a person you have a conversation with, or a person you sent a signal that is still pending (neither accepted nor passed) and has not expired, with no indication of distance. A signal you send in invisible mode therefore opens your profile to the person who receives it. A signal you only received from someone does not give them this access. A block, in either direction, closes it.</li>
-    <li>Even an approximate distance can help a determined person guess your area. Hiding your distance removes this clue, but you can still appear in the sky of people less than 25 km away: by changing their location several times, someone may try to narrow down where you are. Invisible mode removes you from the sky and the grid, but does not close your profile to the people described above; block those you no longer want to show it to. None of these settings erases what others have already seen or noted, or guarantees that nobody can guess your area: your photos and messages can give clues too.</li>
+    <li>Even an approximate distance can help a determined person guess your area. Hiding your distance removes this clue, but does not remove you from other people's sky: with a distance limit turned on, a person who sees you there knows you are less than 25 km away, and by changing their location several times they may try to narrow down where you are. Limiting your own distance does not protect your location. Invisible mode removes you from the sky and the grid, but does not close your profile to the people described above; block those you no longer want to show it to. None of these settings erases what others have already seen or noted, or guarantees that nobody can guess your area: your photos and messages can give clues too.</li>
     <li>If you withdraw the “location” consent, the stored location is erased immediately and your profile is disabled.</li>
   </ul>
 </section>
@@ -93,9 +95,11 @@
     <div><dt>Keep a copy of a private photo already shown for a while, so that a report can be handled</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis under consideration: legitimate interest in people's safety (Article 6, paragraph 1, point f) and, for sensitive data, the establishment, exercise or defence of legal claims (Article 9, paragraph 2, point f).</dd></div>
     {{- end}}
     <div><dt>Use your gender, search and orientation</dt><dd>Your explicit consent (Article 9, paragraph 2, point a, and Article 6, paragraph 1, point a), which you can withdraw at any time.</dd></div>
+    <div><dt>Show your orientation on your profile page, if you turn on “Show my orientation”</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis considered: explicit consent (Article 9, paragraph 2, point a, and Article 6, paragraph 1, point a), given by accepting the processing of your gender and orientation and then turning this setting on, off by default; you withdraw it by turning the setting off or withdrawing the consent.</dd></div>
     <div><dt>Use your approximate location</dt><dd>Your consent (Article 6, paragraph 1, point a), together with your phone's permission, both of which you can withdraw at any time.</dd></div>
     <div><dt>Send notifications</dt><dd>Your consent (Article 6, paragraph 1, point a): they stay off until you turn them on.</dd></div>
     <div><dt>Send account emails (verification code, forgotten password, security alerts, decisions)</dt><dd>Performance of the contract and legal obligations (Article 6, paragraph 1, points b and c).</dd></div>
+    <div><dt>Use your language and time zone</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis under consideration: performance of the contract (Article 6, paragraph 1, point b) and, to stop limits and the age check from being bypassed, legitimate interest (Article 6, paragraph 1, point f).</dd></div>
     <div><dt>Keep the service for adults only</dt><dd>Legal obligations and legitimate interest in protecting minors (Article 6, paragraph 1, points c and f).</dd></div>
     <div><dt>Protect people: blocking, reporting, moderation, prevention of abuse and fraud, request limits</dt><dd>Legal obligations, in particular the EU Digital Services Act (DSA), and legitimate interest in the safety of the service (Article 6, paragraph 1, points c and f).</dd></div>
     <div><dt>Keep some moderation records after an account is deleted, and stop a banned account{{if on "lot5_serveur_deploye"}}, or one deleted while awaiting an age check,{{end}} from coming back</dt><dd>Legitimate interest and the establishment, exercise or defence of legal claims (Article 6, paragraph 1, point f, and, for any sensitive data they contain, Article 9, paragraph 2, point f).</dd></div>
@@ -103,7 +107,6 @@
     <div><dt>Keep images reported as involving a minor under lock and inform the authorities</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis under consideration: legal obligations and legitimate interest in protecting minors (Article 6, paragraph 1, points c and f).</dd></div>
     {{- end}}
     <div><dt>Answer your messages and data requests, and correct your data after checking that the request really comes from you</dt><dd>Legal obligations and legitimate interest (Article 6, paragraph 1, points c and f).</dd></div>
-    <div><dt>App analytics</dt><dd>An optional consent, refused by default, is offered at sign-up. No analytics tool is in place today: nothing is collected for this purpose.</dd></div>
   </dl>
   <p>Today, ProximaS shows no advertising and includes no advertising tool. If advertising were added later, this policy would be updated first, and your consent would be asked where the law requires it. Your data is not sold.</p>
 </section>
@@ -111,7 +114,8 @@
 <section id="visibilite">
   <h2>6. What others see</h2>
   <ul>
-    <li>Compatible people see your first name, your age, your approved photos, your answers to questions, your current moods and, unless you hide it, an approximate distance. The grid view of the sky shows your photo, first name and age. In invisible mode or with a location that is too old, access is more restricted and shows no distance (see <a href="#fiche">who can still open your profile</a>).</li>
+    <li>Compatible people see your first name, your age, your approved photos, your answers to questions, your current moods and, unless you hide it, an approximate distance; they may be far away (see <a href="#limite-distance">the distance limit</a>). The grid view of the sky shows your photo, first name and age. In invisible mode or with a location that is too old, access is more restricted and shows no distance (see <a href="#fiche">who can still open your profile</a>).</li>
+    <li>If you have turned on “Show my orientation”, people who can open your profile page see your orientation there (up-to-date version of the app). Otherwise it does not appear.</li>
     <li>They see neither your email address, nor your date of birth, nor your location.</li>
     <li>A person you write to receives your signals, messages and meeting suggestions. They can copy or screenshot them: do not send anything you would not want to see shared.</li>
     <li>A blocked person no longer sees you and can no longer write to you. They are not told.</li>
@@ -119,8 +123,8 @@
   <h3 id="visites">Profile visits: “Viewed your profile” and “Visit discreetly”</h3>
   <ul>
     <li><strong>What counts as a visit</strong>: opening a person's profile, for example from the sky, the grid, a conversation or the list of your visitors. The two accounts and the date of the latest visit, to the nearest hour, are recorded; a new visit replaces the previous one.</li>
-    <li><strong>What the visited person sees</strong>, in My profile, “Viewed your profile” (“A vu ton profil”): your first name, age, photo and the day of your visit, with no distance; they can open your profile. They receive no notification. The list shows 100 people at most, and only those who are still active, compatible, visible, with a recent location, and with no block between you.</li>
-    <li><strong>“Visit discreetly”</strong> (“Visiter discrètement”, in My profile, off by default): your visits are not recorded, neither are the visits others pay you during that time, and you do not see who viewed your profile. Invisible mode has the same effect.</li>
+    <li><strong>What the visited person sees</strong>, in My profile, “Viewed your profile”: your first name, age, photo and the day of your visit, with no distance; they can open your profile. They receive no notification. The list shows 100 people at most, and only those who are still active, compatible, visible, with a recent location, and with no block between you.</li>
+    <li><strong>“Visit discreetly”</strong> (in My profile, off by default): your visits are not recorded, neither are the visits others pay you during that time, and you do not see who viewed your profile. Invisible mode has the same effect.</li>
     <li><strong>Visits already recorded are not erased</strong> by these settings. With discreet visiting, the visits you made earlier remain visible to the people concerned; invisible mode hides them while it is on. The visits you had received reappear when you leave these modes, if their retention period has not passed.</li>
     <li><strong>Retention</strong>: 30 days after the latest visit, or until one of the two accounts is erased. A block or a disabled profile does not erase them: they are no longer shown.</li>
     <li>The list and the setting are in the up-to-date version of the app. With an older version, your visits are recorded in the same way; invisible mode prevents it.</li>
@@ -129,7 +133,7 @@
   <h3 id="photos-privees">Private photos and albums</h3>
   <ul>
     <li><strong>Who sees them</strong>: nobody, as long as you do not send them or share an album. Sending or sharing is only possible in a conversation open to both of you (accepted signal, active accounts, no block), to a person who has not turned on “Refuse photos”.</li>
-    <li><strong>No prior check</strong>: nobody checks a private photo before it is sent or shared, and no automatic analysis of the image is performed.</li>
+    <li><strong>No prior check</strong>: nobody checks a private photo before it is sent or shared, and no automatic analysis of the image is performed. <a href="{{page "terms"}}#sexuel">Sexually explicit content</a> is forbidden there as everywhere else: the rule is enforced following a report (removal, sanctions).</li>
     <li><strong>Receiving</strong>: the photo appears blurred. This blur is a pattern created on the phone: nothing from the image is transmitted before the person touches it to display it.</li>
     <li><strong>Sending modes</strong>: normal (until you withdraw it), view once (10 seconds) or disappearing 24 hours after sending. A shared album follows your changes: an added photo becomes visible, a removed photo disappears.</li>
     <li><strong>Withdrawing</strong>: at any time you can withdraw a sent photo, delete a photo or an album, or remove access to an album. What has already been seen cannot be taken back. A block permanently closes sending and sharing between you; unblocking reopens nothing.</li>
@@ -151,15 +155,20 @@
   <ul>
     {{- if on "photos_privees"}}
     <li>Profile photos are checked by a person before they become visible. <a href="#photos-privees">Private photos</a> are not.</li>
-    <li>Moderation can only access a private photo through a report, which attaches the reported photo or the photos of the reported album that the reporting person could see; for a reported conversation, the photos they received in it, if they tick the sharing box. A report remains possible after the photo has disappeared, during its retention period. Images are shown blurred; each unblurred display is recorded in the moderation log.</li>
+    <li>Moderation can only access a private photo through a report, which attaches the reported photo or the photos of the reported album that the reporting person could see; for a reported conversation, the photos they received in it, if they tick the sharing box. A report remains possible after the photo has disappeared, during its retention period. Images are shown blurred; each unblurred display is recorded in the moderation log. Images concerned by a possible minor are not displayed at all (see below).</li>
     <li>Moderation can remove reported private photos: the person concerned is informed and can appeal.</li>
     {{- else}}
     <li>Photos are checked by a person before they become visible.</li>
     {{- end}}
+    <li>Moderation can also remove a message, signal or profile answer with sexually explicit content, and apply the <a href="{{page "terms"}}#sexuel">graduated penalties</a> set out in the terms.</li>
     <li>A local word list, with no external service, may flag the first name and profile answers so that a person can read them again. Nothing is blocked automatically.</li>
     <li>If at least 2 different accounts, registered for more than 7 days, report that someone appears to be a minor, that account is automatically suspended pending an age check. The person is informed and can appeal; the appeal is reviewed by a person.</li>
+    <li>While an account's age needs to be checked (a “Seems to be under 18” report not yet decided, or a suspension or ban in force for this reason), the moderation tool displays none of its images to anyone, neither blurred nor as thumbnails, and none of its pending photos can be approved. A photo removed for this reason stays hidden in that tool unless the decision is overturned; the same applies, after the account is erased, to the images of such a report until it is dismissed. Otherwise, the images can be viewed again after a dismissal, a reinstatement or another decision with no sanction for this reason. This extends no retention period. In the app, its photos remain visible as long as the account is not suspended{{if on "masquage_photos_age"}}, except in the case below{{end}}.</li>
+    {{- if on "masquage_photos_age"}}
+    <li>When more than 5 different accounts, even recent ones, have an age report (“Seems to be under 18” or “Content involving a minor”) awaiting a decision, the photos of the reported account are temporarily hidden from other people (sky, grid, lists, profile, private photos sent and shared albums), until a moderator makes a decision. The reported person keeps access to their photos and finds them in their data export; they are not told about this measure. Nothing is erased or kept longer for this purpose.</li>
+    {{- end}}
     {{- if on "lot7_serveur_deploye"}}
-    <li>With the reason “Content involving a minor”, the images concerned are sent to moderation and locked: they are no longer shown in the app, including to their author, nor erased, even if the account is deleted. The competent authorities may be informed; this procedure remains to be validated by a lawyer.</li>
+    <li>With the reason “Content involving a minor”, chosen by the reporting person or by moderation, the images concerned are attached to the file and locked: they are no longer shown in the app, including to their author, nor erased, even if the account is deleted. The moderation tool displays them to nobody, neither blurred nor as thumbnails: only the file's information (dates, accounts, status) can be viewed. When moderation classifies a conversation report in this way, the photos sent by the reported person and still stored are attached and locked. The competent authorities may be informed; this procedure remains to be validated by a lawyer.</li>
     {{- end}}
     <li>A suspension for suspected underage use, whether automatic or decided by moderation, has no end date: it is lifted if the account is reinstated (age verified or appeal upheld) and may be replaced by a ban.{{if on "lot5_serveur_deploye"}} If the account is deleted while the check is pending, a fingerprint of its email address is kept (see <a href="#durees">retention periods</a>).{{end}}</li>
     <li>Reports from an account that has had several recent reports dismissed are handled with a lower priority, unless they concern a possible minor.</li>
@@ -176,8 +185,8 @@
     <div><dt>Hosting</dt><dd>{{champ "hebergeur_nom"}}. {{champ "hebergeur_description"}} Technical manager: {{champ "hebergeur_responsable_technique"}}.</dd></div>
     <div><dt>Cloudflare, Inc. (101 Townsend Street, San Francisco, CA 94107, United States)</dt><dd>Relays and protects connections to the server, for both the app and this website. Cloudflare decrypts traffic as it passes through: it sees the IP address and can technically access the content exchanged with the server. It also forwards emails sent to our contact address.</dd></div>
     <div><dt>Brevo (Sendinblue SAS, France)</dt><dd>Sends account emails: your address and the content of the message (for example a verification code). No newsletter.</dd></div>
-    <div><dt>Google (Firebase Cloud Messaging)</dt><dd>Only if you turn notifications on: notification token, installation identifier, technical information about the app and device, time of sending. The notification only says that there is something new, with no name and no content.</dd></div>
-    <div><dt>Apple (notification service)</dt><dd>For the iPhone version, when it is available and if you turn notifications on.</dd></div>
+    <div><dt>Google (Firebase Cloud Messaging)</dt><dd>Only if you turn notifications on: notification token, installation identifier, technical information about the app and device, time of sending. The notification only says “You have something new”, with no name and no content.</dd></div>
+    <div><dt>Apple (notification service)</dt><dd>For the iPhone version (in beta), once notifications are in service there and if you turn them on.</dd></div>
     <div><dt>Contact mailbox</dt><dd>{{champ "fournisseur_boite_contact"}}: receives and stores the messages sent to the contact address.</dd></div>
     <div><dt>App stores and test groups (Google, Apple)</dt><dd>If you install the app or join a test through Google or Apple, those companies process your data for their own purposes, under their own policies.</dd></div>
     <div><dt>Authorities</dt><dd>Only when the law requires us to, or to protect a person in danger under the conditions set by law.</dd></div>
@@ -194,12 +203,13 @@
   <h2>10. How long data is kept</h2>
   <p>These periods are proposals and still need to be validated by a lawyer.</p>
   <dl class="faits">
-    <div><dt>Account, profile, photos, filters, signals, conversations, consents</dt><dd>As long as the account exists: an inactive account is not erased automatically. See <a href="{{page "deletion"}}">account deletion</a>.</dd></div>
+    <div><dt>Account, language and time zone, profile, photos, filters, signals, conversations, consents</dt><dd>As long as the account exists: an inactive account is not erased automatically. See <a href="{{page "deletion"}}">account deletion</a>.</dd></div>
     {{- if on "photos_privees"}}
     <div><dt>Private photos in your gallery, or still visible in a conversation</dt><dd>As long as they are there and the account exists.</dd></div>
     <div><dt>Private photo after it disappears (withdrawal, 24 hours, view once, deletion, block, erasure of an account)</dt><dd>Shown at least once: a copy is kept for 30 days, <strong>including after the account is deleted</strong>, and moderation can only view it through a report. Never shown: erased immediately.</dd></div>
     <div><dt>Private photo attached to a report</dt><dd>Until the decision, and during an appeal; the period above then applies again.</dd></div>
     {{- end}}
+    <div><dt>Images of an account whose age needs to be checked</dt><dd>No additional period: they are hidden in the moderation tool and follow the ordinary periods.</dd></div>
     <div><dt>Current moods</dt><dd>Until the end of the chosen time.</dd></div>
     <div><dt>Profile visits</dt><dd>30 days after the latest visit; sooner if one of the two accounts is erased.</dd></div>
     <div><dt>Signal with no reply</dt><dd>No longer active after 14 days; it remains stored as long as the accounts concerned exist.</dd></div>
@@ -251,7 +261,7 @@
 <section id="droits">
   <h2>12. Your rights</h2>
   <ul>
-    <li><strong>Access</strong> to and a copy of your data, and <strong>portability</strong>: {{if on "export_dans_app"}}from the app (My profile, “Download my data”, with your password; link valid for 1 hour; texts written by others are not included; people who opened your profile appear as the app shows them to you, so none with discreet visiting or invisible mode), or by email{{else}}on request by email{{end}}. <a href="#visites">Profile visits</a> still on record are part of your data.</li>
+    <li><strong>Access</strong> to and a copy of your data, and <strong>portability</strong>: {{if on "export_dans_app"}}from the app (My profile, “Download my data”, with your password; link valid for 1 hour; texts written by others are not included; people who opened your profile appear as the app shows them to you, so none with discreet visiting or invisible mode; the stored language and time zone are not included yet), or by email{{else}}on request by email{{end}}. <a href="#visites">Profile visits</a> still on record are part of your data.</li>
     {{- if on "photos_privees"}}
     <li>For private photos, the copy contains yours (in your gallery or still visible), your albums, and what you sent and shared. Copies that have disappeared or are locked are listed without the image or are not included, and photos you received are never included (restriction to be validated by a lawyer).</li>
     {{- end}}
@@ -264,7 +274,7 @@
   </ul>
   <p>Write to {{mail}}, preferably from your account's address. We may ask for enough information to check that the request really comes from you, without asking for more than necessary. We reply within one month, which may be extended by two months for complex requests; you are then informed. Exercising your rights is free, unless a request is manifestly abusive.</p>
   <h3 id="rectification">Correcting your first name, email address or date of birth</h3>
-  <p>You can change your first name in the app at any time (My profile, “Edit my profile”, “Modifier mon profil”), under the same rules as at sign-up and with 20 changes per 24 hours at most. A report keeps the first name seen when it was made.</p>
+  <p>You can change your first name in the app at any time (My profile, “Edit my profile”), under the same rules as at sign-up and with 20 changes per 24 hours at most. A report keeps the first name seen when it was made.</p>
   <p>Your email address and date of birth cannot be changed in the app. To have them corrected, write to {{mail}} from your account's address; if you no longer have access to it, say so. You can do the same for your first name if you cannot change it yourself (suspended or banned account, app unavailable or too old).</p>
   <ul>
     <li><strong>Checking your identity</strong>: we write to the address registered on your account and wait for your reply. If you no longer have access to it, the check relies on an identity document and on information that the account holder knows. If a doubt remains, the correction is not made.</li>
@@ -278,7 +288,7 @@
 
 <section id="mineurs">
   <h2>13. Minors</h2>
-  <p>ProximaS is forbidden to anyone under 18. The server calculates age from the date of birth; during the beta, this date is declared with no external check. An account suspected of belonging to a minor may be suspended, with no end date, pending an age check.{{if on "lot5_serveur_deploye"}} If it is deleted while the check is pending, a fingerprint of its email address prevents signing up with it again for 365 days.{{end}} If you think a minor is using the service, report it from the app or write to {{mail}}.</p>
+  <p>ProximaS is forbidden to anyone under 18. The server calculates age from the date of birth; during the beta, this date is declared with no external check. At sign-up, age is calculated at today's date in the phone's time zone, never more favourably than in Brussels time; the age shown to others follows today's date where the person looking is. An account suspected of belonging to a minor may be suspended, with no end date, pending an age check.{{if on "lot5_serveur_deploye"}} If it is deleted while the check is pending, a fingerprint of its email address prevents signing up with it again for 365 days.{{end}} If you think a minor is using the service, report it from the app or write to {{mail}}.</p>
 </section>
 
 <section id="reclamation">
@@ -310,6 +320,7 @@
 
 <section id="changements">
   <h2>17. Changes</h2>
+  <p>The <a href="{{page "privacy-v1"}}">previous version of this policy</a> remains available.</p>
   {{- if on "lot7_serveur_deploye"}}
   <p>The date at the bottom of the page shows the latest version. When a text changes, the app may show you a notice to read, with nothing to accept. When a change concerns a text you accepted and requires it, the app asks you to accept the new version: see the <a href="{{page "terms"}}#changements">terms of use</a>.</p>
   {{- else}}

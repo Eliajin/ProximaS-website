@@ -205,6 +205,16 @@ Puis mettre à jour `date_textes`, `make test`, commit, push, et `deploy/build-p
 
 **Tant que l'export dans l'application n'est pas distribué**, une demande de copie des données reçue par e-mail doit être traitée à la main dans le mois : l'API n'a pas de commande pour cela. Une demande de suppression par e-mail peut être renvoyée vers le formulaire web.
 
+## Lot « Europe, français et anglais » et signalements d'âge
+
+| Moment | Action |
+|---|---|
+| API du lot Europe déployée (`ProximaS`, commit `7440c3d`) **et** application bilingue distribuée aux testeurs | publier le site (les textes la décrivent, `app_en_anglais = oui`) |
+| Avant de distribuer cette application | les six pages `/en/…` qu'elle ouvre doivent être en ligne : `safety`, `privacy`, `terms`, `account-deletion`, `contact`, `legal-notice` |
+| API qui masque les photos au-delà de 5 signalements d'âge déployée | vérifier `MINOR_REPORTS_TO_HIDE` (6 par défaut) dans le `.env` de l'API, puis `masquage_photos_age = oui` |
+
+L'application bilingue a besoin des pages anglaises, et les textes ont besoin de l'API : déployer l'API, puis le site, puis distribuer l'application.
+
 ## Lot 7 (photos privées, conditions qui changent)
 
 Les textes sont écrits mais masqués. Dans `site.conf` :
@@ -216,7 +226,12 @@ Les textes sont écrits mais masqués. Dans `site.conf` :
 
 Attention : en bêta, les photos privées sont **ouvertes par défaut** dès le déploiement de l'API (`PRIVATE_PHOTOS`). Pour ne pas les ouvrir, mettre `PRIVATE_PHOTOS=off` dans le `.env` de l'API avant de la déployer.
 
-Ordre : déployer l'API, passer les réglages à « oui », mettre à jour `date_textes`, `make test`, commit, push, `deploy/build-prod.sh` du site, **puis seulement** distribuer l'application et, le cas échéant, publier une information ou une nouvelle version dans l'application (`ProximaS/docs/MISE_A_JOUR_CONDITIONS.md`). Garder une copie datée des pages remplacées : le site n'archive pas encore les anciennes versions.
+Ordre : déployer l'API, passer les réglages à « oui », mettre à jour `date_textes`, `make test`, commit, push, `deploy/build-prod.sh` du site, **puis seulement** distribuer l'application et, le cas échéant, publier une information ou une nouvelle version dans l'application (`ProximaS/docs/MISE_A_JOUR_CONDITIONS.md`). Les versions remplacées sont archivées sur le site (voir « Nouvelle version des conditions » ci-dessous).
 
 À faire valider avant d'ouvrir (juriste) : base légale des photos privées (article 9), copie gardée 30 jours, export restreint, procédure « contenu impliquant un mineur », section « Protection des enfants » (`/conditions#enfants`) et son point de contact.
 
+## Nouvelle version des conditions (contenu explicite, orientation sur la fiche)
+
+Ordre (`ProximaS/docs/MISE_A_JOUR_CONDITIONS.md`) : déployer le site (`deploy/build-prod.sh`), vérifier `/conditions`, `/conditions/version-1` et leurs équivalents anglais, **puis aussitôt** déployer l'API qui publie la nouvelle version à accepter et qui affiche l'orientation sur la fiche, puis distribuer l'application sans la case « mesure d'audience ». Entre les deux, le site annonce des changements pas encore en service : ne pas laisser traîner.
+
+Archives : `content/<langue>/terms-v1.html` et `privacy-v1.html` sont le texte qui était en ligne le 26/11/2026 avant cette mise à jour (relevé sur proximas.be), à ne plus modifier. À la prochaine version à accepter : **avant** de modifier les textes, figer de la même façon les pages en ligne sous `-v2` et les déclarer dans `pageDefs` (`site.go`), `content/ui.json` et `deploy/smoke.sh`.

@@ -54,7 +54,7 @@
 {{- end}}
 {{template "content" .}}
 {{- if .Legal}}
-<p class="updated">{{t "updated"}} <time datetime="{{val "date_textes"}}">{{.Date}}</time></p>
+<p class="updated">{{t "updated"}} <time datetime="{{.DateISO}}">{{.Date}}</time></p>
 {{- end}}
 </main>
 <footer class="bottom">

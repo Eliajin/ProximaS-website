@@ -6,9 +6,10 @@ Page de présentation honnête de l'application (concept, Mon ciel, envie du mom
 
 - Première version prête en local, **pas encore en ligne** (`docs/MISE_EN_LIGNE.md`).
 - Textes légaux : brouillons, non relus par un juriste.
-- Réglages actuels (`site.conf`) : API du lot 5 déployée (suppression demandable par le web), suppression et export dans l'application annoncés, lot 7 et photos privées pas encore annoncés, aucun lien de bêta, application en français seulement.
+- Réglages actuels (`site.conf`) : API du lot 5 déployée (suppression demandable par le web), suppression et export dans l'application annoncés, lot 7 et photos privées annoncés, lien du groupe Google des testeurs, application annoncée en français et en anglais.
 - Les textes décrivent le lot 6 de l'API (visites de profil, prénom modifiable, 3 envies, délais des signaux, grille) : déployer le site après elle.
-- Textes du lot 7 prêts, masqués par `lot7_serveur_deploye` et `photos_privees` (voir `docs/MISE_EN_LIGNE.md`).
+- Textes du lot « Europe, français et anglais » : publier le site après l'API correspondante (voir `docs/MISE_EN_LIGNE.md`).
+- Masquage des photos après des signalements d'âge : texte prêt, masqué par `masquage_photos_age`.
 - Champs à remplir : `make champs`.
 
 ## Pile

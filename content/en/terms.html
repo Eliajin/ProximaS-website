@@ -8,8 +8,8 @@
 
 <section id="service">
   <h2>2. The service</h2>
-  <p>ProximaS is a local dating app: discovering compatible people, sharing what you feel like doing, signals, text messaging{{if on "photos_privees"}}, private photos and albums{{end}} and meeting suggestions. It is currently free, with no in-app purchases.</p>
-  <p>When you open a person's profile, they can see it under “Viewed your profile” (“A vu ton profil”) for 30 days. “Visit discreetly” (“Visiter discrètement”) and invisible mode stop your visits from being recorded; in return, you do not see who viewed your profile. See <a href="{{page "privacy"}}#visites">profile visits</a>.</p>
+  <p>ProximaS is a local dating app: discovering compatible people, sharing what you feel like doing, signals, text messaging{{if on "photos_privees"}}, private photos and albums{{end}} and meeting suggestions. It is currently free, with no in-app purchases.{{if on "app_en_anglais"}} It is available in French and English.{{end}}</p>
+  <p>When you open a person's profile, they can see it under “Viewed your profile” for 30 days. “Visit discreetly” and invisible mode stop your visits from being recorded; in return, you do not see who viewed your profile. See <a href="{{page "privacy"}}#visites">profile visits</a>.</p>
   <p>The service is in <strong>beta</strong>: it is being tested, may contain errors, change or be interrupted, and some features may be modified or removed.</p>
   <p>The launch is planned in Europe. The service is intended for people living in the following area: {{champ "zone"}}.</p>
 </section>
@@ -18,7 +18,7 @@
   <h2>3. Adults only</h2>
   <ul>
     <li>You must be <strong>at least 18 years old</strong>. No access is allowed to minors.</li>
-    <li>Age is calculated from your date of birth. During the beta, this date is declared, with no external check; age verification will be set up before the public launch. In case of doubt, an account may be suspended, with no end date, pending an age check.{{if on "lot5_serveur_deploye"}} If it is deleted while the check is pending, a fingerprint of its email address is kept for a limited time and prevents signing up with it again (see the <a href="{{page "privacy"}}#durees">privacy policy</a>).{{end}}</li>
+    <li>Age is calculated from your date of birth; at sign-up, at today's date in your phone's time zone, never more favourably than in Brussels time. During the beta, this date is declared, with no external check; age verification will be set up before the public launch. In case of doubt, an account may be suspended, with no end date, pending an age check.{{if on "lot5_serveur_deploye"}} If it is deleted while the check is pending, a fingerprint of its email address is kept for a limited time and prevents signing up with it again (see the <a href="{{page "privacy"}}#durees">privacy policy</a>).{{end}}</li>
     <li>One account per person, with accurate information about yourself. Do not create an account for someone else.</li>
     <li>After a ban, creating a new account is forbidden.</li>
   </ul>
@@ -37,17 +37,25 @@
     <li>use the service if you are under 18, or depict minors;</li>
     <li>harass, threaten, intimidate, stalk or blackmail anyone;</li>
     <li>post hateful or discriminatory statements;</li>
-    <li>post nudity or sexually explicit content, or send it to someone who has not asked for it;</li>
+    <li>post or send nudity or <a href="#sexuel">sexually explicit content</a>, anywhere;</li>
     <li>post someone else's photo, impersonate anyone or create a fake profile;</li>
     <li>ask for money, gifts, codes or investments, advertise, solicit, engage in prostitution or any commercial activity;</li>
     <li>share another person's messages, photos{{if on "photos_privees"}} (including private photos received, intimate or not){{end}} or information without their consent, or reveal their sexual orientation;</li>
     <li>try to locate someone precisely, harvest profiles, automate use of the service or get around its protections;</li>
     <li>do anything illegal.</li>
   </ul>
+  <h3 id="sexuel">Nudity and sexually explicit content: forbidden everywhere</h3>
+  <ul>
+    <li>It is forbidden in profiles, public{{if on "photos_privees"}} and private photos, albums{{end}}{{if not (on "photos_privees")}} photos{{end}}, messages and signals, <strong>even between adults and even at the request of the person receiving it</strong>.</li>
+    <li>This covers genitals, sexual acts and pornographic texts.</li>
+    <li>Photos in swimwear or bare-chested are allowed, on profiles as well as in private, as long as they are not explicit and female breasts are covered. Bare female breasts are nudity and are therefore forbidden. Nudity and any sexually explicit content remain forbidden everywhere.</li>
+    <li>{{if on "photos_privees"}}Private photos are not checked before they are sent: the rule is enforced there following a report, as in messages and signals.{{else}}In messages and signals, the rule is enforced following a report.{{end}} Moderation can remove an explicit message, signal or profile answer{{if on "photos_privees"}}, as well as reported private photos{{end}}.</li>
+    <li>Penalties are graduated: a warning or removal of the content, then a 7-day suspension, then 30 days, then a ban. Depending on how serious the matter is, a heavier measure may be taken straight away.</li>
+  </ul>
   <h3 id="enfants">Child protection</h3>
   <p>ProximaS prohibits all child sexual abuse and exploitation: any sexual content involving a minor (photo, text, drawing or fabricated image), asking for it, sending it or sharing a link leading to it, and any solicitation of a minor.</p>
   <ul>
-    <li><strong>Report in the app</strong> the profile, photo, signal or conversation{{if on "lot7_serveur_deploye"}}, with the reason “Content involving a minor”{{else}}, with the reason “possible minor”{{end}}.</li>
+    <li><strong>Report in the app</strong> the profile, photo, signal or conversation{{if on "lot7_serveur_deploye"}}, with the reason “Content involving a minor”{{else}}, with the reason “Seems to be under 18”{{end}}.</li>
     <li><strong>Point of contact</strong> for child safety, with or without an account: {{mail}}. Never send, copy or screenshot the image concerned: describe the facts.</li>
     <li>In case of immediate danger, call 112.</li>
     <li>The account concerned may be suspended with no end date or banned, and the competent authorities may be informed{{if on "lot7_serveur_deploye"}}; images reported with this reason are kept under lock (see the <a href="{{page "privacy"}}#moderation">privacy policy</a>){{end}}. This procedure remains to be validated by a lawyer.</li>
@@ -59,7 +67,7 @@
   <p>Your photos and texts remain yours. You only allow us, free of charge and on a non-exclusive basis, to store, resize, check and show them to the people concerned, as far as needed to run and secure the service. This permission ends when they are deleted, subject to the retention periods in the <a href="{{page "privacy"}}#durees">privacy policy</a>.</p>
   <p>You guarantee that you have the right to post what you post. Your photos must only show you.</p>
   {{- if on "photos_privees"}}
-  <p><a href="{{page "privacy"}}#photos-privees">Private photos</a> and albums are optional. Nobody checks them before they are sent: you are responsible for what you send, and the rules above apply to them. Only send images you have the right to share, to a person who wishes to receive them. Screenshots are blocked on Android only, not on iPhone.</p>
+  <p><a href="{{page "privacy"}}#photos-privees">Private photos</a> and albums are optional. Nobody checks them before they are sent: you are responsible for what you send, and the rules above apply to them, including the <a href="#sexuel">ban on sexually explicit content</a>. Only send images you have the right to share, to a person who wishes to receive them. Screenshots are blocked on Android only, not on iPhone.</p>
   {{- end}}
 </section>
 
@@ -69,9 +77,10 @@
   <ul>
     <li><strong>compatibility both ways</strong>: each person's gender matches what the other is looking for;</li>
     <li><strong>age both ways</strong>: each person falls within the age range chosen by the other;</li>
-    <li><strong>your filters</strong>: maximum distance (25 km by default), with a photo, same mood (at least one wish in common, for overlapping times), active in the last 7 days;</li>
+    <li><strong>your filters</strong>: “Limit the distance” (optional, from 1 to 100 km), with a photo, same mood (at least one wish in common, for overlapping times), active in the last 7 days;</li>
     <li><strong>proximity</strong>: the 50 nearest profiles at most, grouped in 5 constellations of 10; within a constellation, the order is shuffled every day;</li>
-    <li>profiles that hide their distance are searched within a 25 km radius and placed at random;</li>
+    <li><strong>distance</strong>: your limit only affects what you see. While the publisher keeps the “no limit” option open, there is no maximum as long as you have not chosen or saved one, and people far away who do not limit the distance can see your profile. Distances shown are approximate bands, never exact. The publisher may restore a maximum limit of 100 km later;</li>
+    <li>profiles that hide their distance are placed at random, not ranked by distance: if you limit the distance, they are searched within a 25 km radius, whatever your limit; otherwise, they are drawn at random from all compatible profiles;</li>
     <li>blocked, invisible or suspended profiles, and those without a recent location, are not shown in the sky or the grid (for invisible profiles and those without a recent location, see <a href="{{page "privacy"}}#fiche">who can still open the profile</a>).</li>
   </ul>
   <p>Nobody can pay to be ranked higher, and neither your messages nor your visits are used to rank profiles.</p>
@@ -81,7 +90,8 @@
   <h2>8. Signals and limits</h2>
   <ul>
     <li>A signal replies to one item on a profile, in 240 characters at most.</li>
-    <li>5 signals a day, reset at midnight (Brussels time); only one pending signal per person.</li>
+    <li>5 signals a day, reset at midnight your local time (your phone's time zone; Brussels time with an older version of the app); only one pending signal per person.</li>
+    <li>Changing time zone gives no signal back: for 48 hours after a change, signals sent in the last 25 hours also count, and the reset may come later. The app shows when your signals come back.</li>
     <li>A signal with no reply expires after 14 days.</li>
     <li>Before sending a new signal to the same person, you must wait 30 days after sending the previous one if it got no reply, or 24 hours after it was passed. A new signal accepted before 14 days can therefore suggest that the previous one had been passed. The rules against harassment apply.</li>
     <li>Technical limits apply to the number of requests, photos, messages and location updates.</li>
@@ -95,7 +105,7 @@
 <section id="moderation">
   <h2>9. Moderation</h2>
   <p>{{if on "photos_privees"}}Profile photos are checked by a person before they are published; private photos are not checked before they are sent, and moderation can only access them through a report.{{else}}Photos are checked by a person before they are published.{{end}} Profile texts may be flagged by a word list for review.{{if on "relecture_messages_prives"}} Messages and signals may be flagged in the same way.{{else}} Private messages are not automatically reviewed.{{end}} Reports are reviewed by a person; we aim to handle them within 24 hours, but cannot guarantee it.</p>
-  <p>Depending on how serious the matter is, we may: refuse or remove content, issue a warning, suspend an account (for example for 24 hours, 7 days, 30 days or with no end date) or ban it. If someone is suspected of being a minor, the account may be suspended, with no end date, pending an age check, including automatically after matching reports. Decisions take into account seriousness, repetition, context and the rights of the people concerned.</p>
+  <p>Depending on how serious the matter is, we may: refuse or remove content, issue a warning, suspend an account (for example for 24 hours, 7 days, 30 days or with no end date) or ban it. If someone is suspected of being a minor, the account may be suspended, with no end date, pending an age check, including automatically after matching reports. While an account's age needs to be checked, moderation sees none of its images and none of its pending photos can be approved (see the <a href="{{page "privacy"}}#moderation">privacy policy</a>).{{if on "masquage_photos_age"}} When more than 5 different accounts have an age report awaiting a decision against an account, its photos are temporarily hidden from other people, until a moderator makes a decision.{{end}} Decisions take into account seriousness, repetition, context and the rights of the people concerned.</p>
 </section>
 
 <section id="signalement">
@@ -107,9 +117,9 @@
 <section id="recours">
   <h2>11. Statement of reasons and appeals</h2>
   <ul>
-    <li>When a decision concerns you, you receive the reason and an explanation in the app (“Moderation decisions” section). An email with no details may let you know.</li>
+    <li>When a decision concerns you, you receive the reason and an explanation in the app (“Moderation decisions” section). An email with no details may let you know. Automatic messages are in your account's language (French or English); what a moderator writes is not translated automatically.</li>
     <li>A suspended or banned account can still sign in to read the decision and appeal it{{if on "lot5_serveur_deploye"}}, and to manage its data (consents, deletion){{end}}.</li>
-    <li>You have <strong>180 days</strong> to appeal a decision, once, from the app or by email to {{mail}}. A person reviews it and replies. The decision is upheld or overturned.</li>
+    <li>You have <strong>180 days</strong> to appeal a decision, once, from the app or by email to {{mail}}. A person reviews it and replies. The decision is upheld or overturned. If a photo removal is overturned, the photo comes back if its file still exists; a photo that had never been approved goes back to awaiting review, without being published.</li>
     <li>If you reported someone, you are told what happened next; a dismissal can be appealed in the same way.</li>
     <li>You can also contact the authority in charge of the Digital Services Act in your country (in Belgium, the BIPT) and go to court.</li>
   </ul>
@@ -137,6 +147,7 @@
 
 <section id="changements">
   <h2>16. Changes to these terms</h2>
+  <p>The terms and the text to accept about gender and orientation have a new version: the app asks existing accounts to accept them. The previous texts remain available: <a href="{{page "terms-v1"}}">former terms</a> and <a href="{{page "privacy-v1"}}">former privacy policy</a>.</p>
   {{- if on "lot7_serveur_deploye"}}
   <p>We may change these terms, for example to follow the law or new features. Depending on the change, the app:</p>
   <ul>

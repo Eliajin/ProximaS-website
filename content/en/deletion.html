@@ -6,7 +6,7 @@
   {{- if on "suppression_dans_app"}}
   <div class="carte">
     <h3>In the app</h3>
-    <p>Open <strong>My profile</strong> (“Mon profil”), then <strong>Delete my account</strong> (“Supprimer mon compte”), and confirm with your password.</p>
+    <p>Open <strong>My profile</strong>, then <strong>Delete my account</strong>, and confirm with your password.</p>
   </div>
   {{- else}}
   <div class="carte">
@@ -84,7 +84,7 @@
 <section id="export">
   <h2>5. Get your data before you leave</h2>
   {{- if on "export_dans_app"}}
-  <p>In the app, open <strong>My profile</strong> (“Mon profil”), then <strong>Download my data</strong> (“Télécharger mes données”). You get an archive with your data, including profile visits (your visitors as the app shows them to you), and your photos{{if on "photos_privees"}} (for private ones: yours in your gallery or still visible, never those you received){{end}}; messages and texts written by other people are not included. Do this before deleting your account.</p>
+  <p>In the app, open <strong>My profile</strong>, then <strong>Download my data</strong>. You get an archive with your data, including profile visits (your visitors as the app shows them to you), and your photos{{if on "photos_privees"}} (for private ones: yours in your gallery or still visible, never those you received){{end}}; messages and texts written by other people are not included. Do this before deleting your account.</p>
   {{- else}}
   <p>Ask for a copy of your data at {{mail}} <strong>before</strong> requesting deletion: downloading it from the app is not available yet.</p>
   {{- end}}

@@ -381,6 +381,12 @@ func TestTextsFollowConfiguration(t *testing.T) {
 	check(on, "fr", "privacy", "ne sont pas relus automatiquement", false)
 	check(off, "en", "home", "in French only", true)
 	check(on, "en", "home", "in French only", false)
+	for _, id := range []string{"privacy", "terms", "safety"} {
+		check(off, "fr", id, "masquées temporairement", false)
+		check(off, "en", id, "temporarily hidden", false)
+		check(on, "fr", id, "masquées temporairement", true)
+		check(on, "en", id, "temporarily hidden", true)
+	}
 }
 
 func TestNoEmptyPromises(t *testing.T) {

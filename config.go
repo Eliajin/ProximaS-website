@@ -64,6 +64,7 @@ var fields = []fieldSpec{
 	{"app_en_anglais", toggle, "application disponible en anglais"},
 	{"lot7_serveur_deploye", toggle, "API du lot 7 déployée"},
 	{"photos_privees", toggle, "photos privées ouvertes (PRIVATE_PHOTOS=on)"},
+	{"masquage_photos_age", toggle, "masquage des photos après des signalements d'âge déployé"},
 }
 
 // Config : contenu de site.conf.

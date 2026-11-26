@@ -20,7 +20,8 @@ import (
 type pageDef struct {
 	id    string
 	paths map[string]string
-	legal bool // bandeau « brouillon, à valider par un juriste » et date des textes
+	legal bool   // bandeau « brouillon, à valider par un juriste » et date des textes
+	date  string // version archivée : sa date, figée (vide : date_textes)
 }
 
 // pageDefs : les adresses françaises sont utilisées par l'application et les magasins : ne pas les changer.
@@ -29,6 +30,9 @@ var pageDefs = []pageDef{
 	{id: "safety", legal: true, paths: map[string]string{"fr": "/securite", "en": "/en/safety"}},
 	{id: "privacy", legal: true, paths: map[string]string{"fr": "/confidentialite", "en": "/en/privacy"}},
 	{id: "terms", legal: true, paths: map[string]string{"fr": "/conditions", "en": "/en/terms"}},
+	// Archives : texte figé (content/<langue>/<id>.html), jamais modifié après publication.
+	{id: "terms-v1", legal: true, date: "2026-11-26", paths: map[string]string{"fr": "/conditions/version-1", "en": "/en/terms/version-1"}},
+	{id: "privacy-v1", legal: true, date: "2026-11-26", paths: map[string]string{"fr": "/confidentialite/version-1", "en": "/en/privacy/version-1"}},
 	{id: "deletion", legal: true, paths: map[string]string{"fr": "/suppression-compte", "en": "/en/account-deletion"}},
 	{id: "contact", legal: true, paths: map[string]string{"fr": "/contact", "en": "/en/contact"}},
 	{id: "legal", legal: true, paths: map[string]string{"fr": "/mentions-legales", "en": "/en/legal-notice"}},
@@ -99,6 +103,7 @@ type view struct {
 	Lang, OtherLang, OtherURL   string
 	Title, Description          string
 	Canonical, ShareImage, Date string
+	DateISO                     string
 	Alternates                  []alternate
 	MainNav, FooterNav          []navItem
 	Legal, NotFound             bool
@@ -213,6 +218,14 @@ func pageByID(id string) (pageDef, bool) {
 	return pageDef{}, false
 }
 
+// pageDate : date des textes d'une page (AAAA-MM-JJ).
+func (s *Site) pageDate(p pageDef) string {
+	if p.date != "" {
+		return p.date
+	}
+	return s.cfg.Get("date_textes")
+}
+
 func otherLanguage(lang string) string {
 	if lang == languages[0] {
 		return languages[1]
@@ -301,12 +314,14 @@ func (s *Site) render(fsys fs.FS, layout, lang string, p pageDef) ([]byte, error
 
 	base := s.cfg.Get("url_site")
 	other := otherLanguage(lang)
-	date, err := time.Parse(time.DateOnly, s.cfg.Get("date_textes"))
+	iso := s.pageDate(p)
+	date, err := time.Parse(time.DateOnly, iso)
 	if err != nil {
 		return nil, err
 	}
 	v := view{
 		Lang: lang, OtherLang: other, Legal: p.legal, NotFound: p.id == notFoundID,
+		DateISO:    iso,
 		Date:       fmt.Sprintf("%d %s %d", date.Day(), months[lang][date.Month()-1], date.Year()),
 		ShareImage: base + "/static/img/partage.jpg",
 	}
@@ -368,7 +383,7 @@ func (s *Site) sitemap() []byte {
 	b.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">` + "\n")
 	for _, p := range pageDefs {
 		for _, lang := range languages {
-			fmt.Fprintf(&b, "  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n", esc(base+p.paths[lang]), esc(s.cfg.Get("date_textes")))
+			fmt.Fprintf(&b, "  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n", esc(base+p.paths[lang]), esc(s.pageDate(p)))
 			for _, l := range languages {
 				fmt.Fprintf(&b, `    <xhtml:link rel="alternate" hreflang="%s" href="%s"/>`+"\n", l, esc(base+p.paths[l]))
 			}

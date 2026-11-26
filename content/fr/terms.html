@@ -8,7 +8,7 @@
 
 <section id="service">
   <h2>2. Le service</h2>
-  <p>ProximaS est une application de rencontres de proximité : découverte de personnes compatibles, envies du moment, signaux, messagerie en texte{{if on "photos_privees"}}, photos privées et albums{{end}} et proposition de moment. Elle est aujourd'hui gratuite, sans achat intégré.</p>
+  <p>ProximaS est une application de rencontres de proximité : découverte de personnes compatibles, envies du moment, signaux, messagerie en texte{{if on "photos_privees"}}, photos privées et albums{{end}} et proposition de moment. Elle est aujourd'hui gratuite, sans achat intégré.{{if on "app_en_anglais"}} Elle existe en français et en anglais.{{end}}</p>
   <p>Quand tu ouvres la fiche d'une personne, elle peut le voir dans « A vu ton profil » pendant 30 jours. « Visiter discrètement » et le mode invisible empêchent l'enregistrement de tes visites ; en contrepartie, tu ne vois pas qui a vu ton profil. Voir <a href="{{page "privacy"}}#visites">les visites de profil</a>.</p>
   <p>Le service est en <strong>bêta</strong> : il est en cours de test, peut contenir des erreurs, changer ou être interrompu, et certaines fonctions peuvent être modifiées ou retirées.</p>
   <p>Le lancement est prévu en Europe. Le service est destiné aux personnes résidant dans la zone suivante : {{champ "zone"}}.</p>
@@ -18,7 +18,7 @@
   <h2>3. Réservé aux adultes</h2>
   <ul>
     <li>Tu dois avoir <strong>au moins 18 ans</strong>. Aucun accès n'est permis aux mineurs.</li>
-    <li>L'âge est calculé à partir de ta date de naissance. Pendant la bêta, cette date est déclarée, sans vérification externe ; une vérification de l'âge sera mise en place avant le lancement public. En cas de doute, un compte peut être suspendu, sans échéance, dans l'attente d'une vérification de l'âge.{{if on "lot5_serveur_deploye"}} S'il est supprimé pendant cette attente, une empreinte de son adresse e-mail est gardée un temps limité et empêche de se réinscrire avec elle (voir la <a href="{{page "privacy"}}#durees">politique de confidentialité</a>).{{end}}</li>
+    <li>L'âge est calculé à partir de ta date de naissance ; à l'inscription, à la date du jour dans le fuseau horaire de ton téléphone, sans jamais être plus favorable qu'à l'heure de Bruxelles. Pendant la bêta, cette date est déclarée, sans vérification externe ; une vérification de l'âge sera mise en place avant le lancement public. En cas de doute, un compte peut être suspendu, sans échéance, dans l'attente d'une vérification de l'âge.{{if on "lot5_serveur_deploye"}} S'il est supprimé pendant cette attente, une empreinte de son adresse e-mail est gardée un temps limité et empêche de se réinscrire avec elle (voir la <a href="{{page "privacy"}}#durees">politique de confidentialité</a>).{{end}}</li>
     <li>Un seul compte par personne, avec des informations exactes et à ton nom. Tu ne crées pas de compte pour quelqu'un d'autre.</li>
     <li>Après un bannissement, il est interdit de recréer un compte.</li>
   </ul>
@@ -37,17 +37,25 @@
     <li>d'utiliser le service si tu as moins de 18 ans, ou de mettre en scène des mineurs ;</li>
     <li>de harceler, menacer, intimider, suivre ou faire chanter quelqu'un ;</li>
     <li>de publier des propos haineux ou discriminatoires ;</li>
-    <li>de publier de la nudité ou des contenus sexuellement explicites, ou d'en envoyer à quelqu'un qui ne l'a pas demandé ;</li>
+    <li>de publier ou d'envoyer de la nudité ou un <a href="#sexuel">contenu sexuellement explicite</a>, où que ce soit ;</li>
     <li>de publier la photo d'une autre personne, d'usurper une identité ou de créer un faux profil ;</li>
     <li>de demander de l'argent, des cadeaux, des codes ou des placements, de faire de la publicité, du démarchage, de la prostitution ou toute activité commerciale ;</li>
     <li>de diffuser les messages, photos{{if on "photos_privees"}} (y compris les photos privées reçues, intimes ou non){{end}} ou informations d'une autre personne sans son accord, ou de révéler son orientation ;</li>
     <li>de tenter de localiser précisément une personne, de collecter des profils, d'automatiser l'utilisation du service ou de contourner ses protections ;</li>
     <li>de faire quoi que ce soit d'illégal.</li>
   </ul>
+  <h3 id="sexuel">Nudité et contenu sexuellement explicite : interdits partout</h3>
+  <ul>
+    <li>Il est interdit dans le profil, les photos publiques{{if on "photos_privees"}} et privées, les albums{{end}}, les messages et les signaux, <strong>même entre adultes et même à la demande de la personne qui le reçoit</strong>.</li>
+    <li>Sont visés : les organes génitaux, les actes sexuels et les textes pornographiques.</li>
+    <li>Les photos en maillot de bain ou torse nu sont admises, sur le profil comme en privé, tant qu'elles ne sont pas explicites et que la poitrine féminine est couverte. Une poitrine féminine nue est de la nudité : elle est donc interdite. La nudité et tout contenu sexuellement explicite restent interdits partout.</li>
+    <li>{{if on "photos_privees"}}Les photos privées ne sont pas contrôlées avant leur envoi : la règle y est appliquée à la suite d'un signalement, comme dans les messages et les signaux.{{else}}Dans les messages et les signaux, la règle est appliquée à la suite d'un signalement.{{end}} La modération peut retirer un message, un signal ou une réponse de profil explicite{{if on "photos_privees"}}, ainsi que des photos privées signalées{{end}}.</li>
+    <li>Les sanctions sont graduées : avertissement ou retrait du contenu, puis suspension de 7 jours, puis de 30 jours, puis bannissement. Selon la gravité, une mesure plus lourde peut être prise directement.</li>
+  </ul>
   <h3 id="enfants">Protection des enfants</h3>
   <p>ProximaS interdit tout abus et toute exploitation sexuels des enfants : tout contenu à caractère sexuel impliquant un mineur (photo, texte, dessin ou image fabriquée), sa demande, son envoi ou le partage d'un lien qui y mène, ainsi que toute sollicitation d'un mineur.</p>
   <ul>
-    <li><strong>Signaler dans l'application</strong> le profil, la photo, le signal ou la conversation{{if on "lot7_serveur_deploye"}}, avec le motif « Contenu impliquant un mineur »{{else}}, avec le motif « possible mineur »{{end}}.</li>
+    <li><strong>Signaler dans l'application</strong> le profil, la photo, le signal ou la conversation{{if on "lot7_serveur_deploye"}}, avec le motif « Contenu impliquant un mineur »{{else}}, avec le motif « Semble avoir moins de 18 ans »{{end}}.</li>
     <li><strong>Point de contact</strong> pour la sécurité des enfants, avec ou sans compte : {{mail}}. N'envoie, ne copie et ne capture jamais l'image en cause : décris les faits.</li>
     <li>En cas de danger immédiat, appelle le 112.</li>
     <li>Le compte concerné peut être suspendu sans échéance ou banni, et les autorités compétentes peuvent être informées{{if on "lot7_serveur_deploye"}} ; les images signalées avec ce motif sont conservées sous verrou (voir la <a href="{{page "privacy"}}#moderation">politique de confidentialité</a>){{end}}. Cette procédure reste à valider par un juriste.</li>
@@ -59,7 +67,7 @@
   <p>Tes photos et tes textes restent à toi. Tu nous autorises seulement, gratuitement et sans exclusivité, à les enregistrer, les redimensionner, les contrôler et les montrer aux personnes concernées, dans la mesure nécessaire au fonctionnement et à la sécurité du service. Cette autorisation prend fin avec leur suppression, sous réserve des durées de conservation de la <a href="{{page "privacy"}}#durees">politique de confidentialité</a>.</p>
   <p>Tu garantis avoir le droit de publier ce que tu publies. Tes photos ne doivent montrer que toi.</p>
   {{- if on "photos_privees"}}
-  <p>Les <a href="{{page "privacy"}}#photos-privees">photos privées</a> et les albums sont facultatifs. Ils ne sont contrôlés par personne avant leur envoi : tu es responsable de ce que tu envoies, et les règles ci-dessus s'y appliquent. N'envoie que des images que tu as le droit de partager, à une personne qui souhaite les recevoir. Les captures d'écran sont bloquées sur Android seulement, pas sur iPhone.</p>
+  <p>Les <a href="{{page "privacy"}}#photos-privees">photos privées</a> et les albums sont facultatifs. Ils ne sont contrôlés par personne avant leur envoi : tu es responsable de ce que tu envoies, et les règles ci-dessus s'y appliquent, dont l'<a href="#sexuel">interdiction du contenu sexuellement explicite</a>. N'envoie que des images que tu as le droit de partager, à une personne qui souhaite les recevoir. Les captures d'écran sont bloquées sur Android seulement, pas sur iPhone.</p>
   {{- end}}
 </section>
 
@@ -69,9 +77,10 @@
   <ul>
     <li><strong>compatibilité dans les deux sens</strong> : le genre de chacun correspond à ce que l'autre recherche ;</li>
     <li><strong>âge dans les deux sens</strong> : chacun entre dans la tranche d'âge choisie par l'autre ;</li>
-    <li><strong>tes filtres</strong> : distance maximale (25 km par défaut), avec photo, même envie (au moins une envie commune, sur des moments qui se recoupent), actifs ces 7 derniers jours ;</li>
+    <li><strong>tes filtres</strong> : « Limiter la distance » (facultatif, de 1 à 100 km), avec photo, même envie (au moins une envie commune, sur des moments qui se recoupent), actifs ces 7 derniers jours ;</li>
     <li><strong>la proximité</strong> : les 50 profils les plus proches au maximum, répartis en 5 constellations de 10 ; à l'intérieur d'une constellation, l'ordre est mélangé chaque jour ;</li>
-    <li>les profils qui masquent leur distance sont cherchés dans un rayon de 25 km et placés au hasard ;</li>
+    <li><strong>la distance</strong> : ta limite ne porte que sur ce que tu vois. Tant que l'éditeur laisse l'option « sans limite » ouverte, il n'y a pas de maximum tant que tu n'en as pas choisi ou enregistré un, et des personnes éloignées qui ne limitent pas la distance peuvent voir ton profil. Les distances affichées sont des paliers approximatifs, jamais exacts. L'éditeur peut rétablir plus tard une limite maximale de 100 km ;</li>
+    <li>les profils qui masquent leur distance sont placés au hasard, sans classement par distance : si tu limites la distance, ils sont cherchés dans un rayon de 25 km, quelle que soit ta limite ; sinon, ils sont tirés au sort parmi tous les profils compatibles ;</li>
     <li>les profils bloqués, invisibles, suspendus ou sans position récente ne sont pas montrés dans le ciel ni dans la grille (pour les profils invisibles ou sans position récente, voir <a href="{{page "privacy"}}#fiche">qui peut encore ouvrir la fiche</a>).</li>
   </ul>
   <p>Personne ne peut payer pour être mieux placé, et ni tes messages ni tes visites ne servent à classer les profils.</p>
@@ -81,7 +90,8 @@
   <h2>8. Signaux et limites</h2>
   <ul>
     <li>Un signal répond à un élément d'un profil, en 240 caractères au maximum.</li>
-    <li>5 signaux par jour, remis à zéro à minuit (heure de Bruxelles) ; un seul signal en attente par personne.</li>
+    <li>5 signaux par jour, remis à zéro à minuit à ton heure (fuseau horaire de ton téléphone ; heure de Bruxelles avec une ancienne version de l'application) ; un seul signal en attente par personne.</li>
+    <li>Changer de fuseau horaire ne rend aucun signal : pendant 48 heures après un changement, les envois des 25 dernières heures comptent aussi, et la remise à zéro peut être décalée. L'application indique quand tes signaux reviennent.</li>
     <li>Un signal sans réponse expire après 14 jours.</li>
     <li>Avant d'envoyer un nouveau signal à la même personne, tu dois attendre 30 jours après l'envoi du précédent s'il est resté sans réponse, ou 24 heures après qu'il a été passé. Un nouvel envoi accepté avant 14 jours laisse donc deviner que le précédent avait été passé. Les règles contre le harcèlement s'appliquent.</li>
     <li>Des limites techniques s'appliquent au nombre de requêtes, de photos, de messages et de mises à jour de position.</li>
@@ -95,7 +105,7 @@
 <section id="moderation">
   <h2>9. Modération</h2>
   <p>{{if on "photos_privees"}}Les photos de profil sont contrôlées par une personne avant publication ; les photos privées ne sont pas contrôlées avant leur envoi, et la modération n'y accède qu'au travers d'un signalement.{{else}}Les photos sont contrôlées par une personne avant publication.{{end}} Les textes de profil peuvent être repérés par une liste de mots pour relecture.{{if on "relecture_messages_prives"}} Les messages et les signaux peuvent aussi être repérés de cette manière.{{else}} Les messages privés ne sont pas relus automatiquement.{{end}} Les signalements sont examinés par une personne ; nous visons un traitement sous 24 heures, sans pouvoir le garantir.</p>
-  <p>Selon la gravité, nous pouvons : refuser ou retirer un contenu, adresser un avertissement, suspendre un compte (par exemple 24 heures, 7 jours, 30 jours ou sans échéance) ou le bannir. En cas de soupçon de minorité, un compte peut être suspendu, sans échéance, dans l'attente d'une vérification de l'âge, y compris automatiquement après des signalements concordants. Les décisions tiennent compte de la gravité, de la répétition, du contexte et des droits des personnes concernées.</p>
+  <p>Selon la gravité, nous pouvons : refuser ou retirer un contenu, adresser un avertissement, suspendre un compte (par exemple 24 heures, 7 jours, 30 jours ou sans échéance) ou le bannir. En cas de soupçon de minorité, un compte peut être suspendu, sans échéance, dans l'attente d'une vérification de l'âge, y compris automatiquement après des signalements concordants. Tant que l'âge d'un compte est à vérifier, la modération ne voit aucune de ses images et aucune de ses photos en attente ne peut être validée (voir la <a href="{{page "privacy"}}#moderation">politique de confidentialité</a>).{{if on "masquage_photos_age"}} Quand plus de 5 comptes distincts ont un signalement d'âge en attente de décision contre un compte, ses photos sont masquées temporairement aux autres personnes, jusqu'à la décision d'un modérateur.{{end}} Les décisions tiennent compte de la gravité, de la répétition, du contexte et des droits des personnes concernées.</p>
 </section>
 
 <section id="signalement">
@@ -107,9 +117,9 @@
 <section id="recours">
   <h2>11. Motivation des décisions et contestation</h2>
   <ul>
-    <li>Quand une décision te concerne, tu reçois son motif et une explication dans l'application (rubrique « Décisions de modération »). Un e-mail sans détail peut t'en avertir.</li>
+    <li>Quand une décision te concerne, tu reçois son motif et une explication dans l'application (rubrique « Décisions de modération »). Un e-mail sans détail peut t'en avertir. Les messages automatiques sont dans la langue de ton compte (français ou anglais) ; ce qu'une personne de la modération rédige n'est pas traduit automatiquement.</li>
     <li>Un compte suspendu ou banni peut encore se connecter pour lire la décision et la contester{{if on "lot5_serveur_deploye"}}, et gérer ses données (consentements, suppression){{end}}.</li>
-    <li>Tu as <strong>180 jours</strong> pour contester une décision, une fois, depuis l'application ou par e-mail à {{mail}}. Une personne la réexamine et te répond. La décision est maintenue ou annulée.</li>
+    <li>Tu as <strong>180 jours</strong> pour contester une décision, une fois, depuis l'application ou par e-mail à {{mail}}. Une personne la réexamine et te répond. La décision est maintenue ou annulée. Si un retrait de photo est annulé, la photo revient quand son fichier existe encore ; une photo qui n'avait jamais été validée retourne en attente de contrôle, sans être publiée.</li>
     <li>Si tu as signalé quelqu'un, tu es informé de la suite ; un classement peut être contesté de la même manière.</li>
     <li>Tu peux aussi saisir l'autorité compétente pour le règlement sur les services numériques dans ton pays (en Belgique, l'IBPT) et les tribunaux.</li>
   </ul>
@@ -137,6 +147,7 @@
 
 <section id="changements">
   <h2>16. Changements de ces conditions</h2>
+  <p>Les conditions et le texte à accepter sur le genre et l'orientation ont une nouvelle version : l'application demande aux comptes existants de les accepter. Les textes précédents restent consultables : <a href="{{page "terms-v1"}}">anciennes conditions</a> et <a href="{{page "privacy-v1"}}">ancienne politique de confidentialité</a>.</p>
   {{- if on "lot7_serveur_deploye"}}
   <p>Nous pouvons modifier ces conditions, par exemple pour suivre la loi ou de nouvelles fonctions. Selon le changement, l'application :</p>
   <ul>
