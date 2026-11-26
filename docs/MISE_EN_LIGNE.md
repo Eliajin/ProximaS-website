@@ -180,6 +180,8 @@ Puis renseigner les adresses dans les consoles des magasins : confidentialité `
 
 La version du site qui décrit le lot 6 (« A vu ton profil » et « Visiter discrètement », prénom modifiable dans l'application, 3 envies, signal « passé » renvoyable après 24 h, grille) annonce des fonctions de l'API **pas encore déployées** au moment de sa rédaction (26/11/2026). Aucun interrupteur ne les masque : déployer l'API, puis le site.
 
+Même règle pour les textes sur le mode invisible (26/11/2026) : fiche et photos encore ouvertes aux conversations et aux personnes ayant reçu un signal en attente, et aucune distance en conversation quand l'une des deux personnes est invisible. Déployer la version de l'API qui contient ces deux changements **avant** le site (`ProximaS/docs/SPEC_TECHNIQUE.md`, 4.5).
+
 La liste des visiteurs, le réglage « Visiter discrètement », le prénom modifiable et la grille demandent aussi la nouvelle version de l'application. Avant le déploiement du site, faire valider (juriste) la base légale des visites de profil : `ProximaS/docs/CONFORMITE.md`, section 4, demande de la valider avant d'annoncer la fonction.
 
 À vérifier avant de lancer `deploy/build-prod.sh` du site :
