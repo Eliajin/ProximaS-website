@@ -70,7 +70,7 @@
     </div>
     <div class="carte">
       <h3>Chat, then meet</h3>
-      <p>Text messaging and a way to suggest a time to meet (activity, date, hour), without sharing a location. Notifications are optional and only say that there is something new.</p>
+      <p>Text messaging{{if on "photos_privees"}}, private photos and albums (not checked beforehand; screenshots blocked on Android only){{end}} and a way to suggest a time to meet (activity, date, hour), without sharing a location. Notifications are optional and only say that there is something new.</p>
     </div>
   </div>
 </section>
@@ -80,7 +80,11 @@
   <ul>
     <li>You can block someone at any time: you no longer see each other, and they are not told.</li>
     <li>You can report a profile, a photo, a signal or a conversation.</li>
+    {{- if on "photos_privees"}}
+    <li>Profile photos are checked before they become visible, private photos are not. Reports are reviewed by a person; our target is to handle them within 24 hours.</li>
+    {{- else}}
     <li>Photos are checked before they become visible, and reports are reviewed by a person. Our target is to handle them within 24 hours.</li>
+    {{- end}}
     <li>Moderation decisions come with reasons and can be challenged.</li>
     <li>The service is forbidden to anyone under 18. During the beta, age is calculated from the date of birth you declare: no external check is in place yet.</li>
   </ul>

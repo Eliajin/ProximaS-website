@@ -62,6 +62,8 @@ var fields = []fieldSpec{
 	{"suppression_web_url", optional, "page web de demande de suppression"},
 	{"relecture_messages_prives", toggle, "TEXT_FILTER_PRIVATE=on en production"},
 	{"app_en_anglais", toggle, "application disponible en anglais"},
+	{"lot7_serveur_deploye", toggle, "API du lot 7 déployée"},
+	{"photos_privees", toggle, "photos privées ouvertes (PRIVATE_PHOTOS=on)"},
 }
 
 // Config : contenu de site.conf.
@@ -165,6 +167,9 @@ func (c *Config) validate() error {
 		}
 	}
 	// Cohérence : le site ne doit pas annoncer une fonction que le serveur n'offre pas.
+	if c.On("photos_privees") && !c.On("lot7_serveur_deploye") {
+		return fmt.Errorf("site.conf : photos_privees = oui exige lot7_serveur_deploye = oui")
+	}
 	if !c.On("lot5_serveur_deploye") {
 		for _, k := range []string{"suppression_dans_app", "export_dans_app"} {
 			if c.On(k) {

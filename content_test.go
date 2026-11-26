@@ -47,11 +47,15 @@ func variants(t *testing.T) map[string]*Config {
 		full[k] = "https://exemple.invalid/" + k
 	}
 	dpoNone := map[string]string{"dpo": "aucun", "lot5_serveur_deploye": "oui"}
+	lot7 := map[string]string{"lot7_serveur_deploye": "oui", "photos_privees": "non"}
+	photos := map[string]string{"lot7_serveur_deploye": "oui", "photos_privees": "oui"}
 	return map[string]*Config{
-		"actuel":          load(nil),
-		"tout vide":       load(empty),
-		"tout rempli":     load(full),
-		"lot 5, sans dpo": load(dpoNone),
+		"actuel":             load(nil),
+		"tout vide":          load(empty),
+		"tout rempli":        load(full),
+		"lot 5, sans dpo":    load(dpoNone),
+		"lot 7, sans photos": load(lot7),
+		"lot 7, photos":      load(photos),
 	}
 }
 

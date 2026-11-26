@@ -30,12 +30,26 @@
   </ul>
 </section>
 
+{{- if on "photos_privees"}}
+<section id="photos">
+  <h2>Private photos and albums</h2>
+  <ul>
+    <li>Nobody checks them before they are sent: you may receive an unwanted image. It arrives blurred and is only displayed if you touch it.</li>
+    <li>“Refuse photos” blocks new photos and hides albums already opened to you.</li>
+    <li>Screenshots are blocked on Android only, <strong>not on iPhone</strong>, and another device can photograph the screen. “View once” or “24 hours” therefore do not prevent someone from keeping a trace.</li>
+    <li>You can withdraw a photo or access to an album, but not erase what has already been seen or copied.</li>
+    <li>Never pass on someone's photo without their consent. To report a photo or album you received, even if it recently disappeared, do it from the app, without making a copy.</li>
+  </ul>
+  <p><a href="{{page "privacy"}}#photos-privees">How private photos work</a>.</p>
+</section>
+{{- end}}
+
 <section id="outils">
   <h2>Blocking and reporting</h2>
   <ul>
     <li><strong>Block</strong>, from a profile, a conversation or a signal received: you no longer see each other and can no longer exchange. The person is not told.</li>
     <li><strong>Passing a signal is not blocking</strong>: the same person can send you a new one from 24 hours later. If they insist, block them, and report them if it is harassment.</li>
-    <li><strong>Report</strong> a profile, a photo, a conversation or a signal, with a reason: possible minor, harassment or threats, unwanted sexual content, scam or request for money, fake profile, hate speech, other. The reported person is not told who reported them.</li>
+    <li><strong>Report</strong> a profile, a photo, a conversation or a signal, with a reason: possible minor, harassment or threats, unwanted sexual content,{{if on "lot7_serveur_deploye"}} content involving a minor,{{end}} scam or request for money, fake profile, hate speech, other. The reported person is not told who reported them.</li>
     <li>For a conversation, the last 20 messages are attached only if you tick the box. Remember to do so if they show the problem.</li>
     <li>Reports are reviewed by a person. We aim to handle them within 24 hours, but cannot guarantee it: if you are in danger, do not wait for our reply.</li>
     <li>Without the app, write to {{mail}} (see <a href="{{page "contact"}}#signaler">how to report</a>).</li>
@@ -49,13 +63,17 @@
 
 <section id="mineurs">
   <h2>18 and over only</h2>
-  <p>ProximaS is forbidden to minors. During the beta, age is calculated from the declared date of birth: no external check is in place yet, and someone can lie. If someone seems to be a minor, stop the conversation and report them: these reports take priority and can lead to immediate suspension pending a check.</p>
+  <p>ProximaS is forbidden to minors. During the beta, age is calculated from the declared date of birth: no external check is in place yet, and someone can lie. If someone seems to be a minor, stop the conversation and report them: these reports take priority and can lead to immediate suspension pending a check. No sexual content involving a minor is tolerated: see <a href="{{page "terms"}}#enfants">child protection</a>.</p>
 </section>
 
 <section id="limites">
   <h2>What we do, and our limits</h2>
   <ul>
+    {{- if on "photos_privees"}}
+    <li>Profile photos are checked before they become visible, private photos are not; profile texts may be flagged for review.</li>
+    {{- else}}
     <li>Photos are checked before they become visible; profile texts may be flagged for review.</li>
+    {{- end}}
     <li>{{if on "relecture_messages_prives"}}Messages may be automatically flagged for review, but they are not all read.{{else}}Private messages are not automatically reviewed: without a report, moderation does not know what happens in them.{{end}}</li>
     <li>We check neither people's identity nor their background.</li>
     <li>An approved photo does not prove that the person is who they claim to be.</li>

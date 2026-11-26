@@ -8,7 +8,7 @@
 
 <section id="service">
   <h2>2. Le service</h2>
-  <p>ProximaS est une application de rencontres de proximité : découverte de personnes compatibles, envies du moment, signaux, messagerie en texte et proposition de moment. Elle est aujourd'hui gratuite, sans achat intégré.</p>
+  <p>ProximaS est une application de rencontres de proximité : découverte de personnes compatibles, envies du moment, signaux, messagerie en texte{{if on "photos_privees"}}, photos privées et albums{{end}} et proposition de moment. Elle est aujourd'hui gratuite, sans achat intégré.</p>
   <p>Quand tu ouvres la fiche d'une personne, elle peut le voir dans « A vu ton profil » pendant 30 jours. « Visiter discrètement » et le mode invisible empêchent l'enregistrement de tes visites ; en contrepartie, tu ne vois pas qui a vu ton profil. Voir <a href="{{page "privacy"}}#visites">les visites de profil</a>.</p>
   <p>Le service est en <strong>bêta</strong> : il est en cours de test, peut contenir des erreurs, changer ou être interrompu, et certaines fonctions peuvent être modifiées ou retirées.</p>
   <p>Le lancement est prévu en Europe. Le service est destiné aux personnes résidant dans la zone suivante : {{champ "zone"}}.</p>
@@ -40,9 +40,17 @@
     <li>de publier de la nudité ou des contenus sexuellement explicites, ou d'en envoyer à quelqu'un qui ne l'a pas demandé ;</li>
     <li>de publier la photo d'une autre personne, d'usurper une identité ou de créer un faux profil ;</li>
     <li>de demander de l'argent, des cadeaux, des codes ou des placements, de faire de la publicité, du démarchage, de la prostitution ou toute activité commerciale ;</li>
-    <li>de diffuser les messages, photos ou informations d'une autre personne sans son accord, ou de révéler son orientation ;</li>
+    <li>de diffuser les messages, photos{{if on "photos_privees"}} (y compris les photos privées reçues, intimes ou non){{end}} ou informations d'une autre personne sans son accord, ou de révéler son orientation ;</li>
     <li>de tenter de localiser précisément une personne, de collecter des profils, d'automatiser l'utilisation du service ou de contourner ses protections ;</li>
     <li>de faire quoi que ce soit d'illégal.</li>
+  </ul>
+  <h3 id="enfants">Protection des enfants</h3>
+  <p>ProximaS interdit tout abus et toute exploitation sexuels des enfants : tout contenu à caractère sexuel impliquant un mineur (photo, texte, dessin ou image fabriquée), sa demande, son envoi ou le partage d'un lien qui y mène, ainsi que toute sollicitation d'un mineur.</p>
+  <ul>
+    <li><strong>Signaler dans l'application</strong> le profil, la photo, le signal ou la conversation{{if on "lot7_serveur_deploye"}}, avec le motif « Contenu impliquant un mineur »{{else}}, avec le motif « possible mineur »{{end}}.</li>
+    <li><strong>Point de contact</strong> pour la sécurité des enfants, avec ou sans compte : {{mail}}. N'envoie, ne copie et ne capture jamais l'image en cause : décris les faits.</li>
+    <li>En cas de danger immédiat, appelle le 112.</li>
+    <li>Le compte concerné peut être suspendu sans échéance ou banni, et les autorités compétentes peuvent être informées{{if on "lot7_serveur_deploye"}} ; les images signalées avec ce motif sont conservées sous verrou (voir la <a href="{{page "privacy"}}#moderation">politique de confidentialité</a>){{end}}. Cette procédure reste à valider par un juriste.</li>
   </ul>
 </section>
 
@@ -50,6 +58,9 @@
   <h2>6. Tes contenus</h2>
   <p>Tes photos et tes textes restent à toi. Tu nous autorises seulement, gratuitement et sans exclusivité, à les enregistrer, les redimensionner, les contrôler et les montrer aux personnes concernées, dans la mesure nécessaire au fonctionnement et à la sécurité du service. Cette autorisation prend fin avec leur suppression, sous réserve des durées de conservation de la <a href="{{page "privacy"}}#durees">politique de confidentialité</a>.</p>
   <p>Tu garantis avoir le droit de publier ce que tu publies. Tes photos ne doivent montrer que toi.</p>
+  {{- if on "photos_privees"}}
+  <p>Les <a href="{{page "privacy"}}#photos-privees">photos privées</a> et les albums sont facultatifs. Ils ne sont contrôlés par personne avant leur envoi : tu es responsable de ce que tu envoies, et les règles ci-dessus s'y appliquent. N'envoie que des images que tu as le droit de partager, à une personne qui souhaite les recevoir. Les captures d'écran sont bloquées sur Android seulement, pas sur iPhone.</p>
+  {{- end}}
 </section>
 
 <section id="ciel">
@@ -74,19 +85,22 @@
     <li>Un signal sans réponse expire après 14 jours.</li>
     <li>Avant d'envoyer un nouveau signal à la même personne, tu dois attendre 30 jours après l'envoi du précédent s'il est resté sans réponse, ou 24 heures après qu'il a été passé. Un nouvel envoi accepté avant 14 jours laisse donc deviner que le précédent avait été passé. Les règles contre le harcèlement s'appliquent.</li>
     <li>Des limites techniques s'appliquent au nombre de requêtes, de photos, de messages et de mises à jour de position.</li>
+    {{- if on "photos_privees"}}
+    <li>Photos privées : 30 dans ta galerie, 5 albums, 30 envois et partages par 24 heures, place limitée par compte.</li>
+    {{- end}}
   </ul>
   <p>Ces valeurs peuvent évoluer ; cette page est alors mise à jour.</p>
 </section>
 
 <section id="moderation">
   <h2>9. Modération</h2>
-  <p>Les photos sont contrôlées par une personne avant publication. Les textes de profil peuvent être repérés par une liste de mots pour relecture.{{if on "relecture_messages_prives"}} Les messages et les signaux peuvent aussi être repérés de cette manière.{{else}} Les messages privés ne sont pas relus automatiquement.{{end}} Les signalements sont examinés par une personne ; nous visons un traitement sous 24 heures, sans pouvoir le garantir.</p>
+  <p>{{if on "photos_privees"}}Les photos de profil sont contrôlées par une personne avant publication ; les photos privées ne sont pas contrôlées avant leur envoi, et la modération n'y accède qu'au travers d'un signalement.{{else}}Les photos sont contrôlées par une personne avant publication.{{end}} Les textes de profil peuvent être repérés par une liste de mots pour relecture.{{if on "relecture_messages_prives"}} Les messages et les signaux peuvent aussi être repérés de cette manière.{{else}} Les messages privés ne sont pas relus automatiquement.{{end}} Les signalements sont examinés par une personne ; nous visons un traitement sous 24 heures, sans pouvoir le garantir.</p>
   <p>Selon la gravité, nous pouvons : refuser ou retirer un contenu, adresser un avertissement, suspendre un compte (par exemple 24 heures, 7 jours, 30 jours ou sans échéance) ou le bannir. En cas de soupçon de minorité, un compte peut être suspendu, sans échéance, dans l'attente d'une vérification de l'âge, y compris automatiquement après des signalements concordants. Les décisions tiennent compte de la gravité, de la répétition, du contexte et des droits des personnes concernées.</p>
 </section>
 
 <section id="signalement">
   <h2>10. Signaler un contenu ou une personne</h2>
-  <p>Dans l'application, tu peux signaler un profil, une photo, un signal ou une conversation, et bloquer la personne. Toute personne, même sans compte, peut signaler un contenu illégal par e-mail : voir la page <a href="{{page "contact"}}#signaler">Contact</a>.</p>
+  <p>Dans l'application, tu peux signaler un profil, une photo, un signal ou une conversation{{if on "photos_privees"}}, ainsi qu'une photo privée ou un album reçu, même disparu depuis peu{{end}}, et bloquer la personne. Toute personne, même sans compte, peut signaler un contenu illégal par e-mail : voir la page <a href="{{page "contact"}}#signaler">Contact</a>.</p>
   <p>Signaler de façon abusive ou mensongère est interdit.</p>
 </section>
 
@@ -123,7 +137,16 @@
 
 <section id="changements">
   <h2>16. Changements de ces conditions</h2>
+  {{- if on "lot7_serveur_deploye"}}
+  <p>Nous pouvons modifier ces conditions, par exemple pour suivre la loi ou de nouvelles fonctions. Selon le changement, l'application :</p>
+  <ul>
+    <li><strong>t'informe</strong> : un bandeau mène à un résumé et à ce site, sans rien à accepter ;</li>
+    <li>ou <strong>te demande d'accepter</strong> la nouvelle version : résumé, case non cochée, puis « Accepter et continuer » ou « Je refuse ».</li>
+  </ul>
+  <p>Tant que tu n'as pas accepté une version qui le demande, tu ne peux plus utiliser le service ; sans réponse, ton profil reste visible et les notifications continuent. Si tu refuses, ton profil est désactivé et les notifications sont coupées ; un refus portant sur la position l'efface, et un refus portant sur ton genre et tes préférences efface ton orientation et les genres recherchés. Dans tous les cas, tu peux télécharger tes données, supprimer ton compte ou te déconnecter, et accepter plus tard dans « Mes consentements ». Une ancienne version de l'application n'affiche pas les simples informations ; une acceptation requise s'y fait dans Mon profil, « Mes consentements ».</p>
+  {{- else}}
   <p>Nous pouvons modifier ces conditions, par exemple pour suivre la loi ou de nouvelles fonctions. Nous te prévenons des changements importants et te demandons d'accepter la nouvelle version dans l'application ; si tu refuses, tu peux supprimer ton compte.</p>
+  {{- end}}
 </section>
 
 <section id="droit">

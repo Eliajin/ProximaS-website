@@ -30,12 +30,26 @@
   </ul>
 </section>
 
+{{- if on "photos_privees"}}
+<section id="photos">
+  <h2>Photos privées et albums</h2>
+  <ul>
+    <li>Personne ne les contrôle avant l'envoi : tu peux recevoir une image non désirée. Elle arrive floutée et ne s'affiche que si tu la touches.</li>
+    <li>« Refuser les photos » bloque les nouveaux envois et masque les albums déjà ouverts.</li>
+    <li>Les captures d'écran sont bloquées sur Android seulement, <strong>pas sur iPhone</strong>, et un autre appareil peut photographier l'écran. « Vue une fois » ou « 24 heures » n'empêchent donc pas d'en garder une trace.</li>
+    <li>Tu peux retirer une photo ou l'accès à un album, mais pas effacer ce qui a déjà été vu ou copié.</li>
+    <li>Ne transmets jamais la photo de quelqu'un sans son accord. Pour signaler une photo ou un album reçu, même disparu depuis peu, fais-le depuis l'application, sans en faire de copie.</li>
+  </ul>
+  <p><a href="{{page "privacy"}}#photos-privees">Comment fonctionnent les photos privées</a>.</p>
+</section>
+{{- end}}
+
 <section id="outils">
   <h2>Bloquer et signaler</h2>
   <ul>
     <li><strong>Bloquer</strong>, depuis un profil, une conversation ou un signal reçu : vous ne vous voyez plus et ne pouvez plus échanger. La personne n'est pas prévenue.</li>
     <li><strong>Passer un signal ne bloque pas</strong> : la même personne peut t'en envoyer un nouveau à partir de 24 heures plus tard. Si elle insiste, bloque-la, et signale-la en cas de harcèlement.</li>
-    <li><strong>Signaler</strong> un profil, une photo, une conversation ou un signal, avec un motif : possible mineur, harcèlement ou menaces, contenu sexuel non désiré, arnaque ou demande d'argent, faux profil, propos haineux, autre. La personne signalée n'apprend pas qui l'a signalée.</li>
+    <li><strong>Signaler</strong> un profil, une photo, une conversation ou un signal, avec un motif : possible mineur, harcèlement ou menaces, contenu sexuel non désiré,{{if on "lot7_serveur_deploye"}} contenu impliquant un mineur,{{end}} arnaque ou demande d'argent, faux profil, propos haineux, autre. La personne signalée n'apprend pas qui l'a signalée.</li>
     <li>Pour une conversation, les 20 derniers messages ne sont joints que si tu coches la case. Pense à le faire s'ils montrent le problème.</li>
     <li>Les signalements sont examinés par une personne. Nous visons un traitement sous 24 heures, sans pouvoir le garantir : en cas de danger, n'attends pas notre réponse.</li>
     <li>Sans l'application, écris à {{mail}} (voir <a href="{{page "contact"}}#signaler">comment signaler</a>).</li>
@@ -49,13 +63,17 @@
 
 <section id="mineurs">
   <h2>18 ans minimum</h2>
-  <p>ProximaS est interdit aux mineurs. Pendant la bêta, l'âge est calculé à partir de la date de naissance déclarée : aucune vérification externe n'est encore en place, et une personne peut mentir. Si quelqu'un te semble mineur, ne poursuis pas l'échange et signale-le : ces signalements sont prioritaires et peuvent entraîner une suspension immédiate dans l'attente d'une vérification.</p>
+  <p>ProximaS est interdit aux mineurs. Pendant la bêta, l'âge est calculé à partir de la date de naissance déclarée : aucune vérification externe n'est encore en place, et une personne peut mentir. Si quelqu'un te semble mineur, ne poursuis pas l'échange et signale-le : ces signalements sont prioritaires et peuvent entraîner une suspension immédiate dans l'attente d'une vérification. Aucun contenu sexuel impliquant un mineur n'est toléré : voir <a href="{{page "terms"}}#enfants">la protection des enfants</a>.</p>
 </section>
 
 <section id="limites">
   <h2>Ce que nous faisons, et nos limites</h2>
   <ul>
+    {{- if on "photos_privees"}}
+    <li>Les photos de profil sont contrôlées avant d'être visibles, pas les photos privées ; les textes de profil peuvent être repérés pour relecture.</li>
+    {{- else}}
     <li>Les photos sont contrôlées avant d'être visibles ; les textes de profil peuvent être repérés pour relecture.</li>
+    {{- end}}
     <li>{{if on "relecture_messages_prives"}}Les messages peuvent être repérés automatiquement pour relecture, mais ne sont pas tous lus.{{else}}Les messages privés ne sont pas relus automatiquement : sans signalement, la modération ne sait pas ce qui s'y passe.{{end}}</li>
     <li>Nous ne vérifions ni l'identité ni les antécédents des personnes.</li>
     <li>Une photo validée ne prouve pas que la personne est bien celle qu'elle prétend être.</li>

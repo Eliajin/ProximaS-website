@@ -51,6 +51,9 @@
   <ul>
     <li>the account, email address and password;</li>
     <li>the profile, photos, answers to questions and current moods;</li>
+    {{- if on "photos_privees"}}
+    <li>your private photos and albums; what you sent or shared can no longer be opened, from the deletion request on (a copy of photos already shown is kept for a while, see below);</li>
+    {{- end}}
     <li>location, filters and consents;</li>
     <li>signals sent and received;</li>
     <li><strong>profile visits</strong>, both those you made and those you received;</li>
@@ -66,6 +69,12 @@
   <dl class="faits">
     <div><dt>Reports made or received, with their content, and decisions</dt><dd>Your account identifiers are erased; the file is kept for 365 days after the decision. A report not yet decided is kept until it is.</dd></div>
     <div><dt>Log of moderation actions</dt><dd>730 days, with an internal account identifier.</dd></div>
+    {{- if on "photos_privees"}}
+    <div><dt>Private photos already shown to someone</dt><dd>A copy is kept for 30 days after they disappear, including through erasure of the account; moderation can only view it through a report. A photo attached to a report is kept until the decision, and during an appeal. Photos never shown are erased.</dd></div>
+    {{- end}}
+    {{- if on "lot7_serveur_deploye"}}
+    <div><dt>Images reported as involving a minor</dt><dd>Kept under lock, even after the account is deleted, until the retention is lifted (to be validated by a lawyer).</dd></div>
+    {{- end}}
     <div><dt>{{if on "lot5_serveur_deploye"}}Account that is banned, or suspended pending an age check{{else}}Banned account{{end}}</dt><dd>{{if on "lot5_serveur_deploye"}}In these two cases only, a fingerprint of the address, not the address itself, is kept for 365 days after erasure, to refuse a new sign-up with it. Nothing is kept for this purpose if the account had been reinstated. To contest this refusal, write to {{mail}}.{{else}}Deletion is assessed in light of other people's safety; we explain to you what must be kept and for how long.{{end}}</dd></div>
     <div><dt>Technical logs</dt><dd>No IP address and no profile data; erased according to their size.</dd></div>
     <div><dt>Your request and our reply by email</dt><dd>12 months, to show that it was handled.</dd></div>
@@ -75,7 +84,7 @@
 <section id="export">
   <h2>5. Get your data before you leave</h2>
   {{- if on "export_dans_app"}}
-  <p>In the app, open <strong>My profile</strong> (“Mon profil”), then <strong>Download my data</strong> (“Télécharger mes données”). You get an archive with your data, including profile visits (your visitors as the app shows them to you), and your photos; messages and texts written by other people are not included. Do this before deleting your account.</p>
+  <p>In the app, open <strong>My profile</strong> (“Mon profil”), then <strong>Download my data</strong> (“Télécharger mes données”). You get an archive with your data, including profile visits (your visitors as the app shows them to you), and your photos{{if on "photos_privees"}} (for private ones: yours in your gallery or still visible, never those you received){{end}}; messages and texts written by other people are not included. Do this before deleting your account.</p>
   {{- else}}
   <p>Ask for a copy of your data at {{mail}} <strong>before</strong> requesting deletion: downloading it from the app is not available yet.</p>
   {{- end}}

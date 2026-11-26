@@ -51,6 +51,7 @@ func TestParseConfigRejects(t *testing.T) {
 		t.Fatalf("base sans lot refusée : %v", err)
 	}
 	cases := map[string]string{
+		"photos sans lot 7":        setLine(t, setLine(t, base, "lot7_serveur_deploye", "non"), "photos_privees", "oui"),
 		"clé inconnue":             base + "\ninconnue = 1\n",
 		"clé en double":            base + "\ndpo = aucun\n",
 		"ligne sans égal":          base + "\nabc\n",

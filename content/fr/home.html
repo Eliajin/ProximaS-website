@@ -70,7 +70,7 @@
     </div>
     <div class="carte">
       <h3>Discuter, puis se voir</h3>
-      <p>Messagerie en texte et proposition d'un moment (activité, date, heure), sans partage de lieu. Les notifications, facultatives, disent seulement « Tu as du nouveau ».</p>
+      <p>Messagerie en texte{{if on "photos_privees"}}, photos privées et albums (sans contrôle préalable ; captures d'écran bloquées sur Android seulement){{end}} et proposition d'un moment (activité, date, heure), sans partage de lieu. Les notifications, facultatives, disent seulement « Tu as du nouveau ».</p>
     </div>
   </div>
 </section>
@@ -80,7 +80,11 @@
   <ul>
     <li>Tu peux bloquer quelqu'un à tout moment : vous ne vous voyez plus, et la personne n'est pas prévenue.</li>
     <li>Tu peux signaler un profil, une photo, un signal ou une conversation.</li>
+    {{- if on "photos_privees"}}
+    <li>Les photos de profil sont contrôlées avant d'être visibles, pas les photos privées. Les signalements sont examinés par une personne ; notre objectif est de les traiter sous 24 heures.</li>
+    {{- else}}
     <li>Les photos sont contrôlées avant d'être visibles, et les signalements sont examinés par une personne. Notre objectif est de les traiter sous 24 heures.</li>
+    {{- end}}
     <li>Les décisions de modération sont motivées et peuvent être contestées.</li>
     <li>Le service est interdit aux moins de 18 ans. Pendant la bêta, l'âge est calculé à partir de la date de naissance déclarée : aucune vérification externe n'est encore en place.</li>
   </ul>

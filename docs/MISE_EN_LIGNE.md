@@ -202,3 +202,19 @@ Les textes suivent `site.conf`. Ne passer à `oui` que ce qui est réellement en
 Puis mettre à jour `date_textes`, `make test`, commit, push, et `deploy/build-prod.sh` sur le serveur. Relire `/suppression-compte` en ligne.
 
 **Tant que l'export dans l'application n'est pas distribué**, une demande de copie des données reçue par e-mail doit être traitée à la main dans le mois : l'API n'a pas de commande pour cela. Une demande de suppression par e-mail peut être renvoyée vers le formulaire web.
+
+## Lot 7 (photos privées, conditions qui changent)
+
+Les textes sont écrits mais masqués. Dans `site.conf` :
+
+| Moment | Réglage |
+|---|---|
+| API du lot 7 déployée | `lot7_serveur_deploye = oui` |
+| Photos privées ouvertes, après ta décision (`/api/health` montre `"private_photos":"on"`) | `photos_privees = oui` |
+
+Attention : en bêta, les photos privées sont **ouvertes par défaut** dès le déploiement de l'API (`PRIVATE_PHOTOS`). Pour ne pas les ouvrir, mettre `PRIVATE_PHOTOS=off` dans le `.env` de l'API avant de la déployer.
+
+Ordre : déployer l'API, passer les réglages à « oui », mettre à jour `date_textes`, `make test`, commit, push, `deploy/build-prod.sh` du site, **puis seulement** distribuer l'application et, le cas échéant, publier une information ou une nouvelle version dans l'application (`ProximaS/docs/MISE_A_JOUR_CONDITIONS.md`). Garder une copie datée des pages remplacées : le site n'archive pas encore les anciennes versions.
+
+À faire valider avant d'ouvrir (juriste) : base légale des photos privées (article 9), copie gardée 30 jours, export restreint, procédure « contenu impliquant un mineur », section « Protection des enfants » (`/conditions#enfants`) et son point de contact.
+

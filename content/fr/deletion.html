@@ -51,6 +51,9 @@
   <ul>
     <li>le compte, l'adresse e-mail et le mot de passe ;</li>
     <li>le profil, les photos, les réponses aux questions et les envies du moment ;</li>
+    {{- if on "photos_privees"}}
+    <li>tes photos privées et tes albums ; les envois et les partages ne s'ouvrent plus, dès la demande de suppression (une copie des photos déjà montrées est gardée un temps, voir ci-dessous) ;</li>
+    {{- end}}
     <li>la position, les filtres et les consentements ;</li>
     <li>les signaux envoyés et reçus ;</li>
     <li>les <strong>visites de profil</strong>, celles que tu as faites comme celles que tu as reçues ;</li>
@@ -65,6 +68,12 @@
   <p>Pour protéger les autres personnes et pouvoir répondre en cas de litige, certaines données restent un temps limité (durées proposées, à valider par un juriste) :</p>
   <dl class="faits">
     <div><dt>Signalements faits ou reçus, avec leur contenu, et décisions</dt><dd>Les identifiants de ton compte sont effacés ; le dossier est gardé 365 jours après la décision. Un signalement pas encore décidé est gardé jusqu'à la décision.</dd></div>
+    {{- if on "photos_privees"}}
+    <div><dt>Photos privées déjà montrées à quelqu'un</dt><dd>Une copie est gardée 30 jours après leur disparition, effacement du compte compris ; la modération ne peut la consulter qu'au travers d'un signalement. Une photo jointe à un signalement est gardée jusqu'à la décision, et pendant une contestation. Les photos jamais montrées sont effacées.</dd></div>
+    {{- end}}
+    {{- if on "lot7_serveur_deploye"}}
+    <div><dt>Images signalées comme impliquant un mineur</dt><dd>Conservées sous verrou, même après la suppression du compte, tant que la conservation n'est pas levée (à valider par un juriste).</dd></div>
+    {{- end}}
     <div><dt>Journal des actions de modération</dt><dd>730 jours, avec un identifiant interne du compte.</dd></div>
     <div><dt>{{if on "lot5_serveur_deploye"}}Compte banni, ou suspendu dans l'attente d'une vérification de l'âge{{else}}Compte banni{{end}}</dt><dd>{{if on "lot5_serveur_deploye"}}Dans ces deux cas seulement, une empreinte de l'adresse, et non l'adresse, est gardée 365 jours après l'effacement, pour refuser une réinscription avec elle. Rien n'est gardé à ce titre si le compte avait été rétabli. Pour contester ce refus, écris à {{mail}}.{{else}}La suppression est examinée au regard de la sécurité des autres personnes ; nous t'expliquons ce qui doit être conservé et pour combien de temps.{{end}}</dd></div>
     <div><dt>Journaux techniques</dt><dd>Sans adresse IP ni donnée de profil ; effacés selon leur taille.</dd></div>
@@ -75,7 +84,7 @@
 <section id="export">
   <h2>5. Récupérer tes données avant de partir</h2>
   {{- if on "export_dans_app"}}
-  <p>Dans l'application, ouvre <strong>Mon profil</strong>, puis <strong>Télécharger mes données</strong>. Tu obtiens une archive avec tes données, dont les visites de profil (tes visiteurs tels que l'application te les montre), et tes photos ; les messages et les textes écrits par d'autres personnes n'y sont pas. Fais-le avant de supprimer ton compte.</p>
+  <p>Dans l'application, ouvre <strong>Mon profil</strong>, puis <strong>Télécharger mes données</strong>. Tu obtiens une archive avec tes données, dont les visites de profil (tes visiteurs tels que l'application te les montre), et tes photos{{if on "photos_privees"}} (pour les privées : les tiennes en galerie ou encore visibles, jamais celles que tu as reçues){{end}} ; les messages et les textes écrits par d'autres personnes n'y sont pas. Fais-le avant de supprimer ton compte.</p>
   {{- else}}
   <p>Demande une copie de tes données à {{mail}} <strong>avant</strong> de demander la suppression : le téléchargement dans l'application n'est pas encore disponible.</p>
   {{- end}}
