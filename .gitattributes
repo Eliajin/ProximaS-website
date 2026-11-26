@@ -1,0 +1,6 @@
+# Tout en LF, meme dans une copie de travail Windows (scripts lus par Linux, textes integres au binaire).
+* text=auto eol=lf
+*.sh text eol=lf
+*.png binary
+*.jpg binary
+*.ttf binary

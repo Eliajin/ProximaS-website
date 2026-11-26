@@ -1,0 +1,86 @@
+<h1>Delete my ProximaS account</h1>
+<p class="chapo">You can ask for your account and data to be deleted at any time, free of charge, even if your account is suspended or you no longer have the app.</p>
+
+<section id="comment">
+  <h2>1. How to do it</h2>
+  {{- if on "suppression_dans_app"}}
+  <div class="carte">
+    <h3>In the app</h3>
+    <p>Open <strong>My profile</strong> (“Mon profil”), then <strong>Delete my account</strong> (“Supprimer mon compte”), and confirm with your password.</p>
+  </div>
+  {{- else}}
+  <div class="carte">
+    <h3>In the app</h3>
+    <p>Deleting your account directly in the app is not available yet. Until then, use one of the options below.</p>
+  </div>
+  {{- end}}
+  {{- if val "suppression_web_url"}}
+  <div class="carte">
+    <h3>On the web, without the app</h3>
+    <p>Enter your account's email address on the request page. You receive a message with a confirmation link, valid for 1 hour: nothing is deleted until you confirm.</p>
+    <p><a class="btn" href="{{val "suppression_web_url"}}" rel="noopener">Request deletion online</a></p>
+  </div>
+  {{- end}}
+  <div class="carte">
+    <h3>By email</h3>
+    <p>Write to {{mail}} <strong>from your account's email address</strong>, with the subject “Account deletion”. We reply to that address to confirm it is really you. Do not send a password or an identity document. If you no longer have access to that address, tell us: we will look for another reasonable way to check your request.</p>
+    <p><a class="btn{{if val "suppression_web_url"}} secondaire{{end}}" href="mailto:{{val "contact_email"}}?subject={{"Account deletion"}}">Write to delete my account</a></p>
+  </div>
+</section>
+
+<section id="delai">
+  <h2>2. What happens next</h2>
+  {{- if on "lot5_serveur_deploye"}}
+  <ul>
+    <li>As soon as the request is confirmed, your profile is no longer visible and your sessions are closed.</li>
+    <li>You have <strong>14 days</strong> to change your mind: signing back in to the app cancels the deletion.</li>
+    <li>After that period, erasure is permanent. An email confirms it.</li>
+    <li>Backups that still contain your data disappear after <strong>35 days</strong> at the latest.</li>
+  </ul>
+  {{- else}}
+  <ul>
+    <li>We check that the request really comes from you, then erase the account, no later than <strong>one month</strong> after receiving your request.</li>
+    <li>Erasure is permanent. You receive a reply once it is done.</li>
+    <li>Backups that still contain your data are kept for <strong>35 days</strong>, then erased at the next backup.</li>
+  </ul>
+  {{- end}}
+</section>
+
+<section id="efface">
+  <h2>3. What is erased</h2>
+  <ul>
+    <li>the account, email address and password;</li>
+    <li>the profile, photos, answers to questions and current mood;</li>
+    <li>location, filters and consents;</li>
+    <li>signals sent and received;</li>
+    <li><strong>entire conversations</strong>, including both people's messages, and meeting suggestions;</li>
+    <li>blocks, sessions and devices registered for notifications.</li>
+  </ul>
+  <p>Uninstalling the app does not delete your account.</p>
+</section>
+
+<section id="conserve">
+  <h2>4. What is kept, and why</h2>
+  <p>To protect other people and to be able to respond in case of a dispute, some data remains for a limited time (proposed periods, to be validated by a lawyer):</p>
+  <dl class="faits">
+    <div><dt>Reports made or received, with their content, and decisions</dt><dd>Your account identifiers are erased; the file is kept for 365 days after the decision. A report not yet decided is kept until it is.</dd></div>
+    <div><dt>Log of moderation actions</dt><dd>730 days, with an internal account identifier.</dd></div>
+    <div><dt>Banned account</dt><dd>{{if on "lot5_serveur_deploye"}}A fingerprint of the address, not the address itself, for 365 days, to refuse a new sign-up.{{else}}Deletion is assessed in light of other people's safety; we explain to you what must be kept and for how long.{{end}}</dd></div>
+    <div><dt>Technical logs</dt><dd>No IP address and no profile data; erased according to their size.</dd></div>
+    <div><dt>Your request and our reply by email</dt><dd>12 months, to show that it was handled.</dd></div>
+  </dl>
+</section>
+
+<section id="export">
+  <h2>5. Get your data before you leave</h2>
+  {{- if on "export_dans_app"}}
+  <p>In the app, open <strong>My profile</strong> (“Mon profil”), then <strong>Download my data</strong> (“Télécharger mes données”). You get an archive with your data and photos; messages and texts written by other people are not included. Do this before deleting your account.</p>
+  {{- else}}
+  <p>Ask for a copy of your data at {{mail}} <strong>before</strong> requesting deletion: downloading it from the app is not available yet.</p>
+  {{- end}}
+</section>
+
+<section id="autres">
+  <h2>6. Erasing only part of it</h2>
+  <p>Without deleting your account, you can also remove photos, erase profile answers or your mood, turn notifications off or withdraw a consent (your location is then erased). For anything else, write to us. See <a href="{{page "privacy"}}#droits">your rights</a>.</p>
+</section>

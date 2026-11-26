@@ -1,0 +1,237 @@
+<h1>Politique de confidentialité</h1>
+<p class="chapo">Une application de rencontres traite des informations intimes. Voici lesquelles, pourquoi, qui les reçoit, combien de temps elles sont gardées et ce que tu peux demander.</p>
+<p>Cette politique concerne l'application ProximaS, ses serveurs et le site proximas.be. ProximaS est en bêta, en vue d'un lancement en Europe. Zone visée : {{champ "zone"}}.</p>
+
+<nav class="toc" id="sommaire" aria-label="{{t "nav.toc"}}">
+  <ul>
+    <li><a href="#responsable">Responsable du traitement</a></li>
+    <li><a href="#donnees">Données traitées</a></li>
+    <li><a href="#sensibles">Données sensibles</a></li>
+    <li><a href="#position">Position et distance</a></li>
+    <li><a href="#finalites">Raisons et bases légales</a></li>
+    <li><a href="#visibilite">Ce que voient les autres</a></li>
+    <li><a href="#moderation">Modération et automatismes</a></li>
+    <li><a href="#destinataires">Destinataires</a></li>
+    <li><a href="#transferts">Transferts hors d'Europe</a></li>
+    <li><a href="#durees">Durées de conservation</a></li>
+    <li><a href="#securite-donnees">Sécurité</a></li>
+    <li><a href="#droits">Tes droits</a></li>
+    <li><a href="#reclamation">Réclamation</a></li>
+    <li><a href="#site">Ce site web</a></li>
+  </ul>
+</nav>
+
+<section id="responsable">
+  <h2>1. Responsable du traitement</h2>
+  <p>Le responsable du traitement est une personne seule, qui édite ProximaS :</p>
+  <div class="carte">
+    <p>{{champ "editeur_nom"}} (nom commercial : {{champ "editeur_nom_commercial"}})<br>
+    {{champ "editeur_statut"}}<br>
+    {{champ "editeur_adresse"}}, {{champ "editeur_pays"}}<br>
+    Numéro d'entreprise (BCE) : {{champ "editeur_bce"}}<br>
+    Contact : {{mail}}</p>
+  </div>
+  <p>Délégué à la protection des données : {{if eq (val "dpo") "aucun"}}aucun délégué n'est désigné à ce jour ; écris à l'adresse de contact.{{else}}{{champ "dpo"}}.{{end}}</p>
+</section>
+
+<section id="donnees">
+  <h2>2. Données traitées</h2>
+  <p>Les données viennent de toi, de ton utilisation de l'application et, pour les signalements, d'autres personnes qui utilisent le service.</p>
+  <dl class="faits">
+    <div><dt>Compte</dt><dd>Adresse e-mail, mot de passe (conservé uniquement sous forme d'empreinte, jamais en clair), date de naissance, résultat et méthode de la vérification de l'âge, état du compte, date de création et date de dernière activité.</dd></div>
+    <div><dt>Profil</dt><dd>Prénom, genre, genres que tu souhaites rencontrer, orientation (seulement si tu choisis de l'afficher), photos (0 à 6), réponses à 3 questions de profil au maximum, envie du moment, filtres, options « mode invisible » et « masquer ma distance », historique récent des changements de genre ou de recherche.</dd></div>
+    <div><dt>Position</dt><dd>Une case d'environ 500 m de côté et l'heure de sa mise à jour ; quelques compteurs de déplacements impossibles, contre la triche.</dd></div>
+    <div><dt>Échanges</dt><dd>Signaux envoyés et reçus, conversations, messages, propositions de moment, état de lecture.</dd></div>
+    <div><dt>Sécurité et modération</dt><dd>Blocages ; signalements faits ou reçus (motif, précisions, prénom et réponses de profil visibles à ce moment, extraits de conversation joints avec accord) ; décisions, sanctions, contestations ; journal des actions de modération.</dd></div>
+    <div><dt>Consentements</dt><dd>Ce que tu as accepté ou retiré, la version du texte et la date.</dd></div>
+    <div><dt>Appareil et technique</dt><dd>Sessions de connexion (jetons conservés sous forme d'empreinte) ; si tu actives les notifications, un identifiant de ton appareil et un jeton de notification ; journaux techniques limités à la route appelée, au code de réponse, à la durée et à un numéro de requête, sans adresse IP ni contenu. Ton adresse IP est utilisée en mémoire pour limiter les abus, sans être écrite dans ces journaux.</dd></div>
+    <div><dt>Contact</dt><dd>Les messages que tu nous envoies par e-mail et nos réponses.</dd></div>
+  </dl>
+  <p>Les informations de compte, le genre et les genres recherchés, la position et les trois consentements requis sont nécessaires au service : sans eux, le compte ne peut pas être créé ou le profil est désactivé. Les photos, les réponses aux questions, l'envie, l'affichage de l'orientation et les notifications sont facultatifs.</p>
+</section>
+
+<section id="sensibles">
+  <h2>3. Données sensibles (article 9 du RGPD)</h2>
+  <p>Ton orientation sexuelle est une donnée sensible. Ton genre associé aux genres que tu recherches peut la révéler, et le simple fait d'utiliser une application de rencontres peut aussi en dire long sur toi. Ce que tu écris dans ton profil ou tes messages peut contenir d'autres informations sensibles (santé, convictions, vie sexuelle) : tu choisis ce que tu y mets.</p>
+  <ul>
+    <li>Le genre, la recherche et l'orientation ne sont traités qu'avec ton <strong>consentement explicite</strong>, demandé dans une case séparée, jamais cochée d'avance.</li>
+    <li>L'orientation sert à préremplir tes choix ; elle n'est enregistrée que si tu décides de l'afficher.</li>
+    <li>Si tu retires ce consentement, l'orientation et les genres recherchés sont effacés et ton profil est désactivé.</li>
+    <li>Aucune donnée de genre, d'orientation, de position ou de message n'est écrite dans les journaux techniques ni dans les notifications.</li>
+  </ul>
+</section>
+
+<section id="position">
+  <h2>4. Position et distance</h2>
+  <ul>
+    <li>L'application demande une position approximative, uniquement quand tu l'utilises. Elle ne suit pas tes déplacements en arrière-plan.</li>
+    <li>Le serveur arrondit les coordonnées reçues sur une grille d'environ 500 m <strong>avant</strong> de les enregistrer ; les coordonnées d'origine ne sont ni conservées ni journalisées. Seule la dernière case est gardée.</li>
+    <li>Les autres personnes ne reçoivent jamais tes coordonnées, seulement un palier : « à moins de 1 km » ou « à environ N km ». Dans une conversation, ce palier est recalculé au plus une fois par jour.</li>
+    <li>Avec l'option « Masquer ma distance », aucun palier n'est montré à ton sujet, dans le ciel comme sur ta fiche, et aucune distance n'apparaît dans vos conversations, pour l'une comme pour l'autre personne. Dans le ciel, ton profil n'est pas classé selon la distance : il est proposé, à une place tirée au hasard, aux personnes compatibles situées à moins de 25 km, quel que soit leur filtre de distance. Elles savent donc au plus que tu es dans ce rayon. Toi, tu continues à voir la distance approximative des autres dans le ciel et sur les fiches.</li>
+    <li>Le mode invisible retire ton profil du ciel des autres et rend ta fiche inaccessible ; tes conversations restent.</li>
+    <li>Une distance, même approximative, peut aider une personne déterminée à deviner ton secteur. Si c'est un risque pour toi, masque ta distance ou utilise le mode invisible.</li>
+    <li>Si tu retires le consentement « position », la position enregistrée est effacée immédiatement et ton profil est désactivé.</li>
+  </ul>
+</section>
+
+<section id="finalites">
+  <h2>5. Pourquoi ces données, sur quelle base</h2>
+  <dl class="faits">
+    <div><dt>Créer et gérer ton compte, montrer des profils compatibles, transmettre signaux et messages</dt><dd>Exécution du contrat (article 6, paragraphe 1, point b, du RGPD).</dd></div>
+    <div><dt>Utiliser ton genre, ta recherche et ton orientation</dt><dd>Ton consentement explicite (article 9, paragraphe 2, point a, et article 6, paragraphe 1, point a), retirable à tout moment.</dd></div>
+    <div><dt>Utiliser ta position approximative</dt><dd>Ton consentement (article 6, paragraphe 1, point a), complété par l'autorisation de ton téléphone, retirables à tout moment.</dd></div>
+    <div><dt>Envoyer des notifications</dt><dd>Ton consentement (article 6, paragraphe 1, point a) : elles sont coupées tant que tu ne les actives pas.</dd></div>
+    <div><dt>Envoyer les e-mails du compte (code de vérification, mot de passe oublié, alertes de sécurité, décisions)</dt><dd>Exécution du contrat et obligations légales (article 6, paragraphe 1, points b et c).</dd></div>
+    <div><dt>Réserver le service aux adultes</dt><dd>Obligations légales et intérêt légitime à protéger les mineurs (article 6, paragraphe 1, points c et f).</dd></div>
+    <div><dt>Protéger les personnes : blocage, signalement, modération, prévention des abus et de la fraude, limitation du nombre de requêtes</dt><dd>Obligations légales, notamment le règlement européen sur les services numériques (DSA), et intérêt légitime à la sécurité du service (article 6, paragraphe 1, points c et f).</dd></div>
+    <div><dt>Conserver certaines traces de modération après la suppression d'un compte, et empêcher le retour d'un compte banni</dt><dd>Intérêt légitime et constatation, exercice ou défense de droits en justice (article 6, paragraphe 1, point f, et, pour les données sensibles éventuellement contenues, article 9, paragraphe 2, point f).</dd></div>
+    <div><dt>Répondre à tes messages et à tes demandes sur tes données</dt><dd>Obligations légales et intérêt légitime (article 6, paragraphe 1, points c et f).</dd></div>
+    <div><dt>Mesure d'audience de l'application</dt><dd>Un consentement facultatif, refusé par défaut, est proposé à l'inscription. Aucun outil de mesure d'audience n'est en place aujourd'hui : rien n'est collecté à ce titre.</dd></div>
+  </dl>
+  <p>Aujourd'hui, ProximaS n'affiche pas de publicité et n'intègre aucun outil publicitaire. Si de la publicité était ajoutée plus tard, cette politique serait mise à jour avant, et un consentement te serait demandé quand la loi l'exige. Tes données ne sont pas vendues.</p>
+</section>
+
+<section id="visibilite">
+  <h2>6. Ce que voient les autres</h2>
+  <ul>
+    <li>Les personnes compatibles voient ton prénom, ton âge, tes photos validées, tes réponses aux questions, ton envie du moment et, sauf si tu la masques, une distance approximative.</li>
+    <li>Elles ne voient ni ton adresse e-mail, ni ta date de naissance, ni ta position.</li>
+    <li>Une personne à qui tu écris reçoit tes signaux, tes messages et tes propositions de moment. Elle peut les copier ou les capturer : n'envoie rien que tu ne voudrais pas voir diffusé.</li>
+    <li>Une personne bloquée ne te voit plus et ne peut plus t'écrire. Elle n'est pas prévenue.</li>
+  </ul>
+</section>
+
+<section id="moderation">
+  <h2>7. Modération, messages privés et automatismes</h2>
+  {{- if on "relecture_messages_prives"}}
+  <p>Des textes, y compris des messages privés et des signaux, sont repérés automatiquement à partir d'une liste de mots locale, puis peuvent être lus par la modération. Rien n'est bloqué automatiquement par ce repérage.</p>
+  {{- else}}
+  <p><strong>Les messages privés et les signaux ne sont pas relus automatiquement.</strong> La modération n'en reçoit des extraits que lorsqu'une personne signale une conversation ou un signal et coche la case donnant son accord : les 20 derniers messages au plus, ou le texte du signal. Leur consultation est inscrite au journal de modération.</p>
+  {{- end}}
+  <ul>
+    <li>Les photos sont contrôlées par une personne avant d'être visibles.</li>
+    <li>Une liste de mots locale, sans service extérieur, peut repérer le prénom et les réponses de profil pour qu'une personne les relise. Rien n'est bloqué automatiquement.</li>
+    <li>Si au moins 2 comptes distincts, inscrits depuis plus de 7 jours, signalent qu'une personne semble mineure, son compte est suspendu automatiquement dans l'attente d'une vérification. La personne en est informée et peut contester ; la contestation est examinée par une personne.</li>
+    <li>Les signalements d'un compte dont plusieurs signalements récents ont été classés sont traités avec une priorité moindre, sauf s'ils concernent un possible mineur.</li>
+    <li>Des règles automatiques limitent le nombre de requêtes, de signaux et de mises à jour de position, et ignorent les déplacements impossibles.</li>
+    <li>La composition de ton ciel est automatique : les critères sont expliqués dans les <a href="{{page "terms"}}#ciel">conditions d'utilisation</a>.</li>
+  </ul>
+  <p>Tu peux demander qu'une personne réexamine toute mesure automatique qui te concerne, et donner ton point de vue.</p>
+</section>
+
+<section id="destinataires">
+  <h2>8. Qui reçoit des données</h2>
+  <p>Les données sont accessibles au responsable du traitement et, le cas échéant, aux personnes chargées de la modération. Les prestataires suivants interviennent :</p>
+  <dl class="faits">
+    <div><dt>Hébergement</dt><dd>{{champ "hebergeur_nom"}}. {{champ "hebergeur_description"}} Responsable technique : {{champ "hebergeur_responsable_technique"}}.</dd></div>
+    <div><dt>Cloudflare, Inc. (101 Townsend Street, San Francisco, CA 94107, États-Unis)</dt><dd>Relaie et protège les connexions vers le serveur, pour l'application comme pour ce site. Cloudflare déchiffre le trafic au passage : il voit l'adresse IP et peut techniquement accéder au contenu des échanges avec le serveur. Il redirige aussi les e-mails envoyés à notre adresse de contact.</dd></div>
+    <div><dt>Brevo (Sendinblue SAS, France)</dt><dd>Envoi des e-mails liés au compte : ton adresse et le contenu du message (par exemple un code de vérification). Aucune lettre d'information.</dd></div>
+    <div><dt>Google (Firebase Cloud Messaging)</dt><dd>Seulement si tu actives les notifications : jeton de notification, identifiant d'installation, informations techniques sur l'application et l'appareil, heure d'envoi. La notification dit seulement « Tu as du nouveau », sans nom ni contenu.</dd></div>
+    <div><dt>Apple (service de notifications)</dt><dd>Pour la version iPhone, quand elle sera disponible et si tu actives les notifications.</dd></div>
+    <div><dt>Boîte e-mail de contact</dt><dd>{{champ "fournisseur_boite_contact"}} : reçoit et conserve les messages envoyés à l'adresse de contact.</dd></div>
+    <div><dt>Magasins d'applications et groupes de test (Google, Apple)</dt><dd>Si tu installes l'application ou rejoins un test par Google ou Apple, ces sociétés traitent tes données pour leur propre compte, selon leurs propres politiques.</dd></div>
+    <div><dt>Autorités</dt><dd>Seulement quand la loi nous y oblige, ou pour protéger une personne en danger dans les conditions prévues par la loi.</dd></div>
+  </dl>
+  <p>Aucun prestataire de vérification d'âge ni de modération automatique des photos n'est utilisé à ce jour. Cette politique sera mise à jour avant d'en ajouter un.</p>
+</section>
+
+<section id="transferts">
+  <h2>9. Transferts hors d'Europe</h2>
+  <p>Le serveur qui conserve les données se trouve en Belgique. Cloudflare, Google et Apple sont susceptibles de traiter des données hors de l'Espace économique européen et de Suisse, notamment aux États-Unis. Ces transferts doivent être encadrés par le cadre de protection des données UE–États-Unis (et son extension pour la Suisse) ou par les clauses contractuelles types de la Commission européenne. Les garanties applicables à chaque prestataire sont en cours de vérification ; tu peux nous demander lesquelles s'appliquent.</p>
+</section>
+
+<section id="durees">
+  <h2>10. Combien de temps les données sont gardées</h2>
+  <p>Ces durées sont proposées et restent à valider par un juriste.</p>
+  <dl class="faits">
+    <div><dt>Compte, profil, photos, filtres, signaux, conversations, consentements</dt><dd>Tant que le compte existe : un compte inactif n'est pas effacé automatiquement. Voir <a href="{{page "deletion"}}">la suppression du compte</a>.</dd></div>
+    <div><dt>Envie du moment</dt><dd>Jusqu'à la fin du moment choisi.</dd></div>
+    <div><dt>Signal sans réponse</dt><dd>N'est plus actif après 14 jours ; il reste enregistré tant que les comptes concernés existent.</dd></div>
+    {{- if on "lot5_serveur_deploye"}}
+    <div><dt>Position</dt><dd>La dernière seulement ; effacée après 7 jours sans mise à jour, ou au retrait du consentement.</dd></div>
+    <div><dt>Compte dont l'adresse n'a jamais été confirmée</dt><dd>7 jours.</dd></div>
+    <div><dt>Sessions et codes envoyés par e-mail</dt><dd>7 jours après leur expiration (une session expire après 30 jours sans utilisation).</dd></div>
+    <div><dt>Compte supprimé</dt><dd>14 jours pour changer d'avis, puis effacement.</dd></div>
+    <div><dt>Adresse d'un compte banni puis effacé</dt><dd>Une empreinte de l'adresse, et non l'adresse, pendant 365 jours.</dd></div>
+    <div><dt>Historique des changements de genre ou de recherche</dt><dd>30 jours.</dd></div>
+    <div><dt>Liens de suppression et de téléchargement</dt><dd>Valables 1 heure ; leur trace est effacée en 2 jours au plus.</dd></div>
+    {{- else}}
+    <div><dt>Position</dt><dd>La dernière seulement ; elle n'est plus utilisée après 7 jours sans mise à jour et elle est effacée au retrait du consentement.</dd></div>
+    <div><dt>Inscriptions non confirmées, sessions et codes expirés</dt><dd>Leur effacement automatique n'est pas encore en service : ils sont conservés jusqu'à la suppression du compte ou ta demande.</dd></div>
+    <div><dt>Compte supprimé sur demande</dt><dd>Effacement après vérification de la demande, au plus tard dans le délai d'un mois.</dd></div>
+    <div><dt>Compte banni</dt><dd>Reste enregistré, pour empêcher une réinscription avec la même adresse. Une demande d'effacement est examinée au regard de la sécurité des autres personnes.</dd></div>
+    {{- end}}
+    <div><dt>Identifiant et jeton de notification</dt><dd>Effacés quand tu coupes les notifications, te déconnectes ou es suspendu, ou quand le fournisseur les rejette.</dd></div>
+    <div><dt>Photo refusée ou retirée</dt><dd>Fichier effacé après 30 jours.</dd></div>
+    <div><dt>Textes repérés par la liste de mots</dt><dd>90 jours.</dd></div>
+    <div><dt>Délai pour contester une décision</dt><dd>180 jours.</dd></div>
+    <div><dt>Signalements, extraits joints, décisions, contestations et sanctions</dt><dd>365 jours après la décision (pour une sanction, après sa levée) ; un signalement pas encore décidé est gardé jusqu'à la décision. Un dossier n'est pas effacé tant qu'une contestation ou une sanction liée est en cours.</dd></div>
+    <div><dt>Journal des actions de modération</dt><dd>730 jours.</dd></div>
+    <div><dt>Copies de sauvegarde de la base de données</dt><dd>35 jours{{if not (on "lot5_serveur_deploye")}}, puis effacement lors de la sauvegarde suivante{{else}} au plus{{end}}. Une donnée effacée peut y figurer jusque-là.</dd></div>
+    <div><dt>Journaux techniques</dt><dd>Effacés selon leur taille (3 fichiers de 10 Mo au maximum), et non selon une durée fixe.</dd></div>
+    <div><dt>Messages envoyés à l'adresse de contact</dt><dd>12 mois après le dernier échange, sauf obligation de les garder plus longtemps.</dd></div>
+  </dl>
+</section>
+
+<section id="securite-donnees">
+  <h2>11. Sécurité</h2>
+  <ul>
+    <li>Connexions chiffrées (HTTPS) entre ton appareil et le service, par l'intermédiaire de Cloudflare.</li>
+    <li>Mots de passe et jetons conservés sous forme d'empreinte.</li>
+    <li>Position arrondie avant enregistrement ; métadonnées des photos supprimées ; adresses des photos signées et temporaires.</li>
+    <li>Outil de modération séparé, protégé par un compte et un code à usage unique ; actions journalisées.</li>
+    <li>Journaux techniques sans adresse IP ni contenu.</li>
+  </ul>
+  <p>Les messages ne sont <strong>pas chiffrés de bout en bout</strong> : ils sont enregistrés sur le serveur. Aucun système n'est à l'abri de tout incident ; en cas de violation de données, les autorités et les personnes concernées sont informées comme la loi le prévoit.</p>
+</section>
+
+<section id="droits">
+  <h2>12. Tes droits</h2>
+  <ul>
+    <li><strong>Accès</strong> et copie de tes données, et <strong>portabilité</strong> : {{if on "export_dans_app"}}depuis l'application (Mon profil, « Télécharger mes données », avec ton mot de passe ; lien valable 1 heure ; les textes écrits par d'autres n'y sont pas), ou par e-mail{{else}}sur demande par e-mail{{end}}.</li>
+    <li><strong>Rectification</strong> : dans ton profil, ou par e-mail pour ce que tu ne peux pas modifier.</li>
+    <li><strong>Effacement</strong> : voir <a href="{{page "deletion"}}">la suppression du compte</a>.</li>
+    <li><strong>Limitation</strong> et <strong>opposition</strong>, notamment aux traitements fondés sur notre intérêt légitime.</li>
+    <li><strong>Retrait du consentement</strong> à tout moment, dans Mon profil, « Mes consentements » ; cela ne remet pas en cause ce qui a été fait avant. Retirer un consentement requis désactive ton profil.</li>
+    <li><strong>Intervention humaine</strong> sur une décision automatisée, avec le droit de la contester.</li>
+    <li>Le droit de définir ce qu'il advient de tes données après ton décès, quand la loi de ton pays le prévoit.</li>
+  </ul>
+  <p>Écris à {{mail}}, de préférence depuis l'adresse de ton compte. Nous pouvons demander de quoi vérifier que la demande vient bien de toi, sans réclamer plus que nécessaire. Nous répondons dans un délai d'un mois, qui peut être prolongé de deux mois pour les demandes complexes ; tu en es alors informé. L'exercice de tes droits est gratuit, sauf demande manifestement abusive.</p>
+</section>
+
+<section id="mineurs">
+  <h2>13. Mineurs</h2>
+  <p>ProximaS est interdit aux moins de 18 ans. L'âge est calculé par le serveur à partir de la date de naissance ; pendant la bêta, cette date est déclarée sans vérification externe. Un compte soupçonné d'appartenir à une personne mineure peut être suspendu. Si tu penses qu'un mineur utilise le service, signale-le depuis l'application ou écris à {{mail}}.</p>
+</section>
+
+<section id="reclamation">
+  <h2>14. Réclamation</h2>
+  <p>Si tu penses que tes droits ne sont pas respectés, écris-nous d'abord si tu le souhaites. Tu peux aussi introduire à tout moment une réclamation auprès de l'autorité de protection des données de ton pays de résidence, de travail ou du lieu des faits (<a href="https://www.edpb.europa.eu/about-edpb/our-members_fr" rel="noopener">liste des autorités européennes</a>), et saisir la justice.</p>
+  <div class="carte">
+    <p>Autorité de protection des données (Belgique)<br>
+    Rue de la Presse 35, 1000 Bruxelles<br>
+    contact@apd-gba.be<br>
+    <a href="https://www.autoriteprotectiondonnees.be" rel="noopener">www.autoriteprotectiondonnees.be</a></p>
+  </div>
+</section>
+
+<section id="suisse">
+  <h2>15. Personnes résidant en Suisse</h2>
+  <p>Si tu résides en Suisse, la loi fédérale sur la protection des données (LPD) s'applique aussi. Tu disposes des droits qu'elle prévoit et tu peux t'adresser au Préposé fédéral à la protection des données et à la transparence (<a href="https://www.edoeb.admin.ch/fr" rel="noopener">www.edoeb.admin.ch</a>). Les données sont communiquées en Belgique et, par les prestataires cités plus haut, éventuellement dans d'autres pays, dont les États-Unis.</p>
+</section>
+
+<section id="site">
+  <h2>16. Ce site web (proximas.be)</h2>
+  <ul>
+    <li>Aucun cookie, aucun traceur, aucune mesure d'audience, aucun script, aucune ressource chargée depuis un autre site. C'est pourquoi il n'y a pas de bandeau de consentement.</li>
+    <li>Le serveur du site ne tient pas de journal des visites.</li>
+    <li>Cloudflare, qui relaie le trafic, traite des données techniques (dont l'adresse IP) pour acheminer et protéger les connexions.</li>
+    <li>Si tu cliques sur un lien vers un autre site (par exemple Google ou Apple pour la bêta), les règles de ce site s'appliquent.</li>
+    <li>Si tu nous écris, nous traitons ton adresse et ton message pour te répondre.</li>
+  </ul>
+</section>
+
+<section id="changements">
+  <h2>17. Changements</h2>
+  <p>La date en bas de page indique la dernière version. Quand un changement porte sur un texte que tu as accepté dans l'application, une nouvelle acceptation t'est demandée.</p>
+</section>

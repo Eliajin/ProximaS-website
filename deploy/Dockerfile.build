@@ -1,0 +1,20 @@
+# Build + tests du site, dans Docker : aucun Go requis sur le serveur. Rien ne contacte un service reel.
+# Si un test echoue, rien n'est produit, donc rien n'est deploye.
+#
+#   docker build -f deploy/Dockerfile.build --target artifact --output type=local,dest=out .
+FROM golang:1.26-alpine AS test
+WORKDIR /src
+COPY go.mod ./
+COPY *.go site.conf ./
+COPY content ./content
+COPY static ./static
+RUN go vet ./... && go test ./...
+# Liste des champs de site.conf encore vides (information seulement, ne bloque jamais le build).
+RUN go run . champs
+
+FROM test AS build
+ARG VERSION=dev
+RUN CGO_ENABLED=0 go build -trimpath -ldflags "-s -w -X main.version=$VERSION" -o /out/proximas-web .
+
+FROM scratch AS artifact
+COPY --from=build /out/proximas-web /proximas-web

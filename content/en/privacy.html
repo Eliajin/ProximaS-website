@@ -1,0 +1,237 @@
+<h1>Privacy policy</h1>
+<p class="chapo">A dating app processes intimate information. Here is which information, why, who receives it, how long it is kept and what you can ask for.</p>
+<p>This policy covers the ProximaS app, its servers and the proximas.be website. ProximaS is in beta, ahead of a launch in Europe. Intended area: {{champ "zone"}}.</p>
+
+<nav class="toc" id="sommaire" aria-label="{{t "nav.toc"}}">
+  <ul>
+    <li><a href="#responsable">Data controller</a></li>
+    <li><a href="#donnees">Data we process</a></li>
+    <li><a href="#sensibles">Sensitive data</a></li>
+    <li><a href="#position">Location and distance</a></li>
+    <li><a href="#finalites">Purposes and legal bases</a></li>
+    <li><a href="#visibilite">What others see</a></li>
+    <li><a href="#moderation">Moderation and automation</a></li>
+    <li><a href="#destinataires">Recipients</a></li>
+    <li><a href="#transferts">Transfers outside Europe</a></li>
+    <li><a href="#durees">Retention periods</a></li>
+    <li><a href="#securite-donnees">Security</a></li>
+    <li><a href="#droits">Your rights</a></li>
+    <li><a href="#reclamation">Complaints</a></li>
+    <li><a href="#site">This website</a></li>
+  </ul>
+</nav>
+
+<section id="responsable">
+  <h2>1. Data controller</h2>
+  <p>The data controller is a single person, who publishes ProximaS:</p>
+  <div class="carte">
+    <p>{{champ "editeur_nom"}} (trading name: {{champ "editeur_nom_commercial"}})<br>
+    {{champ "editeur_statut"}}<br>
+    {{champ "editeur_adresse"}}, {{champ "editeur_pays"}}<br>
+    Company number (Belgian Crossroads Bank for Enterprises): {{champ "editeur_bce"}}<br>
+    Contact: {{mail}}</p>
+  </div>
+  <p>Data protection officer: {{if eq (val "dpo") "aucun"}}none has been appointed to date; write to the contact address.{{else}}{{champ "dpo"}}.{{end}}</p>
+</section>
+
+<section id="donnees">
+  <h2>2. Data we process</h2>
+  <p>The data comes from you, from your use of the app and, for reports, from other people using the service.</p>
+  <dl class="faits">
+    <div><dt>Account</dt><dd>Email address, password (kept only as a hash, never in clear text), date of birth, result and method of the age check, account status, creation date and date of last activity.</dd></div>
+    <div><dt>Profile</dt><dd>First name, gender, genders you wish to meet, sexual orientation (only if you choose to show it), photos (0 to 6), answers to 3 profile questions at most, current mood, filters, “invisible mode” and “hide my distance” options, recent history of changes to your gender or search.</dd></div>
+    <div><dt>Location</dt><dd>One square of about 500 m and the time it was updated; a few counters of impossible movements, to prevent cheating.</dd></div>
+    <div><dt>Exchanges</dt><dd>Signals sent and received, conversations, messages, meeting suggestions, read status.</dd></div>
+    <div><dt>Safety and moderation</dt><dd>Blocks; reports made or received (reason, details, first name and profile answers visible at the time, conversation excerpts attached with consent); decisions, sanctions, appeals; log of moderation actions.</dd></div>
+    <div><dt>Consents</dt><dd>What you accepted or withdrew, the version of the text and the date.</dd></div>
+    <div><dt>Device and technical data</dt><dd>Sign-in sessions (tokens kept as hashes); if you turn notifications on, a device identifier and a notification token; technical logs limited to the route called, the response code, the duration and a request number, with no IP address and no content. Your IP address is used in memory to limit abuse, without being written to these logs.</dd></div>
+    <div><dt>Contact</dt><dd>Messages you send us by email and our replies.</dd></div>
+  </dl>
+  <p>Account details, gender and genders sought, location and the three required consents are necessary for the service: without them, the account cannot be created or the profile is disabled. Photos, answers to questions, mood, showing your orientation and notifications are optional.</p>
+</section>
+
+<section id="sensibles">
+  <h2>3. Sensitive data (Article 9 GDPR)</h2>
+  <p>Your sexual orientation is sensitive data. Your gender combined with the genders you are looking for can reveal it, and merely using a dating app can say a lot about you. What you write in your profile or messages may contain other sensitive information (health, beliefs, sex life): you choose what you put there.</p>
+  <ul>
+    <li>Gender, search and orientation are processed only with your <strong>explicit consent</strong>, requested in a separate box that is never pre-ticked.</li>
+    <li>Orientation is used to pre-fill your choices; it is stored only if you decide to show it.</li>
+    <li>If you withdraw this consent, your orientation and the genders you seek are erased and your profile is disabled.</li>
+    <li>No data about gender, orientation, location or messages is written to technical logs or notifications.</li>
+  </ul>
+</section>
+
+<section id="position">
+  <h2>4. Location and distance</h2>
+  <ul>
+    <li>The app asks for an approximate location, only while you are using it. It does not follow your movements in the background.</li>
+    <li>The server rounds the coordinates it receives to a grid of about 500 m <strong>before</strong> saving them; the original coordinates are neither kept nor logged. Only the latest square is kept.</li>
+    <li>Other people never receive your coordinates, only a band: “less than 1 km” or “about N km”. In a conversation, this band is recalculated at most once a day.</li>
+    <li>With the “Hide my distance” option, no band is shown about you, either in the sky or on your profile, and no distance appears in your conversations, for either person. In the sky, your profile is not ranked by distance: it is offered, in a randomly chosen spot, to compatible people less than 25 km away, whatever their distance filter. So at most they know you are within that radius. You still see the approximate distance of others in the sky and on profiles.</li>
+    <li>Invisible mode removes your profile from other people's sky and makes your profile page unavailable; your conversations remain.</li>
+    <li>Even an approximate distance can help a determined person guess your area. If that is a risk for you, hide your distance or use invisible mode.</li>
+    <li>If you withdraw the “location” consent, the stored location is erased immediately and your profile is disabled.</li>
+  </ul>
+</section>
+
+<section id="finalites">
+  <h2>5. Why we use this data, and on what basis</h2>
+  <dl class="faits">
+    <div><dt>Create and manage your account, show compatible profiles, deliver signals and messages</dt><dd>Performance of the contract (Article 6, paragraph 1, point b, GDPR).</dd></div>
+    <div><dt>Use your gender, search and orientation</dt><dd>Your explicit consent (Article 9, paragraph 2, point a, and Article 6, paragraph 1, point a), which you can withdraw at any time.</dd></div>
+    <div><dt>Use your approximate location</dt><dd>Your consent (Article 6, paragraph 1, point a), together with your phone's permission, both of which you can withdraw at any time.</dd></div>
+    <div><dt>Send notifications</dt><dd>Your consent (Article 6, paragraph 1, point a): they stay off until you turn them on.</dd></div>
+    <div><dt>Send account emails (verification code, forgotten password, security alerts, decisions)</dt><dd>Performance of the contract and legal obligations (Article 6, paragraph 1, points b and c).</dd></div>
+    <div><dt>Keep the service for adults only</dt><dd>Legal obligations and legitimate interest in protecting minors (Article 6, paragraph 1, points c and f).</dd></div>
+    <div><dt>Protect people: blocking, reporting, moderation, prevention of abuse and fraud, request limits</dt><dd>Legal obligations, in particular the EU Digital Services Act (DSA), and legitimate interest in the safety of the service (Article 6, paragraph 1, points c and f).</dd></div>
+    <div><dt>Keep some moderation records after an account is deleted, and stop a banned account from coming back</dt><dd>Legitimate interest and the establishment, exercise or defence of legal claims (Article 6, paragraph 1, point f, and, for any sensitive data they contain, Article 9, paragraph 2, point f).</dd></div>
+    <div><dt>Answer your messages and data requests</dt><dd>Legal obligations and legitimate interest (Article 6, paragraph 1, points c and f).</dd></div>
+    <div><dt>App analytics</dt><dd>An optional consent, refused by default, is offered at sign-up. No analytics tool is in place today: nothing is collected for this purpose.</dd></div>
+  </dl>
+  <p>Today, ProximaS shows no advertising and includes no advertising tool. If advertising were added later, this policy would be updated first, and your consent would be asked where the law requires it. Your data is not sold.</p>
+</section>
+
+<section id="visibilite">
+  <h2>6. What others see</h2>
+  <ul>
+    <li>Compatible people see your first name, your age, your approved photos, your answers to questions, your current mood and, unless you hide it, an approximate distance.</li>
+    <li>They see neither your email address, nor your date of birth, nor your location.</li>
+    <li>A person you write to receives your signals, messages and meeting suggestions. They can copy or screenshot them: do not send anything you would not want to see shared.</li>
+    <li>A blocked person no longer sees you and can no longer write to you. They are not told.</li>
+  </ul>
+</section>
+
+<section id="moderation">
+  <h2>7. Moderation, private messages and automation</h2>
+  {{- if on "relecture_messages_prives"}}
+  <p>Texts, including private messages and signals, are automatically flagged using a local word list and may then be read by moderation. Nothing is blocked automatically by this flagging.</p>
+  {{- else}}
+  <p><strong>Private messages and signals are not automatically reviewed.</strong> Moderation only receives excerpts when someone reports a conversation or a signal and ticks the box giving their consent: the last 20 messages at most, or the text of the signal. Each time they are viewed, it is recorded in the moderation log.</p>
+  {{- end}}
+  <ul>
+    <li>Photos are checked by a person before they become visible.</li>
+    <li>A local word list, with no external service, may flag the first name and profile answers so that a person can read them again. Nothing is blocked automatically.</li>
+    <li>If at least 2 different accounts, registered for more than 7 days, report that someone appears to be a minor, that account is automatically suspended pending a check. The person is informed and can appeal; the appeal is reviewed by a person.</li>
+    <li>Reports from an account that has had several recent reports dismissed are handled with a lower priority, unless they concern a possible minor.</li>
+    <li>Automatic rules limit the number of requests, signals and location updates, and ignore impossible movements.</li>
+    <li>Your sky is put together automatically: the criteria are explained in the <a href="{{page "terms"}}#ciel">terms of use</a>.</li>
+  </ul>
+  <p>You can ask for any automatic measure concerning you to be reviewed by a person, and give your point of view.</p>
+</section>
+
+<section id="destinataires">
+  <h2>8. Who receives data</h2>
+  <p>Data is accessible to the data controller and, where applicable, to the people in charge of moderation. The following providers are involved:</p>
+  <dl class="faits">
+    <div><dt>Hosting</dt><dd>{{champ "hebergeur_nom"}}. {{champ "hebergeur_description"}} Technical manager: {{champ "hebergeur_responsable_technique"}}.</dd></div>
+    <div><dt>Cloudflare, Inc. (101 Townsend Street, San Francisco, CA 94107, United States)</dt><dd>Relays and protects connections to the server, for both the app and this website. Cloudflare decrypts traffic as it passes through: it sees the IP address and can technically access the content exchanged with the server. It also forwards emails sent to our contact address.</dd></div>
+    <div><dt>Brevo (Sendinblue SAS, France)</dt><dd>Sends account emails: your address and the content of the message (for example a verification code). No newsletter.</dd></div>
+    <div><dt>Google (Firebase Cloud Messaging)</dt><dd>Only if you turn notifications on: notification token, installation identifier, technical information about the app and device, time of sending. The notification only says that there is something new, with no name and no content.</dd></div>
+    <div><dt>Apple (notification service)</dt><dd>For the iPhone version, when it is available and if you turn notifications on.</dd></div>
+    <div><dt>Contact mailbox</dt><dd>{{champ "fournisseur_boite_contact"}}: receives and stores the messages sent to the contact address.</dd></div>
+    <div><dt>App stores and test groups (Google, Apple)</dt><dd>If you install the app or join a test through Google or Apple, those companies process your data for their own purposes, under their own policies.</dd></div>
+    <div><dt>Authorities</dt><dd>Only when the law requires us to, or to protect a person in danger under the conditions set by law.</dd></div>
+  </dl>
+  <p>No age verification provider and no automated photo moderation provider is used to date. This policy will be updated before one is added.</p>
+</section>
+
+<section id="transferts">
+  <h2>9. Transfers outside Europe</h2>
+  <p>The server that stores the data is in Belgium. Cloudflare, Google and Apple may process data outside the European Economic Area and Switzerland, in particular in the United States. These transfers must be covered by the EU-US Data Privacy Framework (and its extension for Switzerland) or by the European Commission's standard contractual clauses. The safeguards that apply to each provider are being checked; you can ask us which ones apply.</p>
+</section>
+
+<section id="durees">
+  <h2>10. How long data is kept</h2>
+  <p>These periods are proposals and still need to be validated by a lawyer.</p>
+  <dl class="faits">
+    <div><dt>Account, profile, photos, filters, signals, conversations, consents</dt><dd>As long as the account exists: an inactive account is not erased automatically. See <a href="{{page "deletion"}}">account deletion</a>.</dd></div>
+    <div><dt>Current mood</dt><dd>Until the end of the chosen time.</dd></div>
+    <div><dt>Signal with no reply</dt><dd>No longer active after 14 days; it remains stored as long as the accounts concerned exist.</dd></div>
+    {{- if on "lot5_serveur_deploye"}}
+    <div><dt>Location</dt><dd>The latest only; erased after 7 days without an update, or when consent is withdrawn.</dd></div>
+    <div><dt>Account whose address was never confirmed</dt><dd>7 days.</dd></div>
+    <div><dt>Sessions and codes sent by email</dt><dd>7 days after they expire (a session expires after 30 days without use).</dd></div>
+    <div><dt>Deleted account</dt><dd>14 days to change your mind, then erasure.</dd></div>
+    <div><dt>Address of a banned account that was then erased</dt><dd>A fingerprint of the address, not the address itself, for 365 days.</dd></div>
+    <div><dt>History of changes to your gender or search</dt><dd>30 days.</dd></div>
+    <div><dt>Deletion and download links</dt><dd>Valid for 1 hour; their record is erased within 2 days at most.</dd></div>
+    {{- else}}
+    <div><dt>Location</dt><dd>The latest only; it is no longer used after 7 days without an update and is erased when consent is withdrawn.</dd></div>
+    <div><dt>Unconfirmed sign-ups, expired sessions and codes</dt><dd>Automatic erasure is not yet in service: they are kept until the account is deleted or you ask us.</dd></div>
+    <div><dt>Account deleted on request</dt><dd>Erased once the request is verified, within one month at the latest.</dd></div>
+    <div><dt>Banned account</dt><dd>Remains stored, to prevent signing up again with the same address. An erasure request is assessed in light of other people's safety.</dd></div>
+    {{- end}}
+    <div><dt>Notification identifier and token</dt><dd>Erased when you turn notifications off, sign out or are suspended, or when the provider rejects them.</dd></div>
+    <div><dt>Refused or removed photo</dt><dd>File erased after 30 days.</dd></div>
+    <div><dt>Texts flagged by the word list</dt><dd>90 days.</dd></div>
+    <div><dt>Time limit to appeal a decision</dt><dd>180 days.</dd></div>
+    <div><dt>Reports, attached excerpts, decisions, appeals and sanctions</dt><dd>365 days after the decision (for a sanction, after it is lifted); a report not yet decided is kept until it is. A file is not erased while a related appeal or sanction is ongoing.</dd></div>
+    <div><dt>Log of moderation actions</dt><dd>730 days.</dd></div>
+    <div><dt>Database backups</dt><dd>35 days{{if not (on "lot5_serveur_deploye")}}, then erased at the next backup{{else}} at most{{end}}. Erased data may still appear in them until then.</dd></div>
+    <div><dt>Technical logs</dt><dd>Erased according to their size (3 files of 10 MB at most), not after a fixed period.</dd></div>
+    <div><dt>Messages sent to the contact address</dt><dd>12 months after the last exchange, unless they must be kept longer.</dd></div>
+  </dl>
+</section>
+
+<section id="securite-donnees">
+  <h2>11. Security</h2>
+  <ul>
+    <li>Encrypted connections (HTTPS) between your device and the service, through Cloudflare.</li>
+    <li>Passwords and tokens kept as hashes.</li>
+    <li>Location rounded before saving; photo metadata removed; photo addresses signed and temporary.</li>
+    <li>Separate moderation tool, protected by an account and a one-time code; actions are logged.</li>
+    <li>Technical logs with no IP address and no content.</li>
+  </ul>
+  <p>Messages are <strong>not end-to-end encrypted</strong>: they are stored on the server. No system is immune to every incident; in the event of a data breach, the authorities and the people concerned are informed as the law requires.</p>
+</section>
+
+<section id="droits">
+  <h2>12. Your rights</h2>
+  <ul>
+    <li><strong>Access</strong> to and a copy of your data, and <strong>portability</strong>: {{if on "export_dans_app"}}from the app (My profile, “Download my data”, with your password; link valid for 1 hour; texts written by others are not included), or by email{{else}}on request by email{{end}}.</li>
+    <li><strong>Rectification</strong>: in your profile, or by email for anything you cannot change.</li>
+    <li><strong>Erasure</strong>: see <a href="{{page "deletion"}}">account deletion</a>.</li>
+    <li><strong>Restriction</strong> and <strong>objection</strong>, in particular to processing based on our legitimate interest.</li>
+    <li><strong>Withdrawal of consent</strong> at any time, in My profile, “My consents”; this does not affect what was done before. Withdrawing a required consent disables your profile.</li>
+    <li><strong>Human intervention</strong> in an automated decision, with the right to contest it.</li>
+    <li>The right to decide what happens to your data after your death, where the law of your country provides for it.</li>
+  </ul>
+  <p>Write to {{mail}}, preferably from your account's address. We may ask for enough information to check that the request really comes from you, without asking for more than necessary. We reply within one month, which may be extended by two months for complex requests; you are then informed. Exercising your rights is free, unless a request is manifestly abusive.</p>
+</section>
+
+<section id="mineurs">
+  <h2>13. Minors</h2>
+  <p>ProximaS is forbidden to anyone under 18. The server calculates age from the date of birth; during the beta, this date is declared with no external check. An account suspected of belonging to a minor may be suspended. If you think a minor is using the service, report it from the app or write to {{mail}}.</p>
+</section>
+
+<section id="reclamation">
+  <h2>14. Complaints</h2>
+  <p>If you believe your rights are not being respected, feel free to write to us first. You can also lodge a complaint at any time with the data protection authority of the country where you live, work or where the issue occurred (<a href="https://www.edpb.europa.eu/about-edpb/our-members_en" rel="noopener">list of European authorities</a>), and take legal action.</p>
+  <div class="carte">
+    <p>Data Protection Authority (Belgium)<br>
+    Rue de la Presse 35, 1000 Brussels<br>
+    contact@apd-gba.be<br>
+    <a href="https://www.dataprotectionauthority.be" rel="noopener">www.dataprotectionauthority.be</a></p>
+  </div>
+</section>
+
+<section id="suisse">
+  <h2>15. People living in Switzerland</h2>
+  <p>If you live in Switzerland, the Federal Act on Data Protection (FADP) also applies. You have the rights it provides and you can contact the Federal Data Protection and Information Commissioner (<a href="https://www.edoeb.admin.ch/en" rel="noopener">www.edoeb.admin.ch</a>). Data is disclosed to Belgium and, through the providers listed above, possibly to other countries, including the United States.</p>
+</section>
+
+<section id="site">
+  <h2>16. This website (proximas.be)</h2>
+  <ul>
+    <li>No cookies, no trackers, no analytics, no scripts, no resources loaded from another site. That is why there is no consent banner.</li>
+    <li>The website's server keeps no visit log.</li>
+    <li>Cloudflare, which relays the traffic, processes technical data (including the IP address) to deliver and protect connections.</li>
+    <li>If you click a link to another site (for example Google or Apple for the beta), that site's rules apply.</li>
+    <li>If you write to us, we process your address and your message in order to reply.</li>
+  </ul>
+</section>
+
+<section id="changements">
+  <h2>17. Changes</h2>
+  <p>The date at the bottom of the page shows the latest version. When a change concerns a text you accepted in the app, you are asked to accept it again.</p>
+</section>

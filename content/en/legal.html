@@ -1,0 +1,52 @@
+<h1>Legal notice</h1>
+
+<section id="editeur">
+  <h2>Publisher</h2>
+  <p>The proximas.be website and the ProximaS app are published by:</p>
+  <dl class="faits">
+    <div><dt>Name</dt><dd>{{champ "editeur_nom"}}</dd></div>
+    <div><dt>Trading name</dt><dd>{{champ "editeur_nom_commercial"}}</dd></div>
+    <div><dt>Status</dt><dd>{{champ "editeur_statut"}}</dd></div>
+    <div><dt>Address</dt><dd>{{champ "editeur_adresse"}}, {{champ "editeur_pays"}}</dd></div>
+    <div><dt>Email address</dt><dd>{{mail}}</dd></div>
+    {{- if val "editeur_telephone"}}
+    <div><dt>Phone</dt><dd>{{champ "editeur_telephone"}}</dd></div>
+    {{- end}}
+    <div><dt>Company number (Belgian Crossroads Bank for Enterprises)</dt><dd>{{champ "editeur_bce"}}</dd></div>
+    <div><dt>VAT</dt><dd>{{champ "editeur_tva"}}</dd></div>
+    {{- if val "editeur_rpm"}}
+    <div><dt>Register of legal entities</dt><dd>{{champ "editeur_rpm"}}</dd></div>
+    {{- end}}
+  </dl>
+</section>
+
+<section id="publication">
+  <h2>Publication manager and data controller</h2>
+  <p>{{champ "responsable_publication"}}, alone. See the <a href="{{page "privacy"}}">privacy policy</a>.</p>
+</section>
+
+<section id="hebergement">
+  <h2>Hosting</h2>
+  <p>{{champ "hebergeur_nom"}}. {{champ "hebergeur_description"}} Technical manager: {{champ "hebergeur_responsable_technique"}}. Technical contact: {{mail}}.</p>
+  <p>Traffic goes through <strong>Cloudflare, Inc.</strong> (101 Townsend Street, San Francisco, CA 94107, United States), which relays connections to this server and protects it.</p>
+</section>
+
+<section id="contact">
+  <h2>Contact and reporting</h2>
+  <p>To write to us, report illegal content or reach the point of contact required by the Digital Services Act: see the <a href="{{page "contact"}}">Contact</a> page.</p>
+</section>
+
+<section id="propriete">
+  <h2>Intellectual property and credits</h2>
+  <ul>
+    <li>The ProximaS name, the logo, and the website's texts and design may not be reused without permission.</li>
+    <li>Jost font, by The Jost Project Authors, under the <a href="{{asset "fonts/OFL.txt"}}">SIL Open Font License 1.1</a>, hosted on this website.</li>
+    <li>AI-generated illustrations. The people depicted are not users.</li>
+    <li>The screens shown are design mock-ups of the app.</li>
+  </ul>
+</section>
+
+<section id="cookies">
+  <h2>Cookies</h2>
+  <p>This website uses no cookies and no trackers and loads nothing from any other site. Details in the <a href="{{page "privacy"}}#site">privacy policy</a>.</p>
+</section>

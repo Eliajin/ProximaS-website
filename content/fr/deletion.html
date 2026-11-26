@@ -1,0 +1,86 @@
+<h1>Supprimer mon compte ProximaS</h1>
+<p class="chapo">Tu peux demander à tout moment la suppression de ton compte et de tes données, gratuitement, même si ton compte est suspendu ou si tu n'as plus l'application.</p>
+
+<section id="comment">
+  <h2>1. Comment faire</h2>
+  {{- if on "suppression_dans_app"}}
+  <div class="carte">
+    <h3>Dans l'application</h3>
+    <p>Ouvre <strong>Mon profil</strong>, puis <strong>Supprimer mon compte</strong>, et confirme avec ton mot de passe.</p>
+  </div>
+  {{- else}}
+  <div class="carte">
+    <h3>Dans l'application</h3>
+    <p>La suppression directement dans l'application n'est pas encore disponible. D'ici là, utilise un des moyens ci-dessous.</p>
+  </div>
+  {{- end}}
+  {{- if val "suppression_web_url"}}
+  <div class="carte">
+    <h3>Sur le web, sans l'application</h3>
+    <p>Indique l'adresse e-mail de ton compte sur la page de demande. Tu reçois un message avec un lien de confirmation, valable 1 heure : rien n'est supprimé tant que tu n'as pas confirmé.</p>
+    <p><a class="btn" href="{{val "suppression_web_url"}}" rel="noopener">Demander la suppression en ligne</a></p>
+  </div>
+  {{- end}}
+  <div class="carte">
+    <h3>Par e-mail</h3>
+    <p>Écris à {{mail}}, <strong>depuis l'adresse e-mail de ton compte</strong>, avec l'objet « Suppression de compte ». Nous te répondons à cette adresse pour confirmer qu'il s'agit bien de toi. N'envoie ni mot de passe ni pièce d'identité. Si tu n'as plus accès à cette adresse, explique-le : nous chercherons un autre moyen raisonnable de vérifier ta demande.</p>
+    <p><a class="btn{{if val "suppression_web_url"}} secondaire{{end}}" href="mailto:{{val "contact_email"}}?subject={{"Suppression de compte"}}">Écrire pour supprimer mon compte</a></p>
+  </div>
+</section>
+
+<section id="delai">
+  <h2>2. Ce qui se passe ensuite</h2>
+  {{- if on "lot5_serveur_deploye"}}
+  <ul>
+    <li>Dès la demande confirmée, ton profil n'est plus visible et tes sessions sont fermées.</li>
+    <li>Tu as <strong>14 jours</strong> pour changer d'avis : te reconnecter dans l'application annule la suppression.</li>
+    <li>Passé ce délai, l'effacement est définitif. Un e-mail te le confirme.</li>
+    <li>Les copies de sauvegarde qui contiennent encore tes données disparaissent au plus tard après <strong>35 jours</strong>.</li>
+  </ul>
+  {{- else}}
+  <ul>
+    <li>Nous vérifions que la demande vient bien de toi, puis nous effaçons le compte, au plus tard <strong>un mois</strong> après réception de ta demande.</li>
+    <li>L'effacement est définitif. Tu reçois une réponse quand c'est fait.</li>
+    <li>Les copies de sauvegarde qui contiennent encore tes données sont conservées <strong>35 jours</strong>, puis effacées lors de la sauvegarde suivante.</li>
+  </ul>
+  {{- end}}
+</section>
+
+<section id="efface">
+  <h2>3. Ce qui est effacé</h2>
+  <ul>
+    <li>le compte, l'adresse e-mail et le mot de passe ;</li>
+    <li>le profil, les photos, les réponses aux questions et l'envie du moment ;</li>
+    <li>la position, les filtres et les consentements ;</li>
+    <li>les signaux envoyés et reçus ;</li>
+    <li>les <strong>conversations entières</strong>, messages des deux personnes compris, et les propositions de moment ;</li>
+    <li>les blocages, les sessions et les appareils enregistrés pour les notifications.</li>
+  </ul>
+  <p>Désinstaller l'application ne supprime pas ton compte.</p>
+</section>
+
+<section id="conserve">
+  <h2>4. Ce qui est conservé, et pourquoi</h2>
+  <p>Pour protéger les autres personnes et pouvoir répondre en cas de litige, certaines données restent un temps limité (durées proposées, à valider par un juriste) :</p>
+  <dl class="faits">
+    <div><dt>Signalements faits ou reçus, avec leur contenu, et décisions</dt><dd>Les identifiants de ton compte sont effacés ; le dossier est gardé 365 jours après la décision. Un signalement pas encore décidé est gardé jusqu'à la décision.</dd></div>
+    <div><dt>Journal des actions de modération</dt><dd>730 jours, avec un identifiant interne du compte.</dd></div>
+    <div><dt>Compte banni</dt><dd>{{if on "lot5_serveur_deploye"}}Une empreinte de l'adresse, et non l'adresse, pendant 365 jours, pour refuser une réinscription.{{else}}La suppression est examinée au regard de la sécurité des autres personnes ; nous t'expliquons ce qui doit être conservé et pour combien de temps.{{end}}</dd></div>
+    <div><dt>Journaux techniques</dt><dd>Sans adresse IP ni donnée de profil ; effacés selon leur taille.</dd></div>
+    <div><dt>Ta demande et notre réponse par e-mail</dt><dd>12 mois, pour prouver qu'elle a été traitée.</dd></div>
+  </dl>
+</section>
+
+<section id="export">
+  <h2>5. Récupérer tes données avant de partir</h2>
+  {{- if on "export_dans_app"}}
+  <p>Dans l'application, ouvre <strong>Mon profil</strong>, puis <strong>Télécharger mes données</strong>. Tu obtiens une archive avec tes données et tes photos ; les messages et les textes écrits par d'autres personnes n'y sont pas. Fais-le avant de supprimer ton compte.</p>
+  {{- else}}
+  <p>Demande une copie de tes données à {{mail}} <strong>avant</strong> de demander la suppression : le téléchargement dans l'application n'est pas encore disponible.</p>
+  {{- end}}
+</section>
+
+<section id="autres">
+  <h2>6. Effacer seulement une partie</h2>
+  <p>Tu peux aussi, sans supprimer le compte, retirer des photos, effacer des réponses de profil ou ton envie, couper les notifications ou retirer un consentement (la position est alors effacée). Pour une autre demande, écris-nous. Voir <a href="{{page "privacy"}}#droits">tes droits</a>.</p>
+</section>

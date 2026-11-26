@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="{{.Lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{.Title}}</title>
+<meta name="description" content="{{.Description}}">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0B0720">
+{{- if .NotFound}}
+<meta name="robots" content="noindex">
+{{- else}}
+<link rel="canonical" href="{{.Canonical}}">
+{{- range .Alternates}}
+<link rel="alternate" hreflang="{{.Lang}}" href="{{.URL}}">
+{{- end}}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ProximaS">
+<meta property="og:title" content="{{.Title}}">
+<meta property="og:description" content="{{.Description}}">
+<meta property="og:url" content="{{.Canonical}}">
+<meta property="og:locale" content="{{if eq .Lang "fr"}}fr_FR{{else}}en_GB{{end}}">
+<meta property="og:locale:alternate" content="{{if eq .Lang "fr"}}en_GB{{else}}fr_FR{{end}}">
+<meta property="og:image" content="{{.ShareImage}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{t "og.image_alt"}}">
+<meta name="twitter:card" content="summary_large_image">
+{{- end}}
+<link rel="icon" href="{{asset "img/favicon-32.png"}}" sizes="32x32" type="image/png">
+<link rel="icon" href="{{asset "img/icone.svg"}}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{asset "img/icone-180.png"}}">
+<link rel="stylesheet" href="{{asset "style.css"}}">
+</head>
+<body>
+{{emailOff}}
+<a class="skip" href="#contenu">{{t "skip"}}</a>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="{{page "home"}}"><img src="{{asset "img/icone-96.png"}}" alt="" width="40" height="40"><span>Proxima<span class="s">S</span></span></a>
+    <a class="lang" href="{{.OtherURL}}" hreflang="{{.OtherLang}}" lang="{{.OtherLang}}" title="{{t "lang.switch_label"}}">{{t "lang.switch"}}</a>
+  </div>
+  <nav class="wrap menu" aria-label="{{t "nav.main"}}">
+    <ul>
+      {{- range .MainNav}}
+      <li><a href="{{.URL}}"{{if .Current}} aria-current="page"{{end}}>{{.Label}}</a></li>
+      {{- end}}
+    </ul>
+  </nav>
+</header>
+<main id="contenu" class="wrap{{if .Legal}} doc{{end}}" tabindex="-1">
+{{- if .Legal}}
+<p class="draft"><strong>{{t "draft.title"}}</strong> {{t "draft.text"}}</p>
+{{- end}}
+{{template "content" .}}
+{{- if .Legal}}
+<p class="updated">{{t "updated"}} <time datetime="{{val "date_textes"}}">{{.Date}}</time></p>
+{{- end}}
+</main>
+<footer class="bottom">
+  <div class="wrap">
+    <nav aria-label="{{t "nav.footer"}}">
+      <ul>
+        {{- range .FooterNav}}
+        <li><a href="{{.URL}}"{{if .Current}} aria-current="page"{{end}}>{{.Label}}</a></li>
+        {{- end}}
+      </ul>
+    </nav>
+    <p>{{t "footer.adults"}}</p>
+    <p>{{t "footer.cookies"}}</p>
+    <p>{{t "footer.publisher"}} {{champ "editeur_nom"}} ({{champ "editeur_nom_commercial"}}). {{mail}}</p>
+  </div>
+</footer>
+{{emailOn}}
+</body>
+</html>

@@ -1,0 +1,52 @@
+<h1>Mentions légales</h1>
+
+<section id="editeur">
+  <h2>Éditeur</h2>
+  <p>Le site proximas.be et l'application ProximaS sont édités par :</p>
+  <dl class="faits">
+    <div><dt>Nom</dt><dd>{{champ "editeur_nom"}}</dd></div>
+    <div><dt>Nom commercial</dt><dd>{{champ "editeur_nom_commercial"}}</dd></div>
+    <div><dt>Statut</dt><dd>{{champ "editeur_statut"}}</dd></div>
+    <div><dt>Adresse</dt><dd>{{champ "editeur_adresse"}}, {{champ "editeur_pays"}}</dd></div>
+    <div><dt>Adresse e-mail</dt><dd>{{mail}}</dd></div>
+    {{- if val "editeur_telephone"}}
+    <div><dt>Téléphone</dt><dd>{{champ "editeur_telephone"}}</dd></div>
+    {{- end}}
+    <div><dt>Numéro d'entreprise (BCE)</dt><dd>{{champ "editeur_bce"}}</dd></div>
+    <div><dt>TVA</dt><dd>{{champ "editeur_tva"}}</dd></div>
+    {{- if val "editeur_rpm"}}
+    <div><dt>Registre des personnes morales</dt><dd>{{champ "editeur_rpm"}}</dd></div>
+    {{- end}}
+  </dl>
+</section>
+
+<section id="publication">
+  <h2>Responsable de la publication et du traitement des données</h2>
+  <p>{{champ "responsable_publication"}}, seul. Voir la <a href="{{page "privacy"}}">politique de confidentialité</a>.</p>
+</section>
+
+<section id="hebergement">
+  <h2>Hébergement</h2>
+  <p>{{champ "hebergeur_nom"}}. {{champ "hebergeur_description"}} Responsable technique : {{champ "hebergeur_responsable_technique"}}. Contact technique : {{mail}}.</p>
+  <p>Le trafic passe par <strong>Cloudflare, Inc.</strong> (101 Townsend Street, San Francisco, CA 94107, États-Unis), qui relaie les connexions vers ce serveur et le protège.</p>
+</section>
+
+<section id="contact">
+  <h2>Contact et signalement</h2>
+  <p>Pour nous écrire, signaler un contenu illégal ou joindre le point de contact prévu par le règlement sur les services numériques : page <a href="{{page "contact"}}">Contact</a>.</p>
+</section>
+
+<section id="propriete">
+  <h2>Propriété intellectuelle et crédits</h2>
+  <ul>
+    <li>Le nom ProximaS, le logo, les textes et le design du site ne peuvent pas être réutilisés sans autorisation.</li>
+    <li>Police Jost, de The Jost Project Authors, sous licence <a href="{{asset "fonts/OFL.txt"}}">SIL Open Font License 1.1</a>, hébergée sur ce site.</li>
+    <li>Images d'illustration générées par IA. Les personnes représentées ne sont pas des utilisateurs.</li>
+    <li>Les écrans présentés sont des maquettes de l'application.</li>
+  </ul>
+</section>
+
+<section id="cookies">
+  <h2>Cookies</h2>
+  <p>Ce site n'utilise ni cookies ni traceurs et ne charge rien depuis un autre site. Détails dans la <a href="{{page "privacy"}}#site">politique de confidentialité</a>.</p>
+</section>

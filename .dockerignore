@@ -1,0 +1,7 @@
+# Contexte de build : seulement ce que deploy/Dockerfile.build copie.
+.git
+.env
+.env.*
+out
+_apercus
+*.exe

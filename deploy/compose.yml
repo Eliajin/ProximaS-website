@@ -1,0 +1,24 @@
+# proximas.be (site de presentation). Copie et lance dans ~/websites/prod/proximas_web par
+# deploy/build-prod.sh. Le port n'est publie que sur 127.0.0.1 : seul cloudflared (sur l'hote) peut
+# joindre le site. Aucune donnee, aucun volume, aucun secret : le .env est facultatif.
+services:
+  web:
+    build: .
+    image: proximas-web:local
+    container_name: proximas-web
+    restart: unless-stopped
+    user: "65532:65532"
+    ports:
+      - "127.0.0.1:${PROXIMAS_WEB_PORT:-8098}:8080"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 128m
+    cpus: 0.5
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

@@ -1,0 +1,103 @@
+<section class="hero" id="accueil">
+  <p class="etat">{{if or (val "lien_groupe_google") (val "lien_testflight")}}Beta in progress{{else}}Closed beta{{end}}</p>
+  <h1>Proxima<span class="s">S</span></h1>
+  <p class="slogan">Find your closest star.</p>
+  <p class="chapo">A local dating app, for adults only. No profile grid and no swiping: you explore your sky, then reach out to someone through whatever speaks to you.</p>
+  <figure class="visuel">
+    <img src="{{asset "img/visuel-1600.jpg"}}" srcset="{{asset "img/visuel-800.jpg"}} 800w, {{asset "img/visuel-1600.jpg"}} 1600w" sizes="(min-width: 66rem) 64rem, 100vw" width="1600" height="900" alt="Two silhouettes seen from behind, sitting on a rock, looking at the Earth and a starry sky.">
+    <figcaption>AI-generated illustration.</figcaption>
+  </figure>
+</section>
+
+<section id="beta">
+  <h2>Join the beta</h2>
+  <p>ProximaS is being tested ahead of a launch in Europe. The app is not yet available to the general public.</p>
+  <p>Want to try it? Write to us at {{mail}}.</p>
+  <div class="actions">
+    <a class="btn" href="mailto:{{val "contact_email"}}?subject={{"ProximaS beta"}}">Ask to take part</a>
+    {{- if val "lien_groupe_google"}}
+    <a class="btn secondaire" href="{{val "lien_groupe_google"}}" rel="noopener">Android test group (Google)</a>
+    {{- end}}
+    {{- if val "lien_testflight"}}
+    <a class="btn secondaire" href="{{val "lien_testflight"}}" rel="noopener">Test on iPhone (TestFlight)</a>
+    {{- end}}
+  </div>
+  <p class="note">{{if val "lien_testflight"}}The app is being tested on Android and iPhone.{{else}}The app is being tested on Android; the iPhone version is not available yet.{{end}}{{if not (on "app_en_anglais")}} For now the app itself is in French only.{{end}} It is for people aged 18 and over.</p>
+</section>
+
+<section id="ciel">
+  <h2>My sky: explore instead of scrolling</h2>
+  <div class="grille">
+    <div class="carte">
+      <h3>Stars around you</h3>
+      <p>Compatible people near you appear as stars: 50 at most, grouped in constellations of 10, from the nearest to the farthest. Where a star sits on screen is decorative: it shows neither a direction nor an exact distance.</p>
+    </div>
+    <div class="carte">
+      <h3>Compatible both ways</h3>
+      <p>You only see people whose gender matches what you are looking for, and who are also looking for people of your gender. The age ranges each person chooses apply both ways.</p>
+    </div>
+    <div class="carte">
+      <h3>Your filters, and a list</h3>
+      <p>Age, distance, with a photo, same mood, recently active. Prefer a list? It shows the same information.</p>
+    </div>
+  </div>
+</section>
+
+<section id="envie">
+  <h2>What you feel like doing</h2>
+  <div class="duo">
+    <div>
+      <p>A walk, a drink, a concert, a film, a meal, sport, a game or just a chat: say what you would like to do tonight, tomorrow or this weekend.</p>
+      <p>When someone shares the same wish for a time that overlaps yours, their star gets a blue ring. Your wish disappears by itself once the time has passed. It is optional.</p>
+    </div>
+    <figure class="maquette">
+      <img src="{{asset "img/maquette-envie.png"}}" width="600" height="1298" loading="lazy" alt="Mood screen mock-up, in French: choosing an activity and a time, then a button to light up your star.">
+      <figcaption>Design mock-up of the mood screen (in French).</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="signaux">
+  <h2>A signal, then a conversation</h2>
+  <div class="grille">
+    <div class="carte">
+      <h3>Start from a detail</h3>
+      <p>A signal replies to one precise item on a profile: a question, a photo or a mood. 240 characters at most, 5 signals a day (reset at midnight, Brussels time).</p>
+    </div>
+    <div class="carte">
+      <h3>Reply or pass</h3>
+      <p>A conversation only opens if the other person replies. Passing stays discreet: nobody is told. A signal with no reply expires after 14 days.</p>
+    </div>
+    <div class="carte">
+      <h3>Chat, then meet</h3>
+      <p>Text messaging and a way to suggest a time to meet (activity, date, hour), without sharing a location. Notifications are optional and only say that there is something new.</p>
+    </div>
+  </div>
+</section>
+
+<section id="securite">
+  <h2>People's safety</h2>
+  <ul>
+    <li>You can block someone at any time: you no longer see each other, and they are not told.</li>
+    <li>You can report a profile, a photo, a signal or a conversation.</li>
+    <li>Photos are checked before they become visible, and reports are reviewed by a person. Our target is to handle them within 24 hours.</li>
+    <li>Moderation decisions come with reasons and can be challenged.</li>
+    <li>The service is forbidden to anyone under 18. During the beta, age is calculated from the date of birth you declare: no external check is in place yet.</li>
+  </ul>
+  <p>No app can guarantee who is on the other side. Stay careful, especially before a first date. <a href="{{page "safety"}}">Read our safety advice</a>.</p>
+</section>
+
+<section id="vie-privee">
+  <h2>Your privacy</h2>
+  <ul>
+    <li>Your location is rounded to a grid of about 500 m before it is saved, and only the latest one is kept. The app asks for it while you use it, not in the background.</li>
+    <li>Others never receive your location: only an approximate distance.</li>
+    <li>You can hide your distance: it then appears neither in the sky, nor on your profile, nor in your conversations. Compatible people less than 25 km away can still see you, in a randomly chosen spot.</li>
+    <li>You can switch to invisible mode: your profile disappears from other people's sky, and your conversations remain.</li>
+    <li>Your sexual orientation is displayed, and stored, only if you choose to show it.</li>
+    <li>Location data embedded in your photos (EXIF) is removed.</li>
+    <li>The app shows no advertising today and contains no advertising or analytics tool. If advertising were added later, the privacy policy would be updated first.</li>
+    <li>{{if on "export_dans_app"}}You can download your data from the app.{{else}}You can ask for a copy of your data by email.{{end}} {{if on "suppression_dans_app"}}You can delete your account from the app.{{else}}You can ask for your account to be deleted at any time.{{end}}</li>
+  </ul>
+  <p><a href="{{page "privacy"}}">Privacy policy</a> · <a href="{{page "deletion"}}">Delete my account</a></p>
+</section>

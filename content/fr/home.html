@@ -1,0 +1,103 @@
+<section class="hero" id="accueil">
+  <p class="etat">{{if or (val "lien_groupe_google") (val "lien_testflight")}}Bêta en cours{{else}}Bêta fermée{{end}}</p>
+  <h1>Proxima<span class="s">S</span></h1>
+  <p class="slogan" lang="en">Find your closest star.</p>
+  <p class="chapo">Une application de rencontres de proximité, réservée aux adultes. Pas de grille de profils ni de swipe : tu explores ton ciel, puis tu abordes quelqu'un à partir de ce qui te parle.</p>
+  <figure class="visuel">
+    <img src="{{asset "img/visuel-1600.jpg"}}" srcset="{{asset "img/visuel-800.jpg"}} 800w, {{asset "img/visuel-1600.jpg"}} 1600w" sizes="(min-width: 66rem) 64rem, 100vw" width="1600" height="900" alt="Deux silhouettes de dos, assises sur un rocher, regardent la Terre et un ciel étoilé.">
+    <figcaption>Image d'illustration générée par IA.</figcaption>
+  </figure>
+</section>
+
+<section id="beta">
+  <h2>Participer à la bêta</h2>
+  <p>ProximaS est en cours de test, en vue d'un lancement en Europe. L'application n'est pas encore proposée au grand public.</p>
+  <p>Envie d'essayer ? Écris-nous à {{mail}}.</p>
+  <div class="actions">
+    <a class="btn" href="mailto:{{val "contact_email"}}?subject={{"Bêta ProximaS"}}">Demander à participer</a>
+    {{- if val "lien_groupe_google"}}
+    <a class="btn secondaire" href="{{val "lien_groupe_google"}}" rel="noopener">Groupe de test Android (Google)</a>
+    {{- end}}
+    {{- if val "lien_testflight"}}
+    <a class="btn secondaire" href="{{val "lien_testflight"}}" rel="noopener">Tester sur iPhone (TestFlight)</a>
+    {{- end}}
+  </div>
+  <p class="note">{{if val "lien_testflight"}}L'application est testée sur Android et sur iPhone.{{else}}L'application est testée sur Android ; la version iPhone n'est pas encore disponible.{{end}}{{if not (on "app_en_anglais")}} Elle est pour l'instant en français.{{end}} Elle est réservée aux personnes de 18 ans et plus.</p>
+</section>
+
+<section id="ciel">
+  <h2>Mon ciel : explorer plutôt que faire défiler</h2>
+  <div class="grille">
+    <div class="carte">
+      <h3>Des étoiles autour de toi</h3>
+      <p>Les personnes compatibles proches de toi apparaissent comme des étoiles : 50 au maximum, réparties en constellations de 10, des plus proches aux plus éloignées. La place d'une étoile à l'écran est décorative : elle n'indique ni une direction ni une distance exacte.</p>
+    </div>
+    <div class="carte">
+      <h3>Compatibles des deux côtés</h3>
+      <p>Tu ne vois que des personnes dont le genre correspond à ce que tu cherches, et qui cherchent aussi des personnes de ton genre. Les âges choisis par chacun comptent dans les deux sens.</p>
+    </div>
+    <div class="carte">
+      <h3>Tes filtres, et une liste</h3>
+      <p>Âge, distance, avec photo, même envie, actifs récemment. Tu préfères une liste ? Les mêmes informations s'y affichent.</p>
+    </div>
+  </div>
+</section>
+
+<section id="envie">
+  <h2>L'envie du moment</h2>
+  <div class="duo">
+    <div>
+      <p>Balade, verre, concert, ciné, resto, sport, jeu ou simple discussion : dis ce qui te ferait envie ce soir, demain ou ce week-end.</p>
+      <p>Quand une personne partage la même envie sur un moment qui recoupe le tien, son étoile est entourée d'un cercle bleu. Ton envie s'efface toute seule une fois le moment passé. Elle est facultative.</p>
+    </div>
+    <figure class="maquette">
+      <img src="{{asset "img/maquette-envie.png"}}" width="600" height="1298" loading="lazy" alt="Écran « Mon envie » : choix d'une activité et d'un moment, puis bouton « Allumer mon étoile ».">
+      <figcaption>Maquette de l'écran « Mon envie ».</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="signaux">
+  <h2>Un signal, puis une conversation</h2>
+  <div class="grille">
+    <div class="carte">
+      <h3>Aborder à partir d'un détail</h3>
+      <p>Un signal répond à un élément précis d'un profil : une question, une photo ou une envie. 240 caractères au maximum, 5 signaux par jour (remise à zéro à minuit, heure de Bruxelles).</p>
+    </div>
+    <div class="carte">
+      <h3>Répondre ou passer</h3>
+      <p>La conversation ne s'ouvre que si l'autre personne répond. Passer reste discret : personne n'est prévenu. Un signal sans réponse expire après 14 jours.</p>
+    </div>
+    <div class="carte">
+      <h3>Discuter, puis se voir</h3>
+      <p>Messagerie en texte et proposition d'un moment (activité, date, heure), sans partage de lieu. Les notifications, facultatives, disent seulement « Tu as du nouveau ».</p>
+    </div>
+  </div>
+</section>
+
+<section id="securite">
+  <h2>La sécurité des personnes</h2>
+  <ul>
+    <li>Tu peux bloquer quelqu'un à tout moment : vous ne vous voyez plus, et la personne n'est pas prévenue.</li>
+    <li>Tu peux signaler un profil, une photo, un signal ou une conversation.</li>
+    <li>Les photos sont contrôlées avant d'être visibles, et les signalements sont examinés par une personne. Notre objectif est de les traiter sous 24 heures.</li>
+    <li>Les décisions de modération sont motivées et peuvent être contestées.</li>
+    <li>Le service est interdit aux moins de 18 ans. Pendant la bêta, l'âge est calculé à partir de la date de naissance déclarée : aucune vérification externe n'est encore en place.</li>
+  </ul>
+  <p>Aucune application ne peut garantir qui se trouve en face de toi. Reste prudent, surtout avant un premier rendez-vous. <a href="{{page "safety"}}">Lire nos conseils de sécurité</a>.</p>
+</section>
+
+<section id="vie-privee">
+  <h2>Ta vie privée</h2>
+  <ul>
+    <li>Ta position est arrondie sur une grille d'environ 500 m avant d'être enregistrée, et seule la dernière est gardée. L'application la demande quand tu l'utilises, pas en arrière-plan.</li>
+    <li>Les autres ne reçoivent jamais ta position : seulement une distance approximative.</li>
+    <li>Tu peux masquer ta distance : elle n'apparaît alors ni dans le ciel, ni sur ta fiche, ni dans vos conversations. Les personnes compatibles situées à moins de 25 km peuvent encore te voir, à une place tirée au hasard.</li>
+    <li>Tu peux passer en mode invisible : ton profil disparaît du ciel des autres, tes conversations restent.</li>
+    <li>Ton orientation n'est affichée, et enregistrée, que si tu choisis de la montrer.</li>
+    <li>Les données de localisation intégrées à tes photos (EXIF) sont supprimées.</li>
+    <li>L'application n'affiche pas de publicité aujourd'hui et ne contient aucun outil publicitaire ni de mesure d'audience. Si de la publicité était ajoutée plus tard, la politique de confidentialité serait mise à jour avant.</li>
+    <li>{{if on "export_dans_app"}}Tu peux télécharger tes données depuis l'application.{{else}}Tu peux demander une copie de tes données par e-mail.{{end}} {{if on "suppression_dans_app"}}Tu peux supprimer ton compte depuis l'application.{{else}}Tu peux demander la suppression de ton compte à tout moment.{{end}}</li>
+  </ul>
+  <p><a href="{{page "privacy"}}">Politique de confidentialité</a> · <a href="{{page "deletion"}}">Supprimer mon compte</a></p>
+</section>

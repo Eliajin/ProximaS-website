@@ -1,0 +1,191 @@
+# Mise en ligne de proximas.be
+
+Rien de ce document n'a été exécuté sur le serveur ni dans Cloudflare : à lancer par le propriétaire. Les intitulés des menus GitHub et Cloudflare changent et n'ont pas été vérifiés dans les tableaux de bord.
+
+Relevé DNS public du 26/11/2026 (lecture seule) : zone `proximas.be` chez Cloudflare ; **aucun** enregistrement sur `proximas.be` (racine) ni `www` ; MX vers Cloudflare Email Routing (`route1` à `route3.mx.cloudflare.net`) ; TXT SPF (Cloudflare et Brevo), code Brevo et `_dmarc` ; `api.proximas.be` existe, `admin.proximas.be` pas encore.
+
+## 0. Avant
+
+1. `make champs` : remplir dans `site.conf` ce qui manque (voir le README).
+2. Vérifier que `contact@proximas.be` reçoit vraiment : Cloudflare > zone `proximas.be` > Email > Email Routing > une règle pour `contact@` vers une boîte relevée tous les jours (cette boîte est à nommer dans `fournisseur_boite_contact_fr` et `_en`). Envoyer un message d'essai. Cette adresse sert aux demandes de suppression, aux droits RGPD et aux signalements.
+3. Sur le serveur, vérifier que les messages privés ne sont pas relus automatiquement (le site l'affirme) :
+
+```bash
+grep -c '^TEXT_FILTER_PRIVATE=off$' ~/websites/prod/proximas/.env
+```
+
+Attendu : `1`. Si `0`, la valeur par défaut de l'API est `on` : ajouter `TEXT_FILTER_PRIVATE=off` au `.env` puis `cd ~/websites/prod/proximas && docker compose up -d`, **ou** mettre `relecture_messages_prives = oui` dans `site.conf`.
+
+## 1. Dépôt GitHub (privé)
+
+Sur GitHub : créer un dépôt **privé**, vide (sans README, `.gitignore` ni licence). Noter son adresse.
+
+Sur le PC (PowerShell), après avoir lu les fichiers :
+
+```powershell
+cd C:\Users\Eliajin\Documents\testAvecClaude\proximas_web
+git status
+git ls-files --stage deploy
+git commit -m "<message proposé>"
+git remote add origin <URL_DU_DEPOT_PRIVE>
+git push -u origin main
+```
+
+Attendu : `git ls-files --stage deploy` montre `100755` devant `build-prod.sh`, `smoke.sh` et `test-build-prod.sh` ; le push crée la branche `main`.
+
+## 2. Clone sur le serveur
+
+```bash
+mkdir -p ~/websites/generateprod
+cd ~/websites/generateprod
+git clone <URL_DU_DEPOT_PRIVE> proximas_web
+```
+
+Attendu : « Cloning into 'proximas_web'... » puis aucun message d'erreur. Le dépôt étant privé, le serveur doit y avoir accès, de la même façon que pour tes autres dépôts privés. S'il n'en a pas, une clé de déploiement en lecture seule suffit :
+
+```bash
+ssh-keygen -t ed25519 -f ~/.ssh/proximas_web_deploy -N ''
+cat ~/.ssh/proximas_web_deploy.pub      # clé PUBLIQUE : GitHub > dépôt > Settings > Deploy keys (sans droit d'écriture)
+printf '\nHost github-proximas-web\n  HostName github.com\n  User git\n  IdentityFile ~/.ssh/proximas_web_deploy\n  IdentitiesOnly yes\n' >> ~/.ssh/config
+chmod 600 ~/.ssh/config
+git clone git@github-proximas-web:<COMPTE>/<DEPOT>.git ~/websites/generateprod/proximas_web
+```
+
+## 3. Premier déploiement
+
+```bash
+ss -ltn | grep ':8098' ; echo "(rien au-dessus = port libre)"
+cd ~/websites/generateprod/proximas_web
+deploy/build-prod.sh --no-pull
+```
+
+Attendu : le build Docker (tests compris, puis la liste des champs vides), le démarrage du conteneur `proximas-web`, puis :
+
+```
+Sante OK : {"champs_manquants":N,"status":"ok","version":"..."}
+Deploiement termine.
+```
+
+`N` est le nombre de champs obligatoires encore vides (le déploiement fonctionne quand même). Aucun `.env` n'est nécessaire. Les fois suivantes : `deploy/build-prod.sh` seul (il fait le `git pull`). Retour arrière : `deploy/build-prod.sh --rollback`.
+
+```bash
+curl -s http://127.0.0.1:8098/api/health
+curl -s -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8098/confidentialite      # 200
+curl -s -o /dev/null -w '%{http_code} %{redirect_url}\n' -H 'Host: www.proximas.be' http://127.0.0.1:8098/contact
+# attendu : 301 https://proximas.be/contact
+```
+
+## 4. Cloudflare
+
+**Ne pas toucher** : les enregistrements MX, les TXT (SPF, code Brevo, `_dmarc`), les enregistrements DKIM, `api` et `admin`. On n'ajoute que `proximas.be` (racine, notée `@`) et `www`.
+
+D'abord savoir comment le tunnel est géré (utiliser la même méthode que pour `api.proximas.be`) :
+
+```bash
+systemctl cat cloudflared | grep ExecStart
+journalctl -u cloudflared -n 200 --no-pager | grep -i "updated to new configuration" | tail -1
+```
+
+- `--token` dans `ExecStart`, ou des lignes « updated to new configuration » : tunnel géré dans le tableau de bord, variante A. La configuration distante **remplace** alors tout `config.yml`.
+- Sinon (`--config`, fichier `config.yml`) : variante B.
+
+D'après les notes d'Orbite et de TouchePaMa, les deux façons ont été rencontrées sur ce serveur : vérifier plutôt que supposer.
+
+### Variante A : tableau de bord
+
+Zero Trust > Networks > Tunnels > le tunnel qui sert `api.proximas.be` > Edit > Public Hostname (ou « Published application routes ») > Add :
+
+| Sous-domaine | Domaine | Chemin | Type | URL |
+|---|---|---|---|---|
+| (vide) | `proximas.be` | (vide) | HTTP | `localhost:8098` |
+| `www` | `proximas.be` | (vide) | HTTP | `localhost:8098` |
+
+- Ne pas renseigner « HTTP Host Header » : le site a besoin du nom demandé pour rediriger `www`.
+- Si une règle joker du même domaine existe, ces deux règles doivent être au-dessus.
+- Le tableau de bord crée normalement les enregistrements DNS. Vérifier dans la zone `proximas.be` > DNS : `CNAME @` et `CNAME www` vers `<ID_DU_TUNNEL>.cfargotunnel.com`, proxy activé. Sinon les créer à la main (la racine accepte un CNAME chez Cloudflare).
+
+### Variante B : fichier `config.yml`
+
+```bash
+sudo cp /etc/cloudflared/config.yml /etc/cloudflared/config.yml.bak-proximas-web
+sudo nano /etc/cloudflared/config.yml
+```
+
+Ajouter **avant** la règle finale (`- service: http_status:404`), sans modifier les autres :
+
+```yaml
+  - hostname: proximas.be
+    service: http://localhost:8098
+  - hostname: www.proximas.be
+    service: http://localhost:8098
+```
+
+```bash
+sudo cloudflared tunnel --config /etc/cloudflared/config.yml ingress validate                                     # OK
+sudo cloudflared tunnel --config /etc/cloudflared/config.yml ingress rule https://proximas.be | grep -i service       # localhost:8098
+sudo cloudflared tunnel --config /etc/cloudflared/config.yml ingress rule https://www.proximas.be | grep -i service   # localhost:8098
+sudo systemctl restart cloudflared && systemctl is-active cloudflared                                                 # active
+```
+
+Puis les enregistrements DNS.
+
+> **Attention, piège connu sur `pamaelia-001`** (noté dans le README d'Orbite) : le certificat de `cloudflared` y est lié à la zone `lasdestoits.be`. `cloudflared tunnel route dns` crée alors `proximas.be.lasdestoits.be` au lieu de `proximas.be`. Dans ce cas, **ne pas utiliser la commande** : créer à la main dans Cloudflare > zone `proximas.be` > DNS les deux CNAME `@` et `www` vers `<ID_DU_TUNNEL>.cfargotunnel.com`, proxy activé.
+
+Seulement si le certificat correspond bien à la zone `proximas.be` :
+
+```bash
+cloudflared tunnel list
+cloudflared tunnel route dns <NOM_DU_TUNNEL> proximas.be
+cloudflared tunnel route dns <NOM_DU_TUNNEL> www.proximas.be
+```
+
+Attendu : « Added CNAME proximas.be which will route to this tunnel » (le nom affiché doit se terminer exactement par `proximas.be`). Si un autre suffixe apparaît, supprimer l'enregistrement créé dans la mauvaise zone et passer par le tableau de bord.
+
+### Redirection `www`
+
+Elle est faite par le site lui-même (301 vers `https://proximas.be`, chemin conservé) : aucune règle de redirection Cloudflare à créer.
+
+### Réglages de la zone à vérifier (le site annonce « aucun cookie, aucun script »)
+
+- Security > Bots : « Bot Fight Mode » désactivé (il pose un cookie et injecte un script).
+- Analytics & Logs > Web Analytics : pas d'injection automatique sur `proximas.be`.
+- Speed : « Rocket Loader » désactivé.
+- Scrape Shield : « Email Address Obfuscation » peut rester (les pages demandent à Cloudflare de ne pas les réécrire).
+- SSL/TLS : ne rien changer si `api.proximas.be` fonctionne ; « Always Use HTTPS » activé.
+- Aucune règle « Cache Everything » qui couvrirait aussi `api.proximas.be`.
+
+## 5. Vérifier de l'extérieur
+
+```bash
+curl -s https://proximas.be/api/health                                                    # {"champs_manquants":N,"status":"ok",...}
+curl -s -o /dev/null -w '%{http_code}\n' https://proximas.be/suppression-compte           # 200
+curl -s -o /dev/null -w '%{http_code}\n' https://proximas.be/en/privacy                   # 200
+curl -s -o /dev/null -w '%{http_code} %{redirect_url}\n' https://www.proximas.be/contact  # 301 https://proximas.be/contact
+curl -sI https://proximas.be/ | grep -iE 'content-security|strict-transport|set-cookie'   # les deux premiers, AUCUN set-cookie
+curl -s https://api.proximas.be/api/health                                                # inchangé
+```
+
+Sur le PC, les e-mails ne doivent pas avoir bougé :
+
+```powershell
+Resolve-DnsName proximas.be -Type MX
+Resolve-DnsName proximas.be -Type TXT
+```
+
+Dans un navigateur (ordinateur et téléphone) : ouvrir chaque page dans les deux langues ; l'adresse `contact@proximas.be` doit s'afficher en clair (et non « [email protected] ») ; outils de développement > Application > Cookies : vide.
+
+Puis renseigner les adresses dans les consoles des magasins : confidentialité `https://proximas.be/confidentialite`, suppression `https://proximas.be/suppression-compte`, assistance `https://proximas.be/contact`.
+
+## Quand le lot 5 est déployé (ProximaS)
+
+Les textes suivent `site.conf`. Ne passer à `oui` que ce qui est réellement en service.
+
+| Moment | Réglage |
+|---|---|
+| API du lot 5 déployée | `lot5_serveur_deploye = oui` et `suppression_web_url = https://api.proximas.be/suppression-compte` (l'ouvrir d'abord : le formulaire doit s'afficher et l'e-mail arriver) |
+| Version de l'app avec la suppression distribuée aux testeurs | `suppression_dans_app = oui` |
+| Version de l'app avec l'export distribuée | `export_dans_app = oui` |
+
+Puis mettre à jour `date_textes`, `make test`, commit, push, et `deploy/build-prod.sh` sur le serveur. Relire `/suppression-compte` en ligne.
+
+**D'ici là**, une demande de suppression ou d'export reçue par e-mail doit être traitée à la main dans le mois : la version de l'API en ligne n'a pas de commande pour cela. Déployer le lot 5 rapidement règle ce point.

@@ -1,0 +1,25 @@
+# Configuration de prod (jamais dans le depot)
+.env
+.env.*
+!env.example
+
+# Cles et certificats
+*.pem
+*.key
+
+# Builds
+out/
+proximas-web
+*.exe
+*.test
+
+# Captures de verification et fichiers temporaires
+_apercus/
+spe-proximas-web-*
+
+# Journaux et fichiers systeme
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
