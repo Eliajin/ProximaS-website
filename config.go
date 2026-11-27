@@ -55,6 +55,7 @@ var fields = []fieldSpec{
 	{"zone_fr", required, "pays où le service est proposé (français)"},
 	{"zone_en", required, "pays où le service est proposé (anglais)"},
 	{"lien_groupe_google", optional, "lien du groupe Google des testeurs"},
+	{"lien_test_play", optional, "page Google Play « Devenir testeur » (test Android)"},
 	{"lien_testflight", optional, "lien public TestFlight"},
 	{"lot5_serveur_deploye", toggle, "API du lot 5 déployée"},
 	{"suppression_dans_app", toggle, "suppression du compte dans l'application distribuée"},
@@ -66,6 +67,7 @@ var fields = []fieldSpec{
 	{"photos_privees", toggle, "photos privées ouvertes (PRIVATE_PHOTOS=on)"},
 	{"masquage_photos_age", toggle, "masquage des photos après des signalements d'âge déployé"},
 	{"lot8_serveur_deploye", toggle, "API du lot 8 déployée (favoris, « vu », saisie en cours, mise à jour)"},
+	{"build3_distribue", toggle, "build 3 de l'application distribué aux testeurs (sinon « pas encore distribué »)"},
 }
 
 // Config : contenu de site.conf.
@@ -159,7 +161,7 @@ func (c *Config) validate() error {
 	if a, err := netmail.ParseAddress(email); err != nil || a.Address != email || strings.ContainsAny(email, "?&#%") {
 		return fmt.Errorf("site.conf : contact_email doit être une adresse e-mail simple")
 	}
-	for _, k := range []string{"lien_groupe_google", "lien_testflight", "suppression_web_url"} {
+	for _, k := range []string{"lien_groupe_google", "lien_test_play", "lien_testflight", "suppression_web_url"} {
 		v := c.values[k]
 		if v == "" {
 			continue

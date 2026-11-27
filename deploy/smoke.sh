@@ -15,8 +15,9 @@ for _ in $(seq 1 30); do curl -fsS "$BASE/api/health" >/dev/null 2>&1 && break; 
 health="$(curl -fsS "$BASE/api/health")" || fail "/api/health"
 echo "sante : $health"
 
-for p in / /mentions-legales /confidentialite /conditions /conditions/version-1 /confidentialite/version-1 /suppression-compte /securite /contact \
-  /en/ /en/legal-notice /en/privacy /en/terms /en/account-deletion /en/safety /en/contact \
+for p in / /mentions-legales /confidentialite /conditions /conditions/version-1 /confidentialite/version-1 /confidentialite/version-2 \
+  /suppression-compte /securite /contact /devenir-testeur \
+  /en/ /en/become-a-tester /en/legal-notice /en/privacy /en/terms /en/account-deletion /en/safety /en/contact /en/privacy/version-1 /en/privacy/version-2 /en/terms/version-1 \
   /robots.txt /sitemap.xml /favicon.ico /static/style.css /static/fonts/Jost-Variable.ttf; do
   [ "$(curl -s -o /dev/null -w '%{http_code}' "$BASE$p")" = 200 ] || fail "$p"
 done

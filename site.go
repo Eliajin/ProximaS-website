@@ -22,17 +22,20 @@ type pageDef struct {
 	paths map[string]string
 	legal bool   // bandeau « brouillon, à valider par un juriste » et date des textes
 	date  string // version archivée : sa date, figée (vide : date_textes)
+	text  bool   // page de texte (colonne étroite) qui n'est pas un texte légal
 }
 
 // pageDefs : les adresses françaises sont utilisées par l'application et les magasins : ne pas les changer.
 var pageDefs = []pageDef{
 	{id: "home", paths: map[string]string{"fr": "/", "en": "/en/"}},
+	{id: "tester", text: true, paths: map[string]string{"fr": "/devenir-testeur", "en": "/en/become-a-tester"}},
 	{id: "safety", legal: true, paths: map[string]string{"fr": "/securite", "en": "/en/safety"}},
 	{id: "privacy", legal: true, paths: map[string]string{"fr": "/confidentialite", "en": "/en/privacy"}},
 	{id: "terms", legal: true, paths: map[string]string{"fr": "/conditions", "en": "/en/terms"}},
 	// Archives : texte figé (content/<langue>/<id>.html), jamais modifié après publication.
 	{id: "terms-v1", legal: true, date: "2026-11-26", paths: map[string]string{"fr": "/conditions/version-1", "en": "/en/terms/version-1"}},
 	{id: "privacy-v1", legal: true, date: "2026-11-26", paths: map[string]string{"fr": "/confidentialite/version-1", "en": "/en/privacy/version-1"}},
+	{id: "privacy-v2", legal: true, date: "2026-11-27", paths: map[string]string{"fr": "/confidentialite/version-2", "en": "/en/privacy/version-2"}},
 	{id: "deletion", legal: true, paths: map[string]string{"fr": "/suppression-compte", "en": "/en/account-deletion"}},
 	{id: "contact", legal: true, paths: map[string]string{"fr": "/contact", "en": "/en/contact"}},
 	{id: "legal", legal: true, paths: map[string]string{"fr": "/mentions-legales", "en": "/en/legal-notice"}},
@@ -44,8 +47,8 @@ const notFoundID = "404"
 const defaultAlternate = "en"
 
 var (
-	mainNav   = []string{"home", "safety", "privacy", "contact"}
-	footerNav = []string{"legal", "privacy", "terms", "deletion", "safety", "contact"}
+	mainNav   = []string{"home", "tester", "safety", "privacy", "contact"}
+	footerNav = []string{"legal", "privacy", "terms", "deletion", "safety", "contact", "tester"}
 )
 
 // aliases : adresses anciennes ou approchantes, redirigées (301).
@@ -57,6 +60,7 @@ var aliases = map[string]string{
 	"/en/suppression-compte": "/en/account-deletion",
 	"/en/confidentialite":    "/en/privacy",
 	"/en/conditions":         "/en/terms",
+	"/en/devenir-testeur":    "/en/become-a-tester",
 }
 
 var contentTypes = map[string]string{
@@ -106,7 +110,7 @@ type view struct {
 	DateISO                     string
 	Alternates                  []alternate
 	MainNav, FooterNav          []navItem
-	Legal, NotFound             bool
+	Legal, NotFound, Narrow     bool
 }
 
 const (
@@ -320,7 +324,7 @@ func (s *Site) render(fsys fs.FS, layout, lang string, p pageDef) ([]byte, error
 		return nil, err
 	}
 	v := view{
-		Lang: lang, OtherLang: other, Legal: p.legal, NotFound: p.id == notFoundID,
+		Lang: lang, OtherLang: other, Legal: p.legal, NotFound: p.id == notFoundID, Narrow: p.legal || p.text,
 		DateISO:    iso,
 		Date:       fmt.Sprintf("%d %s %d", date.Day(), months[lang][date.Month()-1], date.Year()),
 		ShareImage: base + "/static/img/partage.jpg",

@@ -40,23 +40,28 @@
   <dl class="faits">
     <div><dt>Compte</dt><dd>Adresse e-mail, mot de passe (conservé uniquement sous forme d'empreinte, jamais en clair), date de naissance, résultat et méthode de la vérification de l'âge, état du compte, date de création et date de dernière activité.</dd></div>
     <div><dt>Langue et fuseau horaire</dt><dd>La langue de l'application (français ou anglais) et le fuseau horaire de ton téléphone (par exemple « Europe/Helsinki »), qui indique à peu près le pays où tu te trouves. L'application les annonce à chaque échange avec le serveur ; les dernières valeurs sont gardées sur ton compte, pour les e-mails, la notification, la langue de l'archive de tes données et le calcul des journées (envies, signaux, limite de messages). Ils ne sont pas affichés aux autres ni écrits dans les journaux techniques. Une version plus ancienne de l'application n'annonce rien : le français et l'heure de Bruxelles s'appliquent.</dd></div>
-    <div><dt>Profil</dt><dd>Prénom (que tu peux changer dans l'application), genre, genres que tu souhaites rencontrer, orientation (seulement si tu choisis de l'afficher), photos (0 à 6), réponses à 3 questions de profil au maximum, envies du moment (jusqu'à 3 pour un même moment), filtres, options « mode invisible », « masquer ma distance » et « visiter discrètement », historique récent des changements de genre ou de recherche.</dd></div>
+    <div><dt>Profil</dt><dd>Prénom (que tu peux changer dans l'application), genre, genres que tu souhaites rencontrer, orientation (seulement si tu choisis de l'afficher), photos (0 à 6), réponses à 3 questions de profil au maximum, envies du moment (jusqu'à 3 pour un même moment), filtres, options « mode invisible », « masquer ma distance », « visiter discrètement » et « masquer mon statut », historique récent des changements de genre ou de recherche.</dd></div>
     <div><dt>Position</dt><dd>Une case d'environ 500 m de côté (jusqu'à environ 1 km d'est en ouest au nord) et l'heure de sa mise à jour ; quelques compteurs de déplacements impossibles, contre la triche.</dd></div>
     <div><dt>Échanges</dt><dd>Signaux envoyés et reçus et leur suite (dont la date à laquelle un signal a été passé), conversations, messages, propositions de moment, état de lecture.</dd></div>
     {{- if on "lot8_serveur_deploye"}}
     <div><dt>Favoris, « Vu » et « en train d'écrire »</dt><dd>Les personnes que tu ajoutes à tes favoris et la date de l'ajout ; jusqu'à quel message chaque personne a lu, pendant que les deux partagent leurs accusés de lecture ; les réglages « Accusés de lecture » et « En train d'écrire ». Le fait que tu écrives est transmis en direct et jamais enregistré (voir <a href="#favoris">les favoris</a> et <a href="#vu">« Vu »</a>).</dd></div>
     {{- end}}
-    <div><dt>Visites de profil</dt><dd>Qui a ouvert la fiche de qui, et la date de la dernière visite, à l'heure près (voir <a href="#visites">les visites de profil</a>).</dd></div>
+    <div><dt>Visites de profil</dt><dd>Qui a ouvert la fiche de qui, la date de la dernière visite, à l'heure près, et si la personne visitée l'a consultée ou non (voir <a href="#visites">les visites de profil</a>).</dd></div>
+    <div><dt>Statut « En ligne »</dt><dd>La date de ta dernière activité avec une application qui propose ce statut (build 3) : la dernière seulement, sans historique, ainsi que ton réglage « Masquer mon statut » (voir <a href="#statut">le statut « En ligne »</a>).</dd></div>
+    <div><dt>Envie « Sans lendemain »</dt><dd>Si tu la choisis (build 3) : ce choix, son moment et ton accord (version du texte, langue, dates auxquelles tu l'as donné et retiré). C'est une <a href="#sans-lendemain">donnée sensible</a>.</dd></div>
     {{- if on "photos_privees"}}
     <div><dt>Photos privées et albums</dt><dd>Si tu les utilises : les photos de ta galerie privée (30 au plus) et celles que tu envoies, tes albums (5 au plus, dont le nom n'est montré qu'à toi), les envois et les partages (qui, à qui, quand, mode, ouverture, disparition) et le réglage « Refuser les photos » (voir <a href="#photos-privees">les photos privées</a>).</dd></div>
     {{- end}}
     <div><dt>Sécurité et modération</dt><dd>Blocages ; signalements faits ou reçus (motif, précisions, prénom et réponses de profil visibles à ce moment, extraits de conversation joints avec accord) ; décisions, sanctions, contestations ; journal des actions de modération{{if on "lot5_serveur_deploye"}} ; après l'effacement de certains comptes, une empreinte de l'adresse e-mail (voir <a href="#durees">les durées</a>){{end}}.</dd></div>
     <div><dt>Consentements</dt><dd>Ce que tu as accepté ou retiré, la version du texte, la langue dans laquelle tu l'as accepté et la date. Le texte français est la version de référence.</dd></div>
-    <div><dt>Appareil et technique</dt><dd>Sessions de connexion (jetons conservés sous forme d'empreinte) ; si tu actives les notifications, un identifiant de ton appareil et un jeton de notification ; journaux techniques limités à la route appelée, au code de réponse, à la durée et à un numéro de requête, sans adresse IP ni contenu. Ton adresse IP est utilisée en mémoire pour limiter les abus, sans être écrite dans ces journaux.{{if on "lot8_serveur_deploye"}} Pour proposer une mise à jour, la version à jour de l'application demande au serveur, au lancement et à son retour au premier plan, le numéro de la dernière version : sans compte, elle indique ton système (Android ou iPhone) avec, comme à chaque échange, la langue et le fuseau horaire, qui ne sont pas enregistrés à cette occasion. La comparaison avec la version installée se fait sur ton téléphone ; le bandeau « Mise à jour disponible » ne bloque rien.{{end}}</dd></div>
+    <div><dt>Appareil et technique</dt><dd>Sessions de connexion (jetons conservés sous forme d'empreinte) ; si tu actives les notifications, un identifiant de ton appareil et un jeton de notification ; journaux techniques limités à la route appelée, au code de réponse, à la durée et à un numéro de requête, sans adresse IP ni contenu. Ton adresse IP est utilisée en mémoire pour limiter les abus, sans être écrite dans ces journaux. Pour les e-mails qui confirment ton adresse ou changent ton mot de passe, sont aussi gardés des empreintes du lien et du code, leur échéance et le nombre d'essais ratés (voir <a href="#liens-email">les liens et les codes</a>).{{if on "lot8_serveur_deploye"}} Pour proposer une mise à jour, la version à jour de l'application demande au serveur, au lancement et à son retour au premier plan, le numéro de la dernière version : sans compte, elle indique ton système (Android ou iPhone) avec, comme à chaque échange, la langue et le fuseau horaire, qui ne sont pas enregistrés à cette occasion. La comparaison avec la version installée se fait sur ton téléphone ; le bandeau « Mise à jour disponible » ne bloque rien.{{end}}</dd></div>
+    {{- if val "lien_groupe_google"}}
+    <div><dt>Test sur Android</dt><dd>Si tu rejoins le groupe Google des testeurs : l'adresse e-mail et le nom affiché de ton compte Google, que l'éditeur voit en tant qu'administrateur du groupe (voir <a href="#test">le groupe de test</a>).</dd></div>
+    {{- end}}
     <div><dt>Contact</dt><dd>Les messages que tu nous envoies par e-mail et nos réponses.</dd></div>
     <div><dt>Rectification</dt><dd>La correction que tu demandes et, pour un changement d'adresse, la nouvelle adresse en attente de confirmation. Un justificatif d'identité peut être regardé pour vérifier ta demande, sans être conservé (voir <a href="#rectification">la rectification</a>).</dd></div>
   </dl>
-  <p>Les informations de compte, le genre et les genres recherchés, la position et les trois consentements requis sont nécessaires au service : sans eux, le compte ne peut pas être créé ou le profil est désactivé. Les photos{{if on "photos_privees"}} (de profil comme privées){{end}}, les réponses aux questions, les envies, l'affichage de l'orientation et les notifications sont facultatifs. Les visites de profil sont enregistrées automatiquement, sauf avec « Visiter discrètement » ou le mode invisible.</p>
+  <p>Les informations de compte, le genre et les genres recherchés, la position et les trois consentements requis sont nécessaires au service : sans eux, le compte ne peut pas être créé ou le profil est désactivé. Les photos{{if on "photos_privees"}} (de profil comme privées){{end}}, les réponses aux questions, les envies, l'affichage de l'orientation et les notifications sont facultatifs. Les visites de profil sont enregistrées automatiquement, sauf avec « Visiter discrètement » ou le mode invisible. L'envie « Sans lendemain » est elle aussi facultative. Le statut « En ligne » (build 3) est activé tant que tu ne le masques pas.</p>
 </section>
 
 <section id="sensibles">
@@ -70,9 +75,10 @@
     {{- if on "lot8_serveur_deploye"}}
     <li>La liste de tes <a href="#favoris">favoris</a> peut elle aussi révéler ta vie sexuelle ou ton orientation. En ajouter est facultatif et aucune case de consentement séparée n'est demandée : la base légale reste <strong>à valider par un juriste</strong> (article 9).</li>
     {{- end}}
+    <li>L'envie <a href="#sans-lendemain">« Sans lendemain »</a> (build 3) dit quelque chose de ta vie sexuelle. Elle n'est enregistrée qu'avec un <strong>consentement explicite séparé</strong>, jamais coché d'avance, demandé à sa première utilisation et retirable à tout moment. La base légale et le texte de cet accord restent <strong>à valider par un juriste</strong> (article 9).</li>
     <li>L'orientation sert à préremplir tes choix. Elle n'est enregistrée que si tu actives « Afficher mon orientation » (désactivé par défaut) : elle apparaît alors sur ta fiche (version à jour de l'application). Sinon, elle est masquée et n'est pas conservée. Elle n'apparaît jamais dans le ciel, la grille, les listes ni les notifications. Avant cette mise à jour, ce réglage ne montrait rien aux autres : par prudence, il est remis à « masqué » et l'orientation enregistrée est effacée ; pour l'afficher, réactive-le dans Mon profil, « Modifier mon profil ». Base légale de cet affichage <strong>à valider par un juriste</strong> (article 9).</li>
-    <li>Si tu retires ce consentement, l'orientation et les genres recherchés sont effacés et ton profil est désactivé.</li>
-    <li>Aucune donnée de genre, d'orientation, de position ou de message n'est écrite dans les journaux techniques ni dans les notifications.</li>
+    <li>Si tu retires ce consentement, l'orientation et les genres recherchés sont effacés et ton profil est désactivé. Ton accord pour « Sans lendemain » est alors retiré lui aussi, et cette envie effacée.</li>
+    <li>Aucune donnée de genre, d'orientation, de position ou de message n'est écrite dans les journaux techniques ni dans les notifications ; l'envie « Sans lendemain » non plus.</li>
   </ul>
 </section>
 
@@ -84,7 +90,7 @@
     <li>Les autres personnes ne reçoivent jamais tes coordonnées, seulement un palier : « à moins de 1 km » ou « à environ N km ». Dans une conversation, ce palier est recalculé au plus une fois par jour (jour compté à l'heure de Bruxelles, quel que soit ton fuseau horaire). Au-delà de 100 km, le palier est plus grossier : arrondi à 10 km près jusqu'à 1000 km, puis à 100 km près. La distance exacte n'est jamais montrée.</li>
     <li id="limite-distance"><strong>Limiter la distance</strong> est facultatif (de 1 à 100 km, dans les filtres). Cette limite ne porte que sur ce que toi tu vois : elle ne restreint pas qui peut te voir. Tant que l'éditeur laisse l'option « sans limite » ouverte, un compte qui n'a jamais enregistré de filtres n'a pas de limite (des filtres déjà enregistrés gardent la leur), et les personnes compatibles qui ne limitent pas la distance peuvent voir ton profil même si elles sont éloignées. L'éditeur peut rétablir plus tard une limite maximale pour tout le monde : « sans limite » vaut alors 100 km, et les distances au-delà ne sont plus affichées.</li>
     <li>Avec l'option « Masquer ma distance », aucun palier n'est montré à ton sujet, dans le ciel comme sur ta fiche, et aucune distance n'apparaît dans vos conversations, pour l'une comme pour l'autre personne. Dans le ciel et la grille, ton profil n'est pas classé selon la distance : il y occupe une place tirée au hasard (10 profils à distance masquée au maximum par ciel, tirage renouvelé chaque jour). Qui peut te voir dépend du filtre de l'autre personne. Si elle limite la distance, seulement quand tu es à moins de 25 km d'elle, quelle que soit la limite qu'elle a choisie : te voir lui apprend alors que tu es dans ce rayon. Si elle ne la limite pas, tu es tiré au sort parmi tous les profils compatibles, sans rayon : te voir ne lui apprend alors rien sur ta distance. Toi, tu continues à voir la distance approximative des autres dans le ciel et sur les fiches.</li>
-    <li>Le mode invisible retire ton profil du ciel et de la grille des autres. Tes conversations restent, et aucune distance n'y apparaît, pour l'une comme pour l'autre personne. Il arrête aussi l'enregistrement des <a href="#visites">visites de profil</a>.</li>
+    <li>Le mode invisible retire ton profil du ciel et de la grille des autres. Tes conversations restent, et aucune distance n'y apparaît, pour l'une comme pour l'autre personne. Il arrête aussi l'enregistrement des <a href="#visites">visites de profil</a>. Avec le build 3, tu apparais en plus toujours « Hors ligne » (voir <a href="#statut">le statut « En ligne »</a>).</li>
     <li id="fiche"><strong>Qui peut encore ouvrir ta fiche.</strong> En mode invisible, ou quand ta position n'a pas été mise à jour depuis plus de 7 jours, tu n'apparais ni dans le ciel ni dans la grille. Ta fiche et tes photos de profil restent alors consultables uniquement par une personne avec qui tu as une conversation, ou à qui tu as envoyé un signal encore en attente (ni accepté, ni passé) et non expiré, sans aucune indication de distance. Un signal envoyé en mode invisible ouvre donc ta fiche à la personne qui le reçoit. Un signal que tu as seulement reçu ne lui donne pas cet accès. Un blocage, dans un sens ou dans l'autre, le ferme.</li>
     <li>Une distance, même approximative, peut aider une personne déterminée à deviner ton secteur. Masquer ta distance retire cette indication, mais ne te retire pas du ciel des autres : avec une limite de distance activée, une personne qui t'y voit sait que tu es à moins de 25 km, et en changeant de position à plusieurs reprises, elle peut essayer de préciser où tu es. Limiter ta propre distance ne protège pas ta position. Le mode invisible te retire du ciel et de la grille, mais ne ferme pas ta fiche aux personnes décrites ci-dessus ; bloque celles à qui tu ne veux plus la montrer. Aucun de ces réglages n'efface ce que d'autres ont déjà vu ou noté, ni ne garantit qu'on ne puisse pas deviner ton secteur : tes photos et tes messages peuvent aussi donner des indices.</li>
     <li>Si tu retires le consentement « position », la position enregistrée est effacée immédiatement et ton profil est désactivé.</li>
@@ -96,6 +102,12 @@
   <dl class="faits">
     <div><dt>Créer et gérer ton compte, montrer des profils compatibles, transmettre signaux et messages</dt><dd>Exécution du contrat (article 6, paragraphe 1, point b, du RGPD).</dd></div>
     <div><dt>Montrer à une personne qui a ouvert sa fiche (« A vu ton profil »)</dt><dd><strong>Base légale à valider par un juriste.</strong> Base envisagée : exécution du contrat (article 6, paragraphe 1, point b) ou intérêt légitime (article 6, paragraphe 1, point f). Il reste aussi à valider si ces visites sont des données sensibles (article 9). Tu peux t'opposer à tout moment à l'enregistrement de nouvelles visites avec « Visiter discrètement » (voir <a href="#visites">les visites de profil</a>).</dd></div>
+    <div><dt>Montrer le statut « En ligne » et permettre de filtrer sur lui (build 3)</dt><dd><strong>Base légale à valider par un juriste</strong>, comme son activation par défaut (protection des données par défaut, article 25). Base envisagée : exécution du contrat (article 6, paragraphe 1, point b) ou intérêt légitime (article 6, paragraphe 1, point f). Tu peux t'y opposer à tout moment avec « Masquer mon statut ».</dd></div>
+    <div><dt>Enregistrer l'envie « Sans lendemain » et la montrer aux personnes qui l'ont aussi activée (build 3)</dt><dd>Ton consentement explicite (article 9, paragraphe 2, point a, et article 6, paragraphe 1, point a), retirable à tout moment. <strong>À valider par un juriste</strong>, texte de l'accord compris.</dd></div>
+    <div><dt>Garder les dates auxquelles tu as donné et retiré cet accord</dt><dd><strong>Base légale à valider par un juriste.</strong> Base envisagée : obligation de pouvoir démontrer le consentement (article 6, paragraphe 1, point c, et article 7, paragraphe 1).</dd></div>
+    {{- if val "lien_groupe_google"}}
+    <div><dt>Donner accès au test Android au moyen d'un groupe Google</dt><dd><strong>Base légale à valider par un juriste.</strong> Base envisagée : ton consentement, donné en rejoignant toi-même le groupe (article 6, paragraphe 1, point a) ; tu le retires en le quittant.</dd></div>
+    {{- end}}
     {{- if on "lot8_serveur_deploye"}}
     <div><dt>Garder ta liste de favoris</dt><dd><strong>Base légale à valider par un juriste.</strong> Base envisagée : exécution du contrat (article 6, paragraphe 1, point b) et, pour ce qu'elle peut révéler de ta vie sexuelle ou de ton orientation, consentement explicite (article 9, paragraphe 2, point a).</dd></div>
     <div><dt>Montrer « Vu » et « en train d'écrire » dans une conversation</dt><dd><strong>Base légale à valider par un juriste</strong>, comme leur activation par défaut (protection des données par défaut, article 25). Base envisagée : exécution du contrat (article 6, paragraphe 1, point b) ou intérêt légitime (article 6, paragraphe 1, point f). Chacun des deux réglages se coupe à tout moment.</dd></div>
@@ -109,7 +121,7 @@
     <div><dt>Montrer ton orientation sur ta fiche, si tu actives « Afficher mon orientation »</dt><dd><strong>Base légale à valider par un juriste.</strong> Base envisagée : consentement explicite (article 9, paragraphe 2, point a, et article 6, paragraphe 1, point a), donné en acceptant le traitement de ton genre et de ton orientation puis en activant ce réglage, désactivé par défaut ; tu le retires en désactivant le réglage ou en retirant le consentement.</dd></div>
     <div><dt>Utiliser ta position approximative</dt><dd>Ton consentement (article 6, paragraphe 1, point a), complété par l'autorisation de ton téléphone, retirables à tout moment.</dd></div>
     <div><dt>Envoyer des notifications</dt><dd>Ton consentement (article 6, paragraphe 1, point a) : elles sont coupées tant que tu ne les actives pas.</dd></div>
-    <div><dt>Envoyer les e-mails du compte (code de vérification, mot de passe oublié, alertes de sécurité, décisions)</dt><dd>Exécution du contrat et obligations légales (article 6, paragraphe 1, points b et c).</dd></div>
+    <div><dt>Envoyer les e-mails du compte (lien et code de confirmation, mot de passe oublié, alertes de sécurité, décisions)</dt><dd>Exécution du contrat et obligations légales (article 6, paragraphe 1, points b et c).</dd></div>
     <div><dt>Utiliser ta langue et ton fuseau horaire</dt><dd><strong>Base légale à valider par un juriste.</strong> Base envisagée : exécution du contrat (article 6, paragraphe 1, point b) et, pour empêcher de contourner les limites et le contrôle de l'âge, intérêt légitime (article 6, paragraphe 1, point f).</dd></div>
     <div><dt>Réserver le service aux adultes</dt><dd>Obligations légales et intérêt légitime à protéger les mineurs (article 6, paragraphe 1, points c et f).</dd></div>
     <div><dt>Protéger les personnes : blocage, signalement, modération, prévention des abus et de la fraude, limitation du nombre de requêtes</dt><dd>Obligations légales, notamment le règlement européen sur les services numériques (DSA), et intérêt légitime à la sécurité du service (article 6, paragraphe 1, points c et f).</dd></div>
@@ -125,7 +137,7 @@
 <section id="visibilite">
   <h2>6. Ce que voient les autres</h2>
   <ul>
-    <li>Les personnes compatibles voient ton prénom, ton âge, tes photos validées, tes réponses aux questions, tes envies du moment et, sauf si tu la masques, une distance approximative ; elles peuvent être éloignées (voir <a href="#limite-distance">la limite de distance</a>). La grille de Mon ciel montre ta photo, ton prénom et ton âge. En mode invisible ou avec une position trop ancienne, l'accès est plus restreint et sans distance (voir <a href="#fiche">qui peut encore ouvrir ta fiche</a>).</li>
+    <li>Les personnes compatibles voient ton prénom, ton âge, tes photos validées, tes réponses aux questions, tes envies du moment et, sauf si tu la masques, une distance approximative ; elles peuvent être éloignées (voir <a href="#limite-distance">la limite de distance</a>). L'envie <a href="#sans-lendemain">« Sans lendemain »</a> n'est montrée qu'aux personnes qui l'ont elles aussi activée. Avec le build 3, les personnes qui peuvent voir ta fiche voient aussi ton <a href="#statut">statut « En ligne »</a>, sauf si tu le masques. La grille de Mon ciel montre ta photo, ton prénom et ton âge. En mode invisible ou avec une position trop ancienne, l'accès est plus restreint et sans distance (voir <a href="#fiche">qui peut encore ouvrir ta fiche</a>).</li>
     <li>Si tu as activé « Afficher mon orientation », les personnes qui peuvent ouvrir ta fiche y voient ton orientation (version à jour de l'application). Sinon, elle n'apparaît pas.</li>
     <li>Elles ne voient ni ton adresse e-mail, ni ta date de naissance, ni ta position.</li>
     <li>Une personne à qui tu écris reçoit tes signaux, tes messages et tes propositions de moment. Elle peut les copier ou les capturer : n'envoie rien que tu ne voudrais pas voir diffusé.</li>
@@ -134,11 +146,34 @@
   <h3 id="visites">Visites de profil : « A vu ton profil » et « Visiter discrètement »</h3>
   <ul>
     <li><strong>Ce qui compte comme une visite</strong> : ouvrir la fiche d'une personne, par exemple depuis le ciel, la grille, une conversation ou la liste de tes visiteurs. Sont enregistrés les deux comptes et la date de la dernière visite, à l'heure près ; une nouvelle visite remplace la précédente.</li>
-    <li><strong>Ce que voit la personne visitée</strong>, dans Mon profil, « A vu ton profil » : ton prénom, ton âge, ta photo et le jour de ta visite, sans distance ; elle peut ouvrir ta fiche. Elle ne reçoit aucune notification. La liste montre 100 personnes au maximum, et seulement celles qui sont encore actives, compatibles, visibles, avec une position récente, et sans blocage entre vous.</li>
+    <li><strong>Ce que voit la personne visitée</strong>, dans « A vu ton profil » (dans Mon profil ; à partir du build 3 de l'application{{if not (on "build3_distribue")}}, pas encore distribué{{end}}, dans l'onglet Signaux, « Visites ») : ton prénom, ton âge, ta photo et le jour de ta visite, sans distance ; elle peut ouvrir ta fiche. Elle ne reçoit aucune notification. La liste montre 100 personnes au maximum, et seulement celles qui sont encore actives, compatibles, visibles, avec une position récente, et sans blocage entre vous.</li>
+    <li><strong>Pastille des nouvelles visites</strong> (build 3) : pour elle, le serveur garde avec chaque visite un indicateur « consultée » ou non, sans date de consultation, effacé avec la visite. La pastille ne compte que les visites que la liste montrerait, et ouvrir l'onglet les marque comme consultées. Les visites enregistrées avant l'arrivée de cet indicateur sont considérées comme consultées. Aucune notification n'est envoyée pour autant.</li>
     <li><strong>« Visiter discrètement »</strong> (dans Mon profil, désactivé par défaut) : tes visites ne sont pas enregistrées, celles que d'autres te rendent pendant ce temps ne le sont pas non plus, et tu ne vois pas qui a vu ton profil. Le mode invisible a le même effet.</li>
     <li><strong>Les visites déjà enregistrées ne sont pas effacées</strong> par ces réglages. Avec la visite discrète, celles que tu as faites auparavant restent visibles des personnes concernées ; le mode invisible les masque tant qu'il est activé. Celles que tu avais reçues réapparaissent quand tu quittes ces modes, si leur durée de conservation n'est pas dépassée.</li>
     <li><strong>Durée</strong> : 30 jours après la dernière visite, ou jusqu'à l'effacement de l'un des deux comptes. Un blocage ou un profil désactivé ne les efface pas : elles ne sont plus montrées.</li>
     <li>La liste et le réglage figurent dans la version à jour de l'application. Avec une version plus ancienne, tes visites sont enregistrées de la même façon ; le mode invisible l'empêche.</li>
+  </ul>
+  <h3 id="statut">Statut « En ligne »</h3>
+  <p>Cette fonction arrive à partir du build 3 de l'application{{if not (on "build3_distribue")}}, pas encore distribué{{end}}.</p>
+  <ul>
+    <li><strong>Ce qui est montré</strong> : « En ligne » si tu as été actif·ve dans les 15 dernières minutes, sinon « Hors ligne ». C'est un oui ou un non : <strong>aucune heure</strong> n'est envoyée aux autres. Ton activité est enregistrée au plus une fois toutes les 2 minutes : le statut peut donc s'éteindre 13 à 15 minutes après la dernière.</li>
+    <li><strong>Qui le voit</strong> : les personnes qui peuvent voir ta fiche, avec le build 3 et sans masquer leur propre statut, dans le ciel et la grille, sur ta fiche, dans une conversation et dans leurs favoris. Une personne bloquée n'en voit rien.</li>
+    <li><strong>Ce qui compte comme activité</strong> : les échanges de l'application avec le serveur et sa connexion en direct tant qu'elle est à l'écran.</li>
+    <li><strong>Activé par défaut</strong> et <strong>réciproque</strong> : avec « Masquer mon statut » (dans Mon profil), tu apparais « Hors ligne », tu ne vois plus le statut des autres et tu ne peux plus utiliser le filtre « En ligne ». Plus rien n'est enregistré pour ce statut et la dernière activité gardée pour lui est effacée aussitôt.</li>
+    <li><strong>Mode invisible</strong> : tu apparais toujours « Hors ligne ». Ton activité reste enregistrée pour ce statut, et ce mode ne t'empêche pas de voir celui des autres.</li>
+    <li><strong>Ancienne version</strong> : avec une version antérieure au build 3, aucune activité n'est enregistrée pour ce statut et tu apparais « Hors ligne ».</li>
+    <li><strong>Durée</strong> : seule la dernière activité est gardée, sans historique ; elle est effacée quand tu masques ton statut, sinon avec le compte. Le statut ne déclenche aucune notification et n'est pas écrit dans les journaux techniques.</li>
+    <li><strong>Limite</strong> : même sans heure, une personne qui consulte souvent ta fiche ou son ciel peut remarquer à quels moments tu es en ligne. Pour l'éviter, masque ton statut.</li>
+  </ul>
+  <h3 id="sans-lendemain">Envie « Sans lendemain »</h3>
+  <p>Une envie de plus, proposée à partir du build 3 de l'application{{if not (on "build3_distribue")}}, pas encore distribué{{end}}. Comme les autres, elle est facultative, compte parmi les 3 envies au maximum et porte sur un moment.</p>
+  <ul>
+    <li><strong>Un accord d'abord</strong> : à la première utilisation, l'application affiche le texte de l'accord avec une case non cochée. Sans accord, l'envie n'est pas enregistrée. Si ce texte change, l'accord est redemandé et l'envie n'est plus active d'ici là.</li>
+    <li><strong>Qui la voit</strong> : uniquement les personnes compatibles qui l'ont elles aussi activée, avec leur accord, sur ton étoile, dans la grille, sur ta fiche et pour « même envie ». Pour les autres, rien ne permet de la deviner : tu apparais avec tes autres envies, ou sans envie.</li>
+    <li><strong>Jamais copiée</strong> dans un signal, une conversation, un message ou une proposition de moment : un signal envoyé sur ton envie n'en reprend que les autres activités, ou aucune activité. Elle n'est jamais notifiée ni écrite dans les journaux techniques.</li>
+    <li><strong>Effacement</strong> : à la fin du moment choisi, quand tu la retires de ton envie, ou dès que tu retires ton accord (dans « Mon envie » ou « Mes consentements » ; tes autres envies restent et ton profil reste actif). Les copies de sauvegarde peuvent encore la contenir pendant 35 jours au plus.</li>
+    <li><strong>Ce qui reste</strong> : les dates auxquelles tu as donné et retiré ton accord sont gardées avec ton compte et figurent dans l'export de tes données.</li>
+    <li><strong>Limite</strong> : les personnes qui la voient peuvent s'en souvenir ou capturer l'écran. Les règles de contenu ne changent pas : rien de <a href="{{page "terms"}}#sexuel">sexuellement explicite</a>.</li>
   </ul>
   {{- if on "lot8_serveur_deploye"}}
   <h3 id="favoris">Favoris</h3>
@@ -214,13 +249,24 @@
   <dl class="faits">
     <div><dt>Hébergement</dt><dd>{{champ "hebergeur_nom"}}. {{champ "hebergeur_description"}} Responsable technique : {{champ "hebergeur_responsable_technique"}}.</dd></div>
     <div><dt>Cloudflare, Inc. (101 Townsend Street, San Francisco, CA 94107, États-Unis)</dt><dd>Relaie et protège les connexions vers le serveur, pour l'application comme pour ce site. Cloudflare déchiffre le trafic au passage : il voit l'adresse IP et peut techniquement accéder au contenu des échanges avec le serveur. Il redirige aussi les e-mails envoyés à notre adresse de contact.</dd></div>
-    <div><dt>Brevo (Sendinblue SAS, France)</dt><dd>Envoi des e-mails liés au compte : ton adresse et le contenu du message (par exemple un code de vérification). Aucune lettre d'information.</dd></div>
+    <div><dt>Brevo (Sendinblue SAS, France)</dt><dd>Envoi des e-mails liés au compte : ton adresse et le contenu du message (par exemple le lien et le code qui confirment ton adresse). Aucune lettre d'information.</dd></div>
     <div><dt>Google (Firebase Cloud Messaging)</dt><dd>Seulement si tu actives les notifications : jeton de notification, identifiant d'installation, informations techniques sur l'application et l'appareil, heure d'envoi. La notification dit seulement « Tu as du nouveau », sans nom ni contenu.</dd></div>
     <div><dt>Apple (service de notifications)</dt><dd>Pour la version iPhone (en bêta), quand les notifications y seront en service et si tu les actives.</dd></div>
     <div><dt>Boîte e-mail de contact</dt><dd>{{champ "fournisseur_boite_contact"}} : reçoit et conserve les messages envoyés à l'adresse de contact.</dd></div>
     <div><dt>Magasins d'applications et groupes de test (Google, Apple)</dt><dd>Si tu installes l'application ou rejoins un test par Google ou Apple, ces sociétés traitent tes données pour leur propre compte, selon leurs propres politiques.</dd></div>
     <div><dt>Autorités</dt><dd>Seulement quand la loi nous y oblige, ou pour protéger une personne en danger dans les conditions prévues par la loi.</dd></div>
   </dl>
+  {{- if val "lien_groupe_google"}}
+  <h3 id="test">Groupe de test Android (Google)</h3>
+  <ul>
+    <li>Pour essayer l'application sur Android, tu rejoins toi-même un groupe Google, puis tu acceptes le test sur Google Play (voir <a href="{{page "tester"}}">Devenir testeur</a>).</li>
+    <li>Ce site n'a ni formulaire ni collecte pour cela : l'inscription se fait chez Google, selon sa politique de confidentialité.</li>
+    <li>L'éditeur administre le groupe : il voit l'adresse e-mail et le nom affiché de ton compte Google, pour gérer l'accès au test. Selon les réglages du groupe, d'autres membres pourraient aussi les voir.</li>
+    <li>Faire partie de ce groupe montre que tu testes une application de rencontres : tiens-en compte en choisissant ton compte.</li>
+    <li>Les commentaires que tu adresses au développeur par Google Play pendant le test lui sont transmis.</li>
+    <li>Tu peux quitter le test sur Google Play et le groupe dans Google Groupes. Cela ne supprime pas ton compte ProximaS (voir <a href="{{page "deletion"}}">la suppression du compte</a>).</li>
+  </ul>
+  {{- end}}
   <p>Aucun prestataire de vérification d'âge ni de modération automatique des photos n'est utilisé à ce jour. Cette politique sera mise à jour avant d'en ajouter un.</p>
 </section>
 
@@ -241,16 +287,19 @@
     {{- end}}
     <div><dt>Images d'un compte dont l'âge est à vérifier</dt><dd>Aucune durée supplémentaire : elles sont masquées dans l'outil de modération et suivent les durées ordinaires.</dd></div>
     <div><dt>Envies du moment</dt><dd>Jusqu'à la fin du moment choisi.</dd></div>
+    <div><dt>Envie « Sans lendemain »</dt><dd>Jusqu'à la fin du moment choisi, ou jusqu'à ce que tu retires cette envie ou ton accord ; 35 jours au plus dans les sauvegardes.</dd></div>
+    <div><dt>Accord pour « Sans lendemain » (donné, retiré)</dt><dd>Tant que le compte existe.</dd></div>
+    <div><dt>Dernière activité pour le statut « En ligne »</dt><dd>La dernière seulement ; effacée quand tu masques ton statut, sinon avec le compte.</dd></div>
     {{- if on "lot8_serveur_deploye"}}
     <div><dt>Favoris</dt><dd>Jusqu'au retrait, au blocage de la personne par toi ou à l'effacement de l'un des deux comptes.</dd></div>
     <div><dt>« Vu » et « en train d'écrire »</dt><dd>L'état « Vu » est gardé avec la conversation ; « en train d'écrire » n'est jamais enregistré.</dd></div>
     {{- end}}
-    <div><dt>Visites de profil</dt><dd>30 jours après la dernière visite ; plus tôt si l'un des deux comptes est effacé.</dd></div>
+    <div><dt>Visites de profil</dt><dd>30 jours après la dernière visite, indicateur « consultée » compris ; plus tôt si l'un des deux comptes est effacé.</dd></div>
     <div><dt>Signal sans réponse</dt><dd>N'est plus actif après 14 jours ; il reste enregistré tant que les comptes concernés existent.</dd></div>
     {{- if on "lot5_serveur_deploye"}}
     <div><dt>Position</dt><dd>La dernière seulement ; effacée après 7 jours sans mise à jour, ou au retrait du consentement.</dd></div>
     <div><dt>Compte dont l'adresse n'a jamais été confirmée</dt><dd>7 jours.</dd></div>
-    <div><dt>Sessions et codes envoyés par e-mail</dt><dd>7 jours après leur expiration (une session expire après 30 jours sans utilisation).</dd></div>
+    <div><dt>Sessions, liens et codes envoyés par e-mail</dt><dd>7 jours après leur expiration (une session expire après 30 jours sans utilisation ; pour la validité des liens et des codes, voir <a href="#liens-email">les liens et les codes</a>).</dd></div>
     <div><dt>Compte supprimé</dt><dd>14 jours pour changer d'avis, puis effacement.</dd></div>
     <div><dt>Adresse d'un compte effacé alors qu'il était banni, ou suspendu dans l'attente d'une vérification de l'âge</dt><dd>Une empreinte de l'adresse, calculée avec une clé secrète, et non l'adresse, pendant 365 jours, pour refuser une réinscription avec elle. Rien n'est gardé à ce titre si le compte avait été rétabli. Pour contester ce refus, écris à {{mail}}.</dd></div>
     <div><dt>Historique des changements de genre ou de recherche</dt><dd>30 jours.</dd></div>
@@ -273,6 +322,9 @@
     <div><dt>Nouvelle adresse e-mail en attente de confirmation</dt><dd>48 heures au plus.</dd></div>
     <div><dt>Copies de sauvegarde de la base de données</dt><dd>35 jours{{if not (on "lot5_serveur_deploye")}}, puis effacement lors de la sauvegarde suivante{{else}} au plus{{end}}. Une donnée effacée peut y figurer jusque-là.{{if on "photos_privees"}} Ces copies ne contiennent aucune image.{{end}}</dd></div>
     <div><dt>Journaux techniques</dt><dd>Effacés selon leur taille (3 fichiers de 10 Mo au maximum), et non selon une durée fixe.</dd></div>
+    {{- if val "lien_groupe_google"}}
+    <div><dt>Appartenance au groupe Google des testeurs</dt><dd>Tant que tu en es membre.</dd></div>
+    {{- end}}
     <div><dt>Messages envoyés à l'adresse de contact</dt><dd>12 mois après le dernier échange, sauf obligation de les garder plus longtemps.</dd></div>
   </dl>
 </section>
@@ -290,19 +342,26 @@
     <li>Journaux techniques sans adresse IP ni contenu.</li>
   </ul>
   <p>Les messages ne sont <strong>pas chiffrés de bout en bout</strong> : ils sont enregistrés sur le serveur.{{if on "photos_privees"}} Les photos privées ne sont pas non plus chiffrées de bout en bout.{{end}} Aucun système n'est à l'abri de tout incident ; en cas de violation de données, les autorités et les personnes concernées sont informées comme la loi le prévoit.</p>
+  <h3 id="liens-email">Liens et codes reçus par e-mail</h3>
+  <ul>
+    <li>Pour confirmer ton adresse ou choisir un nouveau mot de passe, l'e-mail contient un bouton, un code à 6 chiffres et, en bas, un code long pour les versions antérieures au build 3. Les trois répondent à la même demande : dès que l'un a servi, les autres ne valent plus.</li>
+    <li>Le bouton ouvre une page de notre serveur (api.proximas.be), sans script ni ressource d'un autre site. Ouvrir le lien ne valide rien : il faut confirmer sur la page. Les journaux techniques n'enregistrent ni le lien ni le code.</li>
+    <li>Bouton et code long : valables 24 heures pour confirmer une adresse, 1 heure pour un mot de passe. Code à 6 chiffres : 15 minutes ; il cesse de fonctionner après 5 essais ratés, et une adresse a droit à 10 essais par 24 heures.</li>
+    <li>Le serveur ne garde ces liens et ces codes que sous forme d'empreinte.</li>
+  </ul>
 </section>
 
 <section id="droits">
   <h2>12. Tes droits</h2>
   <ul>
-    <li><strong>Accès</strong> et copie de tes données, et <strong>portabilité</strong> : {{if on "export_dans_app"}}depuis l'application (Mon profil, « Télécharger mes données », avec ton mot de passe ; lien valable 1 heure ; les textes écrits par d'autres n'y sont pas ; les personnes qui ont ouvert ta fiche y figurent comme l'application te les montre, donc aucune en visite discrète ou en mode invisible ; les textes de toi que la modération a retirés y figurent, sauf pour un dossier « Contenu impliquant un mineur » ; {{if on "lot8_serveur_deploye"}}la langue et le fuseau horaire enregistrés, la langue de chaque consentement, tes favoris (avec le prénom seulement si la fiche t'est encore accessible) et les réglages « Accusés de lecture » et « En train d'écrire » y figurent aussi{{else}}la langue et le fuseau horaire enregistrés n'y figurent pas encore{{end}}), ou par e-mail{{else}}sur demande par e-mail{{end}}. Les <a href="#visites">visites de profil</a> encore conservées font partie de tes données.</li>
+    <li><strong>Accès</strong> et copie de tes données, et <strong>portabilité</strong> : {{if on "export_dans_app"}}depuis l'application (Mon profil, « Télécharger mes données », avec ton mot de passe ; lien valable 1 heure ; les textes écrits par d'autres n'y sont pas ; les personnes qui ont ouvert ta fiche y figurent comme l'application te les montre, donc aucune en visite discrète ou en mode invisible ; les textes de toi que la modération a retirés y figurent, sauf pour un dossier « Contenu impliquant un mineur » ; {{if on "lot8_serveur_deploye"}}la langue et le fuseau horaire enregistrés, la langue de chaque consentement, tes favoris (avec le prénom seulement si la fiche t'est encore accessible) et les réglages « Accusés de lecture » et « En train d'écrire » y figurent aussi{{else}}la langue et le fuseau horaire enregistrés n'y figurent pas encore{{end}} ; le réglage « Masquer mon statut », le filtre « En ligne », la dernière activité gardée pour le statut, ton envie en cours, « Sans lendemain » comprise, et les dates de ton accord pour elle y figurent ; l'indicateur « consultée » des visites n'y figure pas), ou par e-mail{{else}}sur demande par e-mail{{end}}. Les <a href="#visites">visites de profil</a> encore conservées font partie de tes données.</li>
     {{- if on "photos_privees"}}
     <li>Pour les photos privées, la copie contient les tiennes (en galerie ou encore visibles), tes albums, tes envois et tes partages. Les copies disparues ou verrouillées sont listées sans image ou n'y figurent pas, et les photos que tu as reçues n'y sont jamais (restriction à valider par un juriste).</li>
     {{- end}}
     <li><strong>Rectification</strong> : dans l'application pour ce qu'elle permet de modifier, prénom compris ; sur demande écrite pour <a href="#rectification">ton adresse e-mail et ta date de naissance</a>.</li>
     <li><strong>Effacement</strong> : voir <a href="{{page "deletion"}}">la suppression du compte</a>.</li>
     <li><strong>Limitation</strong> et <strong>opposition</strong>, notamment aux traitements fondés sur notre intérêt légitime.</li>
-    <li><strong>Retrait du consentement</strong> à tout moment, dans Mon profil, « Mes consentements » ; cela ne remet pas en cause ce qui a été fait avant. Retirer un consentement requis désactive ton profil.</li>
+    <li><strong>Retrait du consentement</strong> à tout moment, dans Mon profil, « Mes consentements » ; cela ne remet pas en cause ce qui a été fait avant. Retirer un consentement requis désactive ton profil. L'accord pour « Sans lendemain » se retire aussi dans « Mon envie », sans désactiver ton profil.</li>
     <li><strong>Intervention humaine</strong> sur une décision automatisée, avec le droit de la contester.</li>
     <li>Le droit de définir ce qu'il advient de tes données après ton décès, quand la loi de ton pays le prévoit.</li>
   </ul>
@@ -354,7 +413,8 @@
 
 <section id="changements">
   <h2>17. Changements</h2>
-  <p>La <a href="{{page "privacy-v1"}}">version précédente de cette politique</a> reste consultable.</p>
+  <p>Cette mise à jour décrit le statut « En ligne », l'envie « Sans lendemain », les visites dans Signaux, ce que l'export contient en plus, les liens et codes reçus par e-mail{{if val "lien_groupe_google"}} et le groupe de test Android{{end}}.</p>
+  <p>Les versions précédentes restent consultables : <a href="{{page "privacy-v2"}}">la version remplacée par celle-ci</a> et <a href="{{page "privacy-v1"}}">la version antérieure</a>.</p>
   {{- if on "lot7_serveur_deploye"}}
   <p>La date en bas de page indique la dernière version. Quand un texte change, l'application peut t'afficher une information à lire, sans rien à accepter. Quand un changement porte sur un texte que tu as accepté et le demande, elle te propose d'accepter la nouvelle version : voir les <a href="{{page "terms"}}#changements">conditions d'utilisation</a>.</p>
   {{- else}}

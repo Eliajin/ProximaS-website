@@ -3,6 +3,11 @@
   <h1>Proxima<span class="s">S</span></h1>
   <p class="slogan" lang="en">Find your closest star.</p>
   <p class="chapo">Une application de rencontres de proximité, réservée aux adultes. Pas de swipe : tu explores ton ciel, en étoiles ou en grille, puis tu abordes quelqu'un à partir de ce qui te parle.</p>
+  {{- if or (val "lien_groupe_google") (val "lien_testflight")}}
+  <div class="actions">
+    <a class="btn" href="{{page "tester"}}">Devenir testeur</a>
+  </div>
+  {{- end}}
   <figure class="visuel">
     <img src="{{asset "img/visuel-1600.jpg"}}" srcset="{{asset "img/visuel-800.jpg"}} 800w, {{asset "img/visuel-1600.jpg"}} 1600w" sizes="(min-width: 66rem) 64rem, 100vw" width="1600" height="900" alt="Deux silhouettes de dos, assises sur un rocher, regardent la Terre et un ciel étoilé.">
     <figcaption>Image d'illustration générée par IA.</figcaption>
@@ -12,16 +17,17 @@
 <section id="beta">
   <h2>Participer à la bêta</h2>
   <p>ProximaS est en cours de test, en vue d'un lancement en Europe. L'application n'est pas encore proposée au grand public.</p>
+  {{- if or (val "lien_groupe_google") (val "lien_testflight")}}
+  <p>Envie d'essayer ? La page <a href="{{page "tester"}}">Devenir testeur</a> explique comment t'inscrire. Tu peux aussi nous écrire à {{mail}}.</p>
+  <div class="actions">
+    <a class="btn" href="{{page "tester"}}">Devenir testeur (18 ans et plus)</a>
+  </div>
+  {{- else}}
   <p>Envie d'essayer ? Écris-nous à {{mail}}.</p>
   <div class="actions">
     <a class="btn" href="mailto:{{val "contact_email"}}?subject={{"Bêta ProximaS"}}">Demander à participer</a>
-    {{- if val "lien_groupe_google"}}
-    <a class="btn secondaire" href="{{val "lien_groupe_google"}}" rel="noopener">Groupe de test Android (Google)</a>
-    {{- end}}
-    {{- if val "lien_testflight"}}
-    <a class="btn secondaire" href="{{val "lien_testflight"}}" rel="noopener">Tester sur iPhone (TestFlight)</a>
-    {{- end}}
   </div>
+  {{- end}}
   <p class="note">L'application est en test (bêta) sur Android et sur iPhone.{{if not (on "app_en_anglais")}} Elle est pour l'instant en français.{{else}} Elle existe en français et en anglais.{{end}} Elle est réservée aux personnes de 18 ans et plus.</p>
 </section>
 

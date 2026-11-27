@@ -11,7 +11,14 @@
 <section id="aide">
   <h2>1. Help and questions</h2>
   <p>Sign-in problems, questions about the app, joining the beta: write to us. Never send your password or a code received by email.</p>
-  <p><strong>No confirmation code?</strong> Check your spam folder, then tap “Send the code again” in the up-to-date version of the app: at most once a minute and 5 times per 24 hours for the same address. Older codes stop working; a code is valid for 24 hours.</p>
+  <p><strong>No confirmation code?</strong> Check your spam folder, then tap “Send the code again” in the app (“Send the email again” from build 3): at most once a minute and 5 times per 24 hours for the same address. After a new send, older codes stop working.</p>
+  <p><strong>How long are the codes valid?</strong> The email contains a button, a 6-digit code and a long code.</p>
+  <ul>
+    <li><strong>6-digit code</strong>, to type in the app from build 3{{if not (on "build3_distribue")}} (not yet distributed){{end}}: 15 minutes, and it stops working after 5 failed attempts.</li>
+    <li><strong>Long code</strong>, at the bottom of the email, to paste into versions earlier than build 3: 24 hours to confirm your address, 1 hour for a new password.</li>
+    <li><strong>Button in the email</strong>, which opens a web page: 24 hours to confirm your address, 1 hour for a new password.</li>
+  </ul>
+  <p>Each request can be used only once. <a href="{{page "privacy"}}#liens-email">Details about links and codes</a>.</p>
 </section>
 
 <section id="signaler">

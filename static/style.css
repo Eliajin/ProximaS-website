@@ -106,6 +106,9 @@ section { scroll-margin-top: 1rem; }
 .btn.secondaire:hover { border-color: var(--lilas); }
 figure { margin: 0; }
 figcaption { font-size: 0.85rem; color: var(--secondaire); margin-top: 0.4rem; }
+.etapes { list-style: none; padding: 0; }
+.etapes > li { margin-bottom: 1rem; }
+.etapes .btn { width: 100%; max-width: 22rem; }
 .visuel img { display: block; width: 100%; border-radius: 20px; border: 1px solid var(--bordure); }
 .visuel figcaption { text-align: right; }
 .grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: 1rem; }

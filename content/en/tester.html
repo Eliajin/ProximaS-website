@@ -1,0 +1,69 @@
+<h1>Become a tester</h1>
+<p class="chapo">ProximaS is in beta. You can sign up for the test yourself; it is for people aged <strong>18 and over</strong> only.</p>
+
+<section id="avant">
+  <h2>Before you start</h2>
+  <ul>
+    <li>You must be at least 18. No minors are admitted, either to the test or to the app.</li>
+    <li>The app is being tested: it may contain errors, change or be interrupted.</li>
+    <li>Read the <a href="{{page "terms"}}">terms of use</a>, the <a href="{{page "privacy"}}">privacy policy</a> and the <a href="{{page "safety"}}">safety advice</a>.</li>
+  </ul>
+</section>
+
+<section id="android">
+  <h2>On Android: two steps, in this order</h2>
+  {{- if and (val "lien_groupe_google") (val "lien_test_play")}}
+  <p>Use <strong>the same Google account</strong> for both steps: the one you are signed in with on Google Play on your phone.</p>
+  <ol class="etapes">
+    <li class="carte">
+      <h3>Step 1: join the Google group</h3>
+      <p>Sign in with that account, open the testers' group and join it. Without this step, the next one does not work.</p>
+      <p><a class="btn" href="{{val "lien_groupe_google"}}" rel="noopener">Join the Google group</a></p>
+    </li>
+    <li class="carte">
+      <h3>Step 2: become a tester</h3>
+      <p>With the same Google account, open the test page on Google Play and tap “Become a tester”.</p>
+      <p><a class="btn" href="{{val "lien_test_play"}}" rel="noopener">Become a tester</a></p>
+    </li>
+  </ol>
+  <h3>What happens next?</h3>
+  <ul>
+    <li>The test page then offers to download ProximaS on Google Play. Install it on an Android phone signed in with that same account.</li>
+    <li>This may not be immediate. If the test page or Google Play does not offer the app yet, check the account you used and step 1, then try again a little later.</li>
+    <li>Then open the app and create your ProximaS account, which is separate from your Google account.</li>
+  </ul>
+  {{- else}}
+  <p>Signing up for the Android test is not offered on this website at the moment. Write to {{mail}}.</p>
+  {{- end}}
+</section>
+
+<section id="iphone">
+  <h2>On iPhone</h2>
+  {{- if val "lien_testflight"}}
+  <ol class="etapes">
+    <li class="carte">
+      <h3>Step 1: install TestFlight</h3>
+      <p>Install TestFlight, Apple's testing app, from the App Store.</p>
+    </li>
+    <li class="carte">
+      <h3>Step 2: accept the invitation</h3>
+      <p>On your iPhone, open the invitation link, then install ProximaS from TestFlight.</p>
+      <p><a class="btn" href="{{val "lien_testflight"}}" rel="noopener">Test on iPhone (TestFlight)</a></p>
+    </li>
+  </ol>
+  {{- else}}
+  <p>There is no iPhone sign-up link on this website yet. If you would like to try the app, write to {{mail}}.</p>
+  {{- end}}
+</section>
+
+<section id="donnees">
+  <h2>What going through Google or Apple involves</h2>
+  <ul>
+    <li>This website has no form and collects nothing for the test: the links lead to Google or Apple, whose rules apply.</li>
+    {{- if val "lien_groupe_google"}}
+    <li>The publisher administers the Google group: they see the email address and display name of your account, and other members might see them depending on the group's settings. See <a href="{{page "privacy"}}#test">the test group</a> in the privacy policy.</li>
+    {{- end}}
+    <li>You can stop at any time by leaving the test. Uninstalling the app does not delete your ProximaS account: see <a href="{{page "deletion"}}">account deletion</a>.</li>
+  </ul>
+  <p>Trouble signing up? Write to {{mail}}.</p>
+</section>

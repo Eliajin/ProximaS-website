@@ -3,6 +3,11 @@
   <h1>Proxima<span class="s">S</span></h1>
   <p class="slogan">Find your closest star.</p>
   <p class="chapo">A local dating app, for adults only. No swiping: you explore your sky, as stars or as a grid, then reach out to someone through whatever speaks to you.</p>
+  {{- if or (val "lien_groupe_google") (val "lien_testflight")}}
+  <div class="actions">
+    <a class="btn" href="{{page "tester"}}">Become a tester</a>
+  </div>
+  {{- end}}
   <figure class="visuel">
     <img src="{{asset "img/visuel-1600.jpg"}}" srcset="{{asset "img/visuel-800.jpg"}} 800w, {{asset "img/visuel-1600.jpg"}} 1600w" sizes="(min-width: 66rem) 64rem, 100vw" width="1600" height="900" alt="Two silhouettes seen from behind, sitting on a rock, looking at the Earth and a starry sky.">
     <figcaption>AI-generated illustration.</figcaption>
@@ -12,16 +17,17 @@
 <section id="beta">
   <h2>Join the beta</h2>
   <p>ProximaS is being tested ahead of a launch in Europe. The app is not yet available to the general public.</p>
+  {{- if or (val "lien_groupe_google") (val "lien_testflight")}}
+  <p>Want to try it? The <a href="{{page "tester"}}">Become a tester</a> page explains how to sign up. You can also write to us at {{mail}}.</p>
+  <div class="actions">
+    <a class="btn" href="{{page "tester"}}">Become a tester (18 and over)</a>
+  </div>
+  {{- else}}
   <p>Want to try it? Write to us at {{mail}}.</p>
   <div class="actions">
     <a class="btn" href="mailto:{{val "contact_email"}}?subject={{"ProximaS beta"}}">Ask to take part</a>
-    {{- if val "lien_groupe_google"}}
-    <a class="btn secondaire" href="{{val "lien_groupe_google"}}" rel="noopener">Android test group (Google)</a>
-    {{- end}}
-    {{- if val "lien_testflight"}}
-    <a class="btn secondaire" href="{{val "lien_testflight"}}" rel="noopener">Test on iPhone (TestFlight)</a>
-    {{- end}}
   </div>
+  {{- end}}
   <p class="note">The app is being tested (beta) on Android and iPhone.{{if not (on "app_en_anglais")}} For now the app itself is in French only.{{else}} It is available in French and English.{{end}} It is for people aged 18 and over.</p>
 </section>
 

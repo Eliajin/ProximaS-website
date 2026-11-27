@@ -11,7 +11,14 @@
 <section id="aide">
   <h2>1. Aide et questions</h2>
   <p>Problème de connexion, question sur l'application, participation à la bêta : écris-nous. N'envoie jamais ton mot de passe ni un code reçu par e-mail.</p>
-  <p><strong>Code de confirmation non reçu ?</strong> Regarde les courriers indésirables, puis touche « Renvoyer le code » dans la version à jour de l'application : au plus une fois par minute et 5 fois par 24 heures pour une même adresse. Les anciens codes ne fonctionnent plus ; un code est valable 24 heures.</p>
+  <p><strong>Code de confirmation non reçu ?</strong> Regarde les courriers indésirables, puis touche « Renvoyer le code » dans l'application (« Renvoyer l'e-mail » à partir du build 3) : au plus une fois par minute et 5 fois par 24 heures pour une même adresse. Après un renvoi, les anciens codes ne fonctionnent plus.</p>
+  <p><strong>Combien de temps les codes sont-ils valables ?</strong> L'e-mail contient un bouton, un code à 6 chiffres et un code long.</p>
+  <ul>
+    <li><strong>Code à 6 chiffres</strong>, à taper dans l'application à partir du build 3{{if not (on "build3_distribue")}} (pas encore distribué){{end}} : 15 minutes, et il cesse de fonctionner après 5 essais ratés.</li>
+    <li><strong>Code long</strong>, en bas de l'e-mail, à coller dans les versions antérieures au build 3 : 24 heures pour confirmer ton adresse, 1 heure pour un nouveau mot de passe.</li>
+    <li><strong>Bouton de l'e-mail</strong>, qui ouvre une page web : 24 heures pour confirmer ton adresse, 1 heure pour un nouveau mot de passe.</li>
+  </ul>
+  <p>Chaque demande ne sert qu'une fois. <a href="{{page "privacy"}}#liens-email">Détails sur les liens et les codes</a>.</p>
 </section>
 
 <section id="signaler">

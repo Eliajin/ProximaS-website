@@ -10,22 +10,25 @@ import (
 	"testing"
 )
 
+// load : le site.conf réel, avec des valeurs changées.
+func load(t *testing.T, change map[string]string) *Config {
+	t.Helper()
+	c, err := embeddedConfig()
+	if err != nil {
+		t.Fatal(err)
+	}
+	for k, v := range change {
+		c.values[k] = v
+	}
+	if err := c.validate(); err != nil {
+		t.Fatal(err)
+	}
+	return c
+}
+
 // variants : états de site.conf sous lesquels les deux langues doivent rester synchrones.
 func variants(t *testing.T) map[string]*Config {
 	t.Helper()
-	load := func(change map[string]string) *Config {
-		c, err := embeddedConfig()
-		if err != nil {
-			t.Fatal(err)
-		}
-		for k, v := range change {
-			c.values[k] = v
-		}
-		if err := c.validate(); err != nil {
-			t.Fatal(err)
-		}
-		return c
-	}
 	empty := map[string]string{}
 	full := map[string]string{}
 	for _, f := range fields {
@@ -43,20 +46,21 @@ func variants(t *testing.T) map[string]*Config {
 		m["date_textes"] = "2026-11-26"
 		m["contact_email"] = "contact@proximas.be"
 	}
-	for _, k := range []string{"lien_groupe_google", "lien_testflight", "suppression_web_url"} {
+	for _, k := range []string{"lien_groupe_google", "lien_test_play", "lien_testflight", "suppression_web_url"} {
 		full[k] = "https://exemple.invalid/" + k
 	}
 	dpoNone := map[string]string{"dpo": "aucun", "lot5_serveur_deploye": "oui"}
 	lot7 := map[string]string{"lot7_serveur_deploye": "oui", "photos_privees": "non"}
 	photos := map[string]string{"lot7_serveur_deploye": "oui", "photos_privees": "oui"}
 	return map[string]*Config{
-		"actuel":             load(nil),
-		"tout vide":          load(empty),
-		"tout rempli":        load(full),
-		"lot 5, sans dpo":    load(dpoNone),
-		"lot 7, sans photos": load(lot7),
-		"lot 7, photos":      load(photos),
-		"lot 8":              load(map[string]string{"lot8_serveur_deploye": "oui"}),
+		"actuel":             load(t, nil),
+		"tout vide":          load(t, empty),
+		"tout rempli":        load(t, full),
+		"lot 5, sans dpo":    load(t, dpoNone),
+		"lot 7, sans photos": load(t, lot7),
+		"lot 7, photos":      load(t, photos),
+		"lot 8":              load(t, map[string]string{"lot8_serveur_deploye": "oui"}),
+		"build 3 distribué":  load(t, map[string]string{"build3_distribue": "oui"}),
 	}
 }
 
@@ -373,15 +377,63 @@ func TestTextsFollowConfiguration(t *testing.T) {
 	check(on, "en", "deletion", web, true)
 	check(on, "fr", "deletion", "14 jours", true)
 	check(on, "fr", "deletion", "mailto:contact@proximas.be", true)
-	check(off, "fr", "home", "lien_groupe_google", false)
-	check(off, "fr", "home", "testflight", false)
 	check(off, "fr", "home", "Bêta fermée", true)
-	check(on, "fr", "home", "https://exemple.invalid/lien_groupe_google", true)
-	check(on, "en", "home", "https://exemple.invalid/lien_testflight", true)
+	check(on, "fr", "home", `class="btn" href="/devenir-testeur"`, true)
+	check(on, "en", "home", `class="btn" href="/en/become-a-tester"`, true)
+	check(off, "fr", "home", `class="btn" href="/devenir-testeur"`, false)
+	check(off, "en", "home", `class="btn" href="/en/become-a-tester"`, false)
+	// Sans lien : aucun bouton vide ni lien mort, seulement l'adresse de contact.
+	for _, lang := range languages {
+		check(off, lang, "tester", `class="btn"`, false)
+		check(off, lang, "tester", `class="etapes"`, false)
+		check(off, lang, "tester", "mailto:contact@proximas.be", true)
+		check(off, lang, "tester", "18", true)
+		check(off, lang, "privacy", `id="test"`, false)
+		check(on, lang, "privacy", `id="test"`, true)
+		check(on, lang, "tester", "https://exemple.invalid/lien_testflight", true)
+		// Les deux étapes Android, dans l'ordre.
+		page := htmlOf(t, on, lang, "tester")
+		group := strings.Index(page, "https://exemple.invalid/lien_groupe_google")
+		play := strings.Index(page, "https://exemple.invalid/lien_test_play")
+		if group < 0 || play < group {
+			t.Errorf("%s : étapes Android absentes ou dans le désordre (%d, %d)", lang, group, play)
+		}
+	}
+	// Une seule des deux adresses Android : les étapes ne s'affichent pas à moitié.
+	for _, key := range []string{"lien_groupe_google", "lien_test_play"} {
+		s := build(t, load(t, map[string]string{key: "", "lien_testflight": ""}))
+		check(s, "fr", "tester", `class="etapes"`, false)
+		check(s, "en", "tester", `class="etapes"`, false)
+	}
+	now := build(t, load(t, nil))
+	for _, lang := range languages {
+		check(now, lang, "tester", `href="https://groups.google.com/g/proximas-testeurs"`, true)
+		check(now, lang, "tester", `href="https://play.google.com/apps/testing/com.eliajin.proximas"`, true)
+		check(now, lang, "tester", "testflight.apple.com", false)
+	}
 	check(off, "fr", "privacy", "ne sont pas relus automatiquement", true)
 	check(on, "fr", "privacy", "ne sont pas relus automatiquement", false)
 	check(off, "en", "home", "in French only", true)
 	check(on, "en", "home", "in French only", false)
+	// Build 3 : les textes sont toujours là, seule la mention « pas encore distribué » suit l'interrupteur.
+	for _, id := range []string{"privacy", "contact"} {
+		check(off, "fr", id, "pas encore distribué", true)
+		check(off, "en", id, "not yet distributed", true)
+		check(on, "fr", id, "pas encore distribué", false)
+		check(on, "en", id, "not yet distributed", false)
+	}
+	for _, s := range []*Site{off, on} {
+		check(s, "fr", "privacy", `id="statut"`, true)
+		check(s, "fr", "privacy", `id="sans-lendemain"`, true)
+		check(s, "en", "privacy", `id="liens-email"`, true)
+	}
+	// L'outil de test « Voir tout le monde » n'est jamais mentionné.
+	for _, s := range []*Site{off, on} {
+		for _, id := range allIDs() {
+			check(s, "fr", id, "Voir tout le monde", false)
+			check(s, "en", id, "See everyone", false)
+		}
+	}
 	for _, id := range []string{"privacy", "terms", "safety"} {
 		check(off, "fr", id, "masquées temporairement", false)
 		check(off, "en", id, "temporarily hidden", false)
@@ -393,7 +445,7 @@ func TestTextsFollowConfiguration(t *testing.T) {
 func TestNoEmptyPromises(t *testing.T) {
 	s := build(t, variants(t)["actuel"])
 	forbidden := []string{"jamais de publicité", "aucune publicité, jamais", "never show ads", "ad-free forever",
-		"100 % sûr", "100% safe", "sans faux profils", "no fake profiles", "play.google.com", "apps.apple.com", "ec.europa.eu/consumers/odr"}
+		"100 % sûr", "100% safe", "sans faux profils", "no fake profiles", "play.google.com/store", "apps.apple.com", "ec.europa.eu/consumers/odr"}
 	for _, lang := range languages {
 		for _, id := range allIDs() {
 			page := strings.ToLower(htmlOf(t, s, lang, id))
@@ -401,6 +453,10 @@ func TestNoEmptyPromises(t *testing.T) {
 				if strings.Contains(page, strings.ToLower(f)) {
 					t.Errorf("%s/%s : formulation à éviter : %s", lang, id, f)
 				}
+			}
+			// L'application n'est pas publiée : Google Play n'est lié que pour le test, depuis la page dédiée.
+			if id != "tester" && strings.Contains(page, "play.google.com") {
+				t.Errorf("%s/%s : lien Google Play hors de la page des testeurs", lang, id)
 			}
 		}
 	}

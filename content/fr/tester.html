@@ -1,0 +1,69 @@
+<h1>Devenir testeur</h1>
+<p class="chapo">ProximaS est en bêta. Tu peux t'inscrire toi-même au test, réservé aux personnes de <strong>18 ans et plus</strong>.</p>
+
+<section id="avant">
+  <h2>Avant de commencer</h2>
+  <ul>
+    <li>Tu dois avoir au moins 18 ans. Aucun mineur n'est admis, ni au test ni dans l'application.</li>
+    <li>L'application est en cours de test : elle peut contenir des erreurs, changer ou être interrompue.</li>
+    <li>Lis les <a href="{{page "terms"}}">conditions d'utilisation</a>, la <a href="{{page "privacy"}}">politique de confidentialité</a> et les <a href="{{page "safety"}}">conseils de sécurité</a>.</li>
+  </ul>
+</section>
+
+<section id="android">
+  <h2>Sur Android : deux étapes, dans cet ordre</h2>
+  {{- if and (val "lien_groupe_google") (val "lien_test_play")}}
+  <p>Utilise <strong>le même compte Google</strong> aux deux étapes : celui avec lequel tu es connecté à Google Play sur ton téléphone.</p>
+  <ol class="etapes">
+    <li class="carte">
+      <h3>Étape 1 : rejoindre le groupe Google</h3>
+      <p>Connecte-toi avec ce compte, ouvre le groupe des testeurs et rejoins-le. Sans cette étape, la suivante ne fonctionne pas.</p>
+      <p><a class="btn" href="{{val "lien_groupe_google"}}" rel="noopener">Rejoindre le groupe Google</a></p>
+    </li>
+    <li class="carte">
+      <h3>Étape 2 : devenir testeur</h3>
+      <p>Avec le même compte Google, ouvre la page du test sur Google Play et touche « Devenir testeur ».</p>
+      <p><a class="btn" href="{{val "lien_test_play"}}" rel="noopener">Devenir testeur</a></p>
+    </li>
+  </ol>
+  <h3>Et après ?</h3>
+  <ul>
+    <li>La page du test te propose alors de télécharger ProximaS sur Google Play. Installe-la sur un téléphone Android connecté à ce même compte.</li>
+    <li>Cela peut ne pas être immédiat. Si la page du test ou Google Play ne propose pas encore l'application, vérifie le compte utilisé et l'étape 1, puis réessaie un peu plus tard.</li>
+    <li>Ouvre ensuite l'application et crée ton compte ProximaS, distinct de ton compte Google.</li>
+  </ul>
+  {{- else}}
+  <p>L'inscription au test Android n'est pas proposée sur ce site pour le moment. Écris à {{mail}}.</p>
+  {{- end}}
+</section>
+
+<section id="iphone">
+  <h2>Sur iPhone</h2>
+  {{- if val "lien_testflight"}}
+  <ol class="etapes">
+    <li class="carte">
+      <h3>Étape 1 : installer TestFlight</h3>
+      <p>Installe TestFlight, l'application de test d'Apple, depuis l'App Store.</p>
+    </li>
+    <li class="carte">
+      <h3>Étape 2 : accepter l'invitation</h3>
+      <p>Sur ton iPhone, ouvre le lien d'invitation, puis installe ProximaS depuis TestFlight.</p>
+      <p><a class="btn" href="{{val "lien_testflight"}}" rel="noopener">Tester sur iPhone (TestFlight)</a></p>
+    </li>
+  </ol>
+  {{- else}}
+  <p>Il n'y a pas encore de lien d'inscription pour iPhone sur ce site. Si tu veux essayer, écris à {{mail}}.</p>
+  {{- end}}
+</section>
+
+<section id="donnees">
+  <h2>Ce que le passage par Google ou Apple implique</h2>
+  <ul>
+    <li>Ce site n'a ni formulaire ni collecte pour le test : les liens mènent chez Google ou Apple, dont les règles s'appliquent.</li>
+    {{- if val "lien_groupe_google"}}
+    <li>L'éditeur administre le groupe Google : il voit l'adresse e-mail et le nom affiché de ton compte, et d'autres membres pourraient les voir selon les réglages du groupe. Voir <a href="{{page "privacy"}}#test">le groupe de test</a> dans la politique de confidentialité.</li>
+    {{- end}}
+    <li>Tu peux arrêter à tout moment en quittant le test. Désinstaller l'application ne supprime pas ton compte ProximaS : voir <a href="{{page "deletion"}}">la suppression du compte</a>.</li>
+  </ul>
+  <p>Un problème pour t'inscrire ? Écris à {{mail}}.</p>
+</section>

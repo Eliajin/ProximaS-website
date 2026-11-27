@@ -40,23 +40,28 @@
   <dl class="faits">
     <div><dt>Account</dt><dd>Email address, password (kept only as a hash, never in clear text), date of birth, result and method of the age check, account status, creation date and date of last activity.</dd></div>
     <div><dt>Language and time zone</dt><dd>The language of the app (French or English) and your phone's time zone (for example “Europe/Helsinki”), which roughly indicates the country you are in. The app sends them with each exchange with the server; the latest values are kept on your account, for emails, the notification, the language of your data archive and the way days are counted (moods, signals, message limit). They are not shown to others or written to technical logs. An older version of the app sends nothing: French and Brussels time then apply.</dd></div>
-    <div><dt>Profile</dt><dd>First name (which you can change in the app), gender, genders you wish to meet, sexual orientation (only if you choose to show it), photos (0 to 6), answers to 3 profile questions at most, current moods (up to 3 for the same time), filters, “invisible mode”, “hide my distance” and “visit discreetly” options, recent history of changes to your gender or search.</dd></div>
+    <div><dt>Profile</dt><dd>First name (which you can change in the app), gender, genders you wish to meet, sexual orientation (only if you choose to show it), photos (0 to 6), answers to 3 profile questions at most, current moods (up to 3 for the same time), filters, “invisible mode”, “hide my distance”, “visit discreetly” and “hide my status” options, recent history of changes to your gender or search.</dd></div>
     <div><dt>Location</dt><dd>One square of about 500 m (up to about 1 km from east to west in the north) and the time it was updated; a few counters of impossible movements, to prevent cheating.</dd></div>
     <div><dt>Exchanges</dt><dd>Signals sent and received and what became of them (including the date a signal was passed), conversations, messages, meeting suggestions, read status.</dd></div>
     {{- if on "lot8_serveur_deploye"}}
     <div><dt>Favourites, “Seen” and typing indicator</dt><dd>The people you add to your favourites and the date you added them; up to which message each person has read, while both share their read receipts; the “Read receipts” and “Typing indicator” settings. The fact that you are typing is passed on live and never recorded (see <a href="#favoris">favourites</a> and <a href="#vu">“Seen”</a>).</dd></div>
     {{- end}}
-    <div><dt>Profile visits</dt><dd>Who opened whose profile, and the date of the latest visit, to the nearest hour (see <a href="#visites">profile visits</a>).</dd></div>
+    <div><dt>Profile visits</dt><dd>Who opened whose profile, the date of the latest visit, to the nearest hour, and whether the visited person has viewed it or not (see <a href="#visites">profile visits</a>).</dd></div>
+    <div><dt>“Online” status</dt><dd>The date of your latest activity with an app that offers this status (build 3): only the latest one, with no history, together with your “Hide my status” setting (see <a href="#statut">the “Online” status</a>).</dd></div>
+    <div><dt>“Something casual” plans</dt><dd>If you choose it (build 3): that choice, its time and your consent (version of the text, language, dates on which you gave and withdrew it). It is <a href="#sans-lendemain">sensitive data</a>.</dd></div>
     {{- if on "photos_privees"}}
     <div><dt>Private photos and albums</dt><dd>If you use them: the photos in your private gallery (30 at most) and those you send, your albums (5 at most, whose name is shown only to you), what is sent and shared (who, to whom, when, mode, opening, disappearance) and the “Refuse photos” setting (see <a href="#photos-privees">private photos</a>).</dd></div>
     {{- end}}
     <div><dt>Safety and moderation</dt><dd>Blocks; reports made or received (reason, details, first name and profile answers visible at the time, conversation excerpts attached with consent); decisions, sanctions, appeals; log of moderation actions{{if on "lot5_serveur_deploye"}}; after certain accounts are erased, a fingerprint of the email address (see <a href="#durees">retention periods</a>){{end}}.</dd></div>
     <div><dt>Consents</dt><dd>What you accepted or withdrew, the version of the text, the language in which you accepted it and the date. The French text is the reference version.</dd></div>
-    <div><dt>Device and technical data</dt><dd>Sign-in sessions (tokens kept as hashes); if you turn notifications on, a device identifier and a notification token; technical logs limited to the route called, the response code, the duration and a request number, with no IP address and no content. Your IP address is used in memory to limit abuse, without being written to these logs.{{if on "lot8_serveur_deploye"}} To suggest an update, the up-to-date version of the app asks the server for the number of the latest version, when it starts and when it comes back to the foreground: with no account, it states your system (Android or iPhone) along with, as in each exchange, the language and time zone, which are not saved on that occasion. The comparison with the installed version is made on your phone; the “Update available” banner blocks nothing.{{end}}</dd></div>
+    <div><dt>Device and technical data</dt><dd>Sign-in sessions (tokens kept as hashes); if you turn notifications on, a device identifier and a notification token; technical logs limited to the route called, the response code, the duration and a request number, with no IP address and no content. Your IP address is used in memory to limit abuse, without being written to these logs. For the emails that confirm your address or change your password, hashes of the link and of the code, their expiry time and the number of failed attempts are also kept (see <a href="#liens-email">links and codes</a>).{{if on "lot8_serveur_deploye"}} To suggest an update, the up-to-date version of the app asks the server for the number of the latest version, when it starts and when it comes back to the foreground: with no account, it states your system (Android or iPhone) along with, as in each exchange, the language and time zone, which are not saved on that occasion. The comparison with the installed version is made on your phone; the “Update available” banner blocks nothing.{{end}}</dd></div>
+    {{- if val "lien_groupe_google"}}
+    <div><dt>Android testing</dt><dd>If you join the testers' Google group: the email address and display name of your Google account, which the publisher sees as the administrator of the group (see <a href="#test">the test group</a>).</dd></div>
+    {{- end}}
     <div><dt>Contact</dt><dd>Messages you send us by email and our replies.</dd></div>
     <div><dt>Rectification</dt><dd>The correction you ask for and, for a change of address, the new address awaiting confirmation. An identity document may be looked at to check your request, without being kept (see <a href="#rectification">rectification</a>).</dd></div>
   </dl>
-  <p>Account details, gender and genders sought, location and the three required consents are necessary for the service: without them, the account cannot be created or the profile is disabled. Photos{{if on "photos_privees"}} (profile and private){{end}}, answers to questions, moods, showing your orientation and notifications are optional. Profile visits are recorded automatically, except with “Visit discreetly” or invisible mode.</p>
+  <p>Account details, gender and genders sought, location and the three required consents are necessary for the service: without them, the account cannot be created or the profile is disabled. Photos{{if on "photos_privees"}} (profile and private){{end}}, answers to questions, moods, showing your orientation and notifications are optional. Profile visits are recorded automatically, except with “Visit discreetly” or invisible mode. “Something casual” plans are optional too. The “Online” status (build 3) is on as long as you do not hide it.</p>
 </section>
 
 <section id="sensibles">
@@ -70,9 +75,10 @@
     {{- if on "lot8_serveur_deploye"}}
     <li>Your list of <a href="#favoris">favourites</a> may also reveal your sex life or orientation. Adding some is optional and no separate consent box is shown: the legal basis remains <strong>to be validated by a lawyer</strong> (Article 9).</li>
     {{- end}}
+    <li><a href="#sans-lendemain">“Something casual”</a> plans (build 3) say something about your sex life. They are recorded only with a <strong>separate explicit consent</strong>, never pre-ticked, requested the first time you use them and withdrawable at any time. The legal basis and the wording of this consent remain <strong>to be validated by a lawyer</strong> (Article 9).</li>
     <li>Orientation is used to pre-fill your choices. It is stored only if you turn on “Show my orientation” (off by default): it then appears on your profile page (up-to-date version of the app). Otherwise it is hidden and is not kept. It never appears in the sky, the grid, lists or notifications. Before this update, the setting showed nothing to others: to be safe, it is set back to “hidden” and the saved orientation is erased; to show it, turn it on again in My profile, “Edit my profile”. The legal basis for this display is <strong>to be validated by a lawyer</strong> (Article 9).</li>
-    <li>If you withdraw this consent, your orientation and the genders you seek are erased and your profile is disabled.</li>
-    <li>No data about gender, orientation, location or messages is written to technical logs or notifications.</li>
+    <li>If you withdraw this consent, your orientation and the genders you seek are erased and your profile is disabled. Your consent for “Something casual” is then withdrawn too, and that plan is erased.</li>
+    <li>No data about gender, orientation, location or messages is written to technical logs or notifications; neither are “Something casual” plans.</li>
   </ul>
 </section>
 
@@ -84,7 +90,7 @@
     <li>Other people never receive your coordinates, only a band: “less than 1 km” or “about N km”. In a conversation, this band is recalculated at most once a day (the day is counted in Brussels time, whatever your time zone). Beyond 100 km, the band is coarser: rounded to the nearest 10 km up to 1000 km, then to the nearest 100 km. The exact distance is never shown.</li>
     <li id="limite-distance"><strong>Limit the distance</strong> is optional (from 1 to 100 km, in the filters). This limit only affects what you see: it does not restrict who can see you. While the publisher keeps the “no limit” option open, an account that has never saved filters has no limit (filters already saved keep theirs), and compatible people who do not limit the distance can see your profile even if they are far away. The publisher may restore a maximum limit for everyone later: “no limit” then means 100 km, and distances beyond that are no longer shown.</li>
     <li>With the “Hide my distance” option, no band is shown about you, either in the sky or on your profile, and no distance appears in your conversations, for either person. In the sky and the grid, your profile is not ranked by distance: it takes a randomly chosen spot (10 profiles with a hidden distance at most per sky, drawn again every day). Who can see you depends on the other person's filter. If they limit the distance, only when you are less than 25 km from them, whatever limit they chose: seeing you then tells them you are within that radius. If they do not limit it, you are drawn at random from all compatible profiles, with no radius: seeing you then tells them nothing about your distance. You still see the approximate distance of others in the sky and on profiles.</li>
-    <li>Invisible mode removes your profile from other people's sky and grid. Your conversations remain, and no distance appears in them, for either person. It also stops <a href="#visites">profile visits</a> from being recorded.</li>
+    <li>Invisible mode removes your profile from other people's sky and grid. Your conversations remain, and no distance appears in them, for either person. It also stops <a href="#visites">profile visits</a> from being recorded. With build 3, you also always appear as “Offline” (see <a href="#statut">the “Online” status</a>).</li>
     <li id="fiche"><strong>Who can still open your profile.</strong> In invisible mode, or when your location has not been updated for more than 7 days, you appear neither in the sky nor in the grid. Your profile page and profile photos can then be viewed only by a person you have a conversation with, or a person you sent a signal that is still pending (neither accepted nor passed) and has not expired, with no indication of distance. A signal you send in invisible mode therefore opens your profile to the person who receives it. A signal you only received from someone does not give them this access. A block, in either direction, closes it.</li>
     <li>Even an approximate distance can help a determined person guess your area. Hiding your distance removes this clue, but does not remove you from other people's sky: with a distance limit turned on, a person who sees you there knows you are less than 25 km away, and by changing their location several times they may try to narrow down where you are. Limiting your own distance does not protect your location. Invisible mode removes you from the sky and the grid, but does not close your profile to the people described above; block those you no longer want to show it to. None of these settings erases what others have already seen or noted, or guarantees that nobody can guess your area: your photos and messages can give clues too.</li>
     <li>If you withdraw the “location” consent, the stored location is erased immediately and your profile is disabled.</li>
@@ -96,6 +102,12 @@
   <dl class="faits">
     <div><dt>Create and manage your account, show compatible profiles, deliver signals and messages</dt><dd>Performance of the contract (Article 6, paragraph 1, point b, GDPR).</dd></div>
     <div><dt>Show a person who opened their profile (“Viewed your profile”)</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis under consideration: performance of the contract (Article 6, paragraph 1, point b) or legitimate interest (Article 6, paragraph 1, point f). Whether these visits are sensitive data (Article 9) also remains to be validated. You can object at any time to new visits being recorded by using “Visit discreetly” (see <a href="#visites">profile visits</a>).</dd></div>
+    <div><dt>Show the “Online” status and let people filter on it (build 3)</dt><dd><strong>Legal basis to be validated by a lawyer</strong>, as is the fact that it is on by default (data protection by default, Article 25). Basis under consideration: performance of the contract (Article 6, paragraph 1, point b) or legitimate interest (Article 6, paragraph 1, point f). You can object at any time with “Hide my status”.</dd></div>
+    <div><dt>Record “Something casual” plans and show them to people who turned them on too (build 3)</dt><dd>Your explicit consent (Article 9, paragraph 2, point a, and Article 6, paragraph 1, point a), which you can withdraw at any time. <strong>To be validated by a lawyer</strong>, including the wording of the consent.</dd></div>
+    <div><dt>Keep the dates on which you gave and withdrew this consent</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis under consideration: the obligation to be able to demonstrate consent (Article 6, paragraph 1, point c, and Article 7, paragraph 1).</dd></div>
+    {{- if val "lien_groupe_google"}}
+    <div><dt>Give access to the Android test through a Google group</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis under consideration: your consent, given by joining the group yourself (Article 6, paragraph 1, point a); you withdraw it by leaving the group.</dd></div>
+    {{- end}}
     {{- if on "lot8_serveur_deploye"}}
     <div><dt>Keep your list of favourites</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis under consideration: performance of the contract (Article 6, paragraph 1, point b) and, for what it may reveal about your sex life or orientation, explicit consent (Article 9, paragraph 2, point a).</dd></div>
     <div><dt>Show “Seen” and the typing indicator in a conversation</dt><dd><strong>Legal basis to be validated by a lawyer</strong>, as is the fact that they are on by default (data protection by default, Article 25). Basis under consideration: performance of the contract (Article 6, paragraph 1, point b) or legitimate interest (Article 6, paragraph 1, point f). Each of the two settings can be turned off at any time.</dd></div>
@@ -109,7 +121,7 @@
     <div><dt>Show your orientation on your profile page, if you turn on “Show my orientation”</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis considered: explicit consent (Article 9, paragraph 2, point a, and Article 6, paragraph 1, point a), given by accepting the processing of your gender and orientation and then turning this setting on, off by default; you withdraw it by turning the setting off or withdrawing the consent.</dd></div>
     <div><dt>Use your approximate location</dt><dd>Your consent (Article 6, paragraph 1, point a), together with your phone's permission, both of which you can withdraw at any time.</dd></div>
     <div><dt>Send notifications</dt><dd>Your consent (Article 6, paragraph 1, point a): they stay off until you turn them on.</dd></div>
-    <div><dt>Send account emails (verification code, forgotten password, security alerts, decisions)</dt><dd>Performance of the contract and legal obligations (Article 6, paragraph 1, points b and c).</dd></div>
+    <div><dt>Send account emails (confirmation link and code, forgotten password, security alerts, decisions)</dt><dd>Performance of the contract and legal obligations (Article 6, paragraph 1, points b and c).</dd></div>
     <div><dt>Use your language and time zone</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis under consideration: performance of the contract (Article 6, paragraph 1, point b) and, to stop limits and the age check from being bypassed, legitimate interest (Article 6, paragraph 1, point f).</dd></div>
     <div><dt>Keep the service for adults only</dt><dd>Legal obligations and legitimate interest in protecting minors (Article 6, paragraph 1, points c and f).</dd></div>
     <div><dt>Protect people: blocking, reporting, moderation, prevention of abuse and fraud, request limits</dt><dd>Legal obligations, in particular the EU Digital Services Act (DSA), and legitimate interest in the safety of the service (Article 6, paragraph 1, points c and f).</dd></div>
@@ -125,7 +137,7 @@
 <section id="visibilite">
   <h2>6. What others see</h2>
   <ul>
-    <li>Compatible people see your first name, your age, your approved photos, your answers to questions, your current moods and, unless you hide it, an approximate distance; they may be far away (see <a href="#limite-distance">the distance limit</a>). The grid view of the sky shows your photo, first name and age. In invisible mode or with a location that is too old, access is more restricted and shows no distance (see <a href="#fiche">who can still open your profile</a>).</li>
+    <li>Compatible people see your first name, your age, your approved photos, your answers to questions, your current moods and, unless you hide it, an approximate distance; they may be far away (see <a href="#limite-distance">the distance limit</a>). <a href="#sans-lendemain">“Something casual”</a> plans are shown only to people who turned them on too. With build 3, people who can see your profile also see your <a href="#statut">“Online” status</a>, unless you hide it. The grid view of the sky shows your photo, first name and age. In invisible mode or with a location that is too old, access is more restricted and shows no distance (see <a href="#fiche">who can still open your profile</a>).</li>
     <li>If you have turned on “Show my orientation”, people who can open your profile page see your orientation there (up-to-date version of the app). Otherwise it does not appear.</li>
     <li>They see neither your email address, nor your date of birth, nor your location.</li>
     <li>A person you write to receives your signals, messages and meeting suggestions. They can copy or screenshot them: do not send anything you would not want to see shared.</li>
@@ -134,11 +146,34 @@
   <h3 id="visites">Profile visits: “Viewed your profile” and “Visit discreetly”</h3>
   <ul>
     <li><strong>What counts as a visit</strong>: opening a person's profile, for example from the sky, the grid, a conversation or the list of your visitors. The two accounts and the date of the latest visit, to the nearest hour, are recorded; a new visit replaces the previous one.</li>
-    <li><strong>What the visited person sees</strong>, in My profile, “Viewed your profile”: your first name, age, photo and the day of your visit, with no distance; they can open your profile. They receive no notification. The list shows 100 people at most, and only those who are still active, compatible, visible, with a recent location, and with no block between you.</li>
+    <li><strong>What the visited person sees</strong>, in “Viewed your profile” (in My profile; from build 3 of the app{{if not (on "build3_distribue")}}, not yet distributed{{end}}, in the Signals tab, under “Visits”): your first name, age, photo and the day of your visit, with no distance; they can open your profile. They receive no notification. The list shows 100 people at most, and only those who are still active, compatible, visible, with a recent location, and with no block between you.</li>
+    <li><strong>Badge for new visits</strong> (build 3): for it, the server keeps with each visit a “viewed” or not indicator, with no date of viewing, erased along with the visit. The badge only counts the visits the list would show, and opening the tab marks them as viewed. Visits recorded before this indicator was introduced are treated as viewed. No notification is sent for all that.</li>
     <li><strong>“Visit discreetly”</strong> (in My profile, off by default): your visits are not recorded, neither are the visits others pay you during that time, and you do not see who viewed your profile. Invisible mode has the same effect.</li>
     <li><strong>Visits already recorded are not erased</strong> by these settings. With discreet visiting, the visits you made earlier remain visible to the people concerned; invisible mode hides them while it is on. The visits you had received reappear when you leave these modes, if their retention period has not passed.</li>
     <li><strong>Retention</strong>: 30 days after the latest visit, or until one of the two accounts is erased. A block or a disabled profile does not erase them: they are no longer shown.</li>
     <li>The list and the setting are in the up-to-date version of the app. With an older version, your visits are recorded in the same way; invisible mode prevents it.</li>
+  </ul>
+  <h3 id="statut">“Online” status</h3>
+  <p>This feature comes from build 3 of the app{{if not (on "build3_distribue")}}, not yet distributed{{end}}.</p>
+  <ul>
+    <li><strong>What is shown</strong>: “Online” if you were active in the last 15 minutes, otherwise “Offline”. It is a yes or a no: <strong>no time</strong> is sent to others. Your activity is recorded at most once every 2 minutes: the status may therefore switch off 13 to 15 minutes after the latest one.</li>
+    <li><strong>Who sees it</strong>: people who can see your profile, with build 3 and without hiding their own status, in the sky and the grid, on your profile, in a conversation and in their favourites. A blocked person sees nothing of it.</li>
+    <li><strong>What counts as activity</strong>: the app's exchanges with the server and its live connection while it is on screen.</li>
+    <li><strong>On by default</strong> and <strong>reciprocal</strong>: with “Hide my status” (in My profile), you appear as “Offline”, you no longer see other people's status and you can no longer use the “Online” filter. Nothing more is recorded for this status and the latest activity kept for it is erased immediately.</li>
+    <li><strong>Invisible mode</strong>: you always appear as “Offline”. Your activity is still recorded for this status, and this mode does not stop you from seeing other people's.</li>
+    <li><strong>Older version</strong>: with a version earlier than build 3, no activity is recorded for this status and you appear as “Offline”.</li>
+    <li><strong>Retention</strong>: only the latest activity is kept, with no history; it is erased when you hide your status, otherwise with the account. The status triggers no notification and is not written to technical logs.</li>
+    <li><strong>Limitation</strong>: even with no time shown, a person who often looks at your profile or their sky may notice when you are online. To prevent this, hide your status.</li>
+  </ul>
+  <h3 id="sans-lendemain">“Something casual” plans</h3>
+  <p>One more kind of plan, offered from build 3 of the app{{if not (on "build3_distribue")}}, not yet distributed{{end}}. Like the others, it is optional, counts towards the maximum of 3 plans and is set for a given time.</p>
+  <ul>
+    <li><strong>Consent first</strong>: the first time you use it, the app shows the consent text with an unticked box. Without consent, the plan is not recorded. If that text changes, consent is asked again and the plan is not active until then.</li>
+    <li><strong>Who sees it</strong>: only compatible people who turned it on too, with their consent, on your star, in the grid, on your profile and for “same plans”. For others, nothing lets them guess it: you appear with your other plans, or with none.</li>
+    <li><strong>Never copied</strong> into a signal, a conversation, a message or a meeting suggestion: a signal sent about your plans only takes up the other activities, or no activity at all. It is never notified or written to technical logs.</li>
+    <li><strong>Erasure</strong>: at the end of the chosen time, when you remove it from your plans, or as soon as you withdraw your consent (in “My mood” or “My consents”; your other plans remain and your profile stays active). Backup copies may still contain it for 35 days at most.</li>
+    <li><strong>What remains</strong>: the dates on which you gave and withdrew your consent are kept with your account and are included in your data export.</li>
+    <li><strong>Limitation</strong>: the people who see it may remember it or capture the screen. The content rules do not change: nothing <a href="{{page "terms"}}#sexuel">sexually explicit</a>.</li>
   </ul>
   {{- if on "lot8_serveur_deploye"}}
   <h3 id="favoris">Favourites</h3>
@@ -214,13 +249,24 @@
   <dl class="faits">
     <div><dt>Hosting</dt><dd>{{champ "hebergeur_nom"}}. {{champ "hebergeur_description"}} Technical manager: {{champ "hebergeur_responsable_technique"}}.</dd></div>
     <div><dt>Cloudflare, Inc. (101 Townsend Street, San Francisco, CA 94107, United States)</dt><dd>Relays and protects connections to the server, for both the app and this website. Cloudflare decrypts traffic as it passes through: it sees the IP address and can technically access the content exchanged with the server. It also forwards emails sent to our contact address.</dd></div>
-    <div><dt>Brevo (Sendinblue SAS, France)</dt><dd>Sends account emails: your address and the content of the message (for example a verification code). No newsletter.</dd></div>
+    <div><dt>Brevo (Sendinblue SAS, France)</dt><dd>Sends account emails: your address and the content of the message (for example the link and code that confirm your address). No newsletter.</dd></div>
     <div><dt>Google (Firebase Cloud Messaging)</dt><dd>Only if you turn notifications on: notification token, installation identifier, technical information about the app and device, time of sending. The notification only says “You have something new”, with no name and no content.</dd></div>
     <div><dt>Apple (notification service)</dt><dd>For the iPhone version (in beta), once notifications are in service there and if you turn them on.</dd></div>
     <div><dt>Contact mailbox</dt><dd>{{champ "fournisseur_boite_contact"}}: receives and stores the messages sent to the contact address.</dd></div>
     <div><dt>App stores and test groups (Google, Apple)</dt><dd>If you install the app or join a test through Google or Apple, those companies process your data for their own purposes, under their own policies.</dd></div>
     <div><dt>Authorities</dt><dd>Only when the law requires us to, or to protect a person in danger under the conditions set by law.</dd></div>
   </dl>
+  {{- if val "lien_groupe_google"}}
+  <h3 id="test">Android test group (Google)</h3>
+  <ul>
+    <li>To try the app on Android, you join a Google group yourself, then you accept the test on Google Play (see <a href="{{page "tester"}}">Become a tester</a>).</li>
+    <li>This website has no form and no data collection for that: you sign up with Google, under its privacy policy.</li>
+    <li>The publisher administers the group: they see the email address and display name of your Google account, to manage access to the test. Depending on the group's settings, other members might see them too.</li>
+    <li>Being part of this group shows that you are testing a dating app: bear this in mind when choosing your account.</li>
+    <li>Comments you send to the developer through Google Play during the test are passed on to them.</li>
+    <li>You can leave the test on Google Play and the group in Google Groups. This does not delete your ProximaS account (see <a href="{{page "deletion"}}">account deletion</a>).</li>
+  </ul>
+  {{- end}}
   <p>No age verification provider and no automated photo moderation provider is used to date. This policy will be updated before one is added.</p>
 </section>
 
@@ -241,16 +287,19 @@
     {{- end}}
     <div><dt>Images of an account whose age needs to be checked</dt><dd>No additional period: they are hidden in the moderation tool and follow the ordinary periods.</dd></div>
     <div><dt>Current moods</dt><dd>Until the end of the chosen time.</dd></div>
+    <div><dt>“Something casual” plans</dt><dd>Until the end of the chosen time, or until you remove that plan or your consent; 35 days at most in backups.</dd></div>
+    <div><dt>Consent for “Something casual” (given, withdrawn)</dt><dd>As long as the account exists.</dd></div>
+    <div><dt>Latest activity for the “Online” status</dt><dd>Only the latest one; erased when you hide your status, otherwise with the account.</dd></div>
     {{- if on "lot8_serveur_deploye"}}
     <div><dt>Favourites</dt><dd>Until you remove them, you block the person or one of the two accounts is erased.</dd></div>
     <div><dt>“Seen” and typing indicator</dt><dd>The “Seen” status is kept with the conversation; typing is never recorded.</dd></div>
     {{- end}}
-    <div><dt>Profile visits</dt><dd>30 days after the latest visit; sooner if one of the two accounts is erased.</dd></div>
+    <div><dt>Profile visits</dt><dd>30 days after the latest visit, “viewed” indicator included; sooner if one of the two accounts is erased.</dd></div>
     <div><dt>Signal with no reply</dt><dd>No longer active after 14 days; it remains stored as long as the accounts concerned exist.</dd></div>
     {{- if on "lot5_serveur_deploye"}}
     <div><dt>Location</dt><dd>The latest only; erased after 7 days without an update, or when consent is withdrawn.</dd></div>
     <div><dt>Account whose address was never confirmed</dt><dd>7 days.</dd></div>
-    <div><dt>Sessions and codes sent by email</dt><dd>7 days after they expire (a session expires after 30 days without use).</dd></div>
+    <div><dt>Sessions, links and codes sent by email</dt><dd>7 days after they expire (a session expires after 30 days without use; for how long links and codes are valid, see <a href="#liens-email">links and codes</a>).</dd></div>
     <div><dt>Deleted account</dt><dd>14 days to change your mind, then erasure.</dd></div>
     <div><dt>Address of an account erased while it was banned, or suspended pending an age check</dt><dd>A fingerprint of the address, computed with a secret key, not the address itself, for 365 days, to refuse a new sign-up with it. Nothing is kept for this purpose if the account had been reinstated. To contest this refusal, write to {{mail}}.</dd></div>
     <div><dt>History of changes to your gender or search</dt><dd>30 days.</dd></div>
@@ -273,6 +322,9 @@
     <div><dt>New email address awaiting confirmation</dt><dd>48 hours at most.</dd></div>
     <div><dt>Database backups</dt><dd>35 days{{if not (on "lot5_serveur_deploye")}}, then erased at the next backup{{else}} at most{{end}}. Erased data may still appear in them until then.{{if on "photos_privees"}} These copies contain no images.{{end}}</dd></div>
     <div><dt>Technical logs</dt><dd>Erased according to their size (3 files of 10 MB at most), not after a fixed period.</dd></div>
+    {{- if val "lien_groupe_google"}}
+    <div><dt>Membership of the testers' Google group</dt><dd>As long as you are a member.</dd></div>
+    {{- end}}
     <div><dt>Messages sent to the contact address</dt><dd>12 months after the last exchange, unless they must be kept longer.</dd></div>
   </dl>
 </section>
@@ -290,19 +342,26 @@
     <li>Technical logs with no IP address and no content.</li>
   </ul>
   <p>Messages are <strong>not end-to-end encrypted</strong>: they are stored on the server.{{if on "photos_privees"}} Private photos are not end-to-end encrypted either.{{end}} No system is immune to every incident; in the event of a data breach, the authorities and the people concerned are informed as the law requires.</p>
+  <h3 id="liens-email">Links and codes received by email</h3>
+  <ul>
+    <li>To confirm your address or choose a new password, the email contains a button, a 6-digit code and, at the bottom, a long code for versions earlier than build 3. All three answer the same request: as soon as one has been used, the others no longer work.</li>
+    <li>The button opens a page on our server (api.proximas.be), with no script and no resource from another site. Opening the link confirms nothing: you have to confirm on the page. Technical logs record neither the link nor the code.</li>
+    <li>Button and long code: valid for 24 hours to confirm an address, 1 hour for a password. 6-digit code: 15 minutes; it stops working after 5 failed attempts, and an address is allowed 10 attempts per 24 hours.</li>
+    <li>The server keeps these links and codes only as hashes.</li>
+  </ul>
 </section>
 
 <section id="droits">
   <h2>12. Your rights</h2>
   <ul>
-    <li><strong>Access</strong> to and a copy of your data, and <strong>portability</strong>: {{if on "export_dans_app"}}from the app (My profile, “Download my data”, with your password; link valid for 1 hour; texts written by others are not included; people who opened your profile appear as the app shows them to you, so none with discreet visiting or invisible mode; your texts removed by moderation are included, except for a “Content involving a minor” file; {{if on "lot8_serveur_deploye"}}the stored language and time zone, the language of each consent, your favourites (with the first name only if you can still open the profile) and the “Read receipts” and “Typing indicator” settings are included too{{else}}the stored language and time zone are not included yet{{end}}), or by email{{else}}on request by email{{end}}. <a href="#visites">Profile visits</a> still on record are part of your data.</li>
+    <li><strong>Access</strong> to and a copy of your data, and <strong>portability</strong>: {{if on "export_dans_app"}}from the app (My profile, “Download my data”, with your password; link valid for 1 hour; texts written by others are not included; people who opened your profile appear as the app shows them to you, so none with discreet visiting or invisible mode; your texts removed by moderation are included, except for a “Content involving a minor” file; {{if on "lot8_serveur_deploye"}}the stored language and time zone, the language of each consent, your favourites (with the first name only if you can still open the profile) and the “Read receipts” and “Typing indicator” settings are included too{{else}}the stored language and time zone are not included yet{{end}}; the “Hide my status” setting, the “Online” filter, the latest activity kept for the status, your current plans, “Something casual” included, and the dates of your consent for it are included; the “viewed” indicator of visits is not), or by email{{else}}on request by email{{end}}. <a href="#visites">Profile visits</a> still on record are part of your data.</li>
     {{- if on "photos_privees"}}
     <li>For private photos, the copy contains yours (in your gallery or still visible), your albums, and what you sent and shared. Copies that have disappeared or are locked are listed without the image or are not included, and photos you received are never included (restriction to be validated by a lawyer).</li>
     {{- end}}
     <li><strong>Rectification</strong>: in the app for what it lets you change, including your first name; on written request for <a href="#rectification">your email address and date of birth</a>.</li>
     <li><strong>Erasure</strong>: see <a href="{{page "deletion"}}">account deletion</a>.</li>
     <li><strong>Restriction</strong> and <strong>objection</strong>, in particular to processing based on our legitimate interest.</li>
-    <li><strong>Withdrawal of consent</strong> at any time, in My profile, “My consents”; this does not affect what was done before. Withdrawing a required consent disables your profile.</li>
+    <li><strong>Withdrawal of consent</strong> at any time, in My profile, “My consents”; this does not affect what was done before. Withdrawing a required consent disables your profile. Consent for “Something casual” can also be withdrawn in “My mood”, without disabling your profile.</li>
     <li><strong>Human intervention</strong> in an automated decision, with the right to contest it.</li>
     <li>The right to decide what happens to your data after your death, where the law of your country provides for it.</li>
   </ul>
@@ -354,7 +413,8 @@
 
 <section id="changements">
   <h2>17. Changes</h2>
-  <p>The <a href="{{page "privacy-v1"}}">previous version of this policy</a> remains available.</p>
+  <p>This update describes the “Online” status, “Something casual” plans, visits in Signals, what the export now also contains, the links and codes received by email{{if val "lien_groupe_google"}} and the Android test group{{end}}.</p>
+  <p>Previous versions remain available: <a href="{{page "privacy-v2"}}">the version this one replaces</a> and <a href="{{page "privacy-v1"}}">the earlier version</a>.</p>
   {{- if on "lot7_serveur_deploye"}}
   <p>The date at the bottom of the page shows the latest version. When a text changes, the app may show you a notice to read, with nothing to accept. When a change concerns a text you accepted and requires it, the app asks you to accept the new version: see the <a href="{{page "terms"}}#changements">terms of use</a>.</p>
   {{- else}}

@@ -1,6 +1,6 @@
 # proximas_web : le site proximas.be
 
-Site de présentation de ProximaS (application de rencontres de proximité, 18+) : une page d'accueil et les pages légales, en français et en anglais. Petit serveur Go (bibliothèque standard seulement) qui rend toutes les pages au démarrage et les sert depuis la mémoire. Ni base de données, ni secret, ni script, ni cookie, ni ressource externe.
+Site de présentation de ProximaS (application de rencontres de proximité, 18+) : une page d'accueil, une page « Devenir testeur » et les pages légales, en français et en anglais. Petit serveur Go (bibliothèque standard seulement) qui rend toutes les pages au démarrage et les sert depuis la mémoire. Ni base de données, ni secret, ni script, ni cookie, ni ressource externe.
 
 Tous les textes légaux sont des **brouillons à valider par un juriste**.
 
@@ -9,6 +9,7 @@ Tous les textes légaux sont des **brouillons à valider par un juriste**.
 | Page | Français | Anglais |
 |---|---|---|
 | Présentation | `/` | `/en/` |
+| Devenir testeur | `/devenir-testeur` | `/en/become-a-tester` |
 | Sécurité | `/securite` | `/en/safety` |
 | Confidentialité | `/confidentialite` | `/en/privacy` |
 | Conditions | `/conditions` | `/en/terms` |
@@ -16,7 +17,8 @@ Tous les textes légaux sont des **brouillons à valider par un juriste**.
 | Contact et signalement | `/contact` | `/en/contact` |
 | Mentions légales | `/mentions-legales` | `/en/legal-notice` |
 | Archive : anciennes conditions | `/conditions/version-1` | `/en/terms/version-1` |
-| Archive : ancienne confidentialité | `/confidentialite/version-1` | `/en/privacy/version-1` |
+| Archive : ancienne confidentialité (avant le 26/11) | `/confidentialite/version-1` | `/en/privacy/version-1` |
+| Archive : confidentialité du 27/11 avant le build 3 | `/confidentialite/version-2` | `/en/privacy/version-2` |
 
 Aussi : 404 dans les deux langues, `/robots.txt`, `/sitemap.xml`, `/api/health`. Les adresses françaises sont utilisées par l'application et les magasins : **ne pas les changer**. Aucune redirection selon la langue ou le pays du visiteur.
 
@@ -36,7 +38,7 @@ Sans make : `go run . serve` (avec `LISTEN_ADDR=127.0.0.1:8098`), `go run . cham
 
 **Un seul fichier**, commenté ligne par ligne. Il contient l'identité de l'éditeur, l'hébergeur, la zone de lancement, les liens de la bêta et l'état réel de l'application (suppression, export, relecture des messages, langue de l'app). Un champ obligatoire vide s'affiche « [À REMPLIR] » / « [TO BE COMPLETED] » ; un champ facultatif vide est masqué. Le fichier est intégré au binaire : modifier, commit, push, déployer. Son contenu est public.
 
-Les liens `lien_groupe_google` et `lien_testflight` font apparaître les boutons de la bêta (et le statut passe de « Bêta fermée » à « Bêta en cours »).
+Les liens `lien_groupe_google` et `lien_testflight` font apparaître sur l'accueil les boutons « Devenir testeur » (et le statut passe de « Bêta fermée » à « Bêta en cours »). La page « Devenir testeur » montre les deux étapes Android seulement si `lien_groupe_google` **et** `lien_test_play` sont remplis, et le bloc iPhone avec lien seulement si `lien_testflight` l'est. Aucun formulaire : tout se passe chez Google ou Apple.
 
 ## Modifier un texte
 
@@ -55,6 +57,8 @@ Fonctions utiles dans les pages : `{{champ "editeur_bce"}}` (valeur ou « [À RE
 ## Ce que disent les textes, et d'où cela vient
 
 Les faits viennent du code et des documents de `../ProximaS` (lecture seule), état du 26/11/2026 : commit `829a73a` (lot 5, empreinte de l'adresse après soupçon de minorité, rectification, iPhone seul ; déployé) et lot 6, stagé et **non déployé** au moment de la rédaction (« A vu ton profil » et « Visiter discrètement », prénom modifiable dans l'application, jusqu'à 3 envies, signal « passé » renvoyable après 24 h, grille de Mon ciel) : **déployer l'API avant le site** (`docs/MISE_EN_LIGNE.md`). Mode invisible (26/11) : les textes décrivent la prochaine version de l'API (fiche encore ouverte par conversation ou signal en attente, aucune distance en conversation) : API avant le site. Voir aussi `docs/CONFORMITE.md`, `docs/BACKOFFICE.md` (3 bis) et `docs/REGISTRE_TRAME.md`. Lot 7 : photos privées et albums sous l'interrupteur `photos_privees`, information ou nouvelle acceptation des conditions et motif « Contenu impliquant un mineur » sous `lot7_serveur_deploye` (tous deux à « oui »). Lot « Europe, français et anglais » (commit `7440c3d`, déploiement non confirmé au 26/11) : application bilingue (`app_en_anglais`), langue et fuseau gardés sur le compte, journées à l'heure locale (distance en conversation : Bruxelles), grille de position selon la latitude, renvoi du code, images masquées au back-office quand l'âge est à vérifier : **API et nouvelle application avant le site**. Masquage des photos quand plus de 5 comptes ont un signalement d'âge en attente (`MINOR_REPORTS_TO_HIDE=6`, `internal/service/masked.go`) : déployé depuis `0c83f24`, `masquage_photos_age = oui` (27/11). Retrait d'un contenu (texte d'origine conservé avec le dossier et présent dans l'export de son auteur, hors « contenu impliquant un mineur ») : déployé depuis `0c83f24`. Lot 8 (commit `29f48f3`, déploiement non confirmé au 27/11 : favoris, « Vu » et « en train d'écrire », envois suspendus vers un compte masqué, règle des classements, vérification de mise à jour, export élargi) : sous `lot8_serveur_deploye` (« non »). Décisions du propriétaire du 26/11 : contenu sexuellement explicite interdit partout, orientation affichée sur la fiche si activée, plus de case « mesure d'audience », bêta Android et iPhone ; l'application et l'API correspondantes restent à livrer (`docs/MISE_EN_LIGNE.md`). Limites reprises par les textes : 30 photos, 5 albums, 30 envois par 24 h, vue unique 10 s, adresses 60 s, `PRIVATE_PHOTO_RETENTION_DAYS=30`. Quand l'application change (durées, prestataires, modération, publicité, vérification d'âge, langue), relire `content/*/privacy.html`, `terms.html`, `deletion.html`, `safety.html`, `contact.html` et `home.html`. Réglages de l'API dont les textes dépendent : `TEXT_FILTER_PRIVATE=off`, durées de conservation par défaut (180, 365, 730, 90, 30 et 365 jours), `SIGNALS_PER_DAY=5`, `SIGNAL_COOLDOWN_DAYS=30`, `SIGNAL_PASS_COOLDOWN_HOURS=24`, `VISIT_RETENTION_DAYS=30`. Limites écrites dans le code et reprises par les textes : 3 envies, 100 visiteurs affichés, 20 changements de prénom par 24 h.
+
+Build 3 (ProximaS commit `7decb1a`, API non déployée et application non distribuée au moment de la rédaction) : statut « En ligne » (`internal/service/online.go`), envie « Sans lendemain » (`casual.go`, accord `casual_mood` v1), visites dans Signaux avec pastille, champs d'export, liens et codes des e-mails (`email_links.go`, déjà déployés avec `1ba281b`). Durées écrites : statut 15 minutes (écriture au plus toutes les 2 minutes), code à 6 chiffres 15 minutes, 5 essais par code, 10 essais par adresse et par 24 heures, lien et code long 24 heures (confirmation) ou 1 heure (mot de passe). `build3_distribue = non` ajoute « pas encore distribué ». Publier le site **avant** de déployer cette API.
 
 ## Visuels et police
 

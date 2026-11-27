@@ -226,6 +226,19 @@ Textes écrits mais masqués par `lot8_serveur_deploye`. Ordre :
 
 À faire valider (juriste) : bases légales des favoris, de « Vu » et d'« en train d'écrire » et leur activation par défaut, envois de photos suspendus vers un compte dont l'âge est signalé, information dans l'application ou nouvelle version des conditions.
 
+## Build 3 (statut « En ligne », « Sans lendemain ») et page « Devenir testeur »
+
+L'API du build 3 (`ProximaS`, commit `7decb1a`) affiche dans l'application une information qui renvoie vers proximas.be : **le site d'abord**.
+
+1. Si la publication a lieu après le 27/11/2026, mettre à jour `date_textes` dans `site.conf` (la date de l'information dans l'application est aussi à revoir, côté ProximaS).
+2. `make test`, `make docker`, commit, push, `deploy/build-prod.sh` du site.
+3. Relire `/confidentialite#statut`, `/confidentialite#sans-lendemain`, `/confidentialite/version-2`, `/contact`, `/devenir-testeur` et leurs équivalents anglais.
+4. Essayer les deux liens de `/devenir-testeur` avec un compte Google qui n'est pas encore testeur : le groupe doit pouvoir être rejoint, et être la liste de testeurs de la piste de test dans la Play Console. Dans les réglages du groupe, réserver la liste des membres aux gestionnaires.
+5. Déployer l'API, puis distribuer le build 3.
+6. Quand le build 3 est distribué : `build3_distribue = oui`, `date_textes`, puis commit, push, déploiement.
+
+À faire valider (juriste) : texte de l'accord « Sans lendemain » et base légale (article 9), statut activé par défaut (article 25), information dans l'application sans nouvelle acceptation, groupe de test (base légale, visibilité des membres).
+
 ## Lot 7 (photos privées, conditions qui changent)
 
 Les textes sont écrits mais masqués. Dans `site.conf` :
