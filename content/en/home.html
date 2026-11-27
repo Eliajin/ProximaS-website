@@ -104,6 +104,9 @@
     <li>Location data embedded in your photos (EXIF) is removed.</li>
     <li>When you open someone's profile, they can see it under “Viewed your profile”: only the latest visit is kept, for 30 days, with no notification. With “Visit discreetly” or invisible mode, your visits are not recorded, and you do not see who viewed your profile.</li>
     <li>The app shows no advertising today and contains no advertising or analytics tool. If advertising were added later, the privacy policy would be updated first.</li>
+    {{- if on "lot8_serveur_deploye"}}
+    <li>Your favourites are private: the person you add is not told. “Seen” and the typing indicator are on by default, reciprocal, and you can turn them off.</li>
+    {{- end}}
     <li>{{if on "export_dans_app"}}You can download your data from the app.{{else}}You can ask for a copy of your data by email.{{end}} {{if on "suppression_dans_app"}}You can delete your account from the app.{{else}}You can ask for your account to be deleted at any time.{{end}}</li>
   </ul>
   <p><a href="{{page "privacy"}}">Privacy policy</a> · <a href="{{page "deletion"}}">Delete my account</a></p>

@@ -43,13 +43,16 @@
     <div><dt>Profile</dt><dd>First name (which you can change in the app), gender, genders you wish to meet, sexual orientation (only if you choose to show it), photos (0 to 6), answers to 3 profile questions at most, current moods (up to 3 for the same time), filters, “invisible mode”, “hide my distance” and “visit discreetly” options, recent history of changes to your gender or search.</dd></div>
     <div><dt>Location</dt><dd>One square of about 500 m (up to about 1 km from east to west in the north) and the time it was updated; a few counters of impossible movements, to prevent cheating.</dd></div>
     <div><dt>Exchanges</dt><dd>Signals sent and received and what became of them (including the date a signal was passed), conversations, messages, meeting suggestions, read status.</dd></div>
+    {{- if on "lot8_serveur_deploye"}}
+    <div><dt>Favourites, “Seen” and typing indicator</dt><dd>The people you add to your favourites and the date you added them; up to which message each person has read, while both share their read receipts; the “Read receipts” and “Typing indicator” settings. The fact that you are typing is passed on live and never recorded (see <a href="#favoris">favourites</a> and <a href="#vu">“Seen”</a>).</dd></div>
+    {{- end}}
     <div><dt>Profile visits</dt><dd>Who opened whose profile, and the date of the latest visit, to the nearest hour (see <a href="#visites">profile visits</a>).</dd></div>
     {{- if on "photos_privees"}}
     <div><dt>Private photos and albums</dt><dd>If you use them: the photos in your private gallery (30 at most) and those you send, your albums (5 at most, whose name is shown only to you), what is sent and shared (who, to whom, when, mode, opening, disappearance) and the “Refuse photos” setting (see <a href="#photos-privees">private photos</a>).</dd></div>
     {{- end}}
     <div><dt>Safety and moderation</dt><dd>Blocks; reports made or received (reason, details, first name and profile answers visible at the time, conversation excerpts attached with consent); decisions, sanctions, appeals; log of moderation actions{{if on "lot5_serveur_deploye"}}; after certain accounts are erased, a fingerprint of the email address (see <a href="#durees">retention periods</a>){{end}}.</dd></div>
     <div><dt>Consents</dt><dd>What you accepted or withdrew, the version of the text, the language in which you accepted it and the date. The French text is the reference version.</dd></div>
-    <div><dt>Device and technical data</dt><dd>Sign-in sessions (tokens kept as hashes); if you turn notifications on, a device identifier and a notification token; technical logs limited to the route called, the response code, the duration and a request number, with no IP address and no content. Your IP address is used in memory to limit abuse, without being written to these logs.</dd></div>
+    <div><dt>Device and technical data</dt><dd>Sign-in sessions (tokens kept as hashes); if you turn notifications on, a device identifier and a notification token; technical logs limited to the route called, the response code, the duration and a request number, with no IP address and no content. Your IP address is used in memory to limit abuse, without being written to these logs.{{if on "lot8_serveur_deploye"}} To suggest an update, the up-to-date version of the app asks the server for the number of the latest version, when it starts and when it comes back to the foreground: with no account, it states your system (Android or iPhone) along with, as in each exchange, the language and time zone, which are not saved on that occasion. The comparison with the installed version is made on your phone; the “Update available” banner blocks nothing.{{end}}</dd></div>
     <div><dt>Contact</dt><dd>Messages you send us by email and our replies.</dd></div>
     <div><dt>Rectification</dt><dd>The correction you ask for and, for a change of address, the new address awaiting confirmation. An identity document may be looked at to check your request, without being kept (see <a href="#rectification">rectification</a>).</dd></div>
   </dl>
@@ -63,6 +66,9 @@
     <li>Gender, search and orientation are processed only with your <strong>explicit consent</strong>, requested in a separate box that is never pre-ticked.</li>
     {{- if on "photos_privees"}}
     <li><a href="#photos-privees">Private photos</a> may reveal your sex life or your orientation. Sending them is optional. No separate consent box is requested for them today: the legal basis remains <strong>to be validated by a lawyer</strong> (Article 9).</li>
+    {{- end}}
+    {{- if on "lot8_serveur_deploye"}}
+    <li>Your list of <a href="#favoris">favourites</a> may also reveal your sex life or orientation. Adding some is optional and no separate consent box is shown: the legal basis remains <strong>to be validated by a lawyer</strong> (Article 9).</li>
     {{- end}}
     <li>Orientation is used to pre-fill your choices. It is stored only if you turn on “Show my orientation” (off by default): it then appears on your profile page (up-to-date version of the app). Otherwise it is hidden and is not kept. It never appears in the sky, the grid, lists or notifications. Before this update, the setting showed nothing to others: to be safe, it is set back to “hidden” and the saved orientation is erased; to show it, turn it on again in My profile, “Edit my profile”. The legal basis for this display is <strong>to be validated by a lawyer</strong> (Article 9).</li>
     <li>If you withdraw this consent, your orientation and the genders you seek are erased and your profile is disabled.</li>
@@ -90,6 +96,11 @@
   <dl class="faits">
     <div><dt>Create and manage your account, show compatible profiles, deliver signals and messages</dt><dd>Performance of the contract (Article 6, paragraph 1, point b, GDPR).</dd></div>
     <div><dt>Show a person who opened their profile (“Viewed your profile”)</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis under consideration: performance of the contract (Article 6, paragraph 1, point b) or legitimate interest (Article 6, paragraph 1, point f). Whether these visits are sensitive data (Article 9) also remains to be validated. You can object at any time to new visits being recorded by using “Visit discreetly” (see <a href="#visites">profile visits</a>).</dd></div>
+    {{- if on "lot8_serveur_deploye"}}
+    <div><dt>Keep your list of favourites</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis under consideration: performance of the contract (Article 6, paragraph 1, point b) and, for what it may reveal about your sex life or orientation, explicit consent (Article 9, paragraph 2, point a).</dd></div>
+    <div><dt>Show “Seen” and the typing indicator in a conversation</dt><dd><strong>Legal basis to be validated by a lawyer</strong>, as is the fact that they are on by default (data protection by default, Article 25). Basis under consideration: performance of the contract (Article 6, paragraph 1, point b) or legitimate interest (Article 6, paragraph 1, point f). Each of the two settings can be turned off at any time.</dd></div>
+    <div><dt>Suggest an update of the app</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis under consideration: legitimate interest in the proper working and safety of the service (Article 6, paragraph 1, point f).</dd></div>
+    {{- end}}
     {{- if on "photos_privees"}}
     <div><dt>Store your private photos and albums and show them to the people you choose</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis under consideration: performance of the contract (Article 6, paragraph 1, point b) and, for what they reveal about your sex life or orientation, explicit consent (Article 9, paragraph 2, point a).</dd></div>
     <div><dt>Keep a copy of a private photo already shown for a while, so that a report can be handled</dt><dd><strong>Legal basis to be validated by a lawyer.</strong> Basis under consideration: legitimate interest in people's safety (Article 6, paragraph 1, point f) and, for sensitive data, the establishment, exercise or defence of legal claims (Article 9, paragraph 2, point f).</dd></div>
@@ -129,6 +140,21 @@
     <li><strong>Retention</strong>: 30 days after the latest visit, or until one of the two accounts is erased. A block or a disabled profile does not erase them: they are no longer shown.</li>
     <li>The list and the setting are in the up-to-date version of the app. With an older version, your visits are recorded in the same way; invisible mode prevents it.</li>
   </ul>
+  {{- if on "lot8_serveur_deploye"}}
+  <h3 id="favoris">Favourites</h3>
+  <ul>
+    <li>With the up-to-date version of the app, you can star a person whose profile you can open. This list is <strong>private</strong>: only you can see it, and the person is not told. It shows no distance.</li>
+    <li>The list shows 100 people at most. Someone whose profile you can no longer open does not appear in it; they come back if access returns.</li>
+    <li>A favourite is kept until you remove it, you block the person or one of the two accounts is erased.</li>
+  </ul>
+  <h3 id="vu">“Seen” and typing indicator</h3>
+  <ul>
+    <li><strong>“Seen”</strong> shows the person you are chatting with that you have read their messages, and shows you the same for yours.</li>
+    <li><strong>The typing indicator</strong> shows them, live, that you are typing. None of it is recorded, or written to logs or a notification; without a live connection, nothing is shown.</li>
+    <li><strong>On by default</strong>, these two settings are <strong>reciprocal</strong> and can be turned off in My profile: if you or the other person turn one of them off, neither of you sees the corresponding information.</li>
+    <li>Messages read earlier, with the setting off or with an older version of the app are not shown as read.</li>
+  </ul>
+  {{- end}}
   {{- if on "photos_privees"}}
   <h3 id="photos-privees">Private photos and albums</h3>
   <ul>
@@ -160,12 +186,16 @@
     {{- else}}
     <li>Photos are checked by a person before they become visible.</li>
     {{- end}}
-    <li>Moderation can also remove a message, signal or profile answer with sexually explicit content, and apply the <a href="{{page "terms"}}#sexuel">graduated penalties</a> set out in the terms.</li>
+    <li>Following a report, moderation can also remove a message, signal or profile answer that breaks the rules, in particular one with sexually explicit content, and apply the <a href="{{page "terms"}}#sexuel">graduated penalties</a> set out in the terms.</li>
+    <li>A removed message or signal is replaced, on both sides, by “Content removed by moderation”; a removed profile answer disappears from the profile. <strong>The original text is kept with the file</strong>, for as long as the file, and moderation can read it. The person who wrote it is informed and can appeal (if the decision is overturned, the content is put back). This text is included in their data export, except for a “Content involving a minor” file; it is included in nobody else's export.</li>
     <li>A local word list, with no external service, may flag the first name and profile answers so that a person can read them again. Nothing is blocked automatically.</li>
     <li>If at least 2 different accounts, registered for more than 7 days, report that someone appears to be a minor, that account is automatically suspended pending an age check. The person is informed and can appeal; the appeal is reviewed by a person.</li>
+    {{- if on "lot8_serveur_deploye"}}
+    <li>Once an age report made by an account against a person has been dismissed, that account no longer counts against them for the same reason (“Seems to be under 18” or “Content involving a minor”), neither for this automatic suspension{{if on "masquage_photos_age"}} nor for hiding photos{{end}}, as long as that file is kept. Its new reports are still reviewed by a person.</li>
+    {{- end}}
     <li>While an account's age needs to be checked (a “Seems to be under 18” report not yet decided, or a suspension or ban in force for this reason), the moderation tool displays none of its images to anyone, neither blurred nor as thumbnails, and none of its pending photos can be approved. A photo removed for this reason stays hidden in that tool unless the decision is overturned; the same applies, after the account is erased, to the images of such a report until it is dismissed. Otherwise, the images can be viewed again after a dismissal, a reinstatement or another decision with no sanction for this reason. This extends no retention period. In the app, its photos remain visible as long as the account is not suspended{{if on "masquage_photos_age"}}, except in the case below{{end}}.</li>
     {{- if on "masquage_photos_age"}}
-    <li>When more than 5 different accounts, even recent ones, have an age report (“Seems to be under 18” or “Content involving a minor”) awaiting a decision, the photos of the reported account are temporarily hidden from other people (sky, grid, lists, profile, private photos sent and shared albums), until a moderator makes a decision. The reported person keeps access to their photos and finds them in their data export; they are not told about this measure. Nothing is erased or kept longer for this purpose.</li>
+    <li>When more than 5 different accounts, even recent ones, have an age report (“Seems to be under 18” or “Content involving a minor”) awaiting a decision, the photos of the reported account are temporarily hidden from other people (sky, grid, lists, profile, private photos sent and shared albums), until a moderator makes a decision. The reported person keeps access to their photos and finds them in their data export; they are not told about this measure. Nothing is erased or kept longer for this purpose.{{if on "lot8_serveur_deploye"}} During that time, sending photos <strong>to</strong> this account is also suspended: nobody can send it a photo or share an album with it (neutral message), and what it has already received is no longer shown to it, without being used up. Everything comes back with the decision.{{end}}</li>
     {{- end}}
     {{- if on "lot7_serveur_deploye"}}
     <li>With the reason “Content involving a minor”, chosen by the reporting person or by moderation, the images concerned are attached to the file and locked: they are no longer shown in the app, including to their author, nor erased, even if the account is deleted. The moderation tool displays them to nobody, neither blurred nor as thumbnails: only the file's information (dates, accounts, status) can be viewed. When moderation classifies a conversation report in this way, the photos sent by the reported person and still stored are attached and locked. The competent authorities may be informed; this procedure remains to be validated by a lawyer.</li>
@@ -211,6 +241,10 @@
     {{- end}}
     <div><dt>Images of an account whose age needs to be checked</dt><dd>No additional period: they are hidden in the moderation tool and follow the ordinary periods.</dd></div>
     <div><dt>Current moods</dt><dd>Until the end of the chosen time.</dd></div>
+    {{- if on "lot8_serveur_deploye"}}
+    <div><dt>Favourites</dt><dd>Until you remove them, you block the person or one of the two accounts is erased.</dd></div>
+    <div><dt>“Seen” and typing indicator</dt><dd>The “Seen” status is kept with the conversation; typing is never recorded.</dd></div>
+    {{- end}}
     <div><dt>Profile visits</dt><dd>30 days after the latest visit; sooner if one of the two accounts is erased.</dd></div>
     <div><dt>Signal with no reply</dt><dd>No longer active after 14 days; it remains stored as long as the accounts concerned exist.</dd></div>
     {{- if on "lot5_serveur_deploye"}}
@@ -231,7 +265,7 @@
     <div><dt>Refused or removed photo</dt><dd>File erased after 30 days.</dd></div>
     <div><dt>Texts flagged by the word list</dt><dd>90 days.</dd></div>
     <div><dt>Time limit to appeal a decision</dt><dd>180 days.</dd></div>
-    <div><dt>Reports, attached excerpts, decisions, appeals and sanctions</dt><dd>365 days after the decision (for a sanction, after it is lifted); a report not yet decided is kept until it is. A file is not erased while a related appeal or sanction is ongoing.</dd></div>
+    <div><dt>Reports, attached excerpts, removed texts, decisions, appeals and sanctions</dt><dd>365 days after the decision (for a sanction, after it is lifted); a report not yet decided is kept until it is. A file is not erased while a related appeal or sanction is ongoing.</dd></div>
     {{- if on "lot7_serveur_deploye"}}
     <div><dt>Images reported as involving a minor, and their file</dt><dd>No fixed limit, until an administrator lifts the lock or dismisses the file (to be validated by a lawyer).</dd></div>
     {{- end}}
@@ -261,7 +295,7 @@
 <section id="droits">
   <h2>12. Your rights</h2>
   <ul>
-    <li><strong>Access</strong> to and a copy of your data, and <strong>portability</strong>: {{if on "export_dans_app"}}from the app (My profile, “Download my data”, with your password; link valid for 1 hour; texts written by others are not included; people who opened your profile appear as the app shows them to you, so none with discreet visiting or invisible mode; the stored language and time zone are not included yet), or by email{{else}}on request by email{{end}}. <a href="#visites">Profile visits</a> still on record are part of your data.</li>
+    <li><strong>Access</strong> to and a copy of your data, and <strong>portability</strong>: {{if on "export_dans_app"}}from the app (My profile, “Download my data”, with your password; link valid for 1 hour; texts written by others are not included; people who opened your profile appear as the app shows them to you, so none with discreet visiting or invisible mode; your texts removed by moderation are included, except for a “Content involving a minor” file; {{if on "lot8_serveur_deploye"}}the stored language and time zone, the language of each consent, your favourites (with the first name only if you can still open the profile) and the “Read receipts” and “Typing indicator” settings are included too{{else}}the stored language and time zone are not included yet{{end}}), or by email{{else}}on request by email{{end}}. <a href="#visites">Profile visits</a> still on record are part of your data.</li>
     {{- if on "photos_privees"}}
     <li>For private photos, the copy contains yours (in your gallery or still visible), your albums, and what you sent and shared. Copies that have disappeared or are locked are listed without the image or are not included, and photos you received are never included (restriction to be validated by a lawyer).</li>
     {{- end}}

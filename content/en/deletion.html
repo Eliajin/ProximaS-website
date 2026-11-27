@@ -57,6 +57,9 @@
     <li>location, filters and consents;</li>
     <li>signals sent and received;</li>
     <li><strong>profile visits</strong>, both those you made and those you received;</li>
+    {{- if on "lot8_serveur_deploye"}}
+    <li>your favourites, and your presence in other people's favourites;</li>
+    {{- end}}
     <li><strong>entire conversations</strong>, including both people's messages, and meeting suggestions;</li>
     <li>blocks, sessions and devices registered for notifications.</li>
   </ul>
@@ -67,7 +70,7 @@
   <h2>4. What is kept, and why</h2>
   <p>To protect other people and to be able to respond in case of a dispute, some data remains for a limited time (proposed periods, to be validated by a lawyer):</p>
   <dl class="faits">
-    <div><dt>Reports made or received, with their content, and decisions</dt><dd>Your account identifiers are erased; the file is kept for 365 days after the decision. A report not yet decided is kept until it is.</dd></div>
+    <div><dt>Reports made or received, with their content (including texts removed by moderation), and decisions</dt><dd>Your account identifiers are erased; the file is kept for 365 days after the decision. A report not yet decided is kept until it is.</dd></div>
     <div><dt>Log of moderation actions</dt><dd>730 days, with an internal account identifier.</dd></div>
     {{- if on "photos_privees"}}
     <div><dt>Private photos already shown to someone</dt><dd>A copy is kept for 30 days after they disappear, including through erasure of the account; moderation can only view it through a report. A photo attached to a report is kept until the decision, and during an appeal. Photos never shown are erased.</dd></div>
@@ -84,7 +87,7 @@
 <section id="export">
   <h2>5. Get your data before you leave</h2>
   {{- if on "export_dans_app"}}
-  <p>In the app, open <strong>My profile</strong>, then <strong>Download my data</strong>. You get an archive with your data, including profile visits (your visitors as the app shows them to you), and your photos{{if on "photos_privees"}} (for private ones: yours in your gallery or still visible, never those you received){{end}}; messages and texts written by other people are not included. Do this before deleting your account.</p>
+  <p>In the app, open <strong>My profile</strong>, then <strong>Download my data</strong>. You get an archive with your data, including profile visits (your visitors as the app shows them to you), and your photos{{if on "photos_privees"}} (for private ones: yours in your gallery or still visible, never those you received){{end}}; messages and texts written by other people are not included, but your texts removed by moderation are (except for a “Content involving a minor” file).{{if on "lot8_serveur_deploye"}} It also contains your favourites, the stored language and time zone and the “Read receipts” and “Typing indicator” settings.{{end}} Do this before deleting your account.</p>
   {{- else}}
   <p>Ask for a copy of your data at {{mail}} <strong>before</strong> requesting deletion: downloading it from the app is not available yet.</p>
   {{- end}}

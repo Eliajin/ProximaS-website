@@ -9,7 +9,8 @@ Page de présentation honnête de l'application (concept, Mon ciel, envie du mom
 - Réglages actuels (`site.conf`) : API du lot 5 déployée (suppression demandable par le web), suppression et export dans l'application annoncés, lot 7 et photos privées annoncés, lien du groupe Google des testeurs, application annoncée en français et en anglais.
 - Les textes décrivent le lot 6 de l'API (visites de profil, prénom modifiable, 3 envies, délais des signaux, grille) : déployer le site après elle.
 - Textes du lot « Europe, français et anglais » : publier le site après l'API correspondante (voir `docs/MISE_EN_LIGNE.md`).
-- Masquage des photos après des signalements d'âge : texte prêt, masqué par `masquage_photos_age`.
+- 27/11 : masquage des photos après des signalements d'âge et retrait de contenus (texte conservé) décrits (API `0c83f24` déployée).
+- Lot 8 (favoris, « vu », saisie en cours, mise à jour, export élargi) : textes prêts, masqués par `lot8_serveur_deploye` ; à passer à « oui » après le déploiement de l'API, avant de distribuer le build 2.
 - Champs à remplir : `make champs`.
 
 ## Pile

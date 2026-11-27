@@ -56,6 +56,7 @@ func variants(t *testing.T) map[string]*Config {
 		"lot 5, sans dpo":    load(dpoNone),
 		"lot 7, sans photos": load(lot7),
 		"lot 7, photos":      load(photos),
+		"lot 8":              load(map[string]string{"lot8_serveur_deploye": "oui"}),
 	}
 }
 

@@ -104,6 +104,9 @@
     <li>Les données de localisation intégrées à tes photos (EXIF) sont supprimées.</li>
     <li>Quand tu ouvres la fiche de quelqu'un, cette personne peut le voir dans « A vu ton profil » : seule la dernière visite est gardée, 30 jours, sans notification. Avec « Visiter discrètement » ou le mode invisible, tes visites ne sont pas enregistrées, et tu ne vois pas qui a vu ton profil.</li>
     <li>L'application n'affiche pas de publicité aujourd'hui et ne contient aucun outil publicitaire ni de mesure d'audience. Si de la publicité était ajoutée plus tard, la politique de confidentialité serait mise à jour avant.</li>
+    {{- if on "lot8_serveur_deploye"}}
+    <li>Tes favoris sont privés : la personne ajoutée n'en est pas informée. « Vu » et « en train d'écrire » sont activés par défaut, réciproques, et tu peux les désactiver.</li>
+    {{- end}}
     <li>{{if on "export_dans_app"}}Tu peux télécharger tes données depuis l'application.{{else}}Tu peux demander une copie de tes données par e-mail.{{end}} {{if on "suppression_dans_app"}}Tu peux supprimer ton compte depuis l'application.{{else}}Tu peux demander la suppression de ton compte à tout moment.{{end}}</li>
   </ul>
   <p><a href="{{page "privacy"}}">Politique de confidentialité</a> · <a href="{{page "deletion"}}">Supprimer mon compte</a></p>

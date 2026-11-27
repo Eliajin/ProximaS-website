@@ -215,6 +215,17 @@ Puis mettre à jour `date_textes`, `make test`, commit, push, et `deploy/build-p
 
 L'application bilingue a besoin des pages anglaises, et les textes ont besoin de l'API : déployer l'API, puis le site, puis distribuer l'application.
 
+## Lot 8 (favoris, « vu », saisie en cours, mise à jour)
+
+Textes écrits mais masqués par `lot8_serveur_deploye`. Ordre :
+
+1. déployer l'API (`ProximaS`, commit `29f48f3`) ;
+2. dans `site.conf`, `lot8_serveur_deploye = oui`, mettre à jour `date_textes`, `make test`, commit, push, `deploy/build-prod.sh` du site ;
+3. relire `/confidentialite#favoris`, `/confidentialite#vu` et leurs équivalents anglais ;
+4. **puis seulement** distribuer le build 2 de l'application.
+
+À faire valider (juriste) : bases légales des favoris, de « Vu » et d'« en train d'écrire » et leur activation par défaut, envois de photos suspendus vers un compte dont l'âge est signalé, information dans l'application ou nouvelle version des conditions.
+
 ## Lot 7 (photos privées, conditions qui changent)
 
 Les textes sont écrits mais masqués. Dans `site.conf` :

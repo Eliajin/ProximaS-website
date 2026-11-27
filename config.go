@@ -65,6 +65,7 @@ var fields = []fieldSpec{
 	{"lot7_serveur_deploye", toggle, "API du lot 7 déployée"},
 	{"photos_privees", toggle, "photos privées ouvertes (PRIVATE_PHOTOS=on)"},
 	{"masquage_photos_age", toggle, "masquage des photos après des signalements d'âge déployé"},
+	{"lot8_serveur_deploye", toggle, "API du lot 8 déployée (favoris, « vu », saisie en cours, mise à jour)"},
 }
 
 // Config : contenu de site.conf.

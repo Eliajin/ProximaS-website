@@ -43,13 +43,16 @@
     <div><dt>Profil</dt><dd>Prénom (que tu peux changer dans l'application), genre, genres que tu souhaites rencontrer, orientation (seulement si tu choisis de l'afficher), photos (0 à 6), réponses à 3 questions de profil au maximum, envies du moment (jusqu'à 3 pour un même moment), filtres, options « mode invisible », « masquer ma distance » et « visiter discrètement », historique récent des changements de genre ou de recherche.</dd></div>
     <div><dt>Position</dt><dd>Une case d'environ 500 m de côté (jusqu'à environ 1 km d'est en ouest au nord) et l'heure de sa mise à jour ; quelques compteurs de déplacements impossibles, contre la triche.</dd></div>
     <div><dt>Échanges</dt><dd>Signaux envoyés et reçus et leur suite (dont la date à laquelle un signal a été passé), conversations, messages, propositions de moment, état de lecture.</dd></div>
+    {{- if on "lot8_serveur_deploye"}}
+    <div><dt>Favoris, « Vu » et « en train d'écrire »</dt><dd>Les personnes que tu ajoutes à tes favoris et la date de l'ajout ; jusqu'à quel message chaque personne a lu, pendant que les deux partagent leurs accusés de lecture ; les réglages « Accusés de lecture » et « En train d'écrire ». Le fait que tu écrives est transmis en direct et jamais enregistré (voir <a href="#favoris">les favoris</a> et <a href="#vu">« Vu »</a>).</dd></div>
+    {{- end}}
     <div><dt>Visites de profil</dt><dd>Qui a ouvert la fiche de qui, et la date de la dernière visite, à l'heure près (voir <a href="#visites">les visites de profil</a>).</dd></div>
     {{- if on "photos_privees"}}
     <div><dt>Photos privées et albums</dt><dd>Si tu les utilises : les photos de ta galerie privée (30 au plus) et celles que tu envoies, tes albums (5 au plus, dont le nom n'est montré qu'à toi), les envois et les partages (qui, à qui, quand, mode, ouverture, disparition) et le réglage « Refuser les photos » (voir <a href="#photos-privees">les photos privées</a>).</dd></div>
     {{- end}}
     <div><dt>Sécurité et modération</dt><dd>Blocages ; signalements faits ou reçus (motif, précisions, prénom et réponses de profil visibles à ce moment, extraits de conversation joints avec accord) ; décisions, sanctions, contestations ; journal des actions de modération{{if on "lot5_serveur_deploye"}} ; après l'effacement de certains comptes, une empreinte de l'adresse e-mail (voir <a href="#durees">les durées</a>){{end}}.</dd></div>
     <div><dt>Consentements</dt><dd>Ce que tu as accepté ou retiré, la version du texte, la langue dans laquelle tu l'as accepté et la date. Le texte français est la version de référence.</dd></div>
-    <div><dt>Appareil et technique</dt><dd>Sessions de connexion (jetons conservés sous forme d'empreinte) ; si tu actives les notifications, un identifiant de ton appareil et un jeton de notification ; journaux techniques limités à la route appelée, au code de réponse, à la durée et à un numéro de requête, sans adresse IP ni contenu. Ton adresse IP est utilisée en mémoire pour limiter les abus, sans être écrite dans ces journaux.</dd></div>
+    <div><dt>Appareil et technique</dt><dd>Sessions de connexion (jetons conservés sous forme d'empreinte) ; si tu actives les notifications, un identifiant de ton appareil et un jeton de notification ; journaux techniques limités à la route appelée, au code de réponse, à la durée et à un numéro de requête, sans adresse IP ni contenu. Ton adresse IP est utilisée en mémoire pour limiter les abus, sans être écrite dans ces journaux.{{if on "lot8_serveur_deploye"}} Pour proposer une mise à jour, la version à jour de l'application demande au serveur, au lancement et à son retour au premier plan, le numéro de la dernière version : sans compte, elle indique ton système (Android ou iPhone) avec, comme à chaque échange, la langue et le fuseau horaire, qui ne sont pas enregistrés à cette occasion. La comparaison avec la version installée se fait sur ton téléphone ; le bandeau « Mise à jour disponible » ne bloque rien.{{end}}</dd></div>
     <div><dt>Contact</dt><dd>Les messages que tu nous envoies par e-mail et nos réponses.</dd></div>
     <div><dt>Rectification</dt><dd>La correction que tu demandes et, pour un changement d'adresse, la nouvelle adresse en attente de confirmation. Un justificatif d'identité peut être regardé pour vérifier ta demande, sans être conservé (voir <a href="#rectification">la rectification</a>).</dd></div>
   </dl>
@@ -63,6 +66,9 @@
     <li>Le genre, la recherche et l'orientation ne sont traités qu'avec ton <strong>consentement explicite</strong>, demandé dans une case séparée, jamais cochée d'avance.</li>
     {{- if on "photos_privees"}}
     <li>Les <a href="#photos-privees">photos privées</a> peuvent révéler ta vie sexuelle ou ton orientation. En envoyer est facultatif. Aucune case de consentement séparée n'est demandée aujourd'hui pour elles : la base légale reste <strong>à valider par un juriste</strong> (article 9).</li>
+    {{- end}}
+    {{- if on "lot8_serveur_deploye"}}
+    <li>La liste de tes <a href="#favoris">favoris</a> peut elle aussi révéler ta vie sexuelle ou ton orientation. En ajouter est facultatif et aucune case de consentement séparée n'est demandée : la base légale reste <strong>à valider par un juriste</strong> (article 9).</li>
     {{- end}}
     <li>L'orientation sert à préremplir tes choix. Elle n'est enregistrée que si tu actives « Afficher mon orientation » (désactivé par défaut) : elle apparaît alors sur ta fiche (version à jour de l'application). Sinon, elle est masquée et n'est pas conservée. Elle n'apparaît jamais dans le ciel, la grille, les listes ni les notifications. Avant cette mise à jour, ce réglage ne montrait rien aux autres : par prudence, il est remis à « masqué » et l'orientation enregistrée est effacée ; pour l'afficher, réactive-le dans Mon profil, « Modifier mon profil ». Base légale de cet affichage <strong>à valider par un juriste</strong> (article 9).</li>
     <li>Si tu retires ce consentement, l'orientation et les genres recherchés sont effacés et ton profil est désactivé.</li>
@@ -90,6 +96,11 @@
   <dl class="faits">
     <div><dt>Créer et gérer ton compte, montrer des profils compatibles, transmettre signaux et messages</dt><dd>Exécution du contrat (article 6, paragraphe 1, point b, du RGPD).</dd></div>
     <div><dt>Montrer à une personne qui a ouvert sa fiche (« A vu ton profil »)</dt><dd><strong>Base légale à valider par un juriste.</strong> Base envisagée : exécution du contrat (article 6, paragraphe 1, point b) ou intérêt légitime (article 6, paragraphe 1, point f). Il reste aussi à valider si ces visites sont des données sensibles (article 9). Tu peux t'opposer à tout moment à l'enregistrement de nouvelles visites avec « Visiter discrètement » (voir <a href="#visites">les visites de profil</a>).</dd></div>
+    {{- if on "lot8_serveur_deploye"}}
+    <div><dt>Garder ta liste de favoris</dt><dd><strong>Base légale à valider par un juriste.</strong> Base envisagée : exécution du contrat (article 6, paragraphe 1, point b) et, pour ce qu'elle peut révéler de ta vie sexuelle ou de ton orientation, consentement explicite (article 9, paragraphe 2, point a).</dd></div>
+    <div><dt>Montrer « Vu » et « en train d'écrire » dans une conversation</dt><dd><strong>Base légale à valider par un juriste</strong>, comme leur activation par défaut (protection des données par défaut, article 25). Base envisagée : exécution du contrat (article 6, paragraphe 1, point b) ou intérêt légitime (article 6, paragraphe 1, point f). Chacun des deux réglages se coupe à tout moment.</dd></div>
+    <div><dt>Proposer une mise à jour de l'application</dt><dd><strong>Base légale à valider par un juriste.</strong> Base envisagée : intérêt légitime au bon fonctionnement et à la sécurité du service (article 6, paragraphe 1, point f).</dd></div>
+    {{- end}}
     {{- if on "photos_privees"}}
     <div><dt>Enregistrer tes photos privées et tes albums et les montrer aux personnes que tu choisis</dt><dd><strong>Base légale à valider par un juriste.</strong> Base envisagée : exécution du contrat (article 6, paragraphe 1, point b) et, pour ce qu'elles révèlent de ta vie sexuelle ou de ton orientation, consentement explicite (article 9, paragraphe 2, point a).</dd></div>
     <div><dt>Garder un temps la copie d'une photo privée déjà montrée, pour pouvoir traiter un signalement</dt><dd><strong>Base légale à valider par un juriste.</strong> Base envisagée : intérêt légitime à la sécurité des personnes (article 6, paragraphe 1, point f) et, pour les données sensibles, constatation, exercice ou défense de droits en justice (article 9, paragraphe 2, point f).</dd></div>
@@ -129,6 +140,21 @@
     <li><strong>Durée</strong> : 30 jours après la dernière visite, ou jusqu'à l'effacement de l'un des deux comptes. Un blocage ou un profil désactivé ne les efface pas : elles ne sont plus montrées.</li>
     <li>La liste et le réglage figurent dans la version à jour de l'application. Avec une version plus ancienne, tes visites sont enregistrées de la même façon ; le mode invisible l'empêche.</li>
   </ul>
+  {{- if on "lot8_serveur_deploye"}}
+  <h3 id="favoris">Favoris</h3>
+  <ul>
+    <li>Avec la version à jour de l'application, tu peux marquer d'une étoile une personne dont la fiche t'est accessible. Cette liste est <strong>privée</strong> : toi seul·e la vois, et la personne n'en est pas informée. Aucune distance n'y figure.</li>
+    <li>La liste montre 100 personnes au maximum. Une personne dont la fiche ne t'est plus accessible n'y apparaît pas ; elle y revient si l'accès revient.</li>
+    <li>Un favori est gardé jusqu'à ce que tu le retires, que tu bloques la personne ou que l'un des deux comptes soit effacé.</li>
+  </ul>
+  <h3 id="vu">« Vu » et « en train d'écrire »</h3>
+  <ul>
+    <li><strong>« Vu »</strong> montre à la personne avec qui tu discutes que tu as lu ses messages, et te le montre pour les tiens.</li>
+    <li><strong>« En train d'écrire »</strong> lui montre, en direct, que tu es en train d'écrire. Rien n'en est enregistré, ni écrit dans les journaux ou une notification ; sans connexion en direct, rien ne s'affiche.</li>
+    <li><strong>Activés par défaut</strong>, ces deux réglages sont <strong>réciproques</strong> et désactivables dans Mon profil : si toi ou l'autre personne coupez l'un d'eux, aucune des deux ne voit l'information correspondante.</li>
+    <li>Les lectures faites avant, avec le réglage coupé ou avec une version plus ancienne de l'application ne sont pas montrées.</li>
+  </ul>
+  {{- end}}
   {{- if on "photos_privees"}}
   <h3 id="photos-privees">Photos privées et albums</h3>
   <ul>
@@ -160,12 +186,16 @@
     {{- else}}
     <li>Les photos sont contrôlées par une personne avant d'être visibles.</li>
     {{- end}}
-    <li>La modération peut aussi retirer un message, un signal ou une réponse de profil au contenu sexuellement explicite, et appliquer les <a href="{{page "terms"}}#sexuel">sanctions graduées</a> prévues par les conditions.</li>
+    <li>À la suite d'un signalement, la modération peut aussi retirer un message, un signal ou une réponse de profil qui enfreint les règles, notamment au contenu sexuellement explicite, et appliquer les <a href="{{page "terms"}}#sexuel">sanctions graduées</a> prévues par les conditions.</li>
+    <li>Un message ou un signal retiré est remplacé, des deux côtés, par « Contenu retiré par la modération » ; une réponse de profil retirée disparaît de la fiche. <strong>Le texte d'origine est conservé avec le dossier</strong>, aussi longtemps que lui, et la modération peut le lire. La personne qui l'a écrit est informée et peut contester (une annulation remet le contenu). Ce texte figure dans l'export de ses données, sauf pour un dossier « Contenu impliquant un mineur » ; il ne figure dans l'export de personne d'autre.</li>
     <li>Une liste de mots locale, sans service extérieur, peut repérer le prénom et les réponses de profil pour qu'une personne les relise. Rien n'est bloqué automatiquement.</li>
     <li>Si au moins 2 comptes distincts, inscrits depuis plus de 7 jours, signalent qu'une personne semble mineure, son compte est suspendu automatiquement dans l'attente d'une vérification de l'âge. La personne en est informée et peut contester ; la contestation est examinée par une personne.</li>
+    {{- if on "lot8_serveur_deploye"}}
+    <li>Quand un signalement d'âge fait par un compte contre une personne a été classé, ce compte ne compte plus contre elle pour ce même motif (« Semble avoir moins de 18 ans » ou « Contenu impliquant un mineur »), ni pour cette suspension automatique{{if on "masquage_photos_age"}} ni pour le masquage des photos{{end}}, tant que ce dossier est conservé. Ses nouveaux signalements restent examinés par une personne.</li>
+    {{- end}}
     <li>Tant que l'âge d'un compte est à vérifier (signalement « Semble avoir moins de 18 ans » pas encore décidé, ou suspension ou bannissement en cours pour ce motif), l'outil de modération n'affiche aucune de ses images à personne, ni floutées ni en miniature, et aucune de ses photos en attente ne peut être validée. Une photo retirée pour ce motif reste masquée dans cet outil tant que la décision n'est pas annulée ; il en va de même, après l'effacement du compte, pour les images d'un tel signalement tant qu'il n'est pas classé. Sinon, les images redeviennent consultables après un classement, un rétablissement ou une autre décision sans sanction pour ce motif. Cela n'allonge aucune durée de conservation. Dans l'application, ses photos restent visibles tant que le compte n'est pas suspendu{{if on "masquage_photos_age"}}, sauf dans le cas ci-dessous{{end}}.</li>
     {{- if on "masquage_photos_age"}}
-    <li>Quand plus de 5 comptes distincts, même récents, ont un signalement d'âge (« Semble avoir moins de 18 ans » ou « Contenu impliquant un mineur ») en attente de décision, les photos du compte visé sont masquées temporairement aux autres personnes (ciel, grille, listes, fiche, photos privées envoyées et albums partagés), jusqu'à la décision d'un modérateur. La personne visée garde l'accès à ses photos et les retrouve dans l'export de ses données ; elle n'est pas informée de ce masquage. Rien n'est effacé ni conservé plus longtemps à ce titre.</li>
+    <li>Quand plus de 5 comptes distincts, même récents, ont un signalement d'âge (« Semble avoir moins de 18 ans » ou « Contenu impliquant un mineur ») en attente de décision, les photos du compte visé sont masquées temporairement aux autres personnes (ciel, grille, listes, fiche, photos privées envoyées et albums partagés), jusqu'à la décision d'un modérateur. La personne visée garde l'accès à ses photos et les retrouve dans l'export de ses données ; elle n'est pas informée de ce masquage. Rien n'est effacé ni conservé plus longtemps à ce titre.{{if on "lot8_serveur_deploye"}} Pendant ce temps, les envois de photos sont aussi suspendus <strong>vers</strong> ce compte : personne ne peut lui envoyer de photo ni partager un album avec lui (message neutre), et ce qu'il a déjà reçu ne s'affiche plus pour lui, sans être consommé. Tout revient avec la décision.{{end}}</li>
     {{- end}}
     {{- if on "lot7_serveur_deploye"}}
     <li>Avec le motif « Contenu impliquant un mineur », choisi par la personne qui signale ou par la modération, les images concernées sont jointes au dossier et placées sous verrou : elles ne sont plus montrées dans l'application, y compris à leur auteur, ni effacées, même si le compte est supprimé. L'outil de modération ne les affiche à personne, ni floutées ni en miniature : seules les informations du dossier (dates, comptes, état) restent consultables. Pour un signalement de conversation ainsi qualifié par la modération, les photos envoyées par la personne visée et encore conservées sont jointes et verrouillées. Les autorités compétentes peuvent être informées ; cette procédure reste à valider par un juriste.</li>
@@ -211,6 +241,10 @@
     {{- end}}
     <div><dt>Images d'un compte dont l'âge est à vérifier</dt><dd>Aucune durée supplémentaire : elles sont masquées dans l'outil de modération et suivent les durées ordinaires.</dd></div>
     <div><dt>Envies du moment</dt><dd>Jusqu'à la fin du moment choisi.</dd></div>
+    {{- if on "lot8_serveur_deploye"}}
+    <div><dt>Favoris</dt><dd>Jusqu'au retrait, au blocage de la personne par toi ou à l'effacement de l'un des deux comptes.</dd></div>
+    <div><dt>« Vu » et « en train d'écrire »</dt><dd>L'état « Vu » est gardé avec la conversation ; « en train d'écrire » n'est jamais enregistré.</dd></div>
+    {{- end}}
     <div><dt>Visites de profil</dt><dd>30 jours après la dernière visite ; plus tôt si l'un des deux comptes est effacé.</dd></div>
     <div><dt>Signal sans réponse</dt><dd>N'est plus actif après 14 jours ; il reste enregistré tant que les comptes concernés existent.</dd></div>
     {{- if on "lot5_serveur_deploye"}}
@@ -231,7 +265,7 @@
     <div><dt>Photo refusée ou retirée</dt><dd>Fichier effacé après 30 jours.</dd></div>
     <div><dt>Textes repérés par la liste de mots</dt><dd>90 jours.</dd></div>
     <div><dt>Délai pour contester une décision</dt><dd>180 jours.</dd></div>
-    <div><dt>Signalements, extraits joints, décisions, contestations et sanctions</dt><dd>365 jours après la décision (pour une sanction, après sa levée) ; un signalement pas encore décidé est gardé jusqu'à la décision. Un dossier n'est pas effacé tant qu'une contestation ou une sanction liée est en cours.</dd></div>
+    <div><dt>Signalements, extraits joints, textes retirés, décisions, contestations et sanctions</dt><dd>365 jours après la décision (pour une sanction, après sa levée) ; un signalement pas encore décidé est gardé jusqu'à la décision. Un dossier n'est pas effacé tant qu'une contestation ou une sanction liée est en cours.</dd></div>
     {{- if on "lot7_serveur_deploye"}}
     <div><dt>Images signalées comme impliquant un mineur, et leur dossier</dt><dd>Sans limite fixée, tant qu'un administrateur n'a pas levé le verrou ou classé le dossier (à valider par un juriste).</dd></div>
     {{- end}}
@@ -261,7 +295,7 @@
 <section id="droits">
   <h2>12. Tes droits</h2>
   <ul>
-    <li><strong>Accès</strong> et copie de tes données, et <strong>portabilité</strong> : {{if on "export_dans_app"}}depuis l'application (Mon profil, « Télécharger mes données », avec ton mot de passe ; lien valable 1 heure ; les textes écrits par d'autres n'y sont pas ; les personnes qui ont ouvert ta fiche y figurent comme l'application te les montre, donc aucune en visite discrète ou en mode invisible ; la langue et le fuseau horaire enregistrés n'y figurent pas encore), ou par e-mail{{else}}sur demande par e-mail{{end}}. Les <a href="#visites">visites de profil</a> encore conservées font partie de tes données.</li>
+    <li><strong>Accès</strong> et copie de tes données, et <strong>portabilité</strong> : {{if on "export_dans_app"}}depuis l'application (Mon profil, « Télécharger mes données », avec ton mot de passe ; lien valable 1 heure ; les textes écrits par d'autres n'y sont pas ; les personnes qui ont ouvert ta fiche y figurent comme l'application te les montre, donc aucune en visite discrète ou en mode invisible ; les textes de toi que la modération a retirés y figurent, sauf pour un dossier « Contenu impliquant un mineur » ; {{if on "lot8_serveur_deploye"}}la langue et le fuseau horaire enregistrés, la langue de chaque consentement, tes favoris (avec le prénom seulement si la fiche t'est encore accessible) et les réglages « Accusés de lecture » et « En train d'écrire » y figurent aussi{{else}}la langue et le fuseau horaire enregistrés n'y figurent pas encore{{end}}), ou par e-mail{{else}}sur demande par e-mail{{end}}. Les <a href="#visites">visites de profil</a> encore conservées font partie de tes données.</li>
     {{- if on "photos_privees"}}
     <li>Pour les photos privées, la copie contient les tiennes (en galerie ou encore visibles), tes albums, tes envois et tes partages. Les copies disparues ou verrouillées sont listées sans image ou n'y figurent pas, et les photos que tu as reçues n'y sont jamais (restriction à valider par un juriste).</li>
     {{- end}}
